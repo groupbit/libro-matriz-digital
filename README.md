@@ -7,14 +7,14 @@
 
 Instalar el plugin de EditorConfig para Eclipse según se explica en https://marketplace.eclipse.org/content/editorconfig-eclipse.
   
-  -Instalar Mysql Server
+  -Instalar Mysql Server en https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
 
   -Instalar IDE Eclipse
 
   -Clonar el proyecto Maven desde la terminal:
        git clone https://github.com/ingsw-sarmiento/libro-matriz-digital.git
 
-  -Importar el proyecto desde Eclipse
+  -Importar el proyecto desde Eclipse en http://www.eclipse.org/downloads/packages/release/neon/3/eclipse-ide-java-ee-developers
 
   
                                                                      
