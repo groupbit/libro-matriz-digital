@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.modelo;
 
+import javax.persistence.Entity;
 
 public class Alumno {
 	
@@ -12,5 +13,9 @@ public class Alumno {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
+	
+	
 
 }
