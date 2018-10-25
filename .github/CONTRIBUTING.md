@@ -8,7 +8,7 @@ El objetivo de esto es que el proceso de revisión constituya una instancia de a
 
 Del _pull request_:
 * la descripción debe comenzar con `Closes #n`, siendo `n` el número de issue;
-* si la issue tiene un componente visual, debe incluirse una captura de pantalla que muestre el trabajo realizado;
+* si la issue tiene un componente visual, debe incluirse una captura de pantalla que muestre el trabajo realizado.
 
 Del código:
 * todo código de dominio debe estar acompañado por sus tests;
