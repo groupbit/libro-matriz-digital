@@ -9,12 +9,13 @@ La responsabilidad de revisar es, en primera instancia, de el/la estudiante; el 
 
 ## Criterios mínimos para aprobar una revisión
 
-1. Del _pull request_:
+Del _pull request_:
+  1. tiene que asignar como _Reviewer_ a quien le corresponda según el esquema semanal;
   1. la rama debe estar nombrada según se indica en el [Flujo de trabajo](https://github.com/ingsw-sarmiento/libro-matriz-digital/wiki#flujo-de-trabajo) que está en la wiki;
   1. la descripción debe comenzar con `Closes #n`, siendo `n` el número de issue;
   1. si la issue tiene un componente visual, debe incluirse una captura de pantalla que muestre el trabajo realizado. Para incluir una imagen se puede arrastrar desde una carpeta o simplemente pegarla con <kbd>Ctrl</kbd> + <kbd>V</kbd> si está en el portapapeles.
 
-1. Del código:
+Del código:
   1. todo código de dominio debe estar acompañado por sus tests;
   1. si es una entidad de Hibernate debe tener test de persistencia;
   1. no tener faltas de ortografía;
@@ -22,9 +23,9 @@ La responsabilidad de revisar es, en primera instancia, de el/la estudiante; el 
 
 ## Esquema de revisión (período 25/10 - 01/11)
 
-* @vgrana revisa a @fede9612.
-* @fede9612 revisa a @NahuelM426.
-* @NahuelM426 revisa a @nataliaMarzec.
-* @nataliaMarzec revisa a @JuanCS95.
-* @JuanCS95 revisa a
+* @vgrana tiene de _reviewer_ a @fede9612.
+* @fede9612 tiene de _reviewer_ a @NahuelM426.
+* @NahuelM426 tiene de _reviewer_ a @nataliaMarzec.
+* @nataliaMarzec tiene de _reviewer_ a @JuanCS95.
+* @JuanCS95 tiene de _reviewer_ a
 @vgrana.
