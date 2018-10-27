@@ -27,6 +27,7 @@ Instalar el plugin de EditorConfig para Eclipse según se explica en https://mar
               - luego hacemos clic en el boton RUN
    - Para levantar el proyecto desde consola
       - desde donde se encuentra nuestro proyecto abrimos una terminal, luego ejecutamos el comando _mvn jetty:run _
+   - Luego abrimos un navegador y escribimos _localhost:8080_
   
 
   
