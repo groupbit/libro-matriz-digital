@@ -13,23 +13,11 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 public class DataGenerator {
 
 	@Autowired
-	private Home<Alumno> alumnoHome;
+	private AlumnoHome alumnoHome;
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	protected void generate() {
-//		Maguito harry = new Maguito("Harry", 100);
-//		harry.addItem(new Item("varita", 1));
-//		harry.addItem(new Item("capa", 3));
-//		harry.setExperiencia(10);
-//
-//		Maguito gandalf = new Maguito("Gandalf", 90);
-//		gandalf.addItem(new Item("baculo", 7));
-//		gandalf.addItem(new Item("sombrero", 2));
-//		gandalf.setExperiencia(200);
-//
-//		maguitoHome.saveOrUpdate(harry);
-//		maguitoHome.saveOrUpdate(gandalf);
 		
 		Alumno alumno = new Alumno();
 		alumno.setNombre("Juan");
