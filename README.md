@@ -16,5 +16,19 @@ Instalar el plugin de EditorConfig para Eclipse según se explica en https://mar
 
   - Importar el proyecto desde Eclipse en http://www.eclipse.org/downloads/packages/release/neon/3/eclipse-ide-java-ee-developers
 
-  
-                                                                     
+## Pasos para levantar el proyecto con Jetty desde eclipse o desde consola:
+
+### Para levantar el proyecto con jetty desde eclipse:
+      - elegir RUN del menu de eclipse, luego  elegir la opción RUN CONFIGURATIONS
+      - buscar MAVEN BUILD
+      - hacer clic con botón derecho sobre MAVEN BUILD y elegir new
+      - en la ventana que se despliega:
+              - si queremos podemos en Name escribir un nombre
+              - en el botón WORKSPACE elegimos nuestro proyecto
+              - en donde dice Goals: escribimos _jetty:run_
+              - luego hacemos clic en el boton RUN
+### Para levantar el proyecto desde consola:
+      - desde donde se encuentra nuestro proyecto abrimos una terminal, luego ejecutamos el comando _mvn jetty:run _
+     
+	- Por último, independientemente de la opción elegida, abrimos un navegador y escribimos _localhost:8080_
+                                                                    
