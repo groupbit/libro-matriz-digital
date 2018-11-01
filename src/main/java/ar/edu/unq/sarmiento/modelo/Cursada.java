@@ -11,6 +11,8 @@ public class Cursada extends Persistible {
 	public Materia materia;
 	public EstadoCursada estado;
 	private List<Alumno> quienesCursaron = new ArrayList<>();
+	private List<Examen> examenes = new ArrayList<>();
+	
 	public Materia getMateria() {
 		return materia;
 	}
@@ -33,6 +35,14 @@ public class Cursada extends Persistible {
 
 	public void setQuienesCursaron(List<Alumno> quienesCursaron) {
 		this.quienesCursaron = quienesCursaron;
+	}
+
+	public List<Examen> getExamenes() {
+		return examenes;
+	}
+
+	public void setExamenes(List<Examen> examenes) {
+		this.examenes = examenes;
 	}
 	
 }
