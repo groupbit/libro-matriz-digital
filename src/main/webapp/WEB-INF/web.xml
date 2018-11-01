@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+ 	<context-param>
+		     <param-name>contextClass</param-name>
+		     <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	 </context-param>
+ 	<context-param>
+		     <param-name>contextConfigLocation</param-name>
+		     <param-value>ar.edu.unq.sarmiento.epers;ar.edu.unq.sarmiento.epers.hibernate;ar.edu.unq.sarmiento.epers.home</param-value>
+	 </context-param>
+	 
+
+	<filter>
+		<filter-name>wicket.LibroMatrizDigital</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+		<init-param>
+			<param-name>applicationClassName</param-name>
+			<param-value>ar.edu.unq.sarmiento.wicked.home.WicketApplication</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>spring.hibernate.session</filter-name>
+		<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>spring.hibernate.session</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>wicket.LibroMatrizDigital</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+</web-app>
