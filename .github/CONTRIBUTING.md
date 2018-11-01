@@ -2,8 +2,7 @@
 
 El objetivo es que el proceso de revisión constituya una instancia de aprendizaje tanto para quien escribió el código como para quien lo va a revisar. Todas las observaciones deben ser constructivas y aportar a la mejora de la calidad del proyecto, sin dejar de ser rigurosas.
 
-Cada _pull request_ deberá ser revisado por dos personas, un/a estudiante y el docente, siguiendo los criterios especificados en el apartado **Criterios mínimos para aprobar una revisión
-**. Qué estudiante revisará a quién lo definiremos semalmente según un esquema rotativo que plasmaremos aquí.
+Cada _pull request_ deberá ser revisado por dos personas, un/a estudiante y el docente, siguiendo los criterios especificados en el apartado **Criterios mínimos para aprobar una revisión**. Qué estudiante revisará a quién lo definiremos semalmente según un esquema rotativo que plasmaremos aquí.
 
 La responsabilidad de revisar es, en primera instancia, de el/la estudiante; el docente actuará solamente como revisor de segunda instancia, validando que se estén respetando los criterios establecidos. Todo el intercambio debe ocurrir en los comentarios, para que el docente pueda visualizar cómo fue el proceso.
 
