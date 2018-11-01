@@ -6,10 +6,12 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 
 @Component
 public class AlumnoHome extends AbstractHome<Alumno>{
-
+	
 	@Override
 	public Alumno findByName(String name) {
-		return null;
+		return this.getSession().createQuery("FROM Alumno WHERE nombre = :name",
+				  Alumno.class).setParameter("name", name).getSingleResult();
+
 	}
 	
 	
