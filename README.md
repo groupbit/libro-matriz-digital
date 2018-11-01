@@ -43,4 +43,3 @@
       - desde donde se encuentra nuestro proyecto abrimos una terminal, luego ejecutamos el comando _mvn jetty:run _
      
 	- Por último, independientemente de la opción elegida, abrimos un navegador y escribimos _localhost:8080_
-                                                                    

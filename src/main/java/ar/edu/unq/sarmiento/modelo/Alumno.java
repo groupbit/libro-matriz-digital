@@ -42,4 +42,6 @@ public class Alumno extends Persistible {
 		this.cursada = cursada;
 	}
 	
+	
+
 }
