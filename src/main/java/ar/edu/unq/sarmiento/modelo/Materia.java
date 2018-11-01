@@ -1,29 +1,23 @@
 package ar.edu.unq.sarmiento.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 
 @Entity
-public class Alumno extends Persistible {
-	
+public class Materia extends Persistible {
+
 	private String nombre;
-	private Direccion direccion;
 	private Carrera carrera;
-	private Cursada cursada;
-	
+	private List<Materia> correlativas = new ArrayList<>();
+
 	public String getNombre() {
 		return nombre;
 	}
-	
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
 	}
 
 	public Carrera getCarrera() {
@@ -34,14 +28,12 @@ public class Alumno extends Persistible {
 		this.carrera = carrera;
 	}
 
-	public Cursada getCursada() {
-		return cursada;
+	public List<Materia> getCorrelativas() {
+		return correlativas;
 	}
 
-	public void setCursada(Cursada cursada) {
-		this.cursada = cursada;
+	public void setCorrelativas(List<Materia> correlativas) {
+		this.correlativas = correlativas;
 	}
 	
-	
-
 }
