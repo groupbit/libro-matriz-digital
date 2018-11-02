@@ -6,7 +6,8 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 
 @Component
 public class AlumnoHome extends AbstractHome<Alumno>{
-	
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public Alumno findByName(String name) {
 		return this.getSession().createQuery("FROM Alumno WHERE nombre = :name",
