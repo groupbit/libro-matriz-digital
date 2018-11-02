@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class Materia extends Persistible {
 
 	private String nombre;
 	private Carrera carrera;
+	@Transient
 	private List<Materia> correlativas = new ArrayList<>();
 
 	public String getNombre() {
