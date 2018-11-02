@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "ar.edu.unq.sarmiento")
 @EnableTransactionManagement
 public class HibernateConf {
-	public static String modo = "create";
+	public static String modo = "update";
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {

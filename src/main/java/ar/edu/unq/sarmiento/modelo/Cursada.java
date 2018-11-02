@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class Cursada extends Persistible {
 	
 	public Materia materia;
 	public EstadoCursada estado;
+	@Transient
 	private List<Alumno> quienesCursaron = new ArrayList<>();
+	@Transient
 	private List<Examen> examenes = new ArrayList<>();
 	
 	public Materia getMateria() {
