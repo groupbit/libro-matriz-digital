@@ -10,6 +10,7 @@ import javax.persistence.Transient;
 public class Materia extends Persistible {
 
 	private String nombre;
+	@Transient
 	private Carrera carrera;
 	@Transient
 	private List<Materia> correlativas = new ArrayList<>();

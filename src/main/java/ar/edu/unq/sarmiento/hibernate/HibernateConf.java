@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "ar.edu.unq.sarmiento")
 @EnableTransactionManagement
 public class HibernateConf {
-	public static String modo = "create";
+	public static String modo = "update";
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
@@ -58,7 +58,7 @@ public class HibernateConf {
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", HibernateConf.modo);
-//		hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
+		hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
 		return hibernateProperties;
 	}
 }
