@@ -34,23 +34,23 @@
 	</filter>
 	
 	<filter>
-		<filter-name>wicket.LibroMatrizDigital</filter-name>
+		<filter-name>libro-matriz-digital</filter-name>
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
 			<param-value>ar.edu.unq.sarmiento.wicked.home.WicketApplication</param-value>
 		</init-param>
 	</filter>
-	
-	<filter-mapping>
-		<filter-name>wicket.LibroMatrizDigital</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
 	<filter-mapping>
 		<filter-name>spring.hibernate.session</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>libro-matriz-digital</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
