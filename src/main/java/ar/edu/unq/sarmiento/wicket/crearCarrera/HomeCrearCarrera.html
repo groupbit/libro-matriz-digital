@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<title>Agregar carrera </title>
+	</head>
+	<body style="background-color:#F5FAF3;">
+		<div class="container">
+			<div class="panel panel-primary" style="margin-top: 20px; text-align:center">
+				<div class="panel-heading">
+					<h4>Agregar carrera</h4>
+				</div>
+				<div class="panel-body">
+					<form wicket:id ="laCarrera" class="form-horizontal">
+						<div class="form-group">
+							<label for="nombre" class="col-md-2 control-label">Ingresar nombre completo</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control"
+										id="nombre" wicket:id ="nombre"  placeholder="p.ej. Analista de Sistemas" >
+							</div>
+						</div>
+						
+			  			<div class="row">
+							<div>
+								<button type="submit" class="btn btn-primary">Aceptar</button>							 						
+								<button class="btn btn-warning" wicket:id="cancelar">Cancelar</button>
+							</div>
+						</div> 		
+					</form>					
+			  					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
