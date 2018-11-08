@@ -31,7 +31,7 @@ use libro;
 
 Luego desde la clase GenerateDataMain correr Run-> JavaApplication para crear la base de datos.
 
-Si es necesario borrar la base de datos usar
+Si es necesario borrar la base de datos, usar:
 ```
 drop database libro;
 ```
