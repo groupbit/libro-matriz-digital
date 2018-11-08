@@ -8,7 +8,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
-import ar.edu.unq.sarmiento.wicked.home.HomePage;
+import ar.edu.unq.sarmiento.wicket.home.HomePage;
 
 public class HomeCrearCarrera extends  WebPage{
 	
