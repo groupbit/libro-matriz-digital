@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<title>Lista de Carreras</title>
+<style>
+.recuadro {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: DarkBlue;
+	border-radius: 4px;
+}
+
+.columna {
+	font-size: smaller;
+}
+</style>
+</head>
+<body style="background-color: #F5FAF3;">
+	<div class="container" style="margin-top: 2%;">
+		<div class="panel panel-primary" style="text-align: center">
+			<div class="panel-heading">
+				<h4>Listado de Carreras</h4>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<th>Nombre carrera</th>
+						<th>Resolución</th>
+						<th>Duración en años</th>
+					</thead>
+					<tbody>
+						<tr wicket:id="lasCarreras">
+							<td wicket:id="nombre" class="columna"></td>
+							<td wicket:id="resolucion" class="columna"></td>
+							<td wicket:id="duracion" class="columna"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<a wicket:id="volver">Volver atrás</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
