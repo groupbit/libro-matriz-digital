@@ -1,8 +1,7 @@
-package ar.edu.unq.sarmiento.inicio;
+package ar.edu.unq.sarmiento.hibernate;
 
 import org.hibernate.Session;
 
-import ar.edu.unq.sarmiento.hibernate.SessionFactoryContainer;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.Home;
