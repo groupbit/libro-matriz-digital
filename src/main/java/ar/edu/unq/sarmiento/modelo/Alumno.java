@@ -2,6 +2,7 @@ package ar.edu.unq.sarmiento.modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 
@@ -14,23 +15,25 @@ public class Alumno extends Persistible {
 	private Direccion direccion;
 	private Carrera carrera;
 	private Cursada cursada;
-	
 	private String dni;
 	private LocalDate fechaNacimiento;
-	private String sexo;
+	private String lugarDeNacimiento;
+	private String genero;
 	private String estadoCivil;
-	private String hijos;
+	private int hijos;
 	private String familiaresACargo;
 	private String telefono;
-	private String nacionalidad;
+	private String telefonoAlternativo;
+	private String propietarioTelefonoAlternativo;
 	private String email;
-	private boolean trabajaAlumno;
+	private boolean trabaja;
 	private String actividad;
 	private LocalTime horarioHabitual;
 	private String obraSocial;
-	private String titulo;
-	private LocalDate anioDeEgresoEstudioCursado;
-	private String escuela;
+	private List<EstudioCursado>otros;
+	private EstudioCursado estudioCursado;
+
+	
 	
 	
 	public String getNombre() {
@@ -81,12 +84,12 @@ public class Alumno extends Persistible {
         this.fechaNacimiento=fechaNacimiento;
     }
     
-    public String getSexo(){
-        return sexo;
+    public String getGenero(){
+        return genero;
     }
     
-    public void setSexo(String sexo){
-        this.sexo=sexo;
+    public void setGenero(String genero){
+        this.genero=genero;
     }
     
     public String getEstadoCivil (){
@@ -113,12 +116,12 @@ public class Alumno extends Persistible {
         this.telefono=telefono;
     }
     
-    public String getNacionalidad(){
-        return nacionalidad;
+    public String getLugarDeNacimiento(){
+        return lugarDeNacimiento;
     }
     
-    public void setNacionalidad(String nacionalidad){
-        this.nacionalidad=nacionalidad;
+    public void setLugarDeNacimiento(String lugarDeNacimiento){
+        this.lugarDeNacimiento=lugarDeNacimiento;
     }
     
     public String getEmail(){
@@ -127,14 +130,6 @@ public class Alumno extends Persistible {
     
     public void setEmail(String email){
         this.email=email;
-    }
-    
-    public boolean trabajaAlumno(){
-        return trabajaAlumno;
-    }
-    
-    public void setTrabajaAlumno(boolean bool){
-        this.trabajaAlumno=bool;
     }
     
      public String getActividad(){
@@ -160,29 +155,95 @@ public class Alumno extends Persistible {
     public void setObraSocial(String obraSocial){
         this.obraSocial=obraSocial;
     }
+
+	public boolean trabaja() {
+		return trabaja;
+	}
+
+	public void setTrabaja(boolean trabaja) {
+		this.trabaja = trabaja;
+	}
+
+	public int getHijos() {
+		return hijos;
+	}
+
+	public void setHijos(int hijos) {
+		this.hijos = hijos;
+	}
+
+	public LocalTime getHorarioHabitual() {
+		return horarioHabitual;
+	}
+
+	public void setHorarioHabitual(LocalTime horarioHabitual) {
+		this.horarioHabitual = horarioHabitual;
+	}
 	
-	 public String getTitulo(){
-        return titulo; 
+	public String getTelefonoAlternativo(){
+		return telefonoAlternativo;
+	}
+	
+	public void setTelefonoAlternativo(String telefonoAlternativo){
+		this.telefonoAlternativo=telefonoAlternativo;
+	}
+	
+	public String getPropietarioTelefonoAlternativo() {
+		return propietarioTelefonoAlternativo;
+	}
+
+	public void setPropietarioTelefonoAlternativo(String propietarioTelefonoAlternativo) {
+		this.propietarioTelefonoAlternativo = propietarioTelefonoAlternativo;
+	}
+
+	public EstudioCursado getEstudioCursado(){
+		return estudioCursado;
+	}
+	
+	public void setEstudioCursado(EstudioCursado estudioCursado){
+		this.estudioCursado=estudioCursado;
+	}
+	
+	public String getSecundario(){
+		return this.getEstudioCursado().getSecundario();
+	}
+	
+	public void setSecundaria(String secundario){
+		this.getEstudioCursado().setSecundario(secundario);	    	
+	}
+	
+	public List<EstudioCursado>getEstudiosCursados(){
+		return this.otros;
+	}
+	
+	public void setOtros(List<EstudioCursado> otros) {
+		this.otros = otros;
+	}
+	
+	public String getEscuela(){
+		return this.getEstudioCursado().getEscuela();
+	}
+	
+	public void setEscuela(String escuela){
+		this.getEstudioCursado().setEscuela(escuela);
+	}
+	
+	public LocalDate getAnioDeEgreso(){
+		return this.getEstudioCursado().getAnioEgreso();
+	}
+	
+    public void setAnioDeEgreso(LocalDate anioEgreso){
+    	  this.getEstudioCursado().setAnioEgreso(anioEgreso);
     }
-    
-    public void setTitulo(String titulo){
-        this.titulo=titulo;
-    }
-     public LocalDate getAnioDeEgresoEstudioCursado(){
-        return anioDeEgresoEstudioCursado; 
-    }
-    
-    public void setAnioDeEgresoEstudioCursado(LocalDate anioDeEgresoEstudioCursado){
-        this.anioDeEgresoEstudioCursado=anioDeEgresoEstudioCursado;
-    }
-    
-    public String getEscuela(){
-        return escuela; 
-    }
-    
-    public void setEscuela(String escuela){
-        this.escuela=escuela;
-    }
+	
+	public String getInstitucion(){
+		return this.getEstudioCursado().getInstitucion();
+	}
+	
+	public void setInstitucion(String institucion){
+		this.getEstudioCursado().setInstitucion(institucion);
+	}
+	
 	
 	
 }
