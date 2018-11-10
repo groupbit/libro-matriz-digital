@@ -20,18 +20,15 @@ public class ControllerHomeCrearCarrera implements Serializable {
 	@Autowired
 	private CarreraHome carreraHome;
 	private Carrera carrera;
+	
 	private String nombre;
 	
-	public ControllerHomeCrearCarrera(){
-	}
 	public void agregarCarrera() {
-		Carrera _carrera = new Carrera(this.getNombre());
-			carreraHome.saveOrUpdate(_carrera);
+		Carrera _carrera = new Carrera();
+		_carrera.setNombre("Nahuel");
+		carreraHome.saveOrUpdate(_carrera);
 	}
 
-	public CarreraHome getHome() {
-		return carreraHome;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -39,10 +36,6 @@ public class ControllerHomeCrearCarrera implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public void setHome(CarreraHome home) {
-		this.carreraHome = home;
 	}
 
 	public Carrera getCarrera() {

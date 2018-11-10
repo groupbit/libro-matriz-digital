@@ -13,13 +13,18 @@ import ar.edu.unq.sarmiento.wicket.home.HomePage;
 public class HomeCrearCarrera extends  WebPage{
 	
 	@SpringBean(name="controllerHomeCrearCarrera")
-	private ControllerHomeCrearCarrera  controller;
-	
+	private ControllerHomeCrearCarrera controller;
+	private Carrera carrera;
 
 	public HomeCrearCarrera() {
 		super();
 		this.formularioAltaCarrera();
 
+	}
+	public HomeCrearCarrera(Carrera carrera){
+		this.carrera=carrera;
+		this.formularioAltaCarrera();
+		
 	}
 
 	public void formularioAltaCarrera() {
@@ -28,7 +33,7 @@ public class HomeCrearCarrera extends  WebPage{
 
 			@Override
 			protected void onSubmit() {
-				HomeCrearCarrera.this.controller.agregarCarrera();
+				controller.agregarCarrera();
 				this.setResponsePage(new HomePage());
 
 			}

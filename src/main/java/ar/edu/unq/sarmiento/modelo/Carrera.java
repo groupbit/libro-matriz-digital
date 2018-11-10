@@ -17,6 +17,8 @@ public class Carrera extends Persistible {
 	@Transient
 	private List<Materia> listadoMaterias = new ArrayList<>();
 
+	public Carrera(){
+	}
 	public Carrera(String nombre2) {
 		this.nombre=nombre2;
 	}

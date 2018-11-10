@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 @Entity
 public class Cursada extends Persistible {
 	
+	@OneToOne
 	public Materia materia;
 	public EstadoCursada estado;
 	@Transient
