@@ -208,7 +208,7 @@ public class Alumno extends Persistible {
 		return this.getEstudioCursado().getSecundario();
 	}
 	
-	public void setSecundaria(String secundario){
+	public void setSecundario(String secundario){
 		this.getEstudioCursado().setSecundario(secundario);	    	
 	}
 	
