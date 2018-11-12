@@ -41,7 +41,7 @@ public class Alumno extends Persistible {
 	
 	public Alumno(String nombre,Direccion direccion,Carrera carrera,Cursada cursada,String dni,
 			LocalDate fechaNacimiento,String lugarDeNacimiento,String genero,String estadoCivil,
-			String hijos,String familiaresACargo,String telefono,String telefonoAlternativo,
+			int hijos,String familiaresACargo,String telefono,String telefonoAlternativo,
 			String email,boolean trabaja,String actividad,LocalTime horarioHabitual,
 			String obraSocial,EstudioCursado titulo){
 		
