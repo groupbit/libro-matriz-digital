@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Alumno extends Persistible {
@@ -16,7 +18,7 @@ public class Alumno extends Persistible {
 	private Carrera carrera;
 	private Cursada cursada;
 	private String dni;
-	private LocalDate fechaNacimiento;
+	private LocalDate fechaDeNacimiento;
 	private String lugarDeNacimiento;
 	private String genero;
 	private String estadoCivil;
@@ -26,15 +28,40 @@ public class Alumno extends Persistible {
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
 	private String email;
-	private boolean trabaja;
+	private boolean trabaja=false;
 	private String actividad;
 	private LocalTime horarioHabitual;
 	private String obraSocial;
-	private List<EstudioCursado>otros;
-	private EstudioCursado estudioCursado;
+	@OneToMany
+	private List<EstudioCursado>otrosTitulos;
+	@OneToOne
+	private EstudioCursado titulo;
 
+	public Alumno(){}
 	
-	
+	public Alumno(String nombre,Direccion direccion,Carrera carrera,Cursada cursada,String dni,
+			LocalDate fechaNacimiento,String lugarDeNacimiento,String genero,String estadoCivil,
+			String hijos,String familiaresACargo,String telefono,String telefonoAlternativo,
+			String email,boolean trabaja,String actividad,LocalTime horarioHabitual,
+			String obraSocial,EstudioCursado titulo){
+		
+		this.nombre=nombre;
+		this.direccion=direccion;
+		this.carrera=carrera;
+		this.cursada=cursada;
+		this.dni=dni;
+		this.fechaDeNacimiento=fechaNacimiento;
+		this.lugarDeNacimiento=lugarDeNacimiento;
+		this.genero=genero;
+		this.estadoCivil=estadoCivil;
+		this.email=email;
+		this.trabaja=trabaja;
+		this.actividad=actividad;
+		this.horarioHabitual=horarioHabitual;
+		this.obraSocial=obraSocial;
+		this.titulo=titulo;
+		
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -76,12 +103,12 @@ public class Alumno extends Persistible {
 		this.dni = dni;
 	}
 	
-	public LocalDate getFechaNacimiento(){
-	    return fechaNacimiento;
+	public LocalDate getFechaDeNacimiento(){
+	    return fechaDeNacimiento;
     }
     
-    public void setFechaNacimiento(LocalDate fechaNacimiento){
-        this.fechaNacimiento=fechaNacimiento;
+    public void setFechaDeNacimiento(LocalDate fechaNacimiento){
+        this.fechaDeNacimiento=fechaNacimiento;
     }
     
     public String getGenero(){
@@ -140,12 +167,12 @@ public class Alumno extends Persistible {
         this.actividad=actividad;
     }
     
-     public LocalTime getHorarioHabitualDeTrabajo(){
+     public LocalTime getHorarioHabitual(){
         return horarioHabitual; 
     }
     
-    public void setHorarioHabitualDeTrabajo(LocalTime horariohabitualDeTrabajo){
-        this.horarioHabitual=horariohabitualDeTrabajo;
+    public void setHorarioHabitual(LocalTime horariohabitual){
+        this.horarioHabitual=horariohabitual;
     }
     
      public String getObraSocial(){
@@ -172,14 +199,6 @@ public class Alumno extends Persistible {
 		this.hijos = hijos;
 	}
 
-	public LocalTime getHorarioHabitual() {
-		return horarioHabitual;
-	}
-
-	public void setHorarioHabitual(LocalTime horarioHabitual) {
-		this.horarioHabitual = horarioHabitual;
-	}
-	
 	public String getTelefonoAlternativo(){
 		return telefonoAlternativo;
 	}
@@ -196,52 +215,36 @@ public class Alumno extends Persistible {
 		this.propietarioTelefonoAlternativo = propietarioTelefonoAlternativo;
 	}
 
-	public EstudioCursado getEstudioCursado(){
-		return estudioCursado;
+	public EstudioCursado getTitulo(){
+		return titulo;
 	}
 	
-	public void setEstudioCursado(EstudioCursado estudioCursado){
-		this.estudioCursado=estudioCursado;
+	public void setTitulo(EstudioCursado titulo){
+		this.titulo=titulo;
 	}
 	
-	public String getSecundario(){
-		return this.getEstudioCursado().getSecundario();
+	public List<EstudioCursado>getOtrosTitulos(){
+		return this.otrosTitulos;
 	}
 	
-	public void setSecundario(String secundario){
-		this.getEstudioCursado().setSecundario(secundario);	    	
+	public void setOtrosTitulos(List<EstudioCursado> otros_titulos) {
+		this.otrosTitulos = otros_titulos;
 	}
 	
-	public List<EstudioCursado>getEstudiosCursados(){
-		return this.otros;
+	public int getAnioDeEgreso(){
+		return this.titulo.getAnioEgreso();
 	}
 	
-	public void setOtros(List<EstudioCursado> otros) {
-		this.otros = otros;
-	}
-	
-	public String getEscuela(){
-		return this.getEstudioCursado().getEscuela();
-	}
-	
-	public void setEscuela(String escuela){
-		this.getEstudioCursado().setEscuela(escuela);
-	}
-	
-	public LocalDate getAnioDeEgreso(){
-		return this.getEstudioCursado().getAnioEgreso();
-	}
-	
-    public void setAnioDeEgreso(LocalDate anioEgreso){
-    	  this.getEstudioCursado().setAnioEgreso(anioEgreso);
+    public void setAnioDeEgreso(int anioEgreso){
+    	  this.titulo.setAnioEgreso(anioEgreso);
     }
 	
 	public String getInstitucion(){
-		return this.getEstudioCursado().getInstitucion();
+		return this.titulo.getInstitucion();
 	}
 	
 	public void setInstitucion(String institucion){
-		this.getEstudioCursado().setInstitucion(institucion);
+		this.titulo.setInstitucion(institucion);
 	}
 	
 	
