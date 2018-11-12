@@ -1,7 +1,5 @@
 package ar.edu.unq.sarmiento.modelo;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 
 @Entity
@@ -9,28 +7,18 @@ public class EstudioCursado extends Persistible{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String secundario;
-	private String escuela;
-	private LocalDate anioEgreso;
+	private int anioEgreso;
 	private String institucion;
 	private String distrito;
 	
-	public String getSecundario() {
-		return secundario;
+	public EstudioCursado(){
+		
 	}
-	public void setSecundario(String secundario) {
-		this.secundario = secundario;
-	}
-	public String getEscuela() {
-		return escuela;
-	}
-	public void setEscuela(String escuela) {
-		this.escuela = escuela;
-	}
-	public LocalDate getAnioEgreso() {
+	
+	public int getAnioEgreso() {
 		return anioEgreso;
 	}
-	public void setAnioEgreso(LocalDate anioEgreso) {
+	public void setAnioEgreso(int anioEgreso) {
 		this.anioEgreso = anioEgreso;
 	}
 	public String getInstitucion() {
