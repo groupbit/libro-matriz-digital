@@ -20,20 +20,21 @@
   - Probar el mvn desde consola con $mvn test ;otra opción con Eclipse, sobre la clase Test.java clicklear sobre Run As -> JUnit
 
   - Para inicializar la base de datos desde la consola de Mysql Server escribir los siguientes comandos:
-      mysql -u root -proot
-
+```      
+mysql -u root -proot
+```
   - Crear una base de datos desde la consola y usarla(mas comandos en https://desarrolloweb.com/articulos/2408.php):
 
-  ```
-create database libro;
-use libro;
+```
+create database libroMatrizDigital;
+use libroMatrizDigital;
 ```
 
 Luego desde la clase GenerateDataMain correr Run-> JavaApplication para crear la base de datos.
 
 Si es necesario borrar la base de datos, usar:
 ```
-drop database libro;
+drop database libroMatrizDigital;
 ```
 
 ## Pasos para levantar el proyecto con Jetty desde eclipse o desde consola:
