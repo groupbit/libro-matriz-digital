@@ -1,5 +1,9 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,7 @@ import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.Docente;
+import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
 import ar.edu.unq.sarmiento.modelo.Materia;
 
@@ -32,6 +37,8 @@ public class DataGenerator {
 	private MateriaHome materiaHome;
 	@Autowired
 	private DireccionHome direccionHome;
+	@Autowired
+	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired
 	private SessionFactory sessionFactory;
 	@Autowired 
@@ -60,6 +67,10 @@ public class DataGenerator {
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia);
 		
+		EstudioCursado titulo= new EstudioCursado();
+		titulo.setAnioEgreso(2016);
+		alumno.setTitulo(titulo);
+		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 		alumnoHome.saveOrUpdate(alumno);
 		carreraHome.saveOrUpdate(carrera);
@@ -68,6 +79,8 @@ public class DataGenerator {
 		materiaHome.saveOrUpdate(materia);
 		direccionHome.saveOrUpdate(direccion);
 		cursadaHome.saveOrUpdate(cursada);
+		estudioCursadoHome.saveOrUpdate(titulo);
+		
 		ts.commit();
 	}
 }
