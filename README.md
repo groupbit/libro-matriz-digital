@@ -53,3 +53,10 @@ drop database libroMatrizDigital;
 - desde donde se encuentra nuestro proyecto abrimos una terminal, luego ejecutamos el comando `mvn jetty:run`.
 
 - Por último, independientemente de la opción elegida, abrimos un navegador y escribimos `localhost:8080`.
+
+### Para debuguear:
+
+- Levantar el proyecto por consola como se indica en el paso anterior, pero utilizando el comando `mvnDebug` en vez de `mvn`. Quedaría `mvnDebug jetty:run`.
+- En el Eclipse, ir a `Run -> Debug configurations...` y agregar una nueva del tipo `Remote Java Application`. Configurarlo como se ve en la imagen, usando `localhost` para el _Host_ y `8000` para el _Port_:
+![screenshot from 2018-11-13 20-46-34](https://user-images.githubusercontent.com/1585835/48450543-61aa0880-e785-11e8-8306-48d964ea8542.png)
+
