@@ -1,36 +1,18 @@
 package ar.edu.unq.sarmiento.hibernate;
 
-import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
-import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Direccion;
-import ar.edu.unq.sarmiento.modelo.Home;
 
-public class DireccionHome implements Home<Direccion> {
-	private static final long serialVersionUID = 4775910097257163038L;
+@Component
+public class DireccionHome extends AbstractHome<Direccion>{
 
-	static private DireccionHome instance = new DireccionHome();
-
-	public static DireccionHome getInstance() {
-		return instance;
-	}
-
-	private Session getSession() {
-		return SessionFactoryContainer.getSessionFactory().getCurrentSession();
-	}
+	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void insert(Direccion object) {
-		this.getSession().save(object);
+	public Direccion findByName(String name) {
+		return this.getSession().createQuery("FROM Direccion WHERE calle = :name",
+				  Direccion.class).setParameter("calle", name).getSingleResult();
 	}
-
-	@Override
-	public void update(Direccion object) {
-
-	}
-
-	@Override
-	public void delete(Direccion object) {
-	}
-
+	
 }

@@ -41,8 +41,6 @@ public class DataGenerator {
 	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Autowired 
-	private CarreraHome carreraHome;
 	
 	
 	protected void generate() {
