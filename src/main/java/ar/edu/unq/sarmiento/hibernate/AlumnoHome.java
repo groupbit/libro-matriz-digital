@@ -1,5 +1,7 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.modelo.Alumno;
@@ -15,6 +17,8 @@ public class AlumnoHome extends AbstractHome<Alumno>{
 
 	}
 	
-	
+	public List<Alumno> getAlumnos(){
+		return this.getSession().createQuery("FROM Alumno", Alumno.class).getResultList();
+	}
 	
 }
