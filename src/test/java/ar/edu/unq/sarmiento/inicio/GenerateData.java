@@ -2,13 +2,15 @@ package ar.edu.unq.sarmiento.inicio;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.hibernate.CarreraHome;
+import ar.edu.unq.sarmiento.hibernate.Home;
 import ar.edu.unq.sarmiento.hibernate.SessionFactoryContainer;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
-
 public class GenerateData {
 
 	public static void main(String[] args) {
@@ -23,7 +25,6 @@ public class GenerateData {
 			Carrera carrera= new Carrera("Ingles");
 
 			DireccionHome.getInstance().insert(dir1);
-			CarreraHome.getInstance().getSession().saveOrUpdate(carrera);
 
 			transaction.commit();
 		} catch (RuntimeException e) {
