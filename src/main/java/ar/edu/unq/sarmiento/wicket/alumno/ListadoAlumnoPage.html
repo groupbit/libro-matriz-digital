@@ -7,17 +7,21 @@
 </head>
 <body>
 	<div class="container">
-		<table class="table table-bordered">
-			<tr>
-				<th>Nombre</th>
-		  	</tr>
-		  	<tr wicket:id="alumnos">
-			    <td>
-		    		<span wicket:id="nombre"></span>&nbsp;&nbsp;
-		    		<a class="glyphicon glyphicon-remove" style="color:#E82C0C;"></a>
-		    	</td>
-		  	</tr>
-		</table>
+		<div class="panel panel-default">
+			<div class="panel-heading">Listado de alumnos</div>
+  			<div class="panel-body">
+				<table class="table table-bordered">
+					<tr>
+						<th>Nombre</th>
+				  	</tr>
+				  	<tr wicket:id="alumnos">
+					    <td>
+				    		<span wicket:id="nombre"></span>&nbsp;&nbsp;
+				    	</td>
+				  	</tr>
+				</table>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
