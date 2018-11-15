@@ -8,6 +8,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
+import ar.edu.unq.sarmiento.wicket.carrera.ListadoDeCarrerasPage;
 import ar.edu.unq.sarmiento.wicket.home.HomePage;
 
 public class HomeCrearCarrera extends  WebPage{
@@ -33,7 +34,7 @@ public class HomeCrearCarrera extends  WebPage{
 			@Override
 			protected void onSubmit() {
 				controller.agregarCarrera();
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListadoDeCarrerasPage());
 
 			}
 		};
@@ -43,7 +44,7 @@ public class HomeCrearCarrera extends  WebPage{
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListadoDeCarrerasPage());
 
 			}
 
