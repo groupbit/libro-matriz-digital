@@ -21,7 +21,7 @@ public class EditarCarreraPage extends WebPage {
 
 			@Override
 			protected void onSubmit() {
-//				EditarCarreraPage.this.carreraController.editarCarrera;
+//				EditarCarreraPage.this.carreraController.editarCarrera();
 //				this.setResponsePage(new ListadoDeCarrerasPage());
 			}
 		};
