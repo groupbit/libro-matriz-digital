@@ -13,7 +13,6 @@ public class WicketApplication extends WebApplication{
 		HibernateConf.modo = "server";
 		return HomePage.class;
 	}
-	
 	@Override
 	protected void init() {
 		super.init();

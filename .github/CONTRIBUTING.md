@@ -19,7 +19,8 @@ Del código:
   1. si es una entidad de Hibernate debe tener test de persistencia;
   1. no tener faltas de ortografía;
   1. las entidades de dominio, los tests y todo lo que creemos nosotros deberá estar en español. Se puede usar inglés para las cosas "estándar" (_getters_, _setters_, métodos que tengan que ver con la base de datos, objetos de bibliotecas, etc);
-  1. no puede haber código comentado.
+  1. no puede haber código comentado;
+  1. no puede haber definiciones de CSS en los HTML, todo debe estar en `webapp/css`.
 
 ## Esquema de revisión (período 08/11 - 15/11)
 
