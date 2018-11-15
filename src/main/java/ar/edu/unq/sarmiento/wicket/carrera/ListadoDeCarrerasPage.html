@@ -7,29 +7,13 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 		crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<title>Lista de Carreras</title>
-	<style>
-		body {
-			background-color: #F5FAF3;
-		}
-		
-		.columna {
-			font-size: smaller;
-		}
-		
-		.principal {
-			margin-top: 2%;
-		}
-		
-		.titulo {
-			text-align: center;
-		}
-	</style>
 </head>
 <body>
 	<div class="container principal">
-		<div class="panel panel-primary titulo">
-			<div class="panel-heading">
+		<div class="panel panel-primary">
+			<div class="panel-heading titulo">
 				<h4>Listado de Carreras</h4>
 			</div>
 			<div class="panel-body">
@@ -40,10 +24,10 @@
 						<th>Duración en años</th>
 					</thead>
 					<tbody>
-						<tr wicket:id="lasCarreras">
-							<td wicket:id="nombre" class="columna"></td>
-							<td wicket:id="resolucion" class="columna"></td>
-							<td wicket:id="duracion" class="columna"></td>
+						<tr wicket:id="lasCarreras" class="fila">
+							<td wicket:id="nombre"></td>
+							<td wicket:id="resolucion"></td>
+							<td wicket:id="duracion"></td>
 						</tr>
 					</tbody>
 				</table>
