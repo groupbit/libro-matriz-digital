@@ -47,8 +47,8 @@ public class DataGenerator {
 		Alumno alumno = new Alumno();
 		alumno.setNombre("Juan");
 		
-		Carrera carrera = new Carrera(null);
-		carrera.setNombre("Programacion informatica");
+		Carrera carrera = new Carrera();
+		carrera.setNombre("Programación informática");
 		
 		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento");
 		
