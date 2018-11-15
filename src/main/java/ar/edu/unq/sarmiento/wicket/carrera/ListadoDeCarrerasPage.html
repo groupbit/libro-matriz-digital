@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<title>Lista de Carreras</title>
+</head>
+<body>
+	<div class="container principal">
+		<div class="panel panel-primary">
+			<div class="panel-heading titulo">
+				<h4>Listado de Carreras</h4>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<th>Nombre carrera</th>
+						<th>Resolución</th>
+						<th>Duración en años</th>
+					</thead>
+					<tbody>
+						<tr wicket:id="lasCarreras" class="fila">
+							<td wicket:id="nombre"></td>
+							<td wicket:id="resolucion"></td>
+							<td wicket:id="duracion"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<a wicket:id="volver">Volver atrás</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

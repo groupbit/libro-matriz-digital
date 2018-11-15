@@ -14,6 +14,8 @@ public class Direccion extends Persistible {
 	private String codigoPostal;
 	
 	private String localidad;
+	
+	public Direccion() {}
 
 	public Direccion(String calle, int altura, String departamento, String codigoPostal, String localidad) {
 		super();

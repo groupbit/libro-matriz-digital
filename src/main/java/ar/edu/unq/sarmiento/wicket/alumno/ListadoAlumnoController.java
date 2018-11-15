@@ -20,15 +20,6 @@ public class ListadoAlumnoController implements Serializable{
 
 	@Autowired
 	private AlumnoHome alumnoHome;
-	private Alumno alumno;
-
-	public Alumno getAlumno() {
-		return alumno;
-	}
-
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
-	}
 	
 	public List<Alumno> getUsuariosEnInstituto(){
 		return alumnoHome.getAlumnos();
