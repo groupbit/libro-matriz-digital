@@ -21,9 +21,15 @@ public class Carrera extends Persistible {
 	private Boolean archivada= false;
 	private String resolucion;
 	private float duracion;
-
-	public Carrera(String string) {
+	
+	public Carrera (){
+		
+	}
+	
+	public Carrera(String string,float duracion,String resolucion) {
 		this.nombre = string;
+		this.duracion = duracion;
+		this.resolucion = resolucion;
 	}
 
 	public String getNombre() {

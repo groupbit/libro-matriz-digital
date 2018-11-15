@@ -22,10 +22,11 @@ public class ControllerHomeCrearCarrera implements Serializable {
 	private Carrera carrera;
 	
 	private String nombre;
+	private String resolucion;
+	private float duracion;
 	
 	public void agregarCarrera() {
-		Carrera _carrera = new Carrera();
-		_carrera.setNombre("Nahuel");
+		Carrera _carrera = new Carrera(this.getNombre(),this.getDuracion(),this.getResolucion());
 		carreraHome.saveOrUpdate(_carrera);
 	}
 
@@ -46,5 +47,22 @@ public class ControllerHomeCrearCarrera implements Serializable {
 		this.carrera = carrera;
 	}
 	
+	public String getResolucion() {
+		return resolucion;
+	}
 
+
+	public void setResolucion(String resolucion) {
+		this.resolucion = resolucion;
+	}
+
+
+	public float getDuracion() {
+		return duracion;
+	}
+
+
+	public void setDuracion(float duracion) {
+		this.duracion = duracion;
+	}
 }

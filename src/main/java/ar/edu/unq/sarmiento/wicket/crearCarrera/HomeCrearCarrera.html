@@ -22,11 +22,26 @@
 						</div>
 						
 			  			<div class="row">
-							<div>
-								<button type="submit" class="btn btn-primary">Aceptar</button>							 						
-								<button class="btn btn-warning" wicket:id="cancelar">Cancelar</button>
+						</div> 
+						<div class="form-group ">
+							<label for="resolucion" class="col-md-2 control-label">Número de resolución</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control"
+										id="resolucion" wicket:id ="resolucion"placeholder="18140/19" >
 							</div>
-						</div> 		
+						</div>
+
+						<div class="form-group">
+							<label for="duracion" class="col-md-2 control-label">Duración en años</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control"
+										id="duracion" wicket:id ="duracion"placeholder="4.5" >
+							</div>
+						</div>	
+						<div>
+							<button type="submit" class="btn btn-primary">Aceptar</button>							 						
+							<button class="btn btn-warning" wicket:id="cancelar">Cancelar</button>
+						</div>	
 					</form>					
 			  					
 				</div>

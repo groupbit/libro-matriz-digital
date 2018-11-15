@@ -14,12 +14,11 @@ public class HomeCrearCarrera extends  WebPage{
 	
 	@SpringBean(name="controllerHomeCrearCarrera")
 	private ControllerHomeCrearCarrera controller;
+	
 	private Carrera carrera;
 
 	public HomeCrearCarrera() {
-		super();
-		this.formularioAltaCarrera();
-
+		this(new Carrera());
 	}
 	public HomeCrearCarrera(Carrera carrera){
 		this.carrera=carrera;
@@ -49,22 +48,11 @@ public class HomeCrearCarrera extends  WebPage{
 			}
 
 		});
-//		altaCarrera.add(new Link<String>("agregarLaMateria") {
-//
-//			private static final long serialVersionUID = 1L;
-//
-//			@Override
-//			public void onClick() {
-//				// AgregarCarreraPage.this.controller.getMaterias();
-//				// this.setResponsePage(new
-//				// MateriaPage(controller.getCarrera()));
-//			}
 
-		//});
 
 		altaCarrera.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")));
-//		altaCarrera.add(new TextField<>("resolucion", new PropertyModel<>(this.controller, "resolucion")));
-//		altaCarrera.add(new TextField<>("duracion", new PropertyModel<>(this.controller, "duracion")));
+		altaCarrera.add(new TextField<>("resolucion", new PropertyModel<>(controller, "resolucion")));
+		altaCarrera.add(new TextField<>("duracion", new PropertyModel<>(controller, "duracion")));
 
 		this.add(altaCarrera);
 
