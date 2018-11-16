@@ -1,8 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.home;
 
-import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.request.resource.PackageResourceReference;
 
 import ar.edu.unq.sarmiento.wicket.alumno.ListadoAlumnoPage;
 import ar.edu.unq.sarmiento.wicket.carrera.ListadoDeCarrerasPage;
@@ -11,7 +9,6 @@ import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 public class HomePage extends LayoutPage {
 
 	public HomePage() {
-		this.add(new Image("image", new PackageResourceReference(HomePage.class, "logoEscuela.png")));
 		this.add(new Link<String>("listadoAlumnoPage") {
 
 			@Override
