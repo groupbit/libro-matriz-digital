@@ -1,6 +1,9 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.util.Optional;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -37,9 +40,15 @@ public class HibernateConf {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/libroMatrizDigital");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+		
+		String host = readFromEnvVariable("M2_HOME", "localhost");
+		String port = readFromEnvVariable("JAVA_HOME", "3306");
+		String dbName = readFromEnvVariable("RDS_DB_NAME", "libroMatrizDigital");
+		dataSource.setUrl("jdbc:mysql://" + host + ":" + port + "/" + dbName);
+		dataSource.setUsername(readFromEnvVariable("RDS_USERNAME", "root"));
+		String password = readFromEnvVariable("RDS_PASSWORD", "root");
+		Logger.getAnonymousLogger().log(Level.WARNING, "El password es " + password);
+		dataSource.setPassword(password);
 
 		return dataSource;
 	}
@@ -50,6 +59,11 @@ public class HibernateConf {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 		transactionManager.setSessionFactory(sessionFactory);
 		return transactionManager;
+	}
+	
+	private String readFromEnvVariable(String key, String defaultValue) {
+		String getenv = System.getProperty("env_name");
+		return Optional.ofNullable(getenv).orElse(defaultValue);
 	}
 
 	private final Properties hibernateProperties() {
