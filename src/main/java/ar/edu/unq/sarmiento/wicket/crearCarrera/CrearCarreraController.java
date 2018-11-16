@@ -15,7 +15,7 @@ import ar.edu.unq.sarmiento.modelo.Carrera;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class HomeCrearCarreraController implements Serializable {
+public class CrearCarreraController implements Serializable {
 	
 	@Autowired
 	private CarreraHome carreraHome;
