@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/main.css"/>
-	<title>Lista de Carreras</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<title>Lista de Carreras</title>
 </head>
 <body>
 	<div class="container principal">
@@ -28,9 +28,18 @@
 							<td wicket:id="nombre"></td>
 							<td wicket:id="resolucion"></td>
 							<td wicket:id="duracion"></td>
+
+							<td>
+								<button wicket:id="editarCarrera"
+									class="btn btn-sm  active btn-primary">Editar carrera</button>
+
+							</td>
 						</tr>
 					</tbody>
+
 				</table>
+				<button wicket:id="carrerasArchivadas"
+					class="btn btn-sm  active btn-primary">Listado de carreras archivadas</button>
 			</div>
 		</div>
 		<div class="row">

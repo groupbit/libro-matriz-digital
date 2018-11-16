@@ -20,4 +20,9 @@ public class CarreraHome extends AbstractHome<Carrera> {
 	public List<Carrera> ListadoDeCarreras(){
 		return this.getSession().createQuery("FROM Carrera" , Carrera.class).list();
 	}
+	public List<Carrera>listadoDeCarrerasVigentes(){
+		return this.getSession().createQuery("FROM Carrera WHERE archivada = : archiv", Carrera.class)
+				.setParameter("archiv", false)
+				.getResultList();
+	}
 }

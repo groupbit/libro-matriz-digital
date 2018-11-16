@@ -3,6 +3,7 @@ package ar.edu.unq.sarmiento.wicket.carrera;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.wicket.markup.html.form.Form;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -20,11 +21,79 @@ public class CarreraController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Autowired
 	private CarreraHome carreraHome;
 
+	private Carrera carrera;
+
+	private String nombre;
+
+	private float duracion;
+
+	private String resolucion;
+
+	public CarreraController(Carrera carrera2) {
+		carrera = carrera2;
+		this.nombre = carrera.getNombre();
+		this.duracion = carrera.getDuracion();
+		this.resolucion = carrera.getResolucion();
+
+	}
+
+	public CarreraController() {
+		super();
+	}
+
 	public List<Carrera> getCarreras() {
 		return carreraHome.ListadoDeCarreras();
+	}
+
+	public Carrera getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(Carrera carrera2) {
+		this.carrera = carrera2;
+		carreraHome.attach(carrera2);
+		this.nombre = carrera.getNombre();
+		this.duracion = carrera.getDuracion();
+		this.resolucion = carrera.getResolucion();
+
+	}
+
+	public void modificarCarrera() {
+		carreraHome.attach(carrera);
+		carrera.setNombre(this.getNombre());
+		carrera.setDuracion(this.getDuracion());
+		carrera.setResolucion(this.getResolucion());
+
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public float getDuracion() {
+		return duracion;
+	}
+
+	public void setDuracion(float duracion) {
+		this.duracion = duracion;
+	}
+
+	public String getResolucion() {
+		return resolucion;
+	}
+
+	public void setResolucion(String resolucion) {
+		this.resolucion = resolucion;
+	}
+	public List<Carrera>getListadoDeCarrerasVigentes(){
+		return carreraHome.listadoDeCarrerasVigentes();
 	}
 }

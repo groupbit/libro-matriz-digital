@@ -23,30 +23,48 @@ public class ListadoDeCarrerasPage extends WebPage {
 
 	public ListadoDeCarrerasPage() {
 		this.tablaCarreras();
-		this.volver();
+		this.botones();
 	}
 
 	public void tablaCarreras() {
-		this.add(new ListView<Carrera>("lasCarreras", new PropertyModel<>(this.carreraController, "carreras")) {
 
-			/**
-			 * 
-			 */
+		this.add(new ListView<Carrera>("lasCarreras", new PropertyModel<>(this.carreraController, "listadoDeCarrerasVigentes")) {
+
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void populateItem(ListItem<Carrera> item) {
+
 				CompoundPropertyModel<Carrera> laCarrera = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", laCarrera.bind("nombre")));
 				item.add(new Label("resolucion", laCarrera.bind("resolucion")));
 				item.add(new Label("duracion", laCarrera.bind("duracion")));
-			}
 
+				item.add(new Link<String>("editarCarrera") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						setResponsePage(new EditarCarreraPage(item.getModelObject()));
+					}
+
+				});
+
+			}
 		});
 
 	}
 
-	public void volver() {
+	public void botones() {
+		this.add(new Link<String>("carrerasArchivadas") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+
+			}
+
+		});
 		this.add(new Link<String>("volver") {
 
 			private static final long serialVersionUID = 505927122883116822L;
@@ -56,5 +74,7 @@ public class ListadoDeCarrerasPage extends WebPage {
 				this.setResponsePage(new HomePage());
 			}
 		});
+
 	}
+
 }
