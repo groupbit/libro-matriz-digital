@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.request.resource.PackageResourceReference;
 
+import ar.edu.unq.sarmiento.wicket.alumno.ListadoAlumnoPage;
 import ar.edu.unq.sarmiento.wicket.carrera.ListadoDeCarrerasPage;
 
 public class HomePage extends WebPage{
@@ -13,6 +14,13 @@ public class HomePage extends WebPage{
 		super();
 		
 		this.add(new Image("image", new PackageResourceReference(HomePage.class, "logoEscuela.png")));
+		this.add(new Link<String>("listadoAlumnoPage") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListadoAlumnoPage());
+			}
+		});
 		this.add(new Link<String>("listadoDeCarreras") {
 			private static final long serialVersionUID = 1L;
 
@@ -22,8 +30,6 @@ public class HomePage extends WebPage{
 			}
 
 		});
-
 	}
-	
 	
 }
