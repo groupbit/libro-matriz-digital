@@ -14,7 +14,7 @@ import ar.edu.unq.sarmiento.wicket.home.HomePage;
 public class HomeCrearCarrera extends  WebPage{
 	
 	@SpringBean(name="controllerHomeCrearCarrera")
-	private ControllerHomeCrearCarrera controller;
+	private HomeCrearCarreraController controller;
 	
 	private Carrera carrera;
 
@@ -28,7 +28,7 @@ public class HomeCrearCarrera extends  WebPage{
 	}
 
 	public void formularioAltaCarrera() {
-		Form<ControllerHomeCrearCarrera> altaCarrera = new Form<ControllerHomeCrearCarrera>("laCarrera") {
+		Form<HomeCrearCarreraController> altaCarrera = new Form<HomeCrearCarreraController>("laCarrera") {
 			private static final long serialVersionUID = 1L;
 
 			@Override
