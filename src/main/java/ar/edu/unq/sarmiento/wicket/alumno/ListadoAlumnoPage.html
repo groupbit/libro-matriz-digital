@@ -1,0 +1,34 @@
+<wicket:extend>
+	<div class="panel panel-primary">
+		<div class="panel-heading titulo">
+			<h4>Listado de alumnos</h4>
+		</div>
+				<div class="panel-body">
+			<table class="table">
+				<thead>
+					<th>Nombre</th>
+					<th>DNI</th>
+					<th>Teléfono</th>
+					<th>Correo electrónico</th>
+				</thead>
+				<tbody>
+				  	<tr wicket:id="alumnos" class="fila">
+					    <td>
+				    		<span wicket:id="nombre"></span>
+				    	</td>
+				    	<td>
+				    		<span wicket:id="dni"></span>
+				    	</td>
+				    	<td>
+				    		<span wicket:id="telefono"></span>
+				    	</td>
+				    	<td>
+				    		<span wicket:id="email"></span>
+				    	</td>
+				  	</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<a wicket:id="volver">Volver atrás</a>
+</wicket:extend>

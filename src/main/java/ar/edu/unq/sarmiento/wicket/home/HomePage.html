@@ -1,26 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/main.css"/>
-	<title>Libro Matriz Digital</title>
-</head>
-<body>
-	<div class="container principal">
-        <div class="jumbotron text-center">
-			<h1 class="titulo">Libro Matriz Digital</h1>
-        	<div class="row">
-       			<img wicket:id="image" src="logoEscuela.png"/>
-        	</div>
-			<div class="row">
-				<p>
-					<a wicket:id="listadoDeCarreras" class="btn btn-primary btn-lg" role="button">
-						Listado de Carreras
-					</a>
-				</p>
-			</div>
+<wicket:extend>
+       <div class="jumbotron text-center">
+		<h1 class="titulo">Libro Matriz Digital</h1>
+       	<div class="row">
+      			<img src="images/logoEscuela.png"/>
+       	</div>
+		<div class="row">
+			<p>
+				<a wicket:id="listadoDeCarreras" class="btn btn-primary btn-lg" role="button">
+					Listado de Carreras
+				</a>
+				<a wicket:id="listadoAlumnoPage" class="btn btn-primary btn-lg" role="button">
+					Listado de Alumnos
+				</a>
+			</p>
 		</div>
 	</div>
-</body>
-</html>
+</wicket:extend>

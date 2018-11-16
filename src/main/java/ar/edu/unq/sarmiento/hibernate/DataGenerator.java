@@ -46,7 +46,25 @@ public class DataGenerator {
 	protected void generate() {
 		
 		Alumno alumno = new Alumno();
-		alumno.setNombre("Juan");
+		alumno.setNombre("Juan Rodriguez");
+		alumno.setEmail("juancito@gmail.com");
+		alumno.setDni("25897542");
+		alumno.setTelefono("2478558965");
+		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento"));
+		
+		Alumno alumno2 = new Alumno();
+		alumno2.setNombre("Esteban Cufré");
+		alumno2.setEmail("esteban@gmail.com");
+		alumno2.setTelefono("2478547856");
+		alumno2.setDni("15698544");
+		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento"));
+		
+		Alumno alumno3 = new Alumno();
+		alumno3.setNombre("Karina Rivarola");
+		alumno3.setEmail("kari@gmail.com");
+		alumno3.setTelefono("2478458796");
+		alumno3.setDni("24587985");
+		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento"));
 		
 		Carrera carrera = new Carrera();
 		carrera.setNombre("Programación informática");
@@ -82,10 +100,12 @@ public class DataGenerator {
 		
 		EstudioCursado titulo= new EstudioCursado();
 		titulo.setAnioEgreso(2016);
-		alumno.setTitulo(titulo);
+		alumno3.setTitulo(titulo);
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 		alumnoHome.saveOrUpdate(alumno);
+		alumnoHome.saveOrUpdate(alumno2);
+		alumnoHome.saveOrUpdate(alumno3);
 		carreraHome.saveOrUpdate(carrera);
 		docenteHome.saveOrUpdate(docente);
 		examenHome.saveOrUpdate(examen);
