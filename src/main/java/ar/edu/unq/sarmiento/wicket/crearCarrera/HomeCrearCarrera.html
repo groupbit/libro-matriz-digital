@@ -3,21 +3,22 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<title>Agregar carrera </title>
 	</head>
-	<body style="background-color:#F5FAF3;">
-		<div class="container">
-			<div class="panel panel-primary" style="margin-top: 20px; text-align:center">
-				<div class="panel-heading">
+	<body>
+		<div class="container principal">
+			<div class="panel panel-primary">
+				<div class="panel-heading titulo">
 					<h4>Agregar carrera</h4>
 				</div>
 				<div class="panel-body">
 					<form wicket:id ="laCarrera" class="form-horizontal">
 						<div class="form-group">
-							<label for="nombre" class="col-md-2 control-label">Ingresar nombre completo</label>
+							<label for="nombre" class="col-md-2 control-label"> Nombre completo</label>
 							<div class="col-md-9">
 								<input wicket:id ="nombre" type="text" class="form-control"
-										id="nombre"   placeholder="p.ej. Analista de Sistemas" >
+										id="nombre"   placeholder=" Profesorado de Educación Primaria" >
 							</div>
 						</div>
 						
@@ -27,7 +28,7 @@
 							<label for="resolucion" class="col-md-2 control-label">Número de resolución</label>
 							<div class="col-md-9">
 								<input type="text" class="form-control"
-										id="resolucion" wicket:id ="resolucion"placeholder="18140/19" >
+										id="resolucion" wicket:id ="resolucion"placeholder="4154/07" >
 							</div>
 						</div>
 
@@ -35,12 +36,12 @@
 							<label for="duracion" class="col-md-2 control-label">Duración en años</label>
 							<div class="col-md-9">
 								<input type="text" class="form-control"
-										id="duracion" wicket:id ="duracion"placeholder="4.5" >
+										id="duracion" wicket:id ="duracion"placeholder="4" >
 							</div>
 						</div>	
-						<div>
-							<button type="submit" class="btn btn-primary">Aceptar</button>							 						
-							<button class="btn btn-warning" wicket:id="cancelar">Cancelar</button>
+						<div class="text-center">
+							<button type="submit" class="btn btn-success">Aceptar</button>							 						
+							<button class="btn btn-default" wicket:id="cancelar">Cancelar</button>
 						</div>	
 					</form>					
 			  					
