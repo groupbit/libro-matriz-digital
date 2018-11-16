@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.util.Optional;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -37,9 +38,12 @@ public class HibernateConf {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/libroMatrizDigital");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+		
+		String host = readFromEnvVariable("RDS_HOSTNAME", "localhost");
+		String port = readFromEnvVariable("RDS_PORT", "3306");
+		dataSource.setUrl("jdbc:mysql://" + host + ":" + port + "/libroMatrizDigital");
+		dataSource.setUsername(readFromEnvVariable("RDS_USERNAME", "root"));
+		dataSource.setPassword(readFromEnvVariable("RDS_PASSWORD", "root"));
 
 		return dataSource;
 	}
@@ -50,6 +54,12 @@ public class HibernateConf {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 		transactionManager.setSessionFactory(sessionFactory);
 		return transactionManager;
+	}
+	
+	private String readFromEnvVariable(String key, String defaultValue) {
+		return Optional
+				.ofNullable(System.getProperty(key))
+				.orElse(defaultValue);
 	}
 
 	private final Properties hibernateProperties() {
