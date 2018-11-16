@@ -1,5 +1,7 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
@@ -15,4 +17,7 @@ public class CarreraHome extends AbstractHome<Carrera> {
 				  Carrera.class).setParameter("name", name).getSingleResult();
 	}
 
+	public List<Carrera> ListadoDeCarreras(){
+		return this.getSession().createQuery("FROM Carrera" , Carrera.class).list();
+	}
 }

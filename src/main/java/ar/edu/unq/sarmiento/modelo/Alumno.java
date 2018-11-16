@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -14,6 +15,7 @@ public class Alumno extends Persistible {
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre;
+	@OneToOne(cascade=CascadeType.ALL)
 	private Direccion direccion;
 	private Carrera carrera;
 	private Cursada cursada;

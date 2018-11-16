@@ -3,26 +3,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<title>Libro Matriz Digital</title>
-	<style type="text/css">
- 	 	.flex-container {
-		  padding: 0;
-		  margin: 0;
-		  list-style: none;
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		}
- 	 	.flex-item { text-align: center; }
-	</style>
 </head>
-<body style="background-color:#848C81;">
-	<div class="container">
-        <div class="jumbotron" style="margin-top: 2%;">
-        	<div class="flex-container">
-        		<IMG  class="flex-item" wicket:id="image" src="logoEscuela.png"/>
+<body>
+	<div class="container principal">
+        <div class="jumbotron text-center">
+			<h1 class="titulo">Libro Matriz Digital</h1>
+        	<div class="row">
+       			<img wicket:id="image" src="logoEscuela.png"/>
         	</div>
-			<h1 style="text-align: center;">Libro Matriz Digital</h1>
+			<div class="row">
+				<p>
+					<a wicket:id="listadoDeCarreras" class="btn btn-primary btn-lg" role="button">
+						Listado de Carreras
+					</a>
+					<a wicket:id="listadoAlumnoPage" class="btn btn-primary btn-lg" role="button">
+						Listado de Alumnos
+					</a>
+				</p>
+			</div>
 		</div>
 	</div>
 </body>
