@@ -53,7 +53,7 @@ public class EditarCarreraPage extends LayoutPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListadoDeCarrerasPage());
 			}
 		});
 
