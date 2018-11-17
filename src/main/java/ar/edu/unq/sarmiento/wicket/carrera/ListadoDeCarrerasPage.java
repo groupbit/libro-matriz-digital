@@ -28,7 +28,8 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 
 	public void tablaCarreras() {
 
-		this.add(new ListView<Carrera>("lasCarreras", new PropertyModel<>(this.carreraController, "listadoDeCarrerasVigentes")) {
+		this.add(new ListView<Carrera>("lasCarreras",
+				new PropertyModel<>(this.carreraController, "listadoDeCarrerasVigentes")) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -56,15 +57,6 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 	}
 
 	public void botones() {
-		this.add(new Link<String>("carrerasArchivadas") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-
-			}
-
-		});
 		this.add(new Link<String>("volver") {
 
 			private static final long serialVersionUID = 505927122883116822L;

@@ -1,6 +1,5 @@
 package ar.edu.unq.sarmiento.wicket.carrera;
 
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -8,8 +7,10 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
+import ar.edu.unq.sarmiento.wicket.home.HomePage;
+import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
-public class EditarCarreraPage extends WebPage {
+public class EditarCarreraPage extends LayoutPage {
 
 	/**
 	 * 
@@ -21,15 +22,17 @@ public class EditarCarreraPage extends WebPage {
 	public EditarCarreraPage(Carrera carrera) {
 		this.carreraController.setCarrera(carrera);
 		edicionDeCarrera();
+		botones();
 	}
 
 	public EditarCarreraPage() {
 		edicionDeCarrera();
+		botones();
 	}
 
 	public void edicionDeCarrera() {
 		Form<CarreraController> carrera = new Form<CarreraController>("editarCarrera") {
-		
+
 			@Override
 			protected void onSubmit() {
 				EditarCarreraPage.this.carreraController.modificarCarrera();
@@ -40,22 +43,20 @@ public class EditarCarreraPage extends WebPage {
 		carrera.add(new TextField<>("resolucion", new PropertyModel<>(this.carreraController, "resolucion")));
 		carrera.add(new TextField<>("duracion", new PropertyModel<>(this.carreraController, "duracion")));
 
-		carrera.add(new Link<String>("cancelar") {
+		this.add(carrera);
+	}
 
-			private static final long serialVersionUID = 1L;
+	public void botones() {
+		this.add(new Link<String>("volver") {
+
+			private static final long serialVersionUID = 505927122883116822L;
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new ListadoDeCarrerasPage());
-
+				this.setResponsePage(new HomePage());
 			}
-
 		});
 
-//		carrera.add(new TextField<>("nombre", new PropertyModel<>(this.carreraController, "nombre")));
-//		carrera.add(new TextField<>("resolucion", new PropertyModel<>(this.carreraController, "resolucion")));
-//		carrera.add(new TextField<>("duracion", new PropertyModel<>(this.carreraController, "duracion")));
-
-		this.add(carrera);
 	}
+
 }
