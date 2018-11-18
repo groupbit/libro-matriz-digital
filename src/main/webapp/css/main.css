@@ -1,6 +1,6 @@
 body {
 	background-color: #F5FAF3;
-	padding-top: 20px;
+	padding: 10px;
 }
 
 .fila {
@@ -9,6 +9,10 @@ body {
 
 .navbar {
 	margin-bottom: 20px;
+}
+
+.navbar-brand {
+	color: #240e70 !important;
 }
 
 .titulo {
