@@ -42,7 +42,6 @@ public class DataGenerator {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
 	protected void generate() {
 		
 		Alumno alumno = new Alumno();
