@@ -16,6 +16,7 @@ public class HomePage extends LayoutPage {
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		});
+		
 		this.add(new Link<String>("listadoDeCarreras") {
 			private static final long serialVersionUID = 1L;
 

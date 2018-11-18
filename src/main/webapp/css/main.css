@@ -1,13 +1,14 @@
 body {
 	background-color: #F5FAF3;
+	padding-top: 20px;
 }
 
 .fila {
 	font-size: small;
 }
 
-.principal {
-	margin-top: 2%;
+.navbar {
+	margin-bottom: 20px;
 }
 
 .titulo {
