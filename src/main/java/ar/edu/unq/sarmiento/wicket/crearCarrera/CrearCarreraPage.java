@@ -1,6 +1,5 @@
 package ar.edu.unq.sarmiento.wicket.crearCarrera;
 
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -9,19 +8,19 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.carrera.ListadoDeCarrerasPage;
-import ar.edu.unq.sarmiento.wicket.home.HomePage;
+import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
-public class HomeCrearCarrera extends  WebPage{
+public class CrearCarreraPage extends  LayoutPage{
 	
-	@SpringBean(name="controllerHomeCrearCarrera")
+	@SpringBean(name="crearCarreraController")
 	private CrearCarreraController controller;
 	
 	private Carrera carrera;
 
-	public HomeCrearCarrera() {
+	public CrearCarreraPage() {
 		this(new Carrera());
 	}
-	public HomeCrearCarrera(Carrera carrera){
+	public CrearCarreraPage(Carrera carrera){
 		this.carrera=carrera;
 		this.formularioAltaCarrera();
 		

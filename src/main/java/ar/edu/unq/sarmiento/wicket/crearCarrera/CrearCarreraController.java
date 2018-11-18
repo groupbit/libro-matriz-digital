@@ -17,6 +17,11 @@ import ar.edu.unq.sarmiento.modelo.Carrera;
 @Transactional
 public class CrearCarreraController implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private CarreraHome carreraHome;
 	private Carrera carrera;
