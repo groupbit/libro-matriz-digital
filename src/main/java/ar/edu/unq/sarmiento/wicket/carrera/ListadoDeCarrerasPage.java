@@ -1,6 +1,5 @@
 package ar.edu.unq.sarmiento.wicket.carrera;
 
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -10,9 +9,11 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
+import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraPage;
 import ar.edu.unq.sarmiento.wicket.home.HomePage;
+import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
-public class ListadoDeCarrerasPage extends WebPage {
+public class ListadoDeCarrerasPage extends LayoutPage {
 
 	/**
 		 * 
@@ -24,6 +25,7 @@ public class ListadoDeCarrerasPage extends WebPage {
 	public ListadoDeCarrerasPage() {
 		this.tablaCarreras();
 		this.volver();
+		this.CrearCarrera();
 	}
 
 	public void tablaCarreras() {
@@ -54,6 +56,17 @@ public class ListadoDeCarrerasPage extends WebPage {
 			@Override
 			public void onClick() {
 				this.setResponsePage(new HomePage());
+			}
+		});
+	}
+	public void CrearCarrera() {
+		this.add(new Link<String>("carreraHome") {
+
+			private static final long serialVersionUID = 505927122883116822L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new CrearCarreraPage());
 			}
 		});
 	}
