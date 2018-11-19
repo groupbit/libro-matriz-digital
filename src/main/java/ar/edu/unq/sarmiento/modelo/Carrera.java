@@ -81,4 +81,7 @@ public class Carrera extends Persistible {
 		this.duracion = duracion;
 	}
 	
+	public void agregarMateria(Materia materia){
+		this.listadoMaterias.add(materia);
+	}
 }
