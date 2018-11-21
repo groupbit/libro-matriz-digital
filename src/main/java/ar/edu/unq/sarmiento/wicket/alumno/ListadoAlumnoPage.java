@@ -1,7 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.alumno;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -9,9 +8,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.wicket.home.HomePage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
-import ar.edu.unq.sarmiento.wicket.layout.VolverAtrasPage;
 
 public class ListadoAlumnoPage extends LayoutPage {
 

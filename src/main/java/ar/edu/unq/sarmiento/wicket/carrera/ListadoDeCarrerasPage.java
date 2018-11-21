@@ -10,9 +10,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraPage;
-import ar.edu.unq.sarmiento.wicket.home.HomePage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
-import ar.edu.unq.sarmiento.wicket.layout.VolverAtrasPage;
 
 public class ListadoDeCarrerasPage extends LayoutPage {
 
