@@ -29,5 +29,4 @@ public class Examen extends Persistible{
 	public void setEstuvoausente(boolean estuvoausente) {
 		this.estuvoausente = estuvoausente;
 	}
-
 }
