@@ -18,6 +18,7 @@ import ar.edu.unq.sarmiento.modelo.Docente;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
 import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.modelo.TipoDeExamen;
 
 @Component
 @Transactional
@@ -75,7 +76,7 @@ public class DataGenerator {
 		docente.setNombre("Fede");
 		
 		Examen examen = new Examen();
-		examen.setExamenFinal("Examen final");
+		examen.setTipoDeExamen(TipoDeExamen.FINAL);
 		
 		Materia materia = new Materia();
 		materia.setNombre("Hibernate");
