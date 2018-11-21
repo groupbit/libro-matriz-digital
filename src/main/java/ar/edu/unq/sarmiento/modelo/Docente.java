@@ -1,6 +1,9 @@
 package ar.edu.unq.sarmiento.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Docente extends Persistible {
@@ -8,6 +11,8 @@ public class Docente extends Persistible {
 	private String nombre;
 	private String apellido;
 	private Direccion direccion;
+	@OneToMany(mappedBy = "docente")
+	private List<Materia> materiasQueDicta;
 	
 	public String getNombre() {
 		return nombre;

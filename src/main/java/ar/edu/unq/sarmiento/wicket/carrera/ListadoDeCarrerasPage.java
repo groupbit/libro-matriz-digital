@@ -9,6 +9,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
+import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraPage;
 import ar.edu.unq.sarmiento.wicket.home.HomePage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
@@ -23,40 +24,31 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 
 	public ListadoDeCarrerasPage() {
 		this.tablaCarreras();
-		this.botones();
+		this.volver();
+		this.CrearCarrera();
 	}
 
 	public void tablaCarreras() {
+		this.add(new ListView<Carrera>("lasCarreras", new PropertyModel<>(this.carreraController, "carreras")) {
 
-		this.add(new ListView<Carrera>("lasCarreras",
-				new PropertyModel<>(this.carreraController, "listadoDeCarrerasVigentes")) {
-
+			/**
+			 * 
+			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void populateItem(ListItem<Carrera> item) {
-
 				CompoundPropertyModel<Carrera> laCarrera = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", laCarrera.bind("nombre")));
 				item.add(new Label("resolucion", laCarrera.bind("resolucion")));
 				item.add(new Label("duracion", laCarrera.bind("duracion")));
-
-				item.add(new Link<String>("editarCarrera") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						setResponsePage(new EditarCarreraPage(item.getModelObject()));
-					}
-
-				});
-
 			}
+
 		});
 
 	}
 
-	public void botones() {
+	public void volver() {
 		this.add(new Link<String>("volver") {
 
 			private static final long serialVersionUID = 505927122883116822L;
@@ -66,7 +58,16 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 				this.setResponsePage(new HomePage());
 			}
 		});
-
 	}
+	public void CrearCarrera() {
+		this.add(new Link<String>("carreraHome") {
 
+			private static final long serialVersionUID = 505927122883116822L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new CrearCarreraPage());
+			}
+		});
+	}
 }

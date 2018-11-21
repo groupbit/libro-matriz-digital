@@ -95,6 +95,12 @@ public class DataGenerator {
 		Materia materia = new Materia();
 		materia.setNombre("Hibernate");
 		
+		materia.setCarrera(carrera);
+		carrera.agregarMateria(materia);
+		materia.setDocente(docente);
+		materia.setAnioEnCarrera(5);
+		materia.setEsPromocionable(true);
+		
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia);
 		

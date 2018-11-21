@@ -1,32 +1,33 @@
 <wicket:extend>
-	<div class="panel panel-primary">
-		<div class="panel-heading titulo">
-			<h4>Listado de Carreras</h4>
-		</div>
-		<div class="panel-body">
-			<table class="table">
-				<thead>
-					<th>Nombre carrera</th>
-					<th>Resolución</th>
-					<th>Duración en años</th>
-				</thead>
-				<tbody>
-					<tr wicket:id="lasCarreras" class="fila">
-						<td wicket:id="nombre"></td>
-						<td wicket:id="resolucion"></td>
-						<td wicket:id="duracion"></td>
-						<td>
-							<button wicket:id="editarCarrera" class="btn btn-primary">Editar carrera</button>
-						</td>
-					</tr>
-
-				</tbody>
-			</table>
-		</div>
+	<div class="row">
+		<button wicket:id="volver" class="btn btn-link">Volver atrás</button>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<a wicket:id="volver">Volver atrás</a>
+		<div class="panel panel-primary">
+			<div class="panel-heading titulo">
+				<h4>Listado de Carreras</h4>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<th>Nombre carrera</th>
+						<th>Resolución</th>
+						<th>Duración en años</th>
+					</thead>
+					<tbody>
+						<tr wicket:id="lasCarreras" class="fila">
+							<td wicket:id="nombre"></td>
+							<td wicket:id="resolucion"></td>
+							<td wicket:id="duracion"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
+	</div>
+	<div class="row pull-right">
+		<button wicket:id="carreraHome" class="btn btn-primary">
+				Crear Carrera </button>
+	
 	</div>
 </wicket:extend>

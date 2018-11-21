@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity 
@@ -16,11 +17,21 @@ public class Carrera extends Persistible {
 	private String nombre;
 	@Transient
 	private List<Alumno> alumnosInscriptos = new ArrayList<>();
-	@Transient
+	@OneToMany(mappedBy = "carrera")
 	private List<Materia> listadoMaterias = new ArrayList<>();
 	private Boolean archivada= false;
 	private String resolucion;
 	private float duracion;
+	
+	public Carrera (){
+		
+	}
+	
+	public Carrera(String string,float duracion,String resolucion) {
+		this.nombre = string;
+		this.duracion = duracion;
+		this.resolucion = resolucion;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -70,4 +81,7 @@ public class Carrera extends Persistible {
 		this.duracion = duracion;
 	}
 	
+	public void agregarMateria(Materia materia){
+		this.listadoMaterias.add(materia);
+	}
 }
