@@ -42,10 +42,16 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 				item.add(new Label("nombre", laCarrera.bind("nombre")));
 				item.add(new Label("resolucion", laCarrera.bind("resolucion")));
 				item.add(new Label("duracion", laCarrera.bind("duracion")));
+				item.add(new Link<String>("editarCarrera") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						setResponsePage(new EditarCarreraPage(item.getModelObject()));
+					}
+				});
 			}
-
 		});
-
 	}
 
 	public void volver() {
@@ -59,6 +65,7 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 			}
 		});
 	}
+
 	public void CrearCarrera() {
 		this.add(new Link<String>("carreraHome") {
 

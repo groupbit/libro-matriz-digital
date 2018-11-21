@@ -42,11 +42,11 @@ public class CarreraController implements Serializable {
 	}
 
 	public CarreraController() {
-		super();
+
 	}
 
 	public List<Carrera> getCarreras() {
-		return carreraHome.ListadoDeCarreras();
+		return carreraHome.listadoDeCarreras();
 	}
 
 	public Carrera getCarrera() {
@@ -93,7 +93,8 @@ public class CarreraController implements Serializable {
 	public void setResolucion(String resolucion) {
 		this.resolucion = resolucion;
 	}
-	public List<Carrera>getListadoDeCarrerasVigentes(){
+
+	public List<Carrera> getListadoDeCarrerasVigentes() {
 		return carreraHome.listadoDeCarrerasVigentes();
 	}
 }
