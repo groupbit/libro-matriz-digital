@@ -24,7 +24,7 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 
 	public ListadoDeCarrerasPage() {
 		this.tablaCarreras();
-		this.volver();
+		this.cancelar();
 		this.CrearCarrera();
 	}
 
@@ -54,8 +54,8 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 		});
 	}
 
-	public void volver() {
-		this.add(new Link<String>("volver") {
+	public void cancelar() {
+		this.add(new Link<String>("cancelar") {
 
 			private static final long serialVersionUID = 505927122883116822L;
 

@@ -22,12 +22,10 @@ public class EditarCarreraPage extends LayoutPage {
 	public EditarCarreraPage(Carrera carrera) {
 		this.carreraController.setCarrera(carrera);
 		edicionDeCarrera();
-		botones();
 	}
 
 	public EditarCarreraPage() {
 		edicionDeCarrera();
-		botones();
 	}
 
 	public void edicionDeCarrera() {
@@ -43,11 +41,7 @@ public class EditarCarreraPage extends LayoutPage {
 		carrera.add(new TextField<>("resolucion", new PropertyModel<>(this.carreraController, "resolucion")));
 		carrera.add(new TextField<>("duracion", new PropertyModel<>(this.carreraController, "duracion")));
 
-		this.add(carrera);
-	}
-
-	public void botones() {
-		this.add(new Link<String>("volver") {
+		carrera.add(new Link<String>("cancelar") {
 
 			private static final long serialVersionUID = 505927122883116822L;
 
@@ -57,6 +51,7 @@ public class EditarCarreraPage extends LayoutPage {
 			}
 		});
 
+		this.add(carrera);
 	}
 
 }

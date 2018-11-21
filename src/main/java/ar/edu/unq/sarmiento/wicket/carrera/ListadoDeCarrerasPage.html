@@ -1,8 +1,5 @@
 <wicket:extend>
 	<div class="row">
-		<button wicket:id="volver" class="btn btn-link">Volver atrás</button>
-	</div>
-	<div class="row">
 		<div class="panel panel-primary">
 			<div class="panel-heading titulo">
 				<h4>Listado de Carreras</h4>
@@ -20,8 +17,7 @@
 							<td wicket:id="resolucion"></td>
 							<td wicket:id="duracion"></td>
 							<td>
-								<button wicket:id="editarCarrera" class="btn btn-primary">Editar
-									carrera</button>
+								<button wicket:id="editarCarrera" class="btn btn-success">Editar carrera</button>
 							</td>
 						</tr>
 					</tbody>
@@ -29,10 +25,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="row pull-right">
+	<div class="text-center">
 		<button wicket:id="carreraHome" class="btn btn-primary">
 			Crear Carrera</button>
-
+		<button wicket:id="cancelar" class="btn btn-default" >Cancelar</button>
 	</div>
 
 </wicket:extend>
