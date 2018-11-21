@@ -1,11 +1,10 @@
 package ar.edu.unq.sarmiento.hibernate;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-
-import javassist.bytecode.stackmap.TypeData.ClassName;
 
 @Repository
 public interface Home<T> extends Serializable {
@@ -16,4 +15,5 @@ public interface Home<T> extends Serializable {
 	public void saveOrUpdate(T object);
 	public void delete(T object);
 	public void attach(T result);
+	public List<T> all(Class<T> clas);
 }

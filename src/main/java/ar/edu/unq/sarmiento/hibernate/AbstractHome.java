@@ -1,5 +1,7 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.util.List;
+
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,7 +40,14 @@ public abstract class AbstractHome<T extends Persistible> implements Home<T> {
 		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), AbstractHome.class);
 		return getSession().get(genericType, id);
 	}
-
+	
+	@Override
+	public List<T> all(Class<T> clas) {
+		return this.getSession().createQuery("FROM :className", clas)
+				.setParameter("className", clas.getName())
+				.getResultList();
+	}
+	
 	@Override
 	public void saveOrUpdate(T object) {
 		this.getSession().saveOrUpdate(object);
