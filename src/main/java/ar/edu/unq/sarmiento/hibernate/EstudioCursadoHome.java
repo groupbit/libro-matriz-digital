@@ -9,10 +9,4 @@ public class EstudioCursadoHome extends AbstractHome<EstudioCursado>{
 
 	private static final long serialVersionUID = 1L;
 
-	@Override
-	public EstudioCursado findByName(String name) {
-		return this.getSession().createQuery("FROM Carrera WHERE nombre = :name",
-				  EstudioCursado.class).setParameter("name", name).getSingleResult();
-	}
-
 }

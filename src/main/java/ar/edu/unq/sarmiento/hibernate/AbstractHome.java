@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Persistible;
+import javassist.bytecode.stackmap.TypeData.ClassName;
 
 
 @Repository
@@ -21,7 +23,15 @@ public abstract class AbstractHome<T extends Persistible> implements Home<T> {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-
+	
+	@Override
+	public T findByName(String name, Class<T> clas) {
+		return (T) this.getSession().createQuery("FROM :className WHERE nombre = :name", clas)
+				.setParameter("name", name)
+				.setParameter("className", clas.getName())
+				.getSingleResult();
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public T find(Integer id) {
