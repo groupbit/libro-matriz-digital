@@ -10,7 +10,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraPage;
-import ar.edu.unq.sarmiento.wicket.home.HomePage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
 public class ListadoDeCarrerasPage extends LayoutPage {
@@ -24,7 +23,6 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 
 	public ListadoDeCarrerasPage() {
 		this.tablaCarreras();
-		this.volver();
 		this.CrearCarrera();
 	}
 
@@ -48,17 +46,6 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 
 	}
 
-	public void volver() {
-		this.add(new Link<String>("volver") {
-
-			private static final long serialVersionUID = 505927122883116822L;
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new HomePage());
-			}
-		});
-	}
 	public void CrearCarrera() {
 		this.add(new Link<String>("carreraHome") {
 

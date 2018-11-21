@@ -1,13 +1,18 @@
 body {
 	background-color: #F5FAF3;
+	padding: 10px;
 }
 
 .fila {
 	font-size: small;
 }
 
-.principal {
-	margin-top: 2%;
+.navbar {
+	margin-bottom: 20px;
+}
+
+.navbar-brand {
+	color: #240e70 !important;
 }
 
 .titulo {
