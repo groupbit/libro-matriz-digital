@@ -24,7 +24,6 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 
 	public ListadoDeCarrerasPage() {
 		this.tablaCarreras();
-		this.cancelar();
 		this.CrearCarrera();
 	}
 
@@ -54,17 +53,6 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 		});
 	}
 
-	public void cancelar() {
-		this.add(new Link<String>("cancelar") {
-
-			private static final long serialVersionUID = 505927122883116822L;
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new HomePage());
-			}
-		});
-	}
 
 	public void CrearCarrera() {
 		this.add(new Link<String>("carreraHome") {
