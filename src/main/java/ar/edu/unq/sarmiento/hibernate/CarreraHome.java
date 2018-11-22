@@ -11,10 +11,6 @@ public class CarreraHome extends AbstractHome<Carrera> {
 
 	private static final long serialVersionUID = 1L;
 
-	public List<Carrera> listadoDeCarreras() {
-		return this.getSession().createQuery("FROM Carrera", Carrera.class).list();
-	}
-
 	public List<Carrera> listadoDeCarrerasVigentes() {
 		return this.getSession().createQuery("FROM Carrera WHERE archivada = :archiv", Carrera.class)
 				.setParameter("archiv", false).getResultList();

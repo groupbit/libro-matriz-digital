@@ -22,7 +22,7 @@ public class ListadoAlumnoController implements Serializable{
 	private AlumnoHome alumnoHome;
 	
 	public List<Alumno> getUsuariosEnInstituto(){
-		return alumnoHome.getAlumnos();
+		return alumnoHome.all();
 	}
 	
 }
