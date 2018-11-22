@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Persistible;
-import javassist.bytecode.stackmap.TypeData.ClassName;
 
 
 @Repository
@@ -22,30 +20,36 @@ public abstract class AbstractHome<T extends Persistible> implements Home<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	private Class<T> clazz;
+
+	public AbstractHome() {
+		// @faloi dice: esto lo estoy guardando para que no se calcule a cada rato,
+		// porque sospecho que es lento. Habría que medir a ver si realmente es así.
+		this.clazz = getEntityClass();
+	}
+	
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 	
 	@Override
-	public T findByName(String name, Class<T> clas) {
-		return (T) this.getSession().createQuery("FROM :className WHERE nombre = :name", clas)
-				.setParameter("name", name)
-				.setParameter("className", clas.getName())
-				.getSingleResult();
+	public T findByName(String name) {
+		return (T) this.getSession()
+			.createQuery("FROM " + clazz.getSimpleName() + " WHERE nombre = :name", clazz)
+			.setParameter("name", name)
+			.getSingleResult();
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public T find(Integer id) {
-		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), AbstractHome.class);
-		return getSession().get(genericType, id);
+		return getSession().get(getEntityClass(), id);
 	}
 	
 	@Override
-	public List<T> all(Class<T> clas) {
-		return this.getSession().createQuery("FROM :className", clas)
-				.setParameter("className", clas.getName())
-				.getResultList();
+	public List<T> all() {
+		return this.getSession()
+			.createQuery("FROM " + clazz.getSimpleName(), clazz)
+			.getResultList();
 	}
 	
 	@Override
@@ -57,10 +61,15 @@ public abstract class AbstractHome<T extends Persistible> implements Home<T> {
 	public void delete(T object) {
 		this.getSession().delete(object);
 	}
+
 	@Override
 	public void attach(T result) {
 		this.getSession().lock(result, LockMode.NONE);
 	}
 
+	@SuppressWarnings("unchecked")
+	private Class<T> getEntityClass() {
+		return (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), AbstractHome.class);
+	}
 	
 }
