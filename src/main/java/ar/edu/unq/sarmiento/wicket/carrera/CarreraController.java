@@ -3,7 +3,6 @@ package ar.edu.unq.sarmiento.wicket.carrera;
 import java.io.Serializable;
 import java.util.List;
 
-import org.apache.wicket.markup.html.form.Form;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -46,7 +45,7 @@ public class CarreraController implements Serializable {
 	}
 
 	public List<Carrera> getCarreras() {
-		return carreraHome.listadoDeCarreras();
+		return carreraHome.all();
 	}
 
 	public Carrera getCarrera() {
