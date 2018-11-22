@@ -10,6 +10,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraPage;
+import ar.edu.unq.sarmiento.wicket.home.HomePage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
 public class ListadoDeCarrerasPage extends LayoutPage {
@@ -40,11 +41,18 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 				item.add(new Label("nombre", laCarrera.bind("nombre")));
 				item.add(new Label("resolucion", laCarrera.bind("resolucion")));
 				item.add(new Label("duracion", laCarrera.bind("duracion")));
+				item.add(new Link<String>("editarCarrera") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						setResponsePage(new EditarCarreraPage(item.getModelObject()));
+					}
+				});
 			}
-
 		});
-
 	}
+
 
 	public void CrearCarrera() {
 		this.add(new Link<String>("carreraHome") {

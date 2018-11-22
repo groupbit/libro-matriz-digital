@@ -13,11 +13,16 @@ public class CarreraHome extends AbstractHome<Carrera> {
 
 	@Override
 	public Carrera findByName(String name) {
-		return this.getSession().createQuery("FROM Carrera WHERE nombre = :name",
-				  Carrera.class).setParameter("name", name).getSingleResult();
+		return this.getSession().createQuery("FROM Carrera WHERE nombre = :name", Carrera.class)
+				.setParameter("name", name).getSingleResult();
 	}
 
-	public List<Carrera> ListadoDeCarreras(){
-		return this.getSession().createQuery("FROM Carrera" , Carrera.class).list();
+	public List<Carrera> listadoDeCarreras() {
+		return this.getSession().createQuery("FROM Carrera", Carrera.class).list();
+	}
+
+	public List<Carrera> listadoDeCarrerasVigentes() {
+		return this.getSession().createQuery("FROM Carrera WHERE archivada = :archiv", Carrera.class)
+				.setParameter("archiv", false).getResultList();
 	}
 }
