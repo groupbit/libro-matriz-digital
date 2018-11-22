@@ -1,0 +1,40 @@
+<wicket:extend>
+	<div class="panel panel-primary">
+		<div class="panel-heading titulo">
+			<h4>Edición de la carrera</h4>
+		</div>
+		<div class="panel-body">
+			<form wicket:id="editarCarrera" class="form-horizontal">
+				<div class="form-group">
+					<label for="nombre" class="col-md-2 control-label">Nombre </label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="nombre"
+							wicket:id="nombre">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="resolucion" class="col-md-2 control-label">Número
+						de resolución</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="resolucion"
+							wicket:id="resolucion">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="duracion" class="col-md-2 control-label">Duración
+						en años</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="duracion"
+							wicket:id="duracion">
+					</div>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-success">Guardar</button>
+					<button class="btn btn-default" wicket:id="cancelar">Cancelar</button>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</wicket:extend>

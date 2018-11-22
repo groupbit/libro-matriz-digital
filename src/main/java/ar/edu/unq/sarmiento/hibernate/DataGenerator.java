@@ -68,6 +68,21 @@ public class DataGenerator {
 		
 		Carrera carrera = new Carrera();
 		carrera.setNombre("Programación informática");
+		carrera.setDuracion(5);
+		carrera.setResolucion("1280/52");
+		
+		Carrera carrera2 = new Carrera();
+		carrera2.setNombre("Profesorado de Inglés");
+		carrera2.setDuracion(4);
+		carrera2.setResolucion("1805/17");
+		
+		Carrera carrera3 = new Carrera();
+		carrera3.setNombre("Nivel inicial");
+		carrera3.setDuracion(5);
+		carrera3.setResolucion("5860/16");
+		carrera3.setArchivada(true);
+		
+		
 		
 		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento");
 		
@@ -104,7 +119,8 @@ public class DataGenerator {
 		direccionHome.saveOrUpdate(direccion);
 		cursadaHome.saveOrUpdate(cursada);
 		estudioCursadoHome.saveOrUpdate(titulo);
-		
+		carreraHome.saveOrUpdate(carrera3);
+		carreraHome.saveOrUpdate(carrera2);
 		ts.commit();
 	}
 }
