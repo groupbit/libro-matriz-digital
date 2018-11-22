@@ -9,6 +9,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.home.HomePage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
+import ar.edu.unq.sarmiento.wicket.materia.CrearMateriaPage;
 
 public class EditarCarreraPage extends LayoutPage {
 
@@ -18,8 +19,10 @@ public class EditarCarreraPage extends LayoutPage {
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private CarreraController carreraController;
-
+	private Carrera _carrera;
+	
 	public EditarCarreraPage(Carrera carrera) {
+		this._carrera = carrera;
 		this.carreraController.setCarrera(carrera);
 		edicionDeCarrera();
 	}
@@ -40,7 +43,12 @@ public class EditarCarreraPage extends LayoutPage {
 		carrera.add(new TextField<>("nombre", new PropertyModel<>(this.carreraController, "nombre")));
 		carrera.add(new TextField<>("resolucion", new PropertyModel<>(this.carreraController, "resolucion")));
 		carrera.add(new TextField<>("duracion", new PropertyModel<>(this.carreraController, "duracion")));
-
+		carrera.add(new Link<String>("agregarMateria"){
+			@Override
+			public void onClick() {
+				this.setResponsePage(new CrearMateriaPage(_carrera));
+			}
+		});
 		carrera.add(new Link<String>("cancelar") {
 
 			private static final long serialVersionUID = 505927122883116822L;
