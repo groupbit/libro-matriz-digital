@@ -74,7 +74,8 @@ public class DataGenerator {
 		
 		Docente docente = new Docente();
 		docente.setNombre("Fede");
-		
+		docente.setApellido("Aloi");
+		docente.setEmail("aloi@gmail.com");
 		Examen examen = new Examen();
 		examen.setTipoDeExamen(TipoDeExamen.FINAL);
 		
