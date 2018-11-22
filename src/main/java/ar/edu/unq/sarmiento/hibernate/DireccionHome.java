@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 
 @Component
-public class DireccionHome extends AbstractHome<Direccion>{
+public class DireccionHome extends Home<Direccion>{
 
 	private static final long serialVersionUID = 1L;
 	

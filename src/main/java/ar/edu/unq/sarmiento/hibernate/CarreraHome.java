@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 
 @Component
-public class CarreraHome extends AbstractHome<Carrera> {
+public class CarreraHome extends Home<Carrera> {
 
 	private static final long serialVersionUID = 1L;
 
