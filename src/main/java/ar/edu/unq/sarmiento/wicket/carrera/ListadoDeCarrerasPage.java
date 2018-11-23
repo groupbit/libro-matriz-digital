@@ -49,6 +49,14 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 						setResponsePage(new EditarCarreraPage(item.getModelObject()));
 					}
 				});
+				item.add(new Link<String>("materia"){
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						
+					}
+				});
 			}
 		});
 	}
