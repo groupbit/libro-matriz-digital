@@ -3,6 +3,7 @@ package ar.edu.unq.sarmiento.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -22,12 +23,10 @@ public class Materia extends Persistible {
 	private Carrera carrera;
 	@ManyToMany
 	private List<Materia> correlativas = new ArrayList<>();
-	@Type(type="yes_no")
+	@Column
 	private boolean esPromocionable;
 	private int anioEnCarrera;
-	@ManyToOne
-	@JoinColumn(name="docente")
-	private Docente docente;
+	private String docente;
 	
 	public String getNombre() {
 		return nombre;
@@ -56,6 +55,10 @@ public class Materia extends Persistible {
 	public boolean isEsPromocionable() {
 		return esPromocionable;
 	}
+	
+	public String getPromocionableString(){
+		return esPromocionable ? "Si" : "No";
+	}
 
 	public void setEsPromocionable(boolean esPromocionable) {
 		this.esPromocionable = esPromocionable;
@@ -69,11 +72,11 @@ public class Materia extends Persistible {
 		this.anioEnCarrera = anioEnCarrera;
 	}
 
-	public Docente getDocente() {
+	public String getDocente() {
 		return docente;
 	}
 
-	public void setDocente(Docente docente) {
+	public void setDocente(String docente) {
 		this.docente = docente;
 	}
 	
