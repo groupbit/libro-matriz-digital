@@ -7,11 +7,13 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.springframework.stereotype.Controller;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraPage;
 import ar.edu.unq.sarmiento.wicket.home.HomePage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
+import ar.edu.unq.sarmiento.wicket.materia.ListadoDeMateriasPage;
 
 public class ListadoDeCarrerasPage extends LayoutPage {
 
@@ -54,7 +56,7 @@ public class ListadoDeCarrerasPage extends LayoutPage {
 
 					@Override
 					public void onClick() {
-						
+						this.setResponsePage(new ListadoDeMateriasPage(carreraController.attach(item.getModelObject())));
 					}
 				});
 			}

@@ -96,4 +96,9 @@ public class CarreraController implements Serializable {
 	public List<Carrera> getListadoDeCarrerasVigentes() {
 		return carreraHome.listadoDeCarrerasVigentes();
 	}
+
+	public Carrera attach(Carrera carrera) {
+		carreraHome.attach(carrera);
+		return carrera;
+	}
 }
