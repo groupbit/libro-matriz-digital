@@ -1,11 +1,14 @@
 package ar.edu.unq.sarmiento.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import org.hibernate.annotations.Type;
 
 @Entity
 public class Examen extends Persistible{
-
+	@Enumerated(EnumType.STRING)
 	private TipoDeExamen tipoDeExamen;
 	private float calificacion;
 	@Type(type= "yes_no")

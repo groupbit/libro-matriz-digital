@@ -1,10 +1,14 @@
 package ar.edu.unq.sarmiento.modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,9 +23,11 @@ public class Docente extends Persistible {
 	@Temporal(TemporalType.DATE)
 	private Date fechaDeNacimiento;
 	private String titulacion;
+	@OneToOne
 	private Direccion direccion;
 	@OneToMany(mappedBy = "docente")
-	private List<Materia> materiasQueDicta;
+	private List<Materia> materiasQueDicta = new ArrayList<>();
+	@Enumerated(EnumType.STRING)
 	private SituacionDeRevista situacion;
 	
 	public String getNombre() {
@@ -78,5 +84,7 @@ public class Docente extends Persistible {
 	public void setSituacion(SituacionDeRevista situacion) {
 		this.situacion = situacion;
 	}
-	
+	public void agregarMateria(Materia materia){
+		this.materiasQueDicta.add(materia);
+	}
 }

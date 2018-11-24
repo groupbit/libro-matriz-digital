@@ -1,8 +1,6 @@
 package ar.edu.unq.sarmiento.hibernate;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
+import java.sql.Date;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,6 +16,7 @@ import ar.edu.unq.sarmiento.modelo.Docente;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
 import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.modelo.SituacionDeRevista;
 import ar.edu.unq.sarmiento.modelo.TipoDeExamen;
 
 @Component
@@ -83,19 +82,26 @@ public class DataGenerator {
 		carrera3.setResolucion("5860/16");
 		carrera3.setArchivada(true);
 		
-		
-		
 		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento");
+		Direccion direccionprofe = new Direccion("Mitre", 362, null, "2211", "Quilmes");
 		
 		Docente docente = new Docente();
 		docente.setNombre("Fede");
 		docente.setApellido("Aloi");
 		docente.setEmail("aloi@gmail.com");
+		docente.setDireccion(direccionprofe);
+		docente.setSituacion(SituacionDeRevista.TITULAR);
+		docente.setFechaDeNacimiento(Date.valueOf("1989-03-12"));
+		docente.setTelefono(011241245);
+		docente.setTitulacion("Profesorado en informatica");
+		
 		Examen examen = new Examen();
 		examen.setTipoDeExamen(TipoDeExamen.FINAL);
 		
 		Materia materia = new Materia();
 		materia.setNombre("Hibernate");
+		
+		docente.agregarMateria(materia);
 		
 		materia.setCarrera(carrera);
 		carrera.agregarMateria(materia);
@@ -119,6 +125,7 @@ public class DataGenerator {
 		examenHome.saveOrUpdate(examen);
 		materiaHome.saveOrUpdate(materia);
 		direccionHome.saveOrUpdate(direccion);
+		direccionHome.saveOrUpdate(direccionprofe);
 		cursadaHome.saveOrUpdate(cursada);
 		estudioCursadoHome.saveOrUpdate(titulo);
 		carreraHome.saveOrUpdate(carrera3);
