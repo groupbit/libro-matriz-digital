@@ -1,6 +1,8 @@
 package ar.edu.unq.sarmiento.hibernate;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,8 +18,6 @@ import ar.edu.unq.sarmiento.modelo.Docente;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
 import ar.edu.unq.sarmiento.modelo.Materia;
-import ar.edu.unq.sarmiento.modelo.SituacionDeRevista;
-import ar.edu.unq.sarmiento.modelo.TipoDeExamen;
 
 @Component
 @Transactional
@@ -81,6 +81,8 @@ public class DataGenerator {
 		carrera3.setDuracion(5);
 		carrera3.setResolucion("5860/16");
 		carrera3.setArchivada(true);
+		
+		
 		
 		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento");
 		Direccion direccionprofe = new Direccion("Mitre", 362, null, "2211", "Quilmes");
