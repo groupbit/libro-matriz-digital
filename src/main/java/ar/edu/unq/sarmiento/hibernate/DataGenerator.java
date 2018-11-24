@@ -1,8 +1,6 @@
 package ar.edu.unq.sarmiento.hibernate;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
+import java.sql.Date;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,6 +16,8 @@ import ar.edu.unq.sarmiento.modelo.Docente;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
 import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.modelo.SituacionDeRevista;
+import ar.edu.unq.sarmiento.modelo.TipoDeExamen;
 
 @Component
 @Transactional
