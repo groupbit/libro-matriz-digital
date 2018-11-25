@@ -3,6 +3,7 @@ package ar.edu.unq.sarmiento.wicket.materia;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -32,6 +33,10 @@ public class ListadoDeMateriasController implements Serializable{
 	
 	public List<Materia> getMaterias(){
 		return carreraHome.findMaterias(this.getCarrera());
+	}
+
+	public String convertirString(Boolean promocion) {
+		return promocion ? "Sí" : "No";
 	}
 	
 }

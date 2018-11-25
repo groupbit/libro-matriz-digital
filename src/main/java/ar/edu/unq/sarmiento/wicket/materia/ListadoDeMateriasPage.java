@@ -26,7 +26,7 @@ public class ListadoDeMateriasPage extends LayoutPage{
 				CompoundPropertyModel<Materia> materia = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", new PropertyModel<>(materia, "nombre")));
 				item.add(new Label("año", new PropertyModel<>(materia, "anioEnCarrera")));
-				item.add(new Label("promocionable", new PropertyModel<>(materia, "promocionableString")));
+				item.add(new Label("promocionable", controller.convertirString(item.getModelObject().getEsPromocionable())));
 				item.add(new Label("docente", new PropertyModel<>(materia, "docente")));
 			}
 			

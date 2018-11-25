@@ -52,12 +52,8 @@ public class Materia extends Persistible {
 		this.correlativas = correlativas;
 	}
 
-	public boolean isEsPromocionable() {
+	public boolean getEsPromocionable() {
 		return esPromocionable;
-	}
-	
-	public String getPromocionableString(){
-		return esPromocionable ? "Si" : "No";
 	}
 
 	public void setEsPromocionable(boolean esPromocionable) {
