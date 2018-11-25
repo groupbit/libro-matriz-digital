@@ -18,7 +18,7 @@ public class ListadoDeMateriasPage extends LayoutPage{
 	
 	public ListadoDeMateriasPage(Carrera carrera) {
 		controller.setCarrera(carrera);
-		
+		this.add(new Label("nombreCarrera", new PropertyModel<>(controller, "nombreCarrera")));
 		this.add(new ListView<Materia>("materias", new PropertyModel<>(controller, "materias")){
 
 			@Override

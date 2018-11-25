@@ -29,6 +29,10 @@ public class ListadoDeMateriasController implements Serializable{
 		this.carrera = carrera;
 	}
 	
+	public String getNombreCarrera(){
+		return this.getCarrera().getNombre();
+	}
+	
 	public List<Materia> getMaterias(){
 		return this.getCarrera().getListadoMaterias();
 	}
