@@ -18,9 +18,7 @@ import ar.edu.unq.sarmiento.modelo.Materia;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class ListadoDeMateriasController implements Serializable{
-	
-	@Autowired
-	private CarreraHome carreraHome;
+
 	private Carrera carrera;
 
 	public Carrera getCarrera() {
@@ -32,7 +30,7 @@ public class ListadoDeMateriasController implements Serializable{
 	}
 	
 	public List<Materia> getMaterias(){
-		return carreraHome.findMaterias(this.getCarrera());
+		return this.getCarrera().getListadoMaterias();
 	}
 
 	public String convertirString(Boolean promocion) {

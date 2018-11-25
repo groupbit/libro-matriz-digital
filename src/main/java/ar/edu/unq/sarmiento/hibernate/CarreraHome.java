@@ -17,8 +17,4 @@ public class CarreraHome extends Home<Carrera> {
 				.setParameter("archiv", false).getResultList();
 	}
 
-	public List<Materia> findMaterias(Carrera carrera) {
-		return this.getSession().createQuery("FROM Materia WHERE carrera = :carreraId", Materia.class)
-				.setParameter("carreraId", carrera).getResultList();
-	}
 }
