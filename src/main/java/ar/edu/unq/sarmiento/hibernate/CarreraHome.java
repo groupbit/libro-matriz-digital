@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
+import ar.edu.unq.sarmiento.modelo.Materia;
 
 @Component
 public class CarreraHome extends Home<Carrera> {
@@ -15,4 +16,5 @@ public class CarreraHome extends Home<Carrera> {
 		return this.getSession().createQuery("FROM Carrera WHERE archivada = :archiv", Carrera.class)
 				.setParameter("archiv", false).getResultList();
 	}
+
 }

@@ -53,10 +53,6 @@ public class Carrera extends Persistible {
 		return listadoMaterias;
 	}
 
-	public void setListadoMaterias(List<Materia> listadoMaterias) {
-		this.listadoMaterias = listadoMaterias;
-	}
-
 	public Boolean getArchivada() {
 		return archivada;
 	}
@@ -83,5 +79,6 @@ public class Carrera extends Persistible {
 	
 	public void agregarMateria(Materia materia){
 		this.listadoMaterias.add(materia);
+		materia.setCarrera(this);
 	}
 }
