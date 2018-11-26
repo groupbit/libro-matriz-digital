@@ -18,9 +18,6 @@ import org.hibernate.annotations.Type;
 public class Materia extends Persistible {
 
 	private String nombre;
-	@ManyToOne
-	@JoinColumn(name="carrera")
-	private Carrera carrera;
 	@ManyToMany
 	private List<Materia> correlativas = new ArrayList<>();
 	@Column
@@ -34,14 +31,6 @@ public class Materia extends Persistible {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Carrera getCarrera() {
-		return carrera;
-	}
-
-	public void setCarrera(Carrera carrera) {
-		this.carrera = carrera;
 	}
 
 	public List<Materia> getCorrelativas() {
