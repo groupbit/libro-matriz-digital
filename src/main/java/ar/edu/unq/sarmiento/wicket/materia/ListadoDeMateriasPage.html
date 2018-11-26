@@ -1,0 +1,25 @@
+<wicket:extend>
+	<div class="panel panel-primary">
+		<div class="panel-heading titulo">
+			<h4>Materias de <span wicket:id="nombreCarrera"></span></h4>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+					<thead>
+						<th>Año</th>
+						<th>Nombre</th>
+						<th>Promocionable</th>
+						<th>Docente</th>
+					</thead>
+					<tbody>
+						<tr wicket:id="materias" class="fila">
+							<td wicket:id="año"></td>
+							<td wicket:id="nombre"></td>
+							<td wicket:id="promocionable"></td>
+							<td wicket:id="docente"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+	</div>
+</wicket:extend>
