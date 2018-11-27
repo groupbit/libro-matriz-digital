@@ -102,13 +102,20 @@ public class DataGenerator {
 		
 		Materia materia = new Materia();
 		materia.setNombre("Hibernate");
-		
-		docente.agregarMateria(materia);
-		
-		materia.setCarrera(carrera);
+		materia.setAnioEnCarrera(2);
+		materia.setDocente("Jorgelina Ceriani");
+		materia.setEsPromocionable(true);
 		carrera.agregarMateria(materia);
-		materia.setDocente(docente);
-		materia.setAnioEnCarrera(5);
+		
+		Materia materia2 = new Materia();
+		materia2.setNombre("Ingenieria de Software");
+		materia2.setAnioEnCarrera(3);
+		materia2.setDocente("Federico Aloi");
+		materia2.setEsPromocionable(false);
+		carrera.agregarMateria(materia2);
+		
+		
+		materia.setAnioEnCarrera(2);
 		materia.setEsPromocionable(true);
 		
 		Cursada cursada = new Cursada();
@@ -126,6 +133,7 @@ public class DataGenerator {
 		docenteHome.saveOrUpdate(docente);
 		examenHome.saveOrUpdate(examen);
 		materiaHome.saveOrUpdate(materia);
+		materiaHome.saveOrUpdate(materia2);
 		direccionHome.saveOrUpdate(direccion);
 		direccionHome.saveOrUpdate(direccionprofe);
 		cursadaHome.saveOrUpdate(cursada);

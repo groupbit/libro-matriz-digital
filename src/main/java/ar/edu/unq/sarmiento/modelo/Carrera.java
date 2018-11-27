@@ -3,9 +3,13 @@ package ar.edu.unq.sarmiento.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import org.hibernate.engine.internal.Cascade;
 
 @Entity 
 public class Carrera extends Persistible {
@@ -17,7 +21,8 @@ public class Carrera extends Persistible {
 	private String nombre;
 	@Transient
 	private List<Alumno> alumnosInscriptos = new ArrayList<>();
-	@OneToMany(mappedBy = "carrera")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "carrera_id")
 	private List<Materia> listadoMaterias = new ArrayList<>();
 	private Boolean archivada= false;
 	private String resolucion;
@@ -51,10 +56,6 @@ public class Carrera extends Persistible {
 
 	public List<Materia> getListadoMaterias() {
 		return listadoMaterias;
-	}
-
-	public void setListadoMaterias(List<Materia> listadoMaterias) {
-		this.listadoMaterias = listadoMaterias;
 	}
 
 	public Boolean getArchivada() {
