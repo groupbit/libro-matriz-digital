@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.alumno;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -8,6 +9,8 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraPage;
+import ar.edu.unq.sarmiento.wicket.inscripcion.CargarInscripcionPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
 public class ListadoAlumnoPage extends LayoutPage {
@@ -34,6 +37,18 @@ public class ListadoAlumnoPage extends LayoutPage {
 			}
 		};
 		this.add(listAlumno);
+	}
+	
+	public void CargarIncripcionAlumno() {
+		this.add(new Link<String>("inscripcion") {
+
+			private static final long serialVersionUID = 505927122883116822L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new CargarInscripcionPage());
+			}
+		});
 	}
 
 }
