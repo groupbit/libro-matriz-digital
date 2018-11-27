@@ -17,8 +17,15 @@ public class ListadoAlumnoPage extends LayoutPage {
 
 	@SpringBean(name = "listadoAlumnoController")
 	private ListadoAlumnoController controller;
-
+	
+	
 	public ListadoAlumnoPage() {
+		this.listaDeAlumno();
+		this.cargarIncripcionAlumno();
+		
+	}
+	
+	public void listaDeAlumno(){
 		ListView<Alumno> listAlumno = new ListView<Alumno>("alumnos",
 				new PropertyModel<>(controller, "usuariosEnInstituto")) {
 
@@ -38,8 +45,8 @@ public class ListadoAlumnoPage extends LayoutPage {
 		};
 		this.add(listAlumno);
 	}
-	
-	public void CargarIncripcionAlumno() {
+
+	public void cargarIncripcionAlumno() {
 		this.add(new Link<String>("inscripcion") {
 
 			private static final long serialVersionUID = 505927122883116822L;
