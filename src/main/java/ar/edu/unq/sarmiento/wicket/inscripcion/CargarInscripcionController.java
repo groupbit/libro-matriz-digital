@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -24,12 +25,18 @@ public class CargarInscripcionController implements Serializable{
 	
 	private String nombre;
 	private String dni;
+	private String fechaNacimiento;
 	
 	public void inscribir(){
 		Alumno alumno=new Alumno();
 		alumno.setNombre(this.getNombre());
 		alumno.setDni(this.getDni());
+		alumno.setFechaDeNacimiento(this.getFechaDeNacimiento());
 		alumnoHome.saveOrUpdate(alumno);
+	}
+
+	public String getFechaDeNacimiento() {
+		return fechaNacimiento;
 	}
 
 	public String getDni() {
