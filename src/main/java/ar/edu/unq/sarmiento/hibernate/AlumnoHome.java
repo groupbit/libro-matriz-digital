@@ -10,7 +10,8 @@ public class AlumnoHome extends Home<Alumno>{
 	
 	
 	public Alumno getAlumno(Alumno alumno){
-		return getSession().createQuery("FROM Alumno",Alumno.class).getSingleResult();
+		return getSession().createQuery("FROM Alumno alum",Alumno.class)
+				.setParameter("alum",alumno).getSingleResult();
 	}
 	
 }

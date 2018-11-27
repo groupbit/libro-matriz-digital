@@ -1,0 +1,24 @@
+<wicket:extend>
+	<div class="panel panel-primary">
+		<div class="panel-heading titulo">
+			<h4>Inscribir Alumno</h4>
+		</div>
+		<div class="panel-body">
+			<form wicket:id="inscripcion" class="form-horizontal">
+				<div class="form-group">
+					<label for="nombre" class="col-md-2 control-label">Nombre </label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="nombre"
+							wicket:id="nombre">
+					</div>
+				</div>
+			
+				<div class="text-center">
+					<button type="submit" class="btn btn-success">Guardar</button>
+					<button class="btn btn-default" wicket:id="cancelar">Cancelar</button>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</wicket:extend>
