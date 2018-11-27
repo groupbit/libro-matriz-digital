@@ -23,11 +23,20 @@ public class CargarInscripcionController implements Serializable{
 	private AlumnoHome alumnoHome;
 	
 	private String nombre;
+	private String dni;
 	
 	public void inscribir(){
 		Alumno alumno=new Alumno();
 		alumno.setNombre(this.getNombre());
+		alumno.setDni(this.getDni());
 		alumnoHome.saveOrUpdate(alumno);
+	}
+
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni){
+		this.dni=dni;
 	}
 
 	public String getNombre() {

@@ -45,6 +45,8 @@ public class CargarInscripcionPage extends LayoutPage{
 		
 		};
 		formulario.add(new TextField<>("nombre",new PropertyModel<>(this.cargarInscripcionController,"nombre")));
+		formulario.add(new TextField<>("dni",new PropertyModel<>(this.cargarInscripcionController,"dni")));
+		
 		
 		this.add(formulario);
 		
