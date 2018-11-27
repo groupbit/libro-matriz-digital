@@ -15,15 +15,18 @@ public class Direccion extends Persistible {
 	
 	private String localidad;
 	
+	private String partido;
+	
 	public Direccion() {}
 
-	public Direccion(String calle, int altura, String departamento, String codigoPostal, String localidad) {
+	public Direccion(String calle, int altura, String departamento, String codigoPostal, String localidad,String partido) {
 		super();
 		this.calle = calle;
 		this.altura = altura;
 		this.departamento = departamento;
 		this.codigoPostal = codigoPostal;
 		this.localidad = localidad;
+		this.partido=partido;
 	}
 
 	public String getCalle() {
@@ -64,6 +67,14 @@ public class Direccion extends Persistible {
 
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
+	}
+
+	public String getPartido() {
+		return partido;
+	}
+
+	public void setPartido(String partido) {
+		this.partido = partido;
 	}
 	
 	
