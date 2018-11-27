@@ -26,30 +26,39 @@ public class CargarInscripcionController implements Serializable{
 	private String nombre;
 	private String dni;
 	private String fechaNacimiento;
+	private String lugarNacimiento;
 	
 	public void inscribir(){
 		Alumno alumno=new Alumno();
 		alumno.setNombre(this.getNombre());
 		alumno.setDni(this.getDni());
-		alumno.setFechaDeNacimiento(this.getFechaDeNacimiento());
+		alumno.setFechaDeNacimiento(this.getFechaNacimiento());
+		alumno.setLugarDeNacimiento(this.getLugarNacimiento());
 		alumnoHome.saveOrUpdate(alumno);
 	}
 
-	public String getFechaDeNacimiento() {
+	
+	public String getLugarNacimiento() {
+		return lugarNacimiento;
+	}
+	public void setLugarNacimiento(String lugarNacimiento) {
+		this.lugarNacimiento = lugarNacimiento;
+	}
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-
+    public void setFechaDeNacimiento(String fechaNacimiento){
+    	this.fechaNacimiento=fechaNacimiento;
+    }
 	public String getDni() {
 		return dni;
 	}
 	public void setDni(String dni){
 		this.dni=dni;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
