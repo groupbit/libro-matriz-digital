@@ -1,7 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -10,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
+import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.modelo.Direccion;
 
 
 @Service
@@ -22,7 +23,8 @@ public class CargarInscripcionController implements Serializable{
 
 	@Autowired
 	private AlumnoHome alumnoHome;
-	
+	@Autowired
+	private DireccionHome direccionHome;
 	private String nombre;
 	private String genero;
 	private String dni;
@@ -31,32 +33,34 @@ public class CargarInscripcionController implements Serializable{
 	private String estadoCivil;
 	private int hijos;
 	private String familiaresACargo;
+	private Direccion direccion;
 	private String telefono;
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
 	private String email;
+	private Alumno alumno;
+	
+	public CargarInscripcionController(){}
 	
 	
-	
-	public void inscribir(){
+	public void inscribir(Alumno alum){
 		Alumno alumno=new Alumno();
 		alumno.setNombre(this.getNombre());
-		alumno.setGenero(this.getGenero());
-		alumno.setDni(this.getDni());
-		alumno.setFechaDeNacimiento(this.getFechaNacimiento());
-		alumno.setLugarDeNacimiento(this.getLugarNacimiento());
-		alumno.setEstadoCivil(this.getEstadoCivil());
-		alumno.setHijos(this.getHijos());
-		alumno.setFamiliaresACargo(this.getFamiliaresACargo());
-		alumno.setTelefono(this.getTelefono());
-		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
-		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
-		alumno.setEmail(this.getEmail());
-		
 		alumnoHome.saveOrUpdate(alumno);
+
+		
+	}
+  
+	public Direccion getDireccion() {
+		return direccion;
 	}
 
-	
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+
 	public String getEstadoCivil() {
 		return estadoCivil;
 	}
@@ -170,5 +174,15 @@ public class CargarInscripcionController implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+	
+	
 
 }
