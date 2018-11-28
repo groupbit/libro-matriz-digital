@@ -11,7 +11,6 @@ public class Examen extends Persistible{
 	@Enumerated(EnumType.STRING)
 	private TipoDeExamen tipoDeExamen;
 	private float calificacion;
-	@Type(type= "yes_no")
 	private boolean estuvoausente;
 	public TipoDeExamen getTipoDeExamen() {
 		return tipoDeExamen;
