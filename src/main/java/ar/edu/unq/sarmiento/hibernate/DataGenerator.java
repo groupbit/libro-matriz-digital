@@ -26,8 +26,6 @@ public class DataGenerator {
 	@Autowired
 	private CursadaHome cursadaHome;
 	@Autowired
-	private DocenteHome docenteHome;
-	@Autowired
 	private ExamenHome examenHome;
 	@Autowired
 	private MateriaHome materiaHome;
