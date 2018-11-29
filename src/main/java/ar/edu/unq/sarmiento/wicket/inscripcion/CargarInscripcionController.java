@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -28,7 +29,7 @@ public class CargarInscripcionController implements Serializable{
 	private String nombre;
 	private String genero;
 	private String dni;
-	private String fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	private String lugarNacimiento;
 	private String estadoCivil;
 	private int hijos;
@@ -38,17 +39,34 @@ public class CargarInscripcionController implements Serializable{
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
 	private String email;
+	private String calle;
 	private Alumno alumno;
 	
-	public CargarInscripcionController(){}
+	public CargarInscripcionController(){
+	}
 	
 	
-	public void inscribir(Alumno alum){
-		Alumno alumno=new Alumno();
+	public void inscribir(){
+		alumno=new Alumno();
 		alumno.setNombre(this.getNombre());
+		alumno.setGenero(this.getGenero());
+		alumno.setDni(this.getDni());
+		alumno.setFechaDeNacimiento(this.getFechaNacimiento());
+		alumno.setLugarDeNacimiento(this.getLugarNacimiento());
+		alumno.setEstadoCivil(this.getEstadoCivil());
+		alumno.setHijos(this.getHijos());
+		alumno.setFamiliaresACargo(this.getFamiliaresACargo());
+		alumno.setTelefono(this.getTelefono());
+		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
+		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
+		alumno.setEmail(this.getEmail());
+		Direccion dir=new Direccion();
+		dir.setCalle(this.getCalle());
+		alumno.setDireccion(dir);
 		alumnoHome.saveOrUpdate(alumno);
-
+		direccionHome.saveOrUpdate(alumno.getDireccion());
 		
+		 
 	}
   
 	public Direccion getDireccion() {
@@ -58,6 +76,14 @@ public class CargarInscripcionController implements Serializable{
 
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
+	}
+	
+	public void setCalle(String calle){
+		this.calle = calle;
+	}
+	
+	public String getCalle(){
+		return this.calle;
 	}
 
 
@@ -150,12 +176,12 @@ public class CargarInscripcionController implements Serializable{
 	}
 	
 	
-	public String getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
 
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

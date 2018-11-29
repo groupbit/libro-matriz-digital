@@ -1,10 +1,10 @@
 package ar.edu.unq.sarmiento.modelo;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -15,12 +15,13 @@ public class Alumno extends Persistible {
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre;
-	@OneToOne(cascade=CascadeType.ALL)
+//	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(targetEntity=Direccion.class,cascade=CascadeType.ALL)  
 	private Direccion direccion;
 	private Carrera carrera;
 	private Cursada cursada;
 	private String dni;
-	private String fechaDeNacimiento;
+	private LocalDate fechaDeNacimiento;
 	private String lugarDeNacimiento;
 	private String genero;
 	private String estadoCivil;
@@ -42,7 +43,7 @@ public class Alumno extends Persistible {
 	public Alumno(){}
 	
 	public Alumno(String nombre,Direccion direccion,Carrera carrera,Cursada cursada,String dni,
-			String fechaNacimiento,String lugarDeNacimiento,String genero,String estadoCivil,
+			LocalDate fechaNacimiento,String lugarDeNacimiento,String genero,String estadoCivil,
 			int hijos,String familiaresACargo,String telefono,String telefonoAlternativo,
 			String email,boolean trabaja,String actividad,LocalTime horarioHabitual,
 			String obraSocial,EstudioCursado titulo){
@@ -105,11 +106,11 @@ public class Alumno extends Persistible {
 		this.dni = dni;
 	}
 	
-	public String getFechaDeNacimiento(){
+	public LocalDate getFechaDeNacimiento(){
 	    return fechaDeNacimiento;
     }
     
-    public void setFechaDeNacimiento(String fechaNacimiento){
+    public void setFechaDeNacimiento(LocalDate fechaNacimiento){
         this.fechaDeNacimiento=fechaNacimiento;
     }
     
