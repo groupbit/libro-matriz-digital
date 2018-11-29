@@ -62,7 +62,7 @@ public class CargarInscripcionPage extends LayoutPage{
 		formulario.add(new TextField<>("email",new PropertyModel<>(this.cargarInscripcionController,"email")));
 		formulario.add(new TextField<>("calle",new PropertyModel<>(this.cargarInscripcionController,"calle")));
 		formulario.add(new TextField<>("altura",new PropertyModel<>(this.cargarInscripcionController,"altura")));
-//		formulario.add(new TextField<>("departamento",new PropertyModel<>(this.cargarInscripcionController,"departamento")));
+		formulario.add(new TextField<>("departamento",new PropertyModel<>(this.cargarInscripcionController,"departamento")));
 //		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"localidad")));
 //		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"partido")));
 //		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"codigoPostal")));
