@@ -39,8 +39,13 @@ public class CargarInscripcionController implements Serializable{
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
 	private String email;
-	private String calle;
 	private Alumno alumno;
+	private String calle;
+	private int altura;
+    private String departamento;
+	private String codigoPostal;
+	private String localidad;
+	private String partido;
 	
 	public CargarInscripcionController(){
 	}
@@ -62,6 +67,10 @@ public class CargarInscripcionController implements Serializable{
 		alumno.setEmail(this.getEmail());
 		Direccion dir=new Direccion();
 		dir.setCalle(this.getCalle());
+		dir.setAltura(this.getAltura());
+//		dir.setLocalidad(this.getLocalidad());
+//		dir.setPartido(this.getPartido());
+//		dir.setCodigoPostal(this.getCodigoPostal());
 		alumno.setDireccion(dir);
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
@@ -84,6 +93,53 @@ public class CargarInscripcionController implements Serializable{
 	
 	public String getCalle(){
 		return this.calle;
+	}
+	
+	public int getAltura() {
+		return altura;
+	}
+
+	public void setAltura(int altura) {
+		this.altura = altura;
+	}
+
+	public String getDepartamento() {
+		return departamento;
+	}
+
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+
+
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+
+
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+
+	public String getPartido() {
+		return partido;
+	}
+
+
+	public void setPartido(String partido) {
+		this.partido = partido;
 	}
 
 
@@ -208,6 +264,7 @@ public class CargarInscripcionController implements Serializable{
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
+	
 	
 	
 

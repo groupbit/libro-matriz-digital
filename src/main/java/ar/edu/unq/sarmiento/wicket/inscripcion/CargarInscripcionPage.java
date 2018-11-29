@@ -61,11 +61,11 @@ public class CargarInscripcionPage extends LayoutPage{
 		formulario.add(new TextField<>("propietarioTelefonoAlternativo",new PropertyModel<>(this.cargarInscripcionController,"propietarioTelefonoAlternativo")));
 		formulario.add(new TextField<>("email",new PropertyModel<>(this.cargarInscripcionController,"email")));
 		formulario.add(new TextField<>("calle",new PropertyModel<>(this.cargarInscripcionController,"calle")));
-//		formulario.add(new TextField<>("altura",new PropertyModel<>(this.cargarInscripcionController,"direccion.altura")));
-//		formulario.add(new TextField<>("departamento",new PropertyModel<>(this.cargarInscripcionController,"direccion.departamento")));
-//		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"direccion.localidad")));
-//		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"direccion.partido")));
-//		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"direccion.codigoPostal")));
+		formulario.add(new TextField<>("altura",new PropertyModel<>(this.cargarInscripcionController,"altura")));
+//		formulario.add(new TextField<>("departamento",new PropertyModel<>(this.cargarInscripcionController,"departamento")));
+//		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"localidad")));
+//		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"partido")));
+//		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"codigoPostal")));
 //	
 		
 		this.add(formulario);
