@@ -1,0 +1,48 @@
+<wicket:extend>
+	<div class="panel panel-primary">
+		<div class="panel-heading titulo">
+			<h4>Agregar materia</h4>
+		</div>
+		<div class="panel-body">
+			<form wicket:id="laMateria" class="form-horizontal">
+				<div class="form-group">
+					<label for="nombre" class="col-md-2 control-label">Nombre </label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="nombre"
+							wicket:id="nombre">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="promocion" class="col-md-2 control-label">Es
+						promocionable </label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="promocion" 
+							wicket:id="promocion" placeholder="si/no">
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label for="anio" class="col-md-2 control-label">Año </label>
+					<div class="col-md-9">
+						<select id="anio" class="form-control" wicket:id="anio"></select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="docente" class="col-md-2 control-label">Docente
+						a cargo</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="docente"
+							wicket:id="docente">
+					</div>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-success">Guardar</button>
+					<!-- 					<button class="btn btn-default" wicket:id="cancelar">Cancelar</button> -->
+				</div>
+			</form>
+
+		</div>
+	</div>
+</wicket:extend>

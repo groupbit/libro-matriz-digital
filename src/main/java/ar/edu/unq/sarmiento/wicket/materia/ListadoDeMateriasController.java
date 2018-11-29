@@ -41,4 +41,12 @@ public class ListadoDeMateriasController implements Serializable{
 		return promocion ? "Sí" : "No";
 	}
 	
+//	public void agregarMateriaACarrera(Materia materia){
+//		Materia mate = new Materia();
+//		mate.getNombre();
+//		mate.getAnioEnCarrera();
+//		mate.getEsPromocionable();
+//		mate.getDocente();
+//		carrera.agregarMateria(mate);
+//	}
 }
