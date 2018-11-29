@@ -70,8 +70,8 @@ public class CargarInscripcionController implements Serializable{
 		dir.setAltura(this.getAltura());
 		dir.setDepartamento(this.getDepartamento());
 		dir.setLocalidad(this.getLocalidad());
-//		dir.setPartido(this.getPartido());
-//		dir.setCodigoPostal(this.getCodigoPostal());
+		dir.setPartido(this.getPartido());
+		dir.setCodigoPostal(this.getCodigoPostal());
 		alumno.setDireccion(dir);
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
