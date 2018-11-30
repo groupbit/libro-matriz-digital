@@ -42,7 +42,6 @@ public class CargarInscripcionPage extends LayoutPage{
 			@Override
 			public void onSubmit(){
 				CargarInscripcionPage.this.cargarInscripcionController.inscribir();
-//				alumnoHome.attach(alumno);
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		
