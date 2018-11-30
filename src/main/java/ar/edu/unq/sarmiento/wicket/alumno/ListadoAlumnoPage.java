@@ -1,5 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.alumno;
 
+import java.time.format.DateTimeFormatter;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -34,10 +36,12 @@ public class ListadoAlumnoPage extends LayoutPage {
 				CompoundPropertyModel<Alumno> alumnoModel = new CompoundPropertyModel<>(alumno);
 				Label nombreAlumno = new Label("nombre", alumnoModel.bind("nombre"));
 				Label telefonoAlumno = new Label("telefono", alumnoModel.bind("telefono"));
+				Label fechaNacimientoAlumno = new Label("fechaNacimiento", alumno.getFechaDeNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 				Label dniAlumno = new Label("dni", alumnoModel.bind("dni"));
 				Label mailAlumno = new Label("email", alumnoModel.bind("email"));
 				item.add(nombreAlumno);
 				item.add(telefonoAlumno);
+				item.add(fechaNacimientoAlumno);
 				item.add(dniAlumno);
 				item.add(mailAlumno);
 			}
