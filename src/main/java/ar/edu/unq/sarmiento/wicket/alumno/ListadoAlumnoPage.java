@@ -22,7 +22,7 @@ public class ListadoAlumnoPage extends LayoutPage {
 	
 	public ListadoAlumnoPage() {
 		this.listaDeAlumno();
-		this.cargarIncripcionAlumno();
+		this.cargarInscripcionAlumno();
 		
 	}
 	
@@ -49,7 +49,7 @@ public class ListadoAlumnoPage extends LayoutPage {
 		this.add(listAlumno);
 	}
 
-	public void cargarIncripcionAlumno() {
+	public void cargarInscripcionAlumno() {
 		this.add(new Link<String>("inscripcion") {
 
 			private static final long serialVersionUID = 505927122883116822L;

@@ -12,7 +12,6 @@ public class DireccionHome extends Home<Direccion>{
 	
 	public Direccion getDireccion(Alumno alumno){
 		return getSession().createQuery("FROM Alumno alum WHERE alumno.direccion = :direccion "
-//				+ "AND alumno.direccion.calle = : direccion.calle"
 	,Direccion.class)
 				.setParameter("alum",alumno)
 				.setParameter("direccion.calle",alumno.getDireccion().getCalle())
