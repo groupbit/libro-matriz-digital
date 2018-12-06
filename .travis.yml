@@ -9,6 +9,8 @@ deploy:
   app: libro-matriz-digital
   env: devenv
   zip_file: target/libro-matriz-digital.war
+  bucket_name: libro-matriz-digital
   on:
     repo: ingsw-sarmiento/libro-matriz-digital
     branch: master
+  skip_cleanup: true
