@@ -147,6 +147,7 @@
 
 	</dependencies>
 	<build>
+		<finalName>libro-matriz-digital</finalName>
 		<resources>
 			<resource>
 				<filtering>false</filtering>
