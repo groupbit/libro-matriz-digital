@@ -1,8 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.materia;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.CarreraHome;
-import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Materia;
 
@@ -27,11 +24,11 @@ public class AgregarMateriaController implements Serializable {
 	@Autowired
 	private CarreraHome carreraHome;
 	private static final long serialVersionUID = 1L;
-	private MateriaHome materiaHome;
+//	private MateriaHome materiaHome;
 	private Materia materia;
 	private Carrera carrera;
 	private String nombre;
-	private boolean esPromocionable;
+	private boolean promocionable;
 	private int anioEnCarrera;
 	private String docente;
 
@@ -67,12 +64,12 @@ public class AgregarMateriaController implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public boolean isEsPromocionable() {
-		return esPromocionable;
+	public boolean isPromocionable() {
+		return promocionable;
 	}
 
-	public void setEsPromocionable(boolean esPromocionable) {
-		this.esPromocionable = esPromocionable;
+	public void setPromocionable(boolean esPromocionable) {
+		this.promocionable = esPromocionable;
 	}
 
 	public int getAnioEnCarrera() {
@@ -96,7 +93,7 @@ public class AgregarMateriaController implements Serializable {
 		Materia materia1 = new Materia();
 		materia1.setNombre(nombre);
 		materia1.setAnioEnCarrera(anioEnCarrera);
-		materia1.setEsPromocionable(esPromocionable);
+		materia1.setPromocionable(promocionable);
 		materia1.setDocente(docente);
 		carrera.agregarMateria(materia1);
 	}
