@@ -9,7 +9,7 @@ create_gh_deployment () {
       -d "{\"ref\": \"${TRAVIS_COMMIT}\", \"environment\": \"production\", \"required_contexts\": [], \"auto_merge\": false}"
 }
 
-# Run this function when you trigger a deploy.
-# Keep track of the deployment id as $gh_deploy_id for later. We're using https://stedolan.github.io/jq/ to parse the JSON to grab the id.
 declare -r created_gh_deployment=$(create_gh_deployment)
-declare -r gh_deploy_id=$(echo $created_gh_deployment | jq .id)
+GH_DEPLOY_ID=$(echo $created_gh_deployment | jq .id)
+echo "Created deployment with id $GH_DEPLOY_ID."
+echo $GH_DEPLOY_ID > .gh_deploy_id

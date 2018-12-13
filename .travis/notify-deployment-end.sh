@@ -11,12 +11,13 @@ notify_gh_about_a_deployment () {
     -d "{\"state\": \"${deployment_status}\", \"log_url\": \"${TRAVIS_BUILD_WEB_URL}\"}"
 }
 
-
 if [[ $TRAVIS_TEST_RESULT -eq 0 ]]
 then
-   status = "success"
+   DEPLOY_STATUS="success"
 else
-   status = "error"
+   DEPLOY_STATUS="error"
 fi
 
-notify_gh_about_a_deployment $gh_deploy_id $status
+GH_DEPLOY_ID=$(cat .gh_deploy_id)
+echo "Updating deployment #$GH_DEPLOY_ID with status $DEPLOY_STATUS"
+notify_gh_about_a_deployment $GH_DEPLOY_ID $DEPLOY_STATUS
