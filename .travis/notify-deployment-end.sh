@@ -2,6 +2,7 @@
 
 # Notify GitHub of a successful deployment
 notify_gh_about_a_deployment () {
+  declare -r deployment_id=${1}
   declare -r deployment_status=${2}
   curl -s -X POST "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/deployments/${TRAVIS_COMMIT}/statuses" \
     -H 'Content-Type: application/json' \
@@ -18,4 +19,4 @@ else
    status = "error"
 fi
 
-notify_gh_about_a_deployment $status
+notify_gh_about_a_deployment $gh_deploy_id $status
