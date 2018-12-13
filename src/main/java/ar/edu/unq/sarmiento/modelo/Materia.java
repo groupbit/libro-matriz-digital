@@ -5,26 +5,23 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
-
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.Type;
 
 @Entity
 public class Materia extends Persistible {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	@ManyToMany
 	private List<Materia> correlativas = new ArrayList<>();
 	@Column
-	private boolean esPromocionable;
+	private boolean promocionable;
 	private int anioEnCarrera;
 	private String docente;
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -41,12 +38,12 @@ public class Materia extends Persistible {
 		this.correlativas = correlativas;
 	}
 
-	public boolean getEsPromocionable() {
-		return esPromocionable;
+	public boolean isPromocionable() {
+		return promocionable;
 	}
 
-	public void setEsPromocionable(boolean esPromocionable) {
-		this.esPromocionable = esPromocionable;
+	public void setPromocionable(boolean promocionable) {
+		this.promocionable = promocionable;
 	}
 
 	public int getAnioEnCarrera() {
@@ -64,5 +61,5 @@ public class Materia extends Persistible {
 	public void setDocente(String docente) {
 		this.docente = docente;
 	}
-	
+
 }
