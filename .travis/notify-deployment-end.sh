@@ -18,6 +18,6 @@ else
    DEPLOYMENT_STATUS="error"
 fi
 
-GH_DEPLOYMENT_ID=$(cat .gh_deploy_id)
+GH_DEPLOYMENT_ID=$(cat .gh_deployment_id)
 echo "Updating deployment $GH_DEPLOYMENT_ID with status: $DEPLOYMENT_STATUS."
 notify_gh_about_a_deployment $GH_DEPLOYMENT_ID $DEPLOYMENT_STATUS
