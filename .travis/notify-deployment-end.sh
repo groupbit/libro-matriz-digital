@@ -7,7 +7,7 @@ notify_gh_about_a_deployment () {
     -H 'Content-Type: application/json' \
     -H 'Accept: application/vnd.github.ant-man-preview+json' \
     -H "Authorization: token ${GITHUB_ACCESS_TOKEN}" \
-    -d "{"state": "${deployment_status}", "log_url": "${TRAVIS_BUILD_WEB_URL}"}"
+    -d "{\"state\": \"${deployment_status}\", \"log_url\": \"${TRAVIS_BUILD_WEB_URL}\"}"
 }
 
 

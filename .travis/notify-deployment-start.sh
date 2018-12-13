@@ -6,7 +6,7 @@ create_gh_deployment () {
       -H 'Content-Type: application/json' \
       -H 'Accept: application/vnd.github.ant-man-preview+json' \
       -H "Authorization: token ${GITHUB_ACCESS_TOKEN}" \
-      -d "{"ref": "${TRAVIS_COMMIT}", "environment": "production", "required_contexts": [], "auto_merge": false}"
+      -d "{\"ref\": \"${TRAVIS_COMMIT}\", \"environment\": \"production\", \"required_contexts\": [], \"auto_merge\": false}"
 }
 
 # Run this function when you trigger a deploy.
