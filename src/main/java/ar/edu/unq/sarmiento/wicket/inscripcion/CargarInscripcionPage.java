@@ -1,6 +1,8 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -19,20 +21,20 @@ public class CargarInscripcionPage extends LayoutPage{
 	@SpringBean
 	private CargarInscripcionController cargarInscripcionController;
 	
-	private Alumno alumno;
+//	private Alumno alumno;
 	
 	public CargarInscripcionPage(){
 		this.formulario();
 	}
 
-	
-	public CargarInscripcionPage(Alumno alumno2,Direccion direccion2) {
-		alumno=alumno2;
-		cargarInscripcionController.setAlumno(alumno2);
-        cargarInscripcionController.setDireccion(direccion2);
-        alumno2.setDireccion(direccion2);
-		this.formulario();
-	}
+
+//	public CargarInscripcionPage(Alumno alumno2,Direccion direccion2) {
+//		alumno=alumno2;
+//		cargarInscripcionController.setAlumno(alumno2);
+//        cargarInscripcionController.setDireccion(direccion2);
+//        alumno2.setDireccion(direccion2);
+//		this.formulario();
+//	}
 
 
 	private void formulario() {
@@ -48,7 +50,9 @@ public class CargarInscripcionPage extends LayoutPage{
 		
 		};
 		formulario.add(new TextField<>("nombre",new PropertyModel<>(this.cargarInscripcionController,"nombre")));
-		formulario.add(new TextField<>("genero",new PropertyModel<>(this.cargarInscripcionController,"genero")));
+//		formulario.add(new TextField<>("genero",new PropertyModel<>(this.cargarInscripcionController,"genero")));
+		formulario.add(new DropDownChoice<>("genero", new PropertyModel<>(this.cargarInscripcionController, "generoEnum"),
+				new PropertyModel<>(this.cargarInscripcionController, "listaGenero"), new ChoiceRenderer<>("string")));
 		formulario.add(new TextField<>("dni",new PropertyModel<>(this.cargarInscripcionController,"dni")));
 		formulario.add(new LocalDateTextField("fechaNacimiento",new PropertyModel<>(this.cargarInscripcionController,"fechaNacimiento"), "dd/MM/yyyy"));
 		formulario.add(new TextField<>("lugarNacimiento",new PropertyModel<>(this.cargarInscripcionController,"lugarNacimiento")));

@@ -2,6 +2,8 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -13,6 +15,7 @@ import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Direccion;
+import ar.edu.unq.sarmiento.modelo.GeneroEnum;
 
 
 @Service
@@ -46,15 +49,17 @@ public class CargarInscripcionController implements Serializable{
 	private String codigoPostal;
 	private String localidad;
 	private String partido;
+	private List<GeneroEnum>listaGenero=new ArrayList<>();
+	private GeneroEnum generoEnum;
 	
 	public CargarInscripcionController(){
+		this.setGenero();
 	}
-	
 	
 	public void inscribir(){
 		alumno=new Alumno();
 		alumno.setNombre(this.getNombre());
-		alumno.setGenero(this.getGenero());
+		alumno.setGenero(this.getGeneroEnum().getString());
 		alumno.setDni(this.getDni());
 		alumno.setFechaDeNacimiento(this.getFechaNacimiento());
 		alumno.setLugarDeNacimiento(this.getLugarNacimiento());
@@ -213,16 +218,13 @@ public class CargarInscripcionController implements Serializable{
 		this.email = email;
 	}
 
-
-	public String getGenero() {
-		return genero;
-	}
-
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
+    public String getGenero(){
+    	return this.genero;
+    }
+	
+    public void setGenero(String genero){
+    	this.genero=genero;
+    }
 
 	public String getLugarNacimiento() {
 		return lugarNacimiento;
@@ -265,6 +267,27 @@ public class CargarInscripcionController implements Serializable{
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
+	
+	public void setGenero(){
+		this.listaGenero.add(GeneroEnum.FEMENINO);
+		this.listaGenero.add(GeneroEnum.MASCULINO);
+		this.listaGenero.add(GeneroEnum.OTROS);
+	}
+
+	public List<GeneroEnum> getListaGenero() {
+		return listaGenero;
+	}
+    
+	public GeneroEnum getGeneroEnum() {
+		return generoEnum;
+	}
+	
+	public void setGeneroEnum(GeneroEnum generoEnum){
+		this.generoEnum=generoEnum;
+	}
+	
+	
+	
 	
 	
 	
