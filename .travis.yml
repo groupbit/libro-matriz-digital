@@ -2,7 +2,9 @@ language: java
 cache:
   directories:
   - $HOME/.m2
-before_deploy: mvn clean package
+before_deploy:
+  - mvn clean package
+  - ./.travis/notify-deployment-start.sh
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIQD5FYQHOADEAF7A
@@ -17,3 +19,4 @@ deploy:
     repo: ingsw-sarmiento/libro-matriz-digital
     branch: master
   skip_cleanup: true
+after_deploy: ./.travis/notify-deployment-end.sh
