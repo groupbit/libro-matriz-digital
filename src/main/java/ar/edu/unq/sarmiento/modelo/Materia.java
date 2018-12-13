@@ -29,7 +29,11 @@ public class Materia extends Persistible {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
+	public void addCorrelativa(Materia materia){
+		this.correlativas.add(materia);
+	}
+	
 	public List<Materia> getCorrelativas() {
 		return correlativas;
 	}
