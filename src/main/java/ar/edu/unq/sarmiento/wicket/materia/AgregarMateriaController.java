@@ -24,7 +24,6 @@ public class AgregarMateriaController implements Serializable {
 	@Autowired
 	private CarreraHome carreraHome;
 	private static final long serialVersionUID = 1L;
-//	private MateriaHome materiaHome;
 	private Materia materia;
 	private Carrera carrera;
 	private String nombre;

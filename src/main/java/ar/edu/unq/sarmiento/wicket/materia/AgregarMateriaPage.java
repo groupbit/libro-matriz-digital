@@ -42,7 +42,7 @@ public class AgregarMateriaPage extends LayoutPage {
 
 		altaMateria.add(new TextField<>("nombre", new PropertyModel<>(agregarMateriasController, "nombre")));
 		altaMateria
-				.add(new TextField<>("promocion", new PropertyModel<>(agregarMateriasController, "isEsPromocionable")));
+				.add(new TextField<>("promocion", new PropertyModel<>(agregarMateriasController, "isPromocionable")));
 		altaMateria.add(new TextField<>("docente", new PropertyModel<>(agregarMateriasController, "docente")));
 
 		altaMateria
