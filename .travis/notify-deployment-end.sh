@@ -4,7 +4,7 @@
 notify_gh_about_a_deployment () {
   declare -r deployment_id=${1}
   declare -r deployment_status=${2}
-  curl -s -X POST "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/deployments/${TRAVIS_COMMIT}/statuses" \
+  curl -s -X POST "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/deployments/${deployment_id}/statuses" \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/vnd.github.ant-man-preview+json' \
     -H "Authorization: token ${GITHUB_ACCESS_TOKEN}" \
@@ -13,11 +13,11 @@ notify_gh_about_a_deployment () {
 
 if [[ $TRAVIS_TEST_RESULT -eq 0 ]]
 then
-   DEPLOY_STATUS="success"
+   DEPLOYMENT_STATUS="success"
 else
-   DEPLOY_STATUS="error"
+   DEPLOYMENT_STATUS="error"
 fi
 
-GH_DEPLOY_ID=$(cat .gh_deploy_id)
-echo "Updating deployment #$GH_DEPLOY_ID with status $DEPLOY_STATUS"
-notify_gh_about_a_deployment $GH_DEPLOY_ID $DEPLOY_STATUS
+GH_DEPLOYMENT_ID=$(cat .gh_deploy_id)
+echo "Updating deployment $GH_DEPLOYMENT_ID with status: $DEPLOYMENT_STATUS."
+notify_gh_about_a_deployment $GH_DEPLOYMENT_ID $DEPLOYMENT_STATUS

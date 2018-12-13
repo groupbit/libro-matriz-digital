@@ -10,6 +10,6 @@ create_gh_deployment () {
 }
 
 declare -r created_gh_deployment=$(create_gh_deployment)
-GH_DEPLOY_ID=$(echo $created_gh_deployment | jq .id)
-echo "Created deployment with id $GH_DEPLOY_ID."
-echo $GH_DEPLOY_ID > .gh_deploy_id
+GH_DEPLOYMENT_ID=$(echo $created_gh_deployment | jq .id)
+echo "Created deployment with id $GH_DEPLOYMENT_ID."
+echo $GH_DEPLOYMENT_ID > .gh_deployment_id
