@@ -6,7 +6,7 @@ notify_gh_about_a_deployment () {
   curl -s -X POST "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/deployments/${TRAVIS_COMMIT}/statuses" \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/vnd.github.ant-man-preview+json' \
-    -u ${GITHUB_ACCESS_TOKEN} \
+    -H "Authorization: token ${GITHUB_ACCESS_TOKEN}" \
     -d "{"state": "${deployment_status}", "log_url": "${TRAVIS_BUILD_WEB_URL}"}"
 }
 
