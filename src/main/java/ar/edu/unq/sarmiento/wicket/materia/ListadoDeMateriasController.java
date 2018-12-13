@@ -44,8 +44,9 @@ public class ListadoDeMateriasController implements Serializable{
 	
 
 	public String getCorrelativas(Materia materia) {
-		List<String> list = materia.getCorrelativas().stream().map(m -> m.getNombre()).collect(Collectors.toList());
-		return String.join(", ", list);
+		return materia.getCorrelativas().stream()
+				  .map(m -> m.getNombre())
+				  .collect(Collectors.joining(", "));
 	}
 	
 }
