@@ -1,5 +1,9 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +48,8 @@ public class DataGenerator {
 		alumno.setEmail("juancito@gmail.com");
 		alumno.setDni("25897542");
 		alumno.setTelefono("2478558965");
-		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento"));
+		alumno.setFechaDeNacimiento(LocalDate.of(1983, 10, 23));
+		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		
 		Alumno alumno2 = new Alumno();
 		alumno2.setNombre("Esteban Cufré");
@@ -58,7 +63,8 @@ public class DataGenerator {
 		alumno3.setEmail("kari@gmail.com");
 		alumno3.setTelefono("2478458796");
 		alumno3.setDni("24587985");
-		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento"));
+		alumno3.setFechaDeNacimiento(LocalDate.of(1968, 7, 3));
+		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		
 		Carrera carrera = new Carrera();
 		carrera.setNombre("Programación informática");
@@ -76,7 +82,10 @@ public class DataGenerator {
 		carrera3.setResolucion("5860/16");
 		carrera3.setArchivada(true);
 		
-		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento");
+		
+		
+		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento","Cap Sarm");
+		
 		
 		Examen examen = new Examen();
 		examen.setTipoDeExamen(TipoDeExamen.FINAL);
