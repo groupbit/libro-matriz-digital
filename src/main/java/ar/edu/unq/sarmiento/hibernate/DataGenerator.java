@@ -56,6 +56,7 @@ public class DataGenerator {
 		alumno2.setEmail("esteban@gmail.com");
 		alumno2.setTelefono("2478547856");
 		alumno2.setDni("15698544");
+		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento", "Cap Sarm"));
 		
 		Alumno alumno3 = new Alumno();
 		alumno3.setNombre("Karina Rivarola");
