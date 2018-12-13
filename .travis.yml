@@ -1,10 +1,13 @@
 language: java
 cache:
   directories:
-  - $HOME/.m2
+  - "$HOME/.m2"
+env:
+  global:
+    secure: XFbwbqOuPCAxS8Cjd6fFiEiXWgIAS9s6EoeqLMH5qL0CfCBIK4Uv7eZADtd6t7IcUqRGOjRxDXrZEsCJ0UyvgkaKcFhGultKNZRCSV3PzhINNRmUFqzRp2yjOeb59lYIsS430JxDFweX9Np67/ZOyd9fFqebp+Le6Lejk1H2wNcK2lr51PSpDPDV5U8+GFuf+Owbr0txcW+ZnttxCogFRZ4YNu02dAQTTxkjdymfc5IgIjRxD+Fg/k8wzxtDrLMXUYqZn9X32O/byn+wF/OH2ExLyycUAtlVMhdPqJvH+zTjvIDHnd7F7i6i1ztWDLh+TcJc5AAgDaM5M/YVqy9vFSrP4rAq6CRfMVleIZPKd38R+BA2zn6dMuH6I6oGHcTKnIkpPm4ZyWpd4u68XRqX1wj7KoFhUIUqJhk0ksx1SClo74B1OF845J+h4aix06ac0FMVkmcS4XJAcTYQUtXz+uFgbdZNAxtDQijB4wH2y8bhWo0pUU5s7XoYqOoqrT5L3V9c5JQYZ6Y7nw1Vo25QNJ+UrBRbtjtm/r/xoGcrhsGIqhsluRd0R4OKQSfAySqLNvW1qycMVtTnw1uHpdo2PPBiJpn68M+6DeHon0J+Q6OJILc1skVA2PqpS7JIRF76oXh0zOWDBZglkykfz2uNO3I7s2rxT7yvQVHH6Ga+D2c=
 before_deploy:
-  - mvn clean package
-  - ./.travis/notify-deployment-start.sh
+- mvn clean package
+- "./.travis/notify-deployment-start.sh"
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIQD5FYQHOADEAF7A
@@ -19,4 +22,4 @@ deploy:
     repo: ingsw-sarmiento/libro-matriz-digital
     branch: master
   skip_cleanup: true
-after_deploy: ./.travis/notify-deployment-end.sh
+after_deploy: "./.travis/notify-deployment-end.sh"
