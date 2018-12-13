@@ -7,4 +7,9 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 @Component
 public class AlumnoHome extends Home<Alumno>{
 	private static final long serialVersionUID = 1L;
+	
+	
+	
+	
+	
 }

@@ -50,21 +50,24 @@ public class DataGenerator {
 		alumno.setEmail("juancito@gmail.com");
 		alumno.setDni("25897542");
 		alumno.setTelefono("2478558965");
-		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento"));
+		alumno.setFechaDeNacimiento(LocalDate.of(1983, 10, 23));
+		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		
 		Alumno alumno2 = new Alumno();
 		alumno2.setNombre("Esteban Cufré");
 		alumno2.setEmail("esteban@gmail.com");
 		alumno2.setTelefono("2478547856");
 		alumno2.setDni("15698544");
-		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento"));
+		alumno2.setFechaDeNacimiento(LocalDate.of(1991, 3, 15));
+		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		
 		Alumno alumno3 = new Alumno();
 		alumno3.setNombre("Karina Rivarola");
 		alumno3.setEmail("kari@gmail.com");
 		alumno3.setTelefono("2478458796");
 		alumno3.setDni("24587985");
-		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento"));
+		alumno3.setFechaDeNacimiento(LocalDate.of(1968, 7, 3));
+		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		
 		Carrera carrera = new Carrera();
 		carrera.setNombre("Programación informática");
@@ -84,7 +87,7 @@ public class DataGenerator {
 		
 		
 		
-		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento");
+		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento","Cap Sarm");
 		
 		Docente docente = new Docente();
 		docente.setNombre("Fede");
