@@ -1,8 +1,8 @@
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/ingsw-sarmiento/libro-matriz-digital.svg?columns=backlog)](https://waffle.io/ingsw-sarmiento/libro-matriz-digital)
 [![Build Status](https://travis-ci.org/ingsw-sarmiento/libro-matriz-digital.svg?branch=master)](https://travis-ci.org/ingsw-sarmiento/libro-matriz-digital)
 
-# Libro matriz digital [:link:](http://libro-matriz-digital.us-east-1.elasticbeanstalk.com)
-> Sistema de gestión para el ISFDyT nro. 138.
+# Libro matriz digital 
+> Sistema de gestión para el ISFDyT nro. 138. [:link:](http://libro-matriz-digital.us-east-1.elasticbeanstalk.com)
 
 ## Configuración necesaria para empezar a programar
 
