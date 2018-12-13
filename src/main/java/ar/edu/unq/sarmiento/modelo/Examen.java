@@ -8,10 +8,9 @@ import org.hibernate.annotations.Type;
 
 @Entity
 public class Examen extends Persistible{
-	@Enumerated(EnumType.STRING)
 	private TipoDeExamen tipoDeExamen;
 	private float calificacion;
-	private boolean estuvoausente;
+	private boolean ausente;
 	public TipoDeExamen getTipoDeExamen() {
 		return tipoDeExamen;
 	}
@@ -24,10 +23,10 @@ public class Examen extends Persistible{
 	public void setCalificacion(float calificacion) {
 		this.calificacion = calificacion;
 	}
-	public boolean isEstuvoausente() {
-		return estuvoausente;
+	public boolean isAusente() {
+		return ausente;
 	}
-	public void setEstuvoausente(boolean estuvoausente) {
-		this.estuvoausente = estuvoausente;
+	public void setAusente(boolean estuvoausente) {
+		this.ausente = estuvoausente;
 	}
 }

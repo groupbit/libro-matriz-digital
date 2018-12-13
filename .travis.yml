@@ -1,1 +1,19 @@
 language: java
+cache:
+  directories:
+  - $HOME/.m2
+before_deploy: mvn clean package
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: AKIAIQD5FYQHOADEAF7A
+  secret_access_key:
+    secure: gI8sjGNXeZMWElB6jQdEEXdqz15hS3Tt7sTi1di3MD54vLnXxIHv7DTkFBTvqvUL9byrjqVgPJLgP3mWX8YMuULdEiqEIIWdoHIFu3LHhhohrZEHOhGTfRksCk8QZhGwbNxZOCU/5ojNn8mfGd/JK1t6yeQhWOZZ5hVTcjlgFj+lasSQ1XQI1/RoVYXcBY3YF2pkdlBVRP3C7kkmCenS8dtu1EVLP+02HHkvSxUIpz/QgEUVUCD7Akc5ZfJxOWWBr77b6au2Fa4yyzpxzH+4T5L0uxAx6PJV0Ye6z3YjNizFEzo70c4nHfabGyrM8I7rog7OJRJDLRa1m1GiqZzvm7l0pj6mZbPiJK+EWt/1amlr2Ug1m3ve+sWgOFZRKHuUjYAJ7Te/rhTKdsavrX5ugL0eHJu965ZaW2dJwDFOnXGIyWZP2Mi0yU+RED6zHITLrek+nrRi/GcsF6MqSnEO3EKGuyDEZv+nkelkeM6Xdy6HjcBFBeKQtvfuqN00xB5w9ZJcI1ORkYRkkcyV2hKJL/PRk78J8o/9D6rZXO/84uYEyA50faoXGESUjxtA8iQUBIViNeF+8uT89TMK8QWrKTkfYwdEOzHXWNGi57t9QfBVW2efG5yYk13ce+cIhduw/IEwR2Rw94Y7NW/EQePIBbtNryzdNBBa+bPrOeYH1CU=
+  region: us-east-1
+  app: libro-matriz-digital
+  env: devenv
+  zip_file: target/libro-matriz-digital.war
+  bucket_name: libro-matriz-digital-deploy
+  on:
+    repo: ingsw-sarmiento/libro-matriz-digital
+    branch: master
+  skip_cleanup: true

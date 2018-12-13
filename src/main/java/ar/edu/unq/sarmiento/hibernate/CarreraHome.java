@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
-import ar.edu.unq.sarmiento.modelo.Materia;
 
 @Component
 public class CarreraHome extends Home<Carrera> {
