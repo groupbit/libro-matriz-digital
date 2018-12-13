@@ -99,19 +99,19 @@ public class DataGenerator {
 		materia.setNombre("Hibernate");
 		materia.setAnioEnCarrera(2);
 		materia.setDocente("Jorgelina Ceriani");
-		materia.setEsPromocionable(true);
+		materia.setPromocionable(true);
 		carrera.agregarMateria(materia);
 		
 		Materia materia2 = new Materia();
 		materia2.setNombre("Ingenieria de Software");
 		materia2.setAnioEnCarrera(3);
 		materia2.setDocente("Federico Aloi");
-		materia2.setEsPromocionable(false);
+		materia2.setPromocionable(false);
 		carrera.agregarMateria(materia2);
 		
 		
 		materia.setAnioEnCarrera(2);
-		materia.setEsPromocionable(true);
+		materia.setPromocionable(true);
 		
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia);
