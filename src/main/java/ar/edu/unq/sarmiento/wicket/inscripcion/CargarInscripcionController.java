@@ -15,7 +15,6 @@ import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Direccion;
-import ar.edu.unq.sarmiento.modelo.GeneroEnum;
 
 
 @Service
@@ -49,17 +48,14 @@ public class CargarInscripcionController implements Serializable{
 	private String codigoPostal;
 	private String localidad;
 	private String partido;
-	private List<GeneroEnum>listaGenero=new ArrayList<>();
-	private GeneroEnum generoEnum;
 	
 	public CargarInscripcionController(){
-		this.setGenero();
 	}
 	
 	public void inscribir(){
 		alumno=new Alumno();
 		alumno.setNombre(this.getNombre());
-		alumno.setGenero(this.getGeneroEnum().getString());
+		alumno.setGenero(this.getGenero());
 		alumno.setDni(this.getDni());
 		alumno.setFechaDeNacimiento(this.getFechaNacimiento());
 		alumno.setLugarDeNacimiento(this.getLugarNacimiento());
@@ -268,23 +264,6 @@ public class CargarInscripcionController implements Serializable{
 		this.alumno = alumno;
 	}
 	
-	public void setGenero(){
-		this.listaGenero.add(GeneroEnum.FEMENINO);
-		this.listaGenero.add(GeneroEnum.MASCULINO);
-		this.listaGenero.add(GeneroEnum.OTROS);
-	}
-
-	public List<GeneroEnum> getListaGenero() {
-		return listaGenero;
-	}
-    
-	public GeneroEnum getGeneroEnum() {
-		return generoEnum;
-	}
-	
-	public void setGeneroEnum(GeneroEnum generoEnum){
-		this.generoEnum=generoEnum;
-	}
 	
 	
 	
