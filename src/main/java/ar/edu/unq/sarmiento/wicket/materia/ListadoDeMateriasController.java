@@ -2,6 +2,7 @@ package ar.edu.unq.sarmiento.wicket.materia;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,13 @@ public class ListadoDeMateriasController implements Serializable{
 
 	public String convertirString(Boolean promocion) {
 		return promocion ? "Sí" : "No";
+	}
+	
+
+	public String getCorrelativas(Materia materia) {
+		return materia.getCorrelativas().stream()
+				  .map(m -> m.getNombre())
+				  .collect(Collectors.joining(", "));
 	}
 	
 }
