@@ -11,6 +11,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 import ar.edu.unq.sarmiento.wicket.utils.BooleanToSiNoRenderer;
+import ar.edu.unq.sarmiento.wicket.utils.SiNoDropDownChoice;
 
 public class AgregarMateriaPage extends LayoutPage {
 	/**
@@ -43,9 +44,7 @@ public class AgregarMateriaPage extends LayoutPage {
 		};
 
 		altaMateria.add(new TextField<>("nombre", new PropertyModel<>(agregarMateriasController, "nombre")));
-		altaMateria.add(
-				new DropDownChoice<>("promocion", new PropertyModel<>(agregarMateriasController, "promocionable"), 
-						BooleanToSiNoRenderer.opciones(), new BooleanToSiNoRenderer()));
+		altaMateria.add(new SiNoDropDownChoice("promocion", new PropertyModel<>(agregarMateriasController, "promocionable")));
 		altaMateria.add(new TextField<>("docente", new PropertyModel<>(agregarMateriasController, "docente")));
 
 		altaMateria

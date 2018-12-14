@@ -1,6 +1,5 @@
 package ar.edu.unq.sarmiento.wicket.utils;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
@@ -22,9 +21,5 @@ public class BooleanToSiNoRenderer implements IChoiceRenderer<Boolean> {
 	@Override
 	public Boolean getObject(String id, IModel<? extends List<? extends Boolean>> choices) {
 		return Boolean.valueOf(id);
-	}
-
-	public static List<Boolean> opciones() {
-		return Arrays.asList(false, true);
 	}
 }
