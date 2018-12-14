@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.materia;
 
-import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import java.util.Arrays;
+
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -9,6 +10,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
+import ar.edu.unq.sarmiento.wicket.utils.BooleanToSiNoRenderer;
+import ar.edu.unq.sarmiento.wicket.utils.SiNoDropDownChoice;
 
 public class AgregarMateriaPage extends LayoutPage {
 	/**
@@ -41,8 +44,7 @@ public class AgregarMateriaPage extends LayoutPage {
 		};
 
 		altaMateria.add(new TextField<>("nombre", new PropertyModel<>(agregarMateriasController, "nombre")));
-		altaMateria
-				.add(new TextField<>("promocion", new PropertyModel<>(agregarMateriasController, "isPromocionable")));
+		altaMateria.add(new SiNoDropDownChoice("promocion", new PropertyModel<>(agregarMateriasController, "promocionable")));
 		altaMateria.add(new TextField<>("docente", new PropertyModel<>(agregarMateriasController, "docente")));
 
 		altaMateria
@@ -51,5 +53,4 @@ public class AgregarMateriaPage extends LayoutPage {
 
 		this.add(altaMateria);
 	};
-
 }
