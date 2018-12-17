@@ -1,8 +1,6 @@
 package ar.edu.unq.sarmiento.hibernate;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,10 +12,10 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.Direccion;
-import ar.edu.unq.sarmiento.modelo.Docente;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
 import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.modelo.TipoDeExamen;
 
 @Component
 @Transactional
@@ -29,8 +27,6 @@ public class DataGenerator {
 	private CarreraHome carreraHome;
 	@Autowired
 	private CursadaHome cursadaHome;
-	@Autowired
-	private DocenteHome docenteHome;
 	@Autowired
 	private ExamenHome examenHome;
 	@Autowired
@@ -85,15 +81,10 @@ public class DataGenerator {
 		carrera3.setResolucion("5860/16");
 		carrera3.setArchivada(true);
 		
-		
-		
 		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento","Cap Sarm");
 		
-		Docente docente = new Docente();
-		docente.setNombre("Fede");
-		
 		Examen examen = new Examen();
-		examen.setExamenFinal("Examen final");
+		examen.setTipoDeExamen(TipoDeExamen.FINAL);
 		
 		Materia materia = new Materia();
 		materia.setNombre("Hibernate");
@@ -102,19 +93,28 @@ public class DataGenerator {
 		materia.setPromocionable(true);
 		carrera.agregarMateria(materia);
 		
+		Materia materia3 = new Materia();
+		materia3.setNombre("Estrategía de persistencia");
+		materia3.setAnioEnCarrera(3);
+		materia3.setDocente("Pablo Murias");
+		materia3.setPromocionable(true);
+		carrera.agregarMateria(materia3);
+		
 		Materia materia2 = new Materia();
 		materia2.setNombre("Ingenieria de Software");
+		materia2.addCorrelativa(materia);
+		materia2.addCorrelativa(materia3);
 		materia2.setAnioEnCarrera(3);
 		materia2.setDocente("Federico Aloi");
 		materia2.setPromocionable(false);
 		carrera.agregarMateria(materia2);
 		
 		
-		materia.setAnioEnCarrera(2);
-		materia.setPromocionable(true);
+		materia3.setAnioEnCarrera(2);
+		materia3.setPromocionable(true);
 		
 		Cursada cursada = new Cursada();
-		cursada.setMateria(materia);
+		cursada.setMateria(materia3);
 		
 		EstudioCursado titulo= new EstudioCursado();
 		titulo.setAnioEgreso(2016);
@@ -125,9 +125,8 @@ public class DataGenerator {
 		alumnoHome.saveOrUpdate(alumno2);
 		alumnoHome.saveOrUpdate(alumno3);
 		carreraHome.saveOrUpdate(carrera);
-		docenteHome.saveOrUpdate(docente);
 		examenHome.saveOrUpdate(examen);
-		materiaHome.saveOrUpdate(materia);
+		materiaHome.saveOrUpdate(materia3);
 		materiaHome.saveOrUpdate(materia2);
 		direccionHome.saveOrUpdate(direccion);
 		cursadaHome.saveOrUpdate(cursada);

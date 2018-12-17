@@ -27,7 +27,7 @@ public class AgregarMateriaController implements Serializable {
 	private Materia materia;
 	private Carrera carrera;
 	private String nombre;
-	private boolean promocionable;
+	private boolean promocionable = false;
 	private int anioEnCarrera;
 	private String docente;
 

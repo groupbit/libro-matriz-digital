@@ -45,6 +45,7 @@ public class ListadoDeMateriasPage extends LayoutPage {
 				item.add(new Label("promocionable",
 						controller.convertirString(item.getModelObject().isPromocionable())));
 				item.add(new Label("docente", new PropertyModel<>(materia, "docente")));
+				item.add(new Label("correlativas", controller.getCorrelativas(item.getModelObject())));
 
 			}
 
