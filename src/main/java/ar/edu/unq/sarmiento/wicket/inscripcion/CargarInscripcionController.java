@@ -15,6 +15,7 @@ import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Direccion;
+import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 
 
 @Service
@@ -48,6 +49,10 @@ public class CargarInscripcionController implements Serializable{
 	private String codigoPostal;
 	private String localidad;
 	private String partido;
+	private EstudioCursado estudioCursado;
+	private int anioEgreso;
+	private String institucion;
+	private String distrito;
 	
 	public CargarInscripcionController(){
 	}
@@ -73,13 +78,20 @@ public class CargarInscripcionController implements Serializable{
 		dir.setLocalidad(this.getLocalidad());
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
+		EstudioCursado estudio= new EstudioCursado();
+		estudio.setAnioEgreso(this.getAnioEgreso());
+		estudio.setInstitucion(this.getInstitucion());
+		estudio.setDistrito(this.getDistrito());
 		alumno.setDireccion(dir);
+		alumno.setTitulo(estudio);
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 		
 		 
 	}
   
+	
+
 	public Direccion getDireccion() {
 		return direccion;
 	}
@@ -263,8 +275,39 @@ public class CargarInscripcionController implements Serializable{
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
-	
-	
+
+
+	public EstudioCursado getEstudioCursado() {
+		return estudioCursado;
+	}
+
+	public void setEstudioCursado(EstudioCursado estudioCursado) {
+		this.estudioCursado = estudioCursado;
+	}
+
+	public void setAnioEgreso(int anioEgreso) {
+		this.anioEgreso = anioEgreso;
+	}
+
+	public void setInstitucion(String institucion) {
+		this.institucion = institucion;
+	}
+
+	public void setDistrito(String distrito) {
+		this.distrito = distrito;
+	}
+
+	private String getDistrito() {
+		return distrito;
+	}
+
+	private String getInstitucion() {
+		return institucion;
+	}
+
+	private int getAnioEgreso() {
+		return anioEgreso;
+	}
 	
 	
 	
