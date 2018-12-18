@@ -15,8 +15,9 @@
 								id="nombre" placeholder="Ileana">
 						</div>
 					</div>
- 					<div class="form-group">
-						<label for="genero" class="col-md-2 control-label">Género </label>
+					<div class="form-group">
+						<label for="genero" class="col-md-2 control-label">Género
+						</label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="genero"
 								wicket:id="genero">
@@ -29,12 +30,13 @@
 							<input type="text" class="form-control" id="dni" wicket:id="dni">
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="fechaNacimiento" class="col-md-2 control-label">Fecha de nacimiento </label>
-					<div class="col-md-9">
-						<input type="text" class="form-control" id="fechaNacimiento"
-							wicket:id="fechaNacimiento" placeholder="30/10/1991">
+					<div class="form-group">
+						<label for="fechaNacimiento" class="col-md-2 control-label">Fecha
+							de nacimiento </label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="fechaNacimiento"
+								wicket:id="fechaNacimiento" placeholder="30/10/1991">
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="lugarNacimiento" class="col-md-2 control-label">Lugar
@@ -134,16 +136,16 @@
 								wicket:id="localidad">
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="partido" class="col-md-2 control-label">Partido </label>
-					<div class="col-md-9">
-						<input type="text" class="form-control" id="partido"
-							wicket:id="partido">
-					</div>
-					
 					<div class="form-group">
-						<label for="codigoPostal" class="col-md-2 control-label">Código
+						<label for="partido" class="col-md-2 control-label">Partido
+						</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="partido"
+								wicket:id="partido">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="codigoPostal" class="col-md-2 control-label">Codigo
 							postal </label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="codigoPostal"
@@ -151,8 +153,24 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="institucion" class="col-md-2 control-label">Nombre institución
-						 </label>
+						<label for="nombreTitulo" class="col-md-2 control-label">Título nivel medio o polimodal
+							 </label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="nombreTitulo"
+								wicket:id="nombreTitulo">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="anio" class="col-md-2 control-label">Año
+							egreso </label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="anio"
+								wicket:id="anio">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="institucion" class="col-md-2 control-label">Escuela </label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="institucion"
 								wicket:id="institucion">
@@ -160,29 +178,18 @@
 					</div>
 					<div class="form-group">
 						<label for="distrito" class="col-md-2 control-label">Distrito
-						 </label>
+							 </label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="distrito"
 								wicket:id="distrito">
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="codigoPostal" class="col-md-2 control-label">Código
-							postal </label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="codigoPostal"
-								wicket:id="codigoPostal">
-						</div>
-					</div>
-
-
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-success">Guardar</button>
-						<button class="btn btn-default" wicket:id="cancelar">Cancelar</button>
-					</div>
-				</form>
+			<div class="text-center">
+				<button type="submit" class="btn btn-success">Guardar</button>
+				<button class="btn btn-default" wicket:id="cancelar">Cancelar</button>
+			</div>
+			</form>
 			</div>
 		</div>
 	</div>

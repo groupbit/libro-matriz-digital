@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
+import ar.edu.unq.sarmiento.hibernate.EstudioCursadoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
@@ -29,6 +30,8 @@ public class CargarInscripcionController implements Serializable{
 	private AlumnoHome alumnoHome;
 	@Autowired
 	private DireccionHome direccionHome;
+	@Autowired
+	private EstudioCursadoHome estudioCursadoHome;
 	private String nombre;
 	private String genero;
 	private String dni;
@@ -53,6 +56,7 @@ public class CargarInscripcionController implements Serializable{
 	private int anioEgreso;
 	private String institucion;
 	private String distrito;
+	private String nombreTitulo;
 	
 	public CargarInscripcionController(){
 	}
@@ -82,8 +86,10 @@ public class CargarInscripcionController implements Serializable{
 		estudio.setAnioEgreso(this.getAnioEgreso());
 		estudio.setInstitucion(this.getInstitucion());
 		estudio.setDistrito(this.getDistrito());
+		estudio.setNombreTitulo(this.getNombreTitulo());
 		alumno.setDireccion(dir);
 		alumno.setTitulo(estudio);
+		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 		
@@ -297,17 +303,26 @@ public class CargarInscripcionController implements Serializable{
 		this.distrito = distrito;
 	}
 
-	private String getDistrito() {
+	public String getDistrito() {
 		return distrito;
 	}
 
-	private String getInstitucion() {
+	public String getInstitucion() {
 		return institucion;
 	}
 
-	private int getAnioEgreso() {
+	public int getAnioEgreso() {
 		return anioEgreso;
 	}
+
+	public String getNombreTitulo() {
+		return nombreTitulo;
+	}
+
+	public void setNombreTitulo(String nombreTitulo) {
+		this.nombreTitulo = nombreTitulo;
+	}
+	
 	
 	
 	
