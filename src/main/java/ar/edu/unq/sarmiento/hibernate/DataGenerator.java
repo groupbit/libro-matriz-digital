@@ -109,13 +109,13 @@ public class DataGenerator {
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia3);
 		cursada.setEstado(EstadoCursada.CURSANDO);
-		cursada.setAnioEnQueSeCursoLaMateria(2018);
+		cursada.setAnio(2018);
 		cursada.setNotaFinal(7);
 		
 		Cursada cursada1 = new Cursada();
 		cursada1.setMateria(materia2);
 		cursada1.setEstado(EstadoCursada.CURSANDO);
-		cursada1.setAnioEnQueSeCursoLaMateria(2018);
+		cursada1.setAnio(2018);
 		cursada1.setNotaFinal(7);
 	
 		Alumno alumno4 = new Alumno();

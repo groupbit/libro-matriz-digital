@@ -97,6 +97,11 @@ public class Alumno extends Persistible {
 		return cursadas;
 	}
 
+	
+	public void setCursadas(List<Cursada> cursadas) {
+		this.cursadas = cursadas;
+	}
+
 	public void addCursada(Cursada cursada) {
 		this.cursadas.add(cursada);
 	}
