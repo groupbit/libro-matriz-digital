@@ -10,22 +10,20 @@ public class Cursada extends Persistible {
 	public Materia materia;
 	public EstadoCursada estado;
 	public int notaFinal;
-	public int anioEnQueSeCursoLaMateria;
-	
+	public int añioEnQueSeCursoLaMateria;
 	public int getNotaFinal() {
 		return notaFinal;
 	}
-
 	public void setNotaFinal(int notaFinal) {
 		this.notaFinal = notaFinal;
 	}
 
 	public int getAnioEnQueSeCursoLaMateria() {
-		return anioEnQueSeCursoLaMateria;
+		return añioEnQueSeCursoLaMateria;
 	}
 
 	public void setAnioEnQueSeCursoLaMateria(int anioEnQueSeCursoLaMateria) {
-		this.anioEnQueSeCursoLaMateria = anioEnQueSeCursoLaMateria;
+		this.añioEnQueSeCursoLaMateria = anioEnQueSeCursoLaMateria;
 	}
 
 	public Materia getMateria() {

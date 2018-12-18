@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -20,8 +20,9 @@ public class Alumno extends Persistible {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Direccion direccion;
 	private Carrera carrera;
-	@ManyToMany 
-	private List<Cursada> cursada = new ArrayList<>();
+	@OneToMany
+	@JoinColumn(name = "alumno_id")
+	private List<Cursada> cursadas = new ArrayList<>();
 	private String dni;
 	private LocalDate fechaDeNacimiento;
 	private String lugarDeNacimiento;
@@ -53,7 +54,7 @@ public class Alumno extends Persistible {
 		this.nombre=nombre;
 		this.direccion=direccion;
 		this.carrera=carrera;
-		this.cursada.add(cursada);
+		this.cursadas.add(cursada);
 		this.dni=dni;
 		this.fechaDeNacimiento=fechaNacimiento;
 		this.lugarDeNacimiento=lugarDeNacimiento;
@@ -92,12 +93,12 @@ public class Alumno extends Persistible {
 		this.carrera = carrera;
 	}
 
-	public List<Cursada> getCursada() {
-		return cursada;
+	public List<Cursada> getCursadas() {
+		return cursadas;
 	}
 
-	public void setCursada(Cursada cursada) {
-		this.cursada.add(cursada);
+	public void addCursada(Cursada cursada) {
+		this.cursadas.add(cursada);
 	}
 	
 	public String getDni() {

@@ -58,14 +58,6 @@ public class DataGenerator {
 		alumno2.setFechaDeNacimiento(LocalDate.of(1991, 3, 15));
 		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		
-		Alumno alumno3 = new Alumno();
-		alumno3.setNombre("Karina Rivarola");
-		alumno3.setEmail("kari@gmail.com");
-		alumno3.setTelefono("2478458796");
-		alumno3.setDni("24587985");
-		alumno3.setFechaDeNacimiento(LocalDate.of(1968, 7, 3));
-		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
-		
 		Carrera carrera = new Carrera();
 		carrera.setNombre("Programación informática");
 		carrera.setDuracion(5);
@@ -117,15 +109,32 @@ public class DataGenerator {
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia3);
 		cursada.setEstado(EstadoCursada.CURSANDO);
-		cursada.setAnioEnQueSeCursoLaMateria(2);
+		cursada.setAnioEnQueSeCursoLaMateria(2018);
 		cursada.setNotaFinal(7);
 		
 		Cursada cursada1 = new Cursada();
 		cursada1.setMateria(materia2);
 		cursada1.setEstado(EstadoCursada.CURSANDO);
-		cursada1.setAnioEnQueSeCursoLaMateria(2);
+		cursada1.setAnioEnQueSeCursoLaMateria(2018);
 		cursada1.setNotaFinal(7);
+	
+		Alumno alumno4 = new Alumno();
+		alumno4.setNombre("Nahu");
+		alumno4.setEmail("NahuelMartinez@gmail.com");
+		alumno4.setTelefono("2478458796");
+		alumno4.setDni("24587985");
+		alumno4.setFechaDeNacimiento(LocalDate.of(1995, 12, 2));
+		alumno4.setDireccion(new Direccion("cabofosatt", 256, "", "2752", "Capitán Sarmiento","Cap Sarm"));
+		alumno4.addCursada(cursada1);
 		
+		Alumno alumno3 = new Alumno();
+		alumno3.setNombre("Karina Rivarola");
+		alumno3.setEmail("kari@gmail.com");
+		alumno3.setTelefono("2478458796");
+		alumno3.setDni("24587985");
+		alumno3.setFechaDeNacimiento(LocalDate.of(1968, 7, 3));
+		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
+		alumno3.addCursada(cursada);
 		EstudioCursado titulo= new EstudioCursado();
 		titulo.setAnioEgreso(2016);
 		alumno3.setTitulo(titulo);
@@ -134,6 +143,7 @@ public class DataGenerator {
 		alumnoHome.saveOrUpdate(alumno);
 		alumnoHome.saveOrUpdate(alumno2);
 		alumnoHome.saveOrUpdate(alumno3);
+		alumnoHome.saveOrUpdate(alumno4);
 		carreraHome.saveOrUpdate(carrera);
 		examenHome.saveOrUpdate(examen);
 		materiaHome.saveOrUpdate(materia3);
