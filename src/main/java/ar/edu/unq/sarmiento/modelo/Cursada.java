@@ -1,11 +1,7 @@
 package ar.edu.unq.sarmiento.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 @Entity
 public class Cursada extends Persistible {
@@ -13,11 +9,25 @@ public class Cursada extends Persistible {
 	@OneToOne
 	public Materia materia;
 	public EstadoCursada estado;
-	@Transient
-	private List<Alumno> quienesCursaron = new ArrayList<>();
-	@Transient
-	private List<Examen> examenes = new ArrayList<>();
+	public int notaFinal;
+	public int anioEnQueSeCursoLaMateria;
 	
+	public int getNotaFinal() {
+		return notaFinal;
+	}
+
+	public void setNotaFinal(int notaFinal) {
+		this.notaFinal = notaFinal;
+	}
+
+	public int getAnioEnQueSeCursoLaMateria() {
+		return anioEnQueSeCursoLaMateria;
+	}
+
+	public void setAnioEnQueSeCursoLaMateria(int anioEnQueSeCursoLaMateria) {
+		this.anioEnQueSeCursoLaMateria = anioEnQueSeCursoLaMateria;
+	}
+
 	public Materia getMateria() {
 		return materia;
 	}
@@ -33,21 +43,5 @@ public class Cursada extends Persistible {
 	public void setEstado(EstadoCursada estado) {
 		this.estado = estado;
 	}
-
-	public List<Alumno> getQuienesCursaron() {
-		return quienesCursaron;
-	}
-
-	public void setQuienesCursaron(List<Alumno> quienesCursaron) {
-		this.quienesCursaron = quienesCursaron;
-	}
-
-	public List<Examen> getExamenes() {
-		return examenes;
-	}
-
-	public void setExamenes(List<Examen> examenes) {
-		this.examenes = examenes;
-	}
-	
 }
+	

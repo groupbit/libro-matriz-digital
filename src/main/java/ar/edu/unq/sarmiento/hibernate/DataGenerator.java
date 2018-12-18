@@ -12,6 +12,7 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.Direccion;
+import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
 import ar.edu.unq.sarmiento.modelo.Materia;
@@ -115,6 +116,15 @@ public class DataGenerator {
 		
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia3);
+		cursada.setEstado(EstadoCursada.CURSANDO);
+		cursada.setAnioEnQueSeCursoLaMateria(2);
+		cursada.setNotaFinal(7);
+		
+		Cursada cursada1 = new Cursada();
+		cursada1.setMateria(materia2);
+		cursada1.setEstado(EstadoCursada.CURSANDO);
+		cursada1.setAnioEnQueSeCursoLaMateria(2);
+		cursada1.setNotaFinal(7);
 		
 		EstudioCursado titulo= new EstudioCursado();
 		titulo.setAnioEgreso(2016);
@@ -130,6 +140,7 @@ public class DataGenerator {
 		materiaHome.saveOrUpdate(materia2);
 		direccionHome.saveOrUpdate(direccion);
 		cursadaHome.saveOrUpdate(cursada);
+		cursadaHome.saveOrUpdate(cursada1);
 		estudioCursadoHome.saveOrUpdate(titulo);
 		carreraHome.saveOrUpdate(carrera3);
 		carreraHome.saveOrUpdate(carrera2);

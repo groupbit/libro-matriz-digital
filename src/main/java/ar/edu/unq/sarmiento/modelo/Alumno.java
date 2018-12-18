@@ -2,10 +2,12 @@ package ar.edu.unq.sarmiento.modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -18,7 +20,8 @@ public class Alumno extends Persistible {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Direccion direccion;
 	private Carrera carrera;
-	private Cursada cursada;
+	@ManyToMany 
+	private List<Cursada> cursada = new ArrayList<>();
 	private String dni;
 	private LocalDate fechaDeNacimiento;
 	private String lugarDeNacimiento;
@@ -50,7 +53,7 @@ public class Alumno extends Persistible {
 		this.nombre=nombre;
 		this.direccion=direccion;
 		this.carrera=carrera;
-		this.cursada=cursada;
+		this.cursada.add(cursada);
 		this.dni=dni;
 		this.fechaDeNacimiento=fechaNacimiento;
 		this.lugarDeNacimiento=lugarDeNacimiento;
@@ -89,12 +92,12 @@ public class Alumno extends Persistible {
 		this.carrera = carrera;
 	}
 
-	public Cursada getCursada() {
+	public List<Cursada> getCursada() {
 		return cursada;
 	}
 
 	public void setCursada(Cursada cursada) {
-		this.cursada = cursada;
+		this.cursada.add(cursada);
 	}
 	
 	public String getDni() {
