@@ -1,7 +1,6 @@
 package ar.edu.unq.sarmiento.modelo;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 
 @Entity
 public class EstudioCursado extends Persistible {
