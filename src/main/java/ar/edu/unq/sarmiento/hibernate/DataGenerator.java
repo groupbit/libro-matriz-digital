@@ -117,7 +117,19 @@ public class DataGenerator {
 		cursada1.setEstado(EstadoCursada.CURSANDO);
 		cursada1.setAnio(2018);
 		cursada1.setNotaFinal(7);
+		
+		Cursada cursada2 = new Cursada();
+		cursada2.setMateria(materia);
+		cursada2.setEstado(EstadoCursada.APROBADA_PROMOCION);
+		cursada2.setAnio(2019);
+		cursada2.setNotaFinal(8);
 	
+		Cursada cursada3 = new Cursada();
+		cursada3.setMateria(materia3);
+		cursada3.setEstado(EstadoCursada.APROBADA_PROMOCION);
+		cursada3.setAnio(2017);
+		cursada3.setNotaFinal(7);
+		
 		Alumno alumno4 = new Alumno();
 		alumno4.setNombre("Nahu");
 		alumno4.setEmail("NahuelMartinez@gmail.com");
@@ -126,6 +138,8 @@ public class DataGenerator {
 		alumno4.setFechaDeNacimiento(LocalDate.of(1995, 12, 2));
 		alumno4.setDireccion(new Direccion("cabofosatt", 256, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		alumno4.addCursada(cursada1);
+		alumno4.addCursada(cursada2);
+		alumno4.addCursada(cursada3);
 		
 		Alumno alumno3 = new Alumno();
 		alumno3.setNombre("Karina Rivarola");
@@ -151,6 +165,8 @@ public class DataGenerator {
 		direccionHome.saveOrUpdate(direccion);
 		cursadaHome.saveOrUpdate(cursada);
 		cursadaHome.saveOrUpdate(cursada1);
+		cursadaHome.saveOrUpdate(cursada2);
+		cursadaHome.saveOrUpdate(cursada3);
 		estudioCursadoHome.saveOrUpdate(titulo);
 		carreraHome.saveOrUpdate(carrera3);
 		carreraHome.saveOrUpdate(carrera2);
