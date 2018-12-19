@@ -36,7 +36,7 @@ public class Alumno extends Persistible {
 	private String obraSocial;
 	@OneToMany
 	private List<EstudioCursado> otrosTitulos;
-	@OneToOne//(cascade=CascadeType.ALL)
+	@OneToOne
 	private EstudioCursado titulo;
 
 	public Alumno() {
@@ -233,20 +233,4 @@ public class Alumno extends Persistible {
 		this.otrosTitulos = otros_titulos;
 	}
 
-//	public int getAnioDeEgreso() {
-//		return this.titulo.getAnioEgreso();
-//	}
-//
-//	public void setAnioDeEgreso(int anioEgreso) {
-//		this.titulo.setAnioEgreso(anioEgreso);
-//	}
-//
-//	public String getInstitucion() {
-//		return this.titulo.getNombreTitulo();
-//	}
-//
-//	public void setInstitucion(String institucion) {
-//		this.titulo.setInstitucion(institucion);
-//	}
-	
 }
