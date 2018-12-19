@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
+import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 
 
@@ -28,6 +31,9 @@ public class CargarInscripcionController implements Serializable{
 	private AlumnoHome alumnoHome;
 	@Autowired
 	private DireccionHome direccionHome;
+	@Autowired
+	private CarreraHome carreraHome;
+	
 	private String nombre;
 	private String genero;
 	private String dni;
@@ -49,6 +55,8 @@ public class CargarInscripcionController implements Serializable{
 	private String localidad;
 	private String partido;
 	
+	private Carrera elegida;
+	
 	public CargarInscripcionController(){
 	}
 	
@@ -66,6 +74,7 @@ public class CargarInscripcionController implements Serializable{
 		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
+		alumno.setCarrera(this.getElegida());
 		Direccion dir=new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
@@ -263,8 +272,21 @@ public class CargarInscripcionController implements Serializable{
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
-	
-	
+
+	public Carrera getElegida() {
+		return elegida;
+	}
+
+	public void setElegida(Carrera elegida) {
+		this.elegida = elegida;
+	}
+	public List<Carrera> carrerasActivadas(){
+		return  carreraHome.all().stream().filter(c->c.getArchivada()== true).collect(Collectors.toList());
+	}
+	public void confirmarCarrera(){
+		this.getAlumno().setCarrera(this.elegida);
+		alumnoHome.saveOrUpdate(alumno);
+	}
 	
 	
 	
