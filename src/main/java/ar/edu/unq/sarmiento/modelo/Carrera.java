@@ -21,7 +21,6 @@ public class Carrera extends Persistible {
 	private String nombre;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "carrera_id")
-	private List<Alumno> alumnosInscriptos = new ArrayList<>();
 	private List<Materia> listadoMaterias = new ArrayList<>();
 	private Boolean archivada= false;
 	private String resolucion;
@@ -45,13 +44,7 @@ public class Carrera extends Persistible {
 		this.nombre = nombre;
 	}
 
-	public List<Alumno> getAlumnosInscriptos() {
-		return alumnosInscriptos;
-	}
 
-	public void setAlumnosInscriptos(List<Alumno> alumnosInscriptos) {
-		this.alumnosInscriptos = alumnosInscriptos;
-	}
 
 	public List<Materia> getListadoMaterias() {
 		return listadoMaterias;
