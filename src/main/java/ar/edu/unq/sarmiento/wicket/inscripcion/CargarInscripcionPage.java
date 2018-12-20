@@ -34,7 +34,6 @@ public class CargarInscripcionPage extends LayoutPage{
 			@Override
 			public void onSubmit(){
 				CargarInscripcionPage.this.cargarInscripcionController.inscribir();
-				CargarInscripcionPage.this.cargarInscripcionController.confirmarCarrera();
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		
@@ -57,17 +56,17 @@ public class CargarInscripcionPage extends LayoutPage{
 		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"localidad")));
 		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"partido")));
 		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"codigoPostal")));
-		formulario.add(new DropDownChoice<>(
-				// id
-				"materia",
-				// binding del valor
-				new PropertyModel<>(cargarInscripcionController, "elegida"),
-				// binding de la lista de items
-				new PropertyModel<>(cargarInscripcionController, "carrerasActivadas"),
-				// que se muestra de cada item
-				new ChoiceRenderer<>("nombre")));		
-		this.add(formulario);
-		
+//		formulario.add(new DropDownChoice<>(
+//				// id
+//				"materia",
+//				// binding del valor
+//				new PropertyModel<>(cargarInscripcionController, "carreraelegida"),
+//				// binding de la lista de items
+//				new PropertyModel<>(cargarInscripcionController, "carrerasActivadas"),
+//				// que se muestra de cada item
+//				new ChoiceRenderer<>("nombre")));		
+//		this.add(formulario);
+//		
 		formulario.add(new Link<String>("cancelar") {
 
 			private static final long serialVersionUID = 505927122883116822L;

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,6 +20,7 @@ public class Alumno extends Persistible {
 	private String nombre;
 	@OneToOne(cascade=CascadeType.ALL)
 	private Direccion direccion;
+	@ManyToOne
 	private Carrera carrera;
 	@OneToMany
 	@JoinColumn(name = "alumno_id")

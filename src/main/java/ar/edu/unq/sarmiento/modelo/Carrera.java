@@ -19,7 +19,8 @@ public class Carrera extends Persistible {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String nombre;
-	@Transient
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "carrera_id")
 	private List<Alumno> alumnosInscriptos = new ArrayList<>();
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "carrera_id")

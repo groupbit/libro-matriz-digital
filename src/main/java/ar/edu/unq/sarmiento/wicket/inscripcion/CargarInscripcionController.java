@@ -55,7 +55,7 @@ public class CargarInscripcionController implements Serializable{
 	private String localidad;
 	private String partido;
 	
-	private Carrera elegida;
+	private Carrera carreraelegida;
 	
 	public CargarInscripcionController(){
 	}
@@ -74,7 +74,6 @@ public class CargarInscripcionController implements Serializable{
 		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
-		alumno.setCarrera(this.getElegida());
 		Direccion dir=new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
@@ -83,6 +82,7 @@ public class CargarInscripcionController implements Serializable{
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
 		alumno.setDireccion(dir);
+	//	alumno.setCarrera(getCarreraelegida());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 		
@@ -273,24 +273,16 @@ public class CargarInscripcionController implements Serializable{
 		this.alumno = alumno;
 	}
 
-	public Carrera getElegida() {
-		return elegida;
+
+	public Carrera getCarreraelegida() {
+		return carreraelegida;
 	}
 
-	public void setElegida(Carrera elegida) {
-		this.elegida = elegida;
+	public void setCarreraelegida(Carrera carreraelegida) {
+		this.carreraelegida = carreraelegida;
 	}
+
 	public List<Carrera> carrerasActivadas(){
 		return  carreraHome.all().stream().filter(c->c.getArchivada()== true).collect(Collectors.toList());
 	}
-	public void confirmarCarrera(){
-		this.getAlumno().setCarrera(this.elegida);
-		alumnoHome.saveOrUpdate(alumno);
-	}
-	
-	
-	
-	
-	
-
 }
