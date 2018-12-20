@@ -106,6 +106,15 @@ public class DataGenerator {
 		materia3.setAnioEnCarrera(2);
 		materia3.setPromocionable(true);
 		
+		Materia materia4 = new Materia();
+		materia4.setNombre("Base de datos 2");
+		materia4.addCorrelativa(materia);
+		materia4.addCorrelativa(materia2);
+		materia4.setAnioEnCarrera(3);
+		materia4.setDocente("Federico Aloi");
+		materia4.setPromocionable(false);
+		carrera.agregarMateria(materia4);
+		
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia3);
 		cursada.setEstado(EstadoCursada.CURSANDO);
@@ -130,6 +139,12 @@ public class DataGenerator {
 		cursada3.setAnio(2017);
 		cursada3.setNotaFinal(7);
 		
+		Cursada cursada4 = new Cursada();
+		cursada4.setMateria(materia4);
+		cursada4.setEstado(EstadoCursada.APROBADA_PROMOCION);
+		cursada4.setAnio(2017);
+		cursada4.setNotaFinal(7);
+		
 		Alumno alumno4 = new Alumno();
 		alumno4.setNombre("Nahu");
 		alumno4.setEmail("NahuelMartinez@gmail.com");
@@ -140,6 +155,7 @@ public class DataGenerator {
 		alumno4.addCursada(cursada1);
 		alumno4.addCursada(cursada2);
 		alumno4.addCursada(cursada3);
+		alumno4.addCursada(cursada4);
 		
 		Alumno alumno3 = new Alumno();
 		alumno3.setNombre("Karina Rivarola");
@@ -162,11 +178,13 @@ public class DataGenerator {
 		examenHome.saveOrUpdate(examen);
 		materiaHome.saveOrUpdate(materia3);
 		materiaHome.saveOrUpdate(materia2);
+		materiaHome.saveOrUpdate(materia4);
 		direccionHome.saveOrUpdate(direccion);
 		cursadaHome.saveOrUpdate(cursada);
 		cursadaHome.saveOrUpdate(cursada1);
 		cursadaHome.saveOrUpdate(cursada2);
 		cursadaHome.saveOrUpdate(cursada3);
+		cursadaHome.saveOrUpdate(cursada4);
 		estudioCursadoHome.saveOrUpdate(titulo);
 		carreraHome.saveOrUpdate(carrera3);
 		carreraHome.saveOrUpdate(carrera2);

@@ -3,11 +3,13 @@ package ar.edu.unq.sarmiento.wicket.cursada;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unq.sarmiento.hibernate.CursadaHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
@@ -19,6 +21,8 @@ public class ListadoDeCursadasController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Alumno alumno;
+	@Autowired
+	private CursadaHome cursadaHome;
 
 	public Alumno getAlumno() {
 		return alumno;
@@ -36,6 +40,6 @@ public class ListadoDeCursadasController implements Serializable {
 		return estado.toString();
 	}
 	public List<Cursada> getCursadas(){
-		return this.getAlumno().getCursadas();
+		return cursadaHome.listaDeCursadasOrdenadas(this.getAlumno().getId());
 	}
 }
