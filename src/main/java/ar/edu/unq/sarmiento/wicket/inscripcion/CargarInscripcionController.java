@@ -82,10 +82,9 @@ public class CargarInscripcionController implements Serializable{
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
 		alumno.setDireccion(dir);
-	//	alumno.setCarrera(getCarreraelegida());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
-		
+		this.confimarCarrera(alumno);
 		 
 	}
   
@@ -284,5 +283,8 @@ public class CargarInscripcionController implements Serializable{
 
 	public List<Carrera> carrerasActivadas(){
 		return  carreraHome.all().stream().filter(c->c.getArchivada()== true).collect(Collectors.toList());
+	}
+	public void confimarCarrera(Alumno alumno){
+		alumno.setCarrera(getCarreraelegida());
 	}
 }
