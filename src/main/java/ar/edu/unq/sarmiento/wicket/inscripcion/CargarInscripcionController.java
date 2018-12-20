@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
+import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 
 
@@ -28,6 +30,7 @@ public class CargarInscripcionController implements Serializable{
 	private AlumnoHome alumnoHome;
 	@Autowired
 	private DireccionHome direccionHome;
+	private CarreraHome carreraHome;
 	private String nombre;
 	private String genero;
 	private String dni;
@@ -49,6 +52,7 @@ public class CargarInscripcionController implements Serializable{
 	private String localidad;
 	private String partido;
 	
+	private Carrera carrerElegida;
 	public CargarInscripcionController(){
 	}
 	
@@ -262,6 +266,18 @@ public class CargarInscripcionController implements Serializable{
 
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
+	}
+
+	public Carrera getCarrerElegida() {
+		return carrerElegida;
+	}
+
+	public void setCarrerElegida(Carrera carrerElegida) {
+		this.carrerElegida = carrerElegida;
+	}
+	
+	public List<Carrera> listaCarrerasActivadas(){
+		return carreraHome.all();
 	}
 	
 	

@@ -69,6 +69,16 @@ public class CargarInscripcionPage extends LayoutPage{
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		});
+		formulario.add(new DropDownChoice<>(
+				// id
+				"materia",
+				// binding del valor
+				new PropertyModel<>(cargarInscripcionController, "carrerElegida"),
+				// binding de la lista de items
+				new PropertyModel<>(cargarInscripcionController, "listaCarrerasActivadas"),
+				// que se muestra de cada item
+				new ChoiceRenderer<>("nombre")));
+		this.add(formulario);
 		
 	}
 
