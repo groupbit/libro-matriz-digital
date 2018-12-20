@@ -11,7 +11,6 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.wicket.carrera.EditarCarreraPage;
 import ar.edu.unq.sarmiento.wicket.cursada.ListadoDeCursadasPage;
 import ar.edu.unq.sarmiento.wicket.inscripcion.CargarInscripcionPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;

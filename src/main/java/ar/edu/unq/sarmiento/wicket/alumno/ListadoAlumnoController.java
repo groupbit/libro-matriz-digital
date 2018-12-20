@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.modelo.Carrera;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
