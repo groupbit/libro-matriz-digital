@@ -22,8 +22,6 @@ public class Carrera extends Persistible {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "carrera_id")
 	private List<Alumno> alumnosInscriptos = new ArrayList<>();
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "carrera_id")
 	private List<Materia> listadoMaterias = new ArrayList<>();
 	private Boolean archivada= false;
 	private String resolucion;

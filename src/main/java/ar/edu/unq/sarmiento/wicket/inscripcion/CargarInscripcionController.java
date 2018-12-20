@@ -2,7 +2,6 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,7 +54,7 @@ public class CargarInscripcionController implements Serializable{
 	private String localidad;
 	private String partido;
 	
-	private Carrera carreraelegida;
+	private Carrera carreraElegida;
 	
 	public CargarInscripcionController(){
 	}
@@ -274,15 +273,15 @@ public class CargarInscripcionController implements Serializable{
 
 
 	public Carrera getCarreraelegida() {
-		return carreraelegida;
+		return carreraElegida;
 	}
 
 	public void setCarreraelegida(Carrera carreraelegida) {
-		this.carreraelegida = carreraelegida;
+		this.carreraElegida = carreraelegida;
 	}
 
 	public List<Carrera> carrerasActivadas(){
-		return  carreraHome.all().stream().filter(c->c.getArchivada()== true).collect(Collectors.toList());
+		return  carreraHome.all().stream().filter(c->c.getArchivada()== false).collect(Collectors.toList());
 	}
 	public void confimarCarrera(Alumno alumno){
 		alumno.setCarrera(getCarreraelegida());
