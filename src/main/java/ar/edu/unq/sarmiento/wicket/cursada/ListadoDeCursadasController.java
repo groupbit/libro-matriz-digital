@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
+import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -33,7 +34,7 @@ public class ListadoDeCursadasController implements Serializable {
 	}
 	
 	public String convertirString(EstadoCursada estado) {
-		return estado.toString().toLowerCase().replace("_", " ");
+		return EnumUtils.convertirString(estado);
 	}
 	public List<Cursada> getCursadas(){
 		return alumno.getCursadas();
