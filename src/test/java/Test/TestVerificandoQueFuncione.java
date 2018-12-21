@@ -16,8 +16,8 @@ public class TestVerificandoQueFuncione {
 		String estadoDeCursada = EnumUtils.convertirString(EstadoCursada.APROBADA_FINAL);
 		String tipoExamen = EnumUtils.convertirString(TipoDeExamen.PARCIAL);
 		
-		assertTrue(tipoExamen.equals("Parcial"));
-		assertTrue(estadoDeCursada.equals("Aprobada final"));
+		assertEquals("Parcial", tipoExamen);
+		assertEquals("Aprobada final", estadoDeCursada);
 	}
 
 }
