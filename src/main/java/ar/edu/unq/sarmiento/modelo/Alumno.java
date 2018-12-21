@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -94,7 +95,10 @@ public class Alumno extends Persistible {
 	}
 
 	public List<Cursada> getCursadas() {
-		return cursadas;
+		return cursadas.stream()
+				.sorted((c1, c2) -> c1.getMateria().getNombre().compareTo(c2.getMateria().getNombre()))
+				.sorted((c1,c2)-> Integer.compare(c2.getAnio(),c1.getAnio()))
+				.collect(Collectors.toList());
 	}
 
 	

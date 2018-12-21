@@ -25,4 +25,8 @@ public class ListadoAlumnoController implements Serializable{
 		return alumnoHome.all();
 	}
 	
+	public Alumno attach(Alumno alumno) {
+		alumnoHome.attach(alumno);
+		return alumno;
+	}
 }
