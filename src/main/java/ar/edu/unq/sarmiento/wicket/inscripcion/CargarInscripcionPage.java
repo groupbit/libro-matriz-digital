@@ -1,6 +1,5 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField;
