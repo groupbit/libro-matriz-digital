@@ -2,8 +2,6 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -12,18 +10,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
-import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
+import ar.edu.unq.sarmiento.hibernate.EstudioCursadoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
-
+import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class CargarInscripcionController implements Serializable{
-	
+public class CargarInscripcionController implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -31,8 +28,7 @@ public class CargarInscripcionController implements Serializable{
 	@Autowired
 	private DireccionHome direccionHome;
 	@Autowired
-	private CarreraHome carreraHome;
-	
+	private EstudioCursadoHome estudioCursadoHome;
 	private String nombre;
 	private String genero;
 	private String dni;
@@ -49,18 +45,21 @@ public class CargarInscripcionController implements Serializable{
 	private Alumno alumno;
 	private String calle;
 	private int altura;
-    private String departamento;
+	private String departamento;
 	private String codigoPostal;
 	private String localidad;
 	private String partido;
-	
-	private Carrera carreraElegida;
-	
-	public CargarInscripcionController(){
+	private EstudioCursado estudioCursado;
+	private int anioEgreso;
+	private String institucion;
+	private String distrito;
+	private String nombreTitulo;
+
+	public CargarInscripcionController() {
 	}
-	
-	public void inscribir(){
-		alumno=new Alumno();
+
+	public void inscribir() {
+		alumno = new Alumno();
 		alumno.setNombre(this.getNombre());
 		alumno.setGenero(this.getGenero());
 		alumno.setDni(this.getDni());
@@ -73,18 +72,24 @@ public class CargarInscripcionController implements Serializable{
 		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
-		Direccion dir=new Direccion();
+		Direccion dir = new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
 		dir.setDepartamento(this.getDepartamento());
 		dir.setLocalidad(this.getLocalidad());
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
+		EstudioCursado estudio = new EstudioCursado();
+		estudio.setAnioEgreso(this.getAnioEgreso());
+		estudio.setInstitucion(this.getInstitucion());
+		estudio.setDistrito(this.getDistrito());
+		estudio.setNombreTitulo(this.getNombreTitulo());
 		alumno.setDireccion(dir);
+		alumno.setTitulo(estudio);
+		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
-		this.confimarCarrera(alumno);
-		 
+
 	}
   
 	public Direccion getDireccion() {
@@ -95,8 +100,8 @@ public class CargarInscripcionController implements Serializable{
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-	
-	public void setCalle(String calle){
+
+	public void setCalle(String calle) {
 		this.calle = calle;
 	}
 	
@@ -221,13 +226,13 @@ public class CargarInscripcionController implements Serializable{
 		this.email = email;
 	}
 
-    public String getGenero(){
-    	return this.genero;
-    }
-	
-    public void setGenero(String genero){
-    	this.genero=genero;
-    }
+	public String getGenero() {
+		return this.genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
 
 	public String getLugarNacimiento() {
 		return lugarNacimiento;
@@ -250,9 +255,9 @@ public class CargarInscripcionController implements Serializable{
 	public String getDni() {
 		return dni;
 	}
-	
-	public void setDni(String dni){
-		this.dni=dni;
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 	
 	public String getNombre() {
@@ -271,19 +276,44 @@ public class CargarInscripcionController implements Serializable{
 		this.alumno = alumno;
 	}
 
-
-	public Carrera getCarreraelegida() {
-		return carreraElegida;
+	public EstudioCursado getEstudioCursado() {
+		return estudioCursado;
 	}
 
-	public void setCarreraelegida(Carrera carreraelegida) {
-		this.carreraElegida = carreraelegida;
+	public void setEstudioCursado(EstudioCursado estudioCursado) {
+		this.estudioCursado = estudioCursado;
 	}
 
-	public List<Carrera> carrerasActivadas(){
-		return  carreraHome.all().stream().filter(c->c.getArchivada()== false).collect(Collectors.toList());
+	public void setAnioEgreso(int anioEgreso) {
+		this.anioEgreso = anioEgreso;
 	}
-	public void confimarCarrera(Alumno alumno){
-		alumno.setCarrera(getCarreraelegida());
+
+	public void setInstitucion(String institucion) {
+		this.institucion = institucion;
 	}
+
+	public void setDistrito(String distrito) {
+		this.distrito = distrito;
+	}
+
+	public String getDistrito() {
+		return distrito;
+	}
+
+	public String getInstitucion() {
+		return institucion;
+	}
+
+	public int getAnioEgreso() {
+		return anioEgreso;
+	}
+
+	public String getNombreTitulo() {
+		return nombreTitulo;
+	}
+
+	public void setNombreTitulo(String nombreTitulo) {
+		this.nombreTitulo = nombreTitulo;
+	}
+
 }

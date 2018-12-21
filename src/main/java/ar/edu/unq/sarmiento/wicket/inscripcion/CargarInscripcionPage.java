@@ -56,11 +56,11 @@ public class CargarInscripcionPage extends LayoutPage{
 		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"localidad")));
 		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"partido")));
 		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"codigoPostal")));
-		formulario.add(new DropDownChoice<>(
-				"titulo",
-				new PropertyModel<>(cargarInscripcionController, "carreraelegida"),
-				new PropertyModel<>(cargarInscripcionController, "carrerasActivadas"),
-				new ChoiceRenderer<>("nombre")));		
+		formulario.add(new TextField<>("anio",new PropertyModel<>(this.cargarInscripcionController,"anioEgreso")));
+		formulario.add(new TextField<>("institucion",new PropertyModel<>(this.cargarInscripcionController,"institucion")));
+		formulario.add(new TextField<>("distrito",new PropertyModel<>(this.cargarInscripcionController,"distrito")));
+		formulario.add(new TextField<>("nombreTitulo",new PropertyModel<>(this.cargarInscripcionController, "nombreTitulo")));
+		
 		this.add(formulario);
 		
 		formulario.add(new Link<String>("cancelar") {
@@ -72,8 +72,6 @@ public class CargarInscripcionPage extends LayoutPage{
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		});
-		
-		
 		
 	}
 
