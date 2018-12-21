@@ -6,7 +6,7 @@
 			</div>
 			<div class="panel-body">
 				<form wicket:id="inscripcionAlumno" class="form-horizontal">
-
+				
 					<div class="form-group">
 						<label for="nombre" class="col-md-2 control-label"> Nombre
 							completo</label>
@@ -15,7 +15,6 @@
 								id="nombre" placeholder="Ileana">
 						</div>
 					</div>
-
                      <div class="form-group">
 						<label for="genero" class="col-md-2 control-label">Género</label>
 						<div class="col-md-2">
@@ -23,13 +22,11 @@
 							</select>
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="dni" class="col-md-2 control-label">DNI </label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="dni" wicket:id="dni">
 						</div>
-					</div>
 				</div>
 				<div class="form-group">
 					<label for="fechaNacimiento" class="col-md-2 control-label">Fecha de nacimiento </label>
@@ -37,6 +34,7 @@
 						<input type="date" class="form-control" id="fechaNacimiento"
 							wicket:id="fechaNacimiento" placeholder="30/10/1991">
 					</div>
+				 </div>
 					<div class="form-group">
 						<label for="lugarNacimiento" class="col-md-2 control-label">Lugar
 							de nacimiento </label>
@@ -183,7 +181,6 @@
 								wicket:id="distrito">
 						</div>
 					</div>
-
 			<div class="text-center">
 				<button type="submit" class="btn btn-success">Guardar</button>
 				<button class="btn btn-default" wicket:id="cancelar">Cancelar</button>
