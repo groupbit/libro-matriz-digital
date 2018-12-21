@@ -1,12 +1,18 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.edu.unq.sarmiento.modelo.Genero;
 import ar.edu.unq.sarmiento.wicket.alumno.ListadoAlumnoPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
@@ -35,7 +41,8 @@ public class CargarInscripcionPage extends LayoutPage{
 		
 		};
 		formulario.add(new TextField<>("nombre",new PropertyModel<>(this.cargarInscripcionController,"nombre")));
-		formulario.add(new TextField<>("genero",new PropertyModel<>(this.cargarInscripcionController,"genero")));
+		formulario.add(new DropDownChoice<>("genero",
+			 Arrays.asList(Genero.values()),new EnumChoiceRenderer<>(this)));
 		formulario.add(new TextField<>("dni",new PropertyModel<>(this.cargarInscripcionController,"dni")));
 		formulario.add(new LocalDateTextField("fechaNacimiento",new PropertyModel<>(this.cargarInscripcionController,"fechaNacimiento"), "dd/MM/yyyy"));
 		formulario.add(new TextField<>("lugarNacimiento",new PropertyModel<>(this.cargarInscripcionController,"lugarNacimiento")));

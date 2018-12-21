@@ -2,6 +2,8 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -95,6 +97,7 @@ public class CargarInscripcionController implements Serializable {
 	public Direccion getDireccion() {
 		return direccion;
 	}
+
 
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
