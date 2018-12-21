@@ -27,7 +27,7 @@ public class Alumno extends Persistible {
 	private String dni;
 	private LocalDate fechaDeNacimiento;
 	private String lugarDeNacimiento;
-	private String genero;
+	private Genero genero;
 	private String estadoCivil;
 	private int hijos;
 	private String familiaresACargo;
@@ -47,7 +47,7 @@ public class Alumno extends Persistible {
 	public Alumno(){}
 	
 	public Alumno(String nombre,Direccion direccion,Carrera carrera,Cursada cursada,String dni,
-			LocalDate fechaNacimiento,String lugarDeNacimiento,String genero,String estadoCivil,
+			LocalDate fechaNacimiento,String lugarDeNacimiento,Genero genero,String estadoCivil,
 			int hijos,String familiaresACargo,String telefono,String telefonoAlternativo,
 			String email,boolean trabaja,String actividad,LocalTime horarioHabitual,
 			String obraSocial,EstudioCursado titulo){
@@ -126,11 +126,11 @@ public class Alumno extends Persistible {
 		this.fechaDeNacimiento = fechaNacimiento;
 	}
 
-	public String getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
