@@ -1,16 +1,12 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField;
-import org.apache.wicket.markup.html.form.ChoiceRenderer;
-import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.wicket.alumno.ListadoAlumnoPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
@@ -56,7 +52,10 @@ public class CargarInscripcionPage extends LayoutPage{
 		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"localidad")));
 		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"partido")));
 		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"codigoPostal")));
-	
+		formulario.add(new TextField<>("anio",new PropertyModel<>(this.cargarInscripcionController,"anioEgreso")));
+		formulario.add(new TextField<>("institucion",new PropertyModel<>(this.cargarInscripcionController,"institucion")));
+		formulario.add(new TextField<>("distrito",new PropertyModel<>(this.cargarInscripcionController,"distrito")));
+		formulario.add(new TextField<>("nombreTitulo",new PropertyModel<>(this.cargarInscripcionController, "nombreTitulo")));
 		
 		this.add(formulario);
 		
