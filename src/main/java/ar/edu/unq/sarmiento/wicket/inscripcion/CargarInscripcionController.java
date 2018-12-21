@@ -2,8 +2,6 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -17,6 +15,7 @@ import ar.edu.unq.sarmiento.hibernate.EstudioCursadoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
+import ar.edu.unq.sarmiento.modelo.Genero;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -32,7 +31,7 @@ public class CargarInscripcionController implements Serializable {
 	@Autowired
 	private EstudioCursadoHome estudioCursadoHome;
 	private String nombre;
-	private String genero;
+	private Genero genero;
 	private String dni;
 	private LocalDate fechaNacimiento;
 	private String lugarNacimiento;
@@ -207,11 +206,11 @@ public class CargarInscripcionController implements Serializable {
 		this.email = email;
 	}
 
-	public String getGenero() {
+	public Genero getGenero() {
 		return this.genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
