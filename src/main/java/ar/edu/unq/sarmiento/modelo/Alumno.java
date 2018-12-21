@@ -2,10 +2,13 @@ package ar.edu.unq.sarmiento.modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -18,7 +21,9 @@ public class Alumno extends Persistible {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Direccion direccion;
 	private Carrera carrera;
-	private Cursada cursada;
+	@OneToMany
+	@JoinColumn(name = "alumno_id")
+	private List<Cursada> cursadas = new ArrayList<>();
 	private String dni;
 	private LocalDate fechaDeNacimiento;
 	private String lugarDeNacimiento;
@@ -39,32 +44,32 @@ public class Alumno extends Persistible {
 	@OneToOne
 	private EstudioCursado titulo;
 
-	public Alumno() {
+	public Alumno(){}
+	
+	public Alumno(String nombre,Direccion direccion,Carrera carrera,Cursada cursada,String dni,
+			LocalDate fechaNacimiento,String lugarDeNacimiento,String genero,String estadoCivil,
+			int hijos,String familiaresACargo,String telefono,String telefonoAlternativo,
+			String email,boolean trabaja,String actividad,LocalTime horarioHabitual,
+			String obraSocial,EstudioCursado titulo){
+		
+		this.nombre=nombre;
+		this.direccion=direccion;
+		this.carrera=carrera;
+		this.cursadas.add(cursada);
+		this.dni=dni;
+		this.fechaDeNacimiento=fechaNacimiento;
+		this.lugarDeNacimiento=lugarDeNacimiento;
+		this.genero=genero;
+		this.estadoCivil=estadoCivil;
+		this.email=email;
+		this.trabaja=trabaja;
+		this.actividad=actividad;
+		this.horarioHabitual=horarioHabitual;
+		this.obraSocial=obraSocial;
+		this.titulo=titulo;
+		
 	}
-
-	public Alumno(String nombre, Direccion direccion, Carrera carrera, Cursada cursada, String dni,
-			LocalDate fechaNacimiento, String lugarDeNacimiento, String genero, String estadoCivil, int hijos,
-			String familiaresACargo, String telefono, String telefonoAlternativo, String email, boolean trabaja,
-			String actividad, LocalTime horarioHabitual, String obraSocial, EstudioCursado titulo) {
-
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.carrera = carrera;
-		this.cursada = cursada;
-		this.dni = dni;
-		this.fechaDeNacimiento = fechaNacimiento;
-		this.lugarDeNacimiento = lugarDeNacimiento;
-		this.genero = genero;
-		this.estadoCivil = estadoCivil;
-		this.email = email;
-		this.trabaja = trabaja;
-		this.actividad = actividad;
-		this.horarioHabitual = horarioHabitual;
-		this.obraSocial = obraSocial;
-		this.titulo = titulo;
-
-	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -89,12 +94,20 @@ public class Alumno extends Persistible {
 		this.carrera = carrera;
 	}
 
-	public Cursada getCursada() {
-		return cursada;
+	public List<Cursada> getCursadas() {
+		return cursadas.stream()
+				.sorted((c1, c2) -> c1.getMateria().getNombre().compareTo(c2.getMateria().getNombre()))
+				.sorted((c1,c2)-> Integer.compare(c2.getAnio(),c1.getAnio()))
+				.collect(Collectors.toList());
 	}
 
-	public void setCursada(Cursada cursada) {
-		this.cursada = cursada;
+	
+	public void setCursadas(List<Cursada> cursadas) {
+		this.cursadas = cursadas;
+	}
+
+	public void addCursada(Cursada cursada) {
+		this.cursadas.add(cursada);
 	}
 
 	public String getDni() {
