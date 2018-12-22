@@ -31,6 +31,11 @@ public class ListadoAlumnoPage extends LayoutPage {
 		ListView<Alumno> listAlumno = new ListView<Alumno>("alumnos",
 				new PropertyModel<>(controller, "usuariosEnInstituto")) {
 
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void populateItem(ListItem<Alumno> item) {
 				Alumno alumno = item.getModelObject();
