@@ -9,8 +9,6 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.wicket.alumno.ListadoAlumnoPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
@@ -72,6 +70,12 @@ public class CargarInscripcionPage extends LayoutPage{
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		});
+		formulario.add(new DropDownChoice<>(
+				"carrera",
+				new PropertyModel<>(cargarInscripcionController, "carreraElegida"),
+				new PropertyModel<>(cargarInscripcionController, "carrerasActivadas"),
+				new ChoiceRenderer<>("nombre")));
+		this.add(formulario);
 		
 	}
 
