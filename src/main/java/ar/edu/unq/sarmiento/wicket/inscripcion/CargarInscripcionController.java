@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
+import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.hibernate.EstudioCursadoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Genero;
@@ -33,6 +35,8 @@ public class CargarInscripcionController implements Serializable {
 	private DireccionHome direccionHome;
 	@Autowired
 	private EstudioCursadoHome estudioCursadoHome;
+	@Autowired 
+	private CarreraHome carreraHome;
 	private String nombre;
 	private Genero genero;
 	private String dni;
@@ -58,7 +62,8 @@ public class CargarInscripcionController implements Serializable {
 	private String institucion;
 	private String distrito;
 	private String nombreTitulo;
-	private List<Genero>generos=new ArrayList<>();
+	private Carrera carreraElegida;
+        private List<Genero>generos=new ArrayList<>();
 
 	public CargarInscripcionController() {this.setGeneros();
 	}
@@ -94,9 +99,10 @@ public class CargarInscripcionController implements Serializable {
 		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
+		this.confimarCarrera(alumno);
 
 	}
-
+  
 	public Direccion getDireccion() {
 		return direccion;
 	}
@@ -109,11 +115,11 @@ public class CargarInscripcionController implements Serializable {
 	public void setCalle(String calle) {
 		this.calle = calle;
 	}
-
-	public String getCalle() {
+	
+	public String getCalle(){
 		return this.calle;
 	}
-
+	
 	public int getAltura() {
 		return altura;
 	}
@@ -126,57 +132,71 @@ public class CargarInscripcionController implements Serializable {
 		return departamento;
 	}
 
+
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
 	}
+
 
 	public String getCodigoPostal() {
 		return codigoPostal;
 	}
 
+
 	public void setCodigoPostal(String codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
+
 
 	public String getLocalidad() {
 		return localidad;
 	}
 
+
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
+
 
 	public String getPartido() {
 		return partido;
 	}
 
+
 	public void setPartido(String partido) {
 		this.partido = partido;
 	}
+
 
 	public String getEstadoCivil() {
 		return estadoCivil;
 	}
 
+
 	public void setEstadoCivil(String estadoCivil) {
 		this.estadoCivil = estadoCivil;
 	}
+
 
 	public int getHijos() {
 		return hijos;
 	}
 
+
 	public void setHijos(int hijos) {
 		this.hijos = hijos;
 	}
+
 
 	public String getFamiliaresACargo() {
 		return familiaresACargo;
 	}
 
+
 	public void setFamiliaresACargo(String familiaresACargo) {
 		this.familiaresACargo = familiaresACargo;
 	}
+
 
 	public String getTelefono() {
 		return telefono;
@@ -186,25 +206,31 @@ public class CargarInscripcionController implements Serializable {
 		this.telefono = telefono;
 	}
 
+
 	public String getTelefonoAlternativo() {
 		return telefonoAlternativo;
 	}
+
 
 	public void setTelefonoAlternativo(String telefonoAlternativo) {
 		this.telefonoAlternativo = telefonoAlternativo;
 	}
 
+
 	public String getPropietarioTelefonoAlternativo() {
 		return propietarioTelefonoAlternativo;
 	}
+
 
 	public void setPropietarioTelefonoAlternativo(String propietarioTelefonoAlternativo) {
 		this.propietarioTelefonoAlternativo = propietarioTelefonoAlternativo;
 	}
 
+
 	public String getEmail() {
 		return email;
 	}
+
 
 	public void setEmail(String email) {
 		this.email = email;
@@ -221,14 +247,16 @@ public class CargarInscripcionController implements Serializable {
 	public String getLugarNacimiento() {
 		return lugarNacimiento;
 	}
-
+	
 	public void setLugarNacimiento(String lugarNacimiento) {
 		this.lugarNacimiento = lugarNacimiento;
 	}
-
+	
+	
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
+
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
@@ -241,11 +269,11 @@ public class CargarInscripcionController implements Serializable {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
-
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -297,13 +325,25 @@ public class CargarInscripcionController implements Serializable {
 	public void setNombreTitulo(String nombreTitulo) {
 		this.nombreTitulo = nombreTitulo;
 	}
-	
-	public List<Genero>getGeneros(){
+	public Carrera getCarreraElegida() {
+		return carreraElegida;
+	}
+
+	public void setCarreraElegida(Carrera carreraelegida) {
+		this.carreraElegida = carreraelegida;
+	}
+
+	public List<Carrera> carrerasActivadas(){
+		return  carreraHome.listadoDeCarrerasVigentes();
+	}
+	public void confimarCarrera(Alumno alumno){
+		alumno.setCarrera(getCarreraElegida());
+	}
+public List<Genero>getGeneros(){
 		return generos;
 	}
 
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
 	}
-
 }

@@ -1,6 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.inscripcion;
 
-import org.apache.wicket.extensions.markup.html.form.DateTextField;
+import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.EmailTextField;
@@ -73,6 +73,12 @@ public class CargarInscripcionPage extends LayoutPage{
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		});
+		formulario.add(new DropDownChoice<>(
+				"carrera",
+				new PropertyModel<>(cargarInscripcionController, "carreraElegida"),
+				new PropertyModel<>(cargarInscripcionController, "carrerasActivadas"),
+				new ChoiceRenderer<>("nombre")));
+		this.add(formulario);
 		
 	}
 
