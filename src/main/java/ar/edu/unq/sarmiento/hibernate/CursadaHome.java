@@ -8,6 +8,4 @@ import ar.edu.unq.sarmiento.modelo.Cursada;
 public class CursadaHome extends Home<Cursada>{
 
 	private static final long serialVersionUID = 1L;
-
-
 }
