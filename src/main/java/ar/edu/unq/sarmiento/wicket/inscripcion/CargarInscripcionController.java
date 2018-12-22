@@ -2,6 +2,9 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -55,8 +58,9 @@ public class CargarInscripcionController implements Serializable {
 	private String institucion;
 	private String distrito;
 	private String nombreTitulo;
+	private List<Genero>generos=new ArrayList<>();
 
-	public CargarInscripcionController() {
+	public CargarInscripcionController() {this.setGeneros();
 	}
 
 	public void inscribir() {
@@ -292,6 +296,14 @@ public class CargarInscripcionController implements Serializable {
 
 	public void setNombreTitulo(String nombreTitulo) {
 		this.nombreTitulo = nombreTitulo;
+	}
+	
+	public List<Genero>getGeneros(){
+		return generos;
+	}
+
+	public void setGeneros() {
+		this.generos =Arrays.asList(Genero.values());
 	}
 
 }
