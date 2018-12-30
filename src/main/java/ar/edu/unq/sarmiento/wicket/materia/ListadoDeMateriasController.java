@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.CarreraHome;
+import ar.edu.unq.sarmiento.hibernate.MateriaHome;
+import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Materia;
 
@@ -20,6 +22,7 @@ import ar.edu.unq.sarmiento.modelo.Materia;
 @Transactional
 public class ListadoDeMateriasController implements Serializable{
 
+	private MateriaHome materiaHome;
 	private Carrera carrera;
 
 	public Carrera getCarrera() {
@@ -47,6 +50,10 @@ public class ListadoDeMateriasController implements Serializable{
 		return materia.getCorrelativas().stream()
 				  .map(m -> m.getNombre())
 				  .collect(Collectors.joining(", "));
+	}
+	public Materia attach(Materia materia) {
+		materiaHome.attach(materia);
+		return materia;
 	}
 	
 }

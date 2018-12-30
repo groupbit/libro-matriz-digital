@@ -1,0 +1,66 @@
+package ar.edu.unq.sarmiento.wicket.materia;
+
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
+
+public class AgregarCorrelativa extends LayoutPage {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@SpringBean
+	private AgregarCorrelativasController agregarCorrelativasController;
+	
+	@Autowired
+	private Materia materia1;
+	
+	public AgregarCorrelativa(){
+		this.formulario();
+	}
+	public AgregarCorrelativa(Materia materia){
+		materia1 = materia;
+		agregarCorrelativasController.setMateria(materia1);
+		this.formulario();
+	}
+
+	private void formulario() {
+		Form<AgregarCorrelativasController> formulario = new Form<AgregarCorrelativasController>("correlativas") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onSubmit() {
+				agregarCorrelativasController.agregarCorrelativa();
+				this.setResponsePage(new ListadoDeMateriasPage());
+			}
+
+		};
+		formulario.add(new
+				DropDownChoice<>("materia",
+				new PropertyModel<>(agregarCorrelativasController, "materiaElegida"),
+				new PropertyModel<>(agregarCorrelativasController, "materiasActivadas"),
+				new ChoiceRenderer<>("nombre")));
+		this.add(formulario);
+		formulario.add(new Link<String>("cancelar") {
+
+			private static final long serialVersionUID = 505927122883116822L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListadoDeMateriasPage());
+			}
+		});
+
+		this.add(formulario);
+	}
+}

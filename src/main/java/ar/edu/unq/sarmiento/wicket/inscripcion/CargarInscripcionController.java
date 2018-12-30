@@ -2,6 +2,7 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
+import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
 import ar.edu.unq.sarmiento.hibernate.EstudioCursadoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 
@@ -29,6 +32,8 @@ public class CargarInscripcionController implements Serializable {
 	private DireccionHome direccionHome;
 	@Autowired
 	private EstudioCursadoHome estudioCursadoHome;
+	@Autowired 
+	private CarreraHome carreraHome;
 	private String nombre;
 	private String genero;
 	private String dni;
@@ -54,6 +59,7 @@ public class CargarInscripcionController implements Serializable {
 	private String institucion;
 	private String distrito;
 	private String nombreTitulo;
+	private Carrera carreraElegida;
 
 	public CargarInscripcionController() {
 	}
@@ -89,9 +95,10 @@ public class CargarInscripcionController implements Serializable {
 		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
+		this.confimarCarrera(alumno);
 
 	}
-
+  
 	public Direccion getDireccion() {
 		return direccion;
 	}
@@ -104,11 +111,11 @@ public class CargarInscripcionController implements Serializable {
 	public void setCalle(String calle) {
 		this.calle = calle;
 	}
-
-	public String getCalle() {
+	
+	public String getCalle(){
 		return this.calle;
 	}
-
+	
 	public int getAltura() {
 		return altura;
 	}
@@ -237,11 +244,12 @@ public class CargarInscripcionController implements Serializable {
 	public String getLugarNacimiento() {
 		return lugarNacimiento;
 	}
-
+	
 	public void setLugarNacimiento(String lugarNacimiento) {
 		this.lugarNacimiento = lugarNacimiento;
 	}
-
+	
+	
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
@@ -258,11 +266,11 @@ public class CargarInscripcionController implements Serializable {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
-
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -314,5 +322,18 @@ public class CargarInscripcionController implements Serializable {
 	public void setNombreTitulo(String nombreTitulo) {
 		this.nombreTitulo = nombreTitulo;
 	}
+	public Carrera getCarreraElegida() {
+		return carreraElegida;
+	}
 
+	public void setCarreraElegida(Carrera carreraelegida) {
+		this.carreraElegida = carreraelegida;
+	}
+
+	public List<Carrera> carrerasActivadas(){
+		return  carreraHome.listadoDeCarrerasVigentes();
+	}
+	public void confimarCarrera(Alumno alumno){
+		alumno.setCarrera(getCarreraElegida());
+	}
 }

@@ -165,6 +165,7 @@ public class DataGenerator {
 		alumno3.setFechaDeNacimiento(LocalDate.of(1968, 7, 3));
 		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		alumno3.addCursada(cursada);
+		alumno3.setCarrera(carrera3);
 		EstudioCursado titulo= new EstudioCursado();
 		titulo.setAnioEgreso(2016);
 		alumno3.setTitulo(titulo);

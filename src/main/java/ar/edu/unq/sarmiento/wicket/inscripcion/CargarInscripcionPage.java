@@ -71,13 +71,9 @@ public class CargarInscripcionPage extends LayoutPage{
 			}
 		});
 		formulario.add(new DropDownChoice<>(
-				// id
-				"materia",
-				// binding del valor
-				new PropertyModel<>(cargarInscripcionController, "carrerElegida"),
-				// binding de la lista de items
-				new PropertyModel<>(cargarInscripcionController, "listaCarrerasActivadas"),
-				// que se muestra de cada item
+				"carrera",
+				new PropertyModel<>(cargarInscripcionController, "carreraElegida"),
+				new PropertyModel<>(cargarInscripcionController, "carrerasActivadas"),
 				new ChoiceRenderer<>("nombre")));
 		this.add(formulario);
 		
