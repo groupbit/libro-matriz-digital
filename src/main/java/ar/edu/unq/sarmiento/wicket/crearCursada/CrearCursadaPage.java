@@ -60,6 +60,6 @@ public class CrearCursadaPage extends LayoutPage {
 				new ChoiceRenderer<>("nombre")));
 		nuevaCursada.add(new TextField<>("notaFinal",new PropertyModel<>(this.crearCursadaController,"notaFinal")));
 		this.add(nuevaCursada);
-
+		
 	}
 }

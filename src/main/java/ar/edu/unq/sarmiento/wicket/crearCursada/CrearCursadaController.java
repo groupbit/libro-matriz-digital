@@ -17,6 +17,7 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -38,7 +39,7 @@ public class CrearCursadaController implements Serializable {
 	
 	private Materia materiaElegida;
 	
-	private EstadoCursada estado;
+	private EstadoCursada estado = EstadoCursada.CURSANDO;
 	
 	private int notaFinal;
 	
@@ -73,6 +74,9 @@ public class CrearCursadaController implements Serializable {
 		return estado;
 	}
 
+	public String convertirString(){
+		return EnumUtils.convertirString(getEstado());
+	}
 	public void setEstado(EstadoCursada estado) {
 		this.estado = estado;
 	}
@@ -87,5 +91,6 @@ public class CrearCursadaController implements Serializable {
 	
 	public List<Materia> getTodasLasMaterias(){
 		return materiaHome.all();
+		
 	}
 }
