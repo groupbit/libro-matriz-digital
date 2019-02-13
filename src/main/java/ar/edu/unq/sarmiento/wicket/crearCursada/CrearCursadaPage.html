@@ -21,15 +21,27 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="notaFinal" class="col-md-2 control-label">Nota Final</label>
+						<label for="notaFinal" class="col-md-2 control-label">Nota
+							Final</label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" id="notaFinal"
-								wicket:id="notaFinal" placeholder="3">
+								wicket:id="notaFinal" placeholder="2018">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="estado" class="col-md-2 control-label">Estado
+							cursada</label>
+						<div class="col-md-9">
+							<select>
+								<option
+									th:each="estado : ${T(ar.edu.sarmiento.modelo.EstadoCursada).values()}"
+									th:value="${estado}" th:text="${estado}"></option>
+							</select>
 						</div>
 					</div>
 
 					<div class="text-center">
-						<button type="submit" class="btn btn-success" >Guardar</button>
+						<button type="submit" class="btn btn-success">Guardar</button>
 						<button class="btn btn-default" wicket:id="cancelar">Cancelar</button>
 					</div>
 				</form>
