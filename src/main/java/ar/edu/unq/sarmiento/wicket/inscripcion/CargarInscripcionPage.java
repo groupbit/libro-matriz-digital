@@ -3,14 +3,14 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
-import org.apache.wicket.markup.html.form.EmailTextField;
+import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.edu.unq.sarmiento.modelo.Genero;
 import ar.edu.unq.sarmiento.wicket.alumno.ListadoAlumnoPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
@@ -45,12 +45,12 @@ public class CargarInscripcionPage extends LayoutPage{
 		formulario.add(new DateTextField("fechaNacimiento",new PropertyModel<>(this.cargarInscripcionController,"fechaNacimiento"), "dd/MM/yyyy"));
 		formulario.add(new TextField<>("lugarNacimiento",new PropertyModel<>(this.cargarInscripcionController,"lugarNacimiento")));
 		formulario.add(new TextField<>("estadoCivil",new PropertyModel<>(this.cargarInscripcionController,"estadoCivil")));
-		formulario.add(new NumberTextField<>("hijos",new PropertyModel<>(this.cargarInscripcionController,"hijos")));
+		formulario.add(new TextField<>("hijos",new PropertyModel<>(this.cargarInscripcionController,"hijos")));
 		formulario.add(new TextField<>("familiaresACargo",new PropertyModel<>(this.cargarInscripcionController,"familiaresACargo")));
 		formulario.add(new TextField<>("telefono",new PropertyModel<>(this.cargarInscripcionController,"telefono")));
 		formulario.add(new TextField<>("telefonoAlternativo",new PropertyModel<>(this.cargarInscripcionController,"telefonoAlternativo")));
 		formulario.add(new TextField<>("propietarioTelefonoAlternativo",new PropertyModel<>(this.cargarInscripcionController,"propietarioTelefonoAlternativo")));
-		formulario.add(new EmailTextField("email",new PropertyModel<>(this.cargarInscripcionController,"email")));
+		formulario.add(new TextField<>("email",new PropertyModel<>(this.cargarInscripcionController,"email")));
 		formulario.add(new TextField<>("calle",new PropertyModel<>(this.cargarInscripcionController,"calle")));
 		formulario.add(new TextField<>("altura",new PropertyModel<>(this.cargarInscripcionController,"altura")));
 		formulario.add(new TextField<>("departamento",new PropertyModel<>(this.cargarInscripcionController,"departamento")));

@@ -63,7 +63,7 @@ public class CargarInscripcionController implements Serializable {
 	private String distrito;
 	private String nombreTitulo;
 	private Carrera carreraElegida;
-        private List<Genero>generos=new ArrayList<>();
+    private List<Genero>generos=new ArrayList<>();
 
 	public CargarInscripcionController() {this.setGeneros();
 	}
@@ -100,7 +100,7 @@ public class CargarInscripcionController implements Serializable {
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 		this.confimarCarrera(alumno);
-
+        
 	}
   
 	public Direccion getDireccion() {
@@ -339,11 +339,14 @@ public class CargarInscripcionController implements Serializable {
 	public void confimarCarrera(Alumno alumno){
 		alumno.setCarrera(getCarreraElegida());
 	}
-public List<Genero>getGeneros(){
+	
+    public List<Genero>getGeneros(){
 		return generos;
 	}
 
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
+
 	}
+
 }
