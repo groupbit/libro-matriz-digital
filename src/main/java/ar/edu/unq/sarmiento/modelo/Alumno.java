@@ -30,7 +30,7 @@ public class Alumno extends Persistible {
 	private String dni;
 	private LocalDate fechaDeNacimiento;
 	private String lugarDeNacimiento;
-	private Genero genero;
+	public Genero genero;
 	private String estadoCivil;
 	private int hijos;
 	private String familiaresACargo;
