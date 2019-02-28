@@ -45,7 +45,7 @@ public class AgregarCorrelativa extends LayoutPage {
 			@Override
 			public void onSubmit() {
 				agregarCorrelativasController.agregarCorrelativa();
-			//	this.setResponsePage(new ListadoDeMateriasPage(carrera));
+				this.setResponsePage(new ListadoDeMateriasPage(carrera));
 			}
 
 		};
@@ -55,16 +55,16 @@ public class AgregarCorrelativa extends LayoutPage {
 				new PropertyModel<>(agregarCorrelativasController, "materiasActivadas"),
 				new ChoiceRenderer<>("nombre")));
 		this.add(formulario);
-//		formulario.add(new Link<String>("cancelar") {
-//
-//			private static final long serialVersionUID = 505927122883116822L;
-//
-//			@Override
-//			public void onClick() {
-//				this.setResponsePage(new ListadoDeMateriasPage(carrera));
-//			}
-//		});
-//
-//		this.add(formulario);
+		formulario.add(new Link<String>("cancelar") {
+
+			private static final long serialVersionUID = 505927122883116822L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListadoDeMateriasPage(carrera));
+			}
+		});
+
+		this.add(formulario);
 	}
 }
