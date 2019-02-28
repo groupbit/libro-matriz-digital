@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Materia;
+
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
@@ -24,14 +25,13 @@ public class AgregarCorrelativasController implements Serializable {
 	private MateriaHome materiaHome;
 	private Materia materia;
 	private Materia materiaElegida;
-	
+
 	public Materia getMateria() {
 		return materia;
 	}
 
 	public void setMateria(Materia materia) {
 		this.materia = materia;
-		materiaHome.attach(materia);
 	}
 
 	public Materia getMateriaElegida() {
@@ -44,8 +44,18 @@ public class AgregarCorrelativasController implements Serializable {
 
 	public void agregarCorrelativa() {
 		materia.addCorrelativa(materiaElegida);
+		materiaHome.saveOrUpdate(materia);
 	}
-	public List<Materia> materiasActivadas(){
-		return materiaHome.all();
+
+	public List<Materia> materiasActivadas() {
+		List<Materia> todasLasMaterias = materiaHome.all();
+		List<Materia> correlaticas = this.materia.getCorrelativas();
+		todasLasMaterias.removeAll(correlaticas);
+	return todasLasMaterias;
+	}
+
+	public void attach(Materia materia) {
+		Materia materia1 = materia;
+		materiaHome.attach(materia1);
 	}
 }

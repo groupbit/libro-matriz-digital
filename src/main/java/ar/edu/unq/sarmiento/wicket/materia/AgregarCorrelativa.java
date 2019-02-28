@@ -8,6 +8,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Materia;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
@@ -23,12 +24,15 @@ public class AgregarCorrelativa extends LayoutPage {
 	
 	@Autowired
 	private Materia materia1;
+	@Autowired
+	private Carrera carrera;
 	
 	public AgregarCorrelativa(){
 		this.formulario();
 	}
-	public AgregarCorrelativa(Materia materia){
+	public AgregarCorrelativa(Materia materia, Carrera carrera1){
 		materia1 = materia;
+		carrera = carrera1;
 		agregarCorrelativasController.setMateria(materia1);
 		this.formulario();
 	}
@@ -41,7 +45,7 @@ public class AgregarCorrelativa extends LayoutPage {
 			@Override
 			public void onSubmit() {
 				agregarCorrelativasController.agregarCorrelativa();
-				this.setResponsePage(new ListadoDeMateriasPage());
+			//	this.setResponsePage(new ListadoDeMateriasPage(carrera));
 			}
 
 		};
@@ -51,16 +55,16 @@ public class AgregarCorrelativa extends LayoutPage {
 				new PropertyModel<>(agregarCorrelativasController, "materiasActivadas"),
 				new ChoiceRenderer<>("nombre")));
 		this.add(formulario);
-		formulario.add(new Link<String>("cancelar") {
-
-			private static final long serialVersionUID = 505927122883116822L;
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new ListadoDeMateriasPage());
-			}
-		});
-
-		this.add(formulario);
+//		formulario.add(new Link<String>("cancelar") {
+//
+//			private static final long serialVersionUID = 505927122883116822L;
+//
+//			@Override
+//			public void onClick() {
+//				this.setResponsePage(new ListadoDeMateriasPage(carrera));
+//			}
+//		});
+//
+//		this.add(formulario);
 	}
 }

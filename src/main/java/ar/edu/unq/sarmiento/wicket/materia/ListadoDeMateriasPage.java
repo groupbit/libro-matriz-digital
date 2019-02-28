@@ -52,7 +52,7 @@ public class ListadoDeMateriasPage extends LayoutPage {
 
 					@Override
 					public void onClick() {
-						this.setResponsePage(new AgregarCorrelativa(controller.attach(item.getModelObject())));
+						this.setResponsePage(new AgregarCorrelativa(item.getModelObject(),carrera1));
 					}
 				});
 			}

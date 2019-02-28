@@ -22,7 +22,6 @@ import ar.edu.unq.sarmiento.modelo.Materia;
 @Transactional
 public class ListadoDeMateriasController implements Serializable{
 
-	private MateriaHome materiaHome;
 	private Carrera carrera;
 
 	public Carrera getCarrera() {
@@ -50,10 +49,6 @@ public class ListadoDeMateriasController implements Serializable{
 		return materia.getCorrelativas().stream()
 				  .map(m -> m.getNombre())
 				  .collect(Collectors.joining(", "));
-	}
-	public Materia attach(Materia materia) {
-		materiaHome.attach(materia);
-		return materia;
 	}
 	
 }
