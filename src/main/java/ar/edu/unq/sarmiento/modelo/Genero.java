@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.modelo;
 
+
 public enum Genero {
 	
 	FEMENINO("femenino"),MASCULINO("masculino"),OTROS("otros");
