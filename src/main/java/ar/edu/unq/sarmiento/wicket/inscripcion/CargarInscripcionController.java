@@ -21,6 +21,7 @@ import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Genero;
+import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -235,11 +236,11 @@ public class CargarInscripcionController implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public Genero getGenero() {
 		return this.genero;
 	}
-
+    
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
@@ -339,14 +340,11 @@ public class CargarInscripcionController implements Serializable {
 	public void confimarCarrera(Alumno alumno){
 		alumno.setCarrera(getCarreraElegida());
 	}
-	
     public List<Genero>getGeneros(){
 		return generos;
 	}
-
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
-
 	}
 
 }
