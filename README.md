@@ -60,3 +60,16 @@ drop database libroMatrizDigital;
 - En el Eclipse, ir a `Run -> Debug configurations...` y agregar una nueva del tipo `Remote Java Application`. Configurarlo como se ve en la imagen, usando `localhost` para el _Host_ y `8000` para el _Port_:
 ![screenshot from 2018-11-13 20-46-34](https://user-images.githubusercontent.com/1585835/48450543-61aa0880-e785-11e8-8306-48d964ea8542.png)
 
+## Migraciones de SQL
+
+Para manejar las migraciones de la base de datos utilizamos [Flyway](https://flywaydb.org/), una herramienta que automatiza parte de la tarea.
+
+Las migraciones no son más que archivos SQL dentro de la carpeta `src/main/resources/db/migration`, que Flyway va a ejecutar en orden, según su nombre. Para este proyecto elegimos nombrar a los archivos según su fecha y hora de creación, por ejemplo: `V20190205174623__Crear_tabla_Representante` es una migración creada el 05/02/2019 a las 17:46:23 que crea una tabla llamada `Representante`.
+
+En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
+
+* `DumpSQLSchema.java`: exporta el esquema generado por Hibernate al archivo `src/main/resources/db/schema.sql`. Resulta útil para ver qué cambió.
+* `CreateMigrationFile.java`: crea un archivo vacío para escribir una migración, usando la convención de nombre por fecha y hora. Es importante recordar agregarle una descripción adecuada.
+* `RunFlywayDBMigrations.java`: corre las migraciones necesarias y actualiza el archivo con el schema.
+
+
