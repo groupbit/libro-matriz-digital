@@ -1,11 +1,11 @@
-package ar.edu.unq.sarmiento.hibernate;
+package ar.edu.unq.sarmiento.hibernate.migrations;
 
 import javax.sql.DataSource;
 
 import org.flywaydb.core.Flyway;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class FlywayDBMigrator {
+public class RunFlywayDBMigrations {
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();

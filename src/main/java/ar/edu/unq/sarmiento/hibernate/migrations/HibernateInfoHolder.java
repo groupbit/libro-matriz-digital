@@ -1,4 +1,4 @@
-package ar.edu.unq.sarmiento.hibernate;
+package ar.edu.unq.sarmiento.hibernate.migrations;
 
 import org.hibernate.boot.Metadata;
 import org.hibernate.engine.spi.SessionFactoryImplementor;

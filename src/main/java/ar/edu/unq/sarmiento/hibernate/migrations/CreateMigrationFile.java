@@ -1,4 +1,4 @@
-package ar.edu.unq.sarmiento.hibernate;
+package ar.edu.unq.sarmiento.hibernate.migrations;
 
 import java.io.File;
 import java.io.IOException;

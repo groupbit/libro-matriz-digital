@@ -1,4 +1,4 @@
-package ar.edu.unq.sarmiento.hibernate;
+package ar.edu.unq.sarmiento.hibernate.migrations;
 
 import java.io.File;
 import java.util.EnumSet;
@@ -9,8 +9,10 @@ import org.hibernate.tool.schema.TargetType;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import ar.edu.unq.sarmiento.hibernate.HibernateConf;
+
 @Component
-public class SchemaFileDumper {
+public class DumpSQLSchema {
 
 	public void writeToFile(String filePath) {
 		deleteFile(filePath);
@@ -30,7 +32,7 @@ public class SchemaFileDumper {
 		ctx.scan("ar.edu.unq.sarmiento", "ar.edu.unq.sarmiento.hibernate");
 		ctx.refresh();
 
-		SchemaFileDumper dumper = (SchemaFileDumper) ctx.getBean("schemaFileDumper");
+		DumpSQLSchema dumper = (DumpSQLSchema) ctx.getBean("schemaFileDumper");
 		dumper.writeToFile("src/main/resources/db/schema.sql");
 
 		ctx.close();
