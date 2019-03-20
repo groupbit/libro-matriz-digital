@@ -67,12 +67,20 @@ public class HibernateConf {
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
-		if(HibernateConf.modo.equals("server")){
-			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "validate");
-		}else{
-			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
-			hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
+		
+		switch (HibernateConf.modo) {
+			case "server":
+				hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "validate");
+				break;
+			case "create":
+				hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+				hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
+				break;
+			case "migrate":
+				hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "none");
+				break;
 		}
+		
 		return hibernateProperties;
 	}
 }

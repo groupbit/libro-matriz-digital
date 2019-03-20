@@ -4,7 +4,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.service.spi.SessionFactoryServiceRegistry;
 
-import ar.edu.unq.sarmiento.hibernate.HibernateInfoHolder;
+import ar.edu.unq.sarmiento.hibernate.migrations.HibernateInfoHolder;
 
 public class Integrator implements org.hibernate.integrator.spi.Integrator {
 
