@@ -68,7 +68,7 @@ public class HibernateConf {
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
 		if(HibernateConf.modo.equals("server")){
-			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "validate");
 		}else{
 			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
 			hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
