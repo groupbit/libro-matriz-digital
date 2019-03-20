@@ -19,6 +19,8 @@ public class RunFlywayDBMigrations {
 		Flyway flyway = Flyway.configure().dataSource(dataSource).load();
 		flyway.migrate();
 		
+		FlywayUtils.dumpSQLSchema();
+		
 		ctx.close();
 	}
 }
