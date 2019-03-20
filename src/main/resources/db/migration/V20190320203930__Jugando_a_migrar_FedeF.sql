@@ -1,0 +1,1 @@
+alter table JugandoAMigrar add fedeFerreyra varchar(255);
