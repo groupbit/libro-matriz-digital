@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.io.File;
 import java.util.EnumSet;
 
 import org.hibernate.boot.spi.MetadataImplementor;
@@ -11,10 +12,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class SchemaFileDumper {
 
-	private void writeToFile(String filePath) {
+	public void writeToFile(String filePath) {
+		deleteFile(filePath);
+		
 		new SchemaExport()
 			.setOutputFile(filePath)
 			.create(EnumSet.of(TargetType.SCRIPT), (MetadataImplementor) HibernateInfoHolder.getMetadata());
+	}
+
+	private boolean deleteFile(String filePath) {
+		return new File(filePath).delete();
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException {
@@ -24,7 +31,7 @@ public class SchemaFileDumper {
 		ctx.refresh();
 
 		SchemaFileDumper dumper = (SchemaFileDumper) ctx.getBean("schemaFileDumper");
-		dumper.writeToFile("schema.sql");
+		dumper.writeToFile("src/main/resources/db/schema.sql");
 
 		ctx.close();
 	}
