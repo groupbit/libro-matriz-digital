@@ -25,14 +25,14 @@ public class DumpSQLSchema {
 	private boolean deleteFile(String filePath) {
 		return new File(filePath).delete();
 	}
-
+	
 	public static void main(String[] args) throws ClassNotFoundException {
 		HibernateConf.modo = "generate";
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 		ctx.scan("ar.edu.unq.sarmiento", "ar.edu.unq.sarmiento.hibernate");
 		ctx.refresh();
 
-		DumpSQLSchema dumper = (DumpSQLSchema) ctx.getBean("schemaFileDumper");
+		DumpSQLSchema dumper = (DumpSQLSchema) ctx.getBean("dumpSQLSchema");
 		dumper.writeToFile(FlywayUtils.sqlSchemaFile());
 
 		ctx.close();
