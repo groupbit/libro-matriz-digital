@@ -21,6 +21,7 @@ public class Materia extends Persistible {
 	private boolean promocionable;
 	private int anioEnCarrera;
 	private String docente;
+	private boolean esDificil;
 
 	public String getNombre() {
 		return nombre;
