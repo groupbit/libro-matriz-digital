@@ -33,7 +33,7 @@ public class DumpSQLSchema {
 		ctx.refresh();
 
 		DumpSQLSchema dumper = (DumpSQLSchema) ctx.getBean("schemaFileDumper");
-		dumper.writeToFile("src/main/resources/db/schema.sql");
+		dumper.writeToFile(FlywayUtils.sqlSchemaFile());
 
 		ctx.close();
 	}
