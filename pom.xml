@@ -146,7 +146,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.12</version>
 		</dependency>
-
+		<dependency>
+		    <groupId>org.flywaydb</groupId>
+		    <artifactId>flyway-core</artifactId>
+		    <version>5.2.4</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>libro-matriz-digital</finalName>
