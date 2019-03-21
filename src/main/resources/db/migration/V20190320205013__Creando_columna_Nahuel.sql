@@ -1,0 +1,1 @@
+alter table JugandoAMigrar add column nahuelM varchar(255);
