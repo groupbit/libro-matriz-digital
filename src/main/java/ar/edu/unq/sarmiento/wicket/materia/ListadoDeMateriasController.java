@@ -21,7 +21,10 @@ import ar.edu.unq.sarmiento.modelo.Materia;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class ListadoDeMateriasController implements Serializable{
-
+	@Autowired
+	private CarreraHome carreraHome;
+	@Autowired
+	private MateriaHome materiaHome;
 	private Carrera carrera;
 
 	public Carrera getCarrera() {
@@ -50,5 +53,16 @@ public class ListadoDeMateriasController implements Serializable{
 				  .map(m -> m.getNombre())
 				  .collect(Collectors.joining(", "));
 	}
+
+	public Carrera attach(Carrera carrera) {
+		carreraHome.attach(carrera);
+		return carrera;
+	}
+
+	public Materia attachMateria(Materia materia) {
+		materiaHome.attach(materia);
+		return materia;
+	}
+
 	
 }

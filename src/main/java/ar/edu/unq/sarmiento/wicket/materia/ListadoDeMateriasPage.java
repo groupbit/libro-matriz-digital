@@ -52,6 +52,8 @@ public class ListadoDeMateriasPage extends LayoutPage {
 
 					@Override
 					public void onClick() {
+						controller.attach(carrera1);
+						controller.attachMateria(item.getModelObject());
 						this.setResponsePage(new AgregarCorrelativa(item.getModelObject(),carrera1));
 					}
 				});

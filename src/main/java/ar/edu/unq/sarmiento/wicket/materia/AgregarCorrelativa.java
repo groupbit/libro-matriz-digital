@@ -8,6 +8,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Materia;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
@@ -34,6 +35,8 @@ public class AgregarCorrelativa extends LayoutPage {
 		materia1 = materia;
 		carrera = carrera1;
 		agregarCorrelativasController.setMateria(materia1);
+		agregarCorrelativasController.cargarCorrelativasPosibles();
+			
 		this.formulario();
 	}
 
@@ -52,7 +55,7 @@ public class AgregarCorrelativa extends LayoutPage {
 		formulario.add(new
 				DropDownChoice<>("materia",
 				new PropertyModel<>(agregarCorrelativasController, "materiaElegida"),
-				new PropertyModel<>(agregarCorrelativasController, "materiasActivadas"),
+				new PropertyModel<>(agregarCorrelativasController, "todasLasMaterias"),
 				new ChoiceRenderer<>("nombre")));
 		this.add(formulario);
 		formulario.add(new Link<String>("cancelar") {
@@ -61,7 +64,7 @@ public class AgregarCorrelativa extends LayoutPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new ListadoDeMateriasPage(carrera));
+				this.setResponsePage(new ListadoDeMateriasPage(agregarCorrelativasController.attach(carrera)));
 			}
 		});
 

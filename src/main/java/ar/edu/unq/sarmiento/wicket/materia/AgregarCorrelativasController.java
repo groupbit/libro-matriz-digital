@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.MateriaHome;
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Materia;
 
 @Service
@@ -23,8 +25,11 @@ public class AgregarCorrelativasController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Autowired
 	private MateriaHome materiaHome;
+	@Autowired
+	private CarreraHome carreraHome;
 	private Materia materia;
 	private Materia materiaElegida;
+	private List<Materia> todasLasMaterias;
 
 	public Materia getMateria() {
 		return materia;
@@ -47,15 +52,20 @@ public class AgregarCorrelativasController implements Serializable {
 		materiaHome.saveOrUpdate(materia);
 	}
 
-	public List<Materia> materiasActivadas() {
-		List<Materia> todasLasMaterias = materiaHome.all();
-		List<Materia> correlaticas = this.materia.getCorrelativas();
-		todasLasMaterias.removeAll(correlaticas);
-	return todasLasMaterias;
+	public Carrera attach(Carrera carrera) {
+		carreraHome.attach(carrera);
+		return carrera;
 	}
 
-	public void attach(Materia materia) {
-		Materia materia1 = materia;
-		materiaHome.attach(materia1);
+	public void cargarCorrelativasPosibles() {
+		setTodasLasMaterias(materiaHome.all());
+	}
+
+	public List<Materia> getTodasLasMaterias() {
+		return todasLasMaterias;
+	}
+
+	public void setTodasLasMaterias(List<Materia> todasLasMaterias) {
+		this.todasLasMaterias = todasLasMaterias;
 	}
 }
