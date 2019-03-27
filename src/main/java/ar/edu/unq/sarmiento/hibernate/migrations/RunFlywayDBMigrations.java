@@ -17,8 +17,9 @@ public class RunFlywayDBMigrations {
 		
 		DataSource dataSource = (DataSource) ctx.getBean("dataSource");
 		Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+		flyway.repair();
 		flyway.migrate();
-		
+
 		FlywayUtils.dumpSQLSchema();
 		
 		ctx.close();
