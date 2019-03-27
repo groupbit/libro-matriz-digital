@@ -1,1 +1,1 @@
-alter table Alumno modify genero tinyint(2);
+alter table Alumno modify genero int(11);
