@@ -37,7 +37,7 @@ public class CrearCursadaController implements Serializable {
 	@Autowired
 	private MateriaHome materiaHome;
 
-	private int anio= Year.now().getValue();
+	private int anio;
 	
 	private Materia materiaElegida;
 	
@@ -45,6 +45,11 @@ public class CrearCursadaController implements Serializable {
 	
 	private int notaFinal;
 	
+	
+	public CrearCursadaController() {
+		anio = Year.now().getValue();
+	}
+
 	public void agregarCursada(Alumno alumno) {
 		Cursada cursada = new Cursada();
 		cursada.setAnio(this.getAnio());
