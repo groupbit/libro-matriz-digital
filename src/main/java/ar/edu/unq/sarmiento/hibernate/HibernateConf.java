@@ -21,7 +21,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "ar.edu.unq.sarmiento")
 @EnableTransactionManagement
 public class HibernateConf {
-	public static String modo = "server";
+	public enum HibernateMode {
+		SERVER("validate"), 
+		DATA_SEED("validate"), 
+		MIGRATION("none");
+		
+		private String hbm2ddlMode;
+
+		HibernateMode(String hbm2ddlMode) {
+			this.hbm2ddlMode = hbm2ddlMode;
+		}
+
+		public String getHbm2ddlMode() {
+			return hbm2ddlMode;
+		}
+	}
+	
+	public static HibernateMode modo = HibernateMode.SERVER;
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
@@ -67,12 +83,13 @@ public class HibernateConf {
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
-		if(HibernateConf.modo.equals("server")){
-			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-		}else{
-			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+		
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", HibernateConf.modo.hbm2ddlMode);
+		
+		if (HibernateConf.modo == HibernateMode.DATA_SEED) {
 			hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
 		}
+		
 		return hibernateProperties;
 	}
 }

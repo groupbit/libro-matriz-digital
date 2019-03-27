@@ -1,0 +1,1 @@
+ALTER TABLE Cursada MODIFY notaFinal int null;
