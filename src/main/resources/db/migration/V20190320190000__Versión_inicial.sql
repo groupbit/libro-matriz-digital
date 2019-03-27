@@ -185,7 +185,6 @@ CREATE TABLE `Materia` (
   `id` int(11) NOT NULL,
   `anioEnCarrera` int(11) NOT NULL,
   `docente` varchar(255) DEFAULT NULL,
-  `hola` int(11) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
   `promocionable` bit(1) DEFAULT NULL,
   `carrera_id` int(11) DEFAULT NULL,
