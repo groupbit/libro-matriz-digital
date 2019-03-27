@@ -1,7 +1,7 @@
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/ingsw-sarmiento/libro-matriz-digital.svg?columns=backlog)](https://waffle.io/ingsw-sarmiento/libro-matriz-digital)
 [![Build Status](https://travis-ci.org/ingsw-sarmiento/libro-matriz-digital.svg?branch=master)](https://travis-ci.org/ingsw-sarmiento/libro-matriz-digital)
 
-# Libro matriz digital 
+# Libro matriz digital
 > Sistema de gestión para el ISFDyT nro. 138. [:link:](http://libro-matriz-digital.us-east-1.elasticbeanstalk.com)
 
 ## Configuración necesaria para empezar a programar
@@ -30,7 +30,12 @@ create database libroMatrizDigital;
 use libroMatrizDigital;
 ```
 
-Luego desde la clase GenerateDataMain correr Run-> JavaApplication para crear la base de datos.
+Luego, ejecutar:
+
+1. `RunFlywayDBMigrations` para crear las tablas.
+1. `GenerateDataMain` para cargar el juego de datos iniciales.
+
+Ambas clases se ejecutan mediante la opción `Run As -> Java Application`.
 
 Si es necesario borrar la base de datos, usar:
 ```
@@ -71,5 +76,3 @@ En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
 * `DumpSQLSchema.java`: exporta el esquema generado por Hibernate al archivo `src/main/resources/db/schema.sql`. Resulta útil para ver qué cambió.
 * `CreateMigrationFile.java`: crea un archivo vacío para escribir una migración, usando la convención de nombre por fecha y hora. Es importante recordar agregarle una descripción adecuada.
 * `RunFlywayDBMigrations.java`: corre las migraciones necesarias y actualiza el archivo con el schema.
-
-
