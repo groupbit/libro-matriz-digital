@@ -1,0 +1,1 @@
+alter table Alumno modify genero int(11);

@@ -2,6 +2,8 @@ package ar.edu.unq.sarmiento.wicket.inscripcion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
+import ar.edu.unq.sarmiento.modelo.Genero;
+import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -35,7 +39,7 @@ public class CargarInscripcionController implements Serializable {
 	@Autowired 
 	private CarreraHome carreraHome;
 	private String nombre;
-	private String genero;
+	private Genero genero;
 	private String dni;
 	private LocalDate fechaNacimiento;
 	private String lugarNacimiento;
@@ -60,8 +64,9 @@ public class CargarInscripcionController implements Serializable {
 	private String distrito;
 	private String nombreTitulo;
 	private Carrera carreraElegida;
+    private List<Genero>generos=new ArrayList<>();
 
-	public CargarInscripcionController() {
+	public CargarInscripcionController() {this.setGeneros();
 	}
 
 	public void inscribir() {
@@ -96,7 +101,7 @@ public class CargarInscripcionController implements Serializable {
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 		this.confimarCarrera(alumno);
-
+        
 	}
   
 	public Direccion getDireccion() {
@@ -198,7 +203,6 @@ public class CargarInscripcionController implements Serializable {
 		return telefono;
 	}
 
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
@@ -232,12 +236,12 @@ public class CargarInscripcionController implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getGenero() {
+	
+	public Genero getGenero() {
 		return this.genero;
 	}
-
-	public void setGenero(String genero) {
+    
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
@@ -336,4 +340,11 @@ public class CargarInscripcionController implements Serializable {
 	public void confimarCarrera(Alumno alumno){
 		alumno.setCarrera(getCarreraElegida());
 	}
+    public List<Genero>getGeneros(){
+		return generos;
+	}
+	public void setGeneros() {
+		this.generos =Arrays.asList(Genero.values());
+	}
+
 }

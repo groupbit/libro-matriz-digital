@@ -18,7 +18,7 @@ drop table if exists Examen
 drop table if exists JugandoAMigrar
 drop table if exists Materia
 drop table if exists Materia_Materia
-create table Alumno (id integer not null, actividad varchar(255), dni varchar(255), email varchar(255), estadoCivil varchar(255), familiaresACargo varchar(255), fechaDeNacimiento date, genero varchar(255), hijos integer not null, horarioHabitual time, lugarDeNacimiento varchar(255), nombre varchar(255), obraSocial varchar(255), propietarioTelefonoAlternativo varchar(255), telefono varchar(255), telefonoAlternativo varchar(255), trabaja bit not null, carrera_id integer, direccion_id integer, titulo_id integer, primary key (id)) engine=InnoDB
+create table Alumno (id integer not null, actividad varchar(255), dni varchar(255), email varchar(255), estadoCivil varchar(255), familiaresACargo varchar(255), fechaDeNacimiento date, genero integer, hijos integer not null, horarioHabitual time, lugarDeNacimiento varchar(255), nombre varchar(255), obraSocial varchar(255), propietarioTelefonoAlternativo varchar(255), telefono varchar(255), telefonoAlternativo varchar(255), trabaja bit not null, carrera_id integer, direccion_id integer, titulo_id integer, primary key (id)) engine=InnoDB
 create table Alumno_EstudioCursado (Alumno_id integer not null, otrosTitulos_id integer not null) engine=InnoDB
 create table Carrera (id integer not null, archivada bit, duracion float not null, nombre varchar(255), resolucion varchar(255), primary key (id)) engine=InnoDB
 create table Cursada (id integer not null, anio integer not null, estado integer, notaFinal integer not null, materia_id integer, alumno_id integer, primary key (id)) engine=InnoDB

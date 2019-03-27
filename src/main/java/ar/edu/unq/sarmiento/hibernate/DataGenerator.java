@@ -15,6 +15,7 @@ import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Examen;
+import ar.edu.unq.sarmiento.modelo.Genero;
 import ar.edu.unq.sarmiento.modelo.Materia;
 import ar.edu.unq.sarmiento.modelo.TipoDeExamen;
 
@@ -49,6 +50,7 @@ public class DataGenerator {
 		alumno.setTelefono("2478558965");
 		alumno.setFechaDeNacimiento(LocalDate.of(1983, 10, 23));
 		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
+		alumno.setGenero(Genero.FEMENINO);
 		
 		Alumno alumno2 = new Alumno();
 		alumno2.setNombre("Esteban Cufré");
@@ -57,6 +59,7 @@ public class DataGenerator {
 		alumno2.setDni("15698544");
 		alumno2.setFechaDeNacimiento(LocalDate.of(1991, 3, 15));
 		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento","Cap Sarm"));
+		alumno2.setGenero(Genero.MASCULINO);
 		
 		Carrera carrera = new Carrera();
 		carrera.setNombre("Programación informática");
@@ -156,6 +159,7 @@ public class DataGenerator {
 		alumno4.addCursada(cursada2);
 		alumno4.addCursada(cursada3);
 		alumno4.addCursada(cursada4);
+		alumno4.setGenero(Genero.OTROS);
 		
 		Alumno alumno3 = new Alumno();
 		alumno3.setNombre("Karina Rivarola");
@@ -169,6 +173,7 @@ public class DataGenerator {
 		EstudioCursado titulo= new EstudioCursado();
 		titulo.setAnioEgreso(2016);
 		alumno3.setTitulo(titulo);
+		alumno3.setGenero(Genero.FEMENINO);
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 		alumnoHome.saveOrUpdate(alumno);
