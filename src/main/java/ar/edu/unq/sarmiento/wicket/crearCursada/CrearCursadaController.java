@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.crearCursada;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -74,8 +75,8 @@ public class CrearCursadaController implements Serializable {
 		return estado;
 	}
 
-	public String convertirString(){
-		return EnumUtils.convertirString(getEstado());
+	public List<EstadoCursada> getEstadosPosibles(){
+		return Arrays.asList(EstadoCursada.values());
 	}
 	public void setEstado(EstadoCursada estado) {
 		this.estado = estado;

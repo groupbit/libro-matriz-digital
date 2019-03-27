@@ -65,12 +65,10 @@ public class CrearCursadaPage extends LayoutPage {
 				new ChoiceRenderer<>("nombre")));
 		nuevaCursada.add(new TextField<>("notaFinal",new PropertyModel<>(this.crearCursadaController,"notaFinal")));
 		this.add(nuevaCursada);
-		
-	}
-	@RequestMapping(value = "/estado", method = RequestMethod.POST)
-	public String elegirEstado(EstadoCursada estado) {
-	  crearCursadaController.setEstado(estado);
-
-	  return "redirect:/estado";
+		nuevaCursada.add(new DropDownChoice<>(
+				"estado",
+				new PropertyModel<>(crearCursadaController, "estado"),
+				new PropertyModel<>(crearCursadaController, "estadosPosibles"),
+				new ChoiceRenderer<>()));
 	}
 }
