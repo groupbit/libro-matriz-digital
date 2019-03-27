@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.crearCursada;
 
 import java.io.Serializable;
+import java.time.Year;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class CrearCursadaController implements Serializable {
 	@Autowired
 	private MateriaHome materiaHome;
 
-	private int anio;
+	private int anio= Year.now().getValue();
 	
 	private Materia materiaElegida;
 	
