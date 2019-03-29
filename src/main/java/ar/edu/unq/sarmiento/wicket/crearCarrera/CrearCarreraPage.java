@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.crearCarrera;
 
+import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -48,11 +49,10 @@ public class CrearCarreraPage extends  LayoutPage{
 			}
 
 		});
-
-
-		altaCarrera.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")));
-		altaCarrera.add(new TextField<>("resolucion", new PropertyModel<>(controller, "resolucion")));
-		altaCarrera.add(new TextField<>("duracion", new PropertyModel<>(controller, "duracion")));
+		
+		altaCarrera.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")).add(new PropertyValidator<>()));
+		altaCarrera.add(new TextField<>("resolucion", new PropertyModel<>(controller, "resolucion")).add(new PropertyValidator<>()));
+		altaCarrera.add(new TextField<>("duracion", new PropertyModel<>(controller, "duracion")).add(new PropertyValidator<>()));
 
 		this.add(altaCarrera);
 
