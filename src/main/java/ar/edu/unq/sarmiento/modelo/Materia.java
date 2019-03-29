@@ -22,6 +22,14 @@ public class Materia extends Persistible {
 	private int anioEnCarrera;
 	private String docente;
 	private boolean esDificil;
+	
+	public Materia() {
+		
+	}
+	
+	public Materia(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public String getNombre() {
 		return nombre;
