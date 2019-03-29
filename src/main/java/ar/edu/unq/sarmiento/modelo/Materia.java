@@ -32,6 +32,7 @@ public class Materia extends Persistible {
 	}
 	
 	public void addCorrelativa(Materia materia){
+
 		this.correlativas.add(materia);
 	}
 	
@@ -66,5 +67,7 @@ public class Materia extends Persistible {
 	public void setDocente(String docente) {
 		this.docente = docente;
 	}
+	
+	
 
 }
