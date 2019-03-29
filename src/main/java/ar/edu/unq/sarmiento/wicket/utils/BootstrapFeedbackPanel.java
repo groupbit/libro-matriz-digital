@@ -16,22 +16,20 @@ public class BootstrapFeedbackPanel extends FeedbackPanel {
 
     @Override
     protected String getCSSClass(FeedbackMessage message) {
-        String css;
+        String css = "alert alert-dismissible";
         switch (message.getLevel()){
             case FeedbackMessage.SUCCESS:
-                css = "alert alert-success";
+                css += " alert-success";
                 break;
             case FeedbackMessage.INFO:
-                css = "alert alert-info";
+                css += " alert-info";
                 break;
             case FeedbackMessage.ERROR:
-                css = "alert alert-danger";
+                css += " alert-danger";
                 break;
             case FeedbackMessage.WARNING:
-                css = "alert alert-warning";
+                css += " alert-warning";
                 break;
-            default:
-                css = "alert";
         }
 
         return css;
