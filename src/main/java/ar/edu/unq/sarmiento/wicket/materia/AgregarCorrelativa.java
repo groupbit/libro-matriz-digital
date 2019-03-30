@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.materia;
 
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -41,6 +42,7 @@ public class AgregarCorrelativa extends LayoutPage {
 	}
 
 	private void formulario() {
+		this.add(new Label("nombreMateria", new PropertyModel<>(agregarCorrelativasController, "nombreMateria")));
 		Form<AgregarCorrelativasController> formulario = new Form<AgregarCorrelativasController>("correlativas") {
 
 			private static final long serialVersionUID = 1L;

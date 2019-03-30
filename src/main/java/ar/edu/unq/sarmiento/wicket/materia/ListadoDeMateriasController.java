@@ -54,15 +54,13 @@ public class ListadoDeMateriasController implements Serializable{
 				  .collect(Collectors.joining(", "));
 	}
 
-	public Carrera attach(Carrera carrera) {
+	public void attach(Carrera carrera) {
 		carreraHome.attach(carrera);
-		return carrera;
 	}
 
-	public Materia attachMateria(Materia materia) {
+	public void attachMateria(Materia materia) {
 		materiaHome.attach(materia);
-		return materia;
 	}
 
-	
+	//saque los return 
 }

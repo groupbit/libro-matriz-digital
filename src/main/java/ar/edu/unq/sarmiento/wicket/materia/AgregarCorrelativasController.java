@@ -2,6 +2,7 @@ package ar.edu.unq.sarmiento.wicket.materia;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -30,11 +31,15 @@ public class AgregarCorrelativasController implements Serializable {
 	private Materia materia;
 	private Materia materiaElegida;
 	private List<Materia> todasLasMaterias;
+	private List<Materia> correlativasDeMateria;
 
 	public Materia getMateria() {
 		return materia;
 	}
-
+	
+	public String nombreMateria(){
+		return materia.getNombre();
+	}
 	public void setMateria(Materia materia) {
 		this.materia = materia;
 	}
@@ -60,9 +65,15 @@ public class AgregarCorrelativasController implements Serializable {
 	public void cargarCorrelativasPosibles() {
 		setTodasLasMaterias(materiaHome.all());
 	}
+	public List<Materia> materiasYaElegidas(List<Materia> mate){
+		todasLasMaterias.removeAll(mate);
+		return todasLasMaterias;
+	}
 
 	public List<Materia> getTodasLasMaterias() {
-		return todasLasMaterias;
+		List<Materia> materias =this.materiasYaElegidas(materia.getCorrelativas());
+		materias.remove(materia);
+		return materias;
 	}
 
 	public void setTodasLasMaterias(List<Materia> todasLasMaterias) {
