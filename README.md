@@ -76,11 +76,13 @@ En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
 * `DumpSQLSchema.java`: exporta el esquema generado por Hibernate al archivo `src/main/resources/db/schema.sql`. Resulta útil para ver qué cambió.
 * `CreateMigrationFile.java`: crea un archivo vacío para escribir una migración, usando la convención de nombre por fecha y hora. Es importante recordar agregarle una descripción adecuada.
 * `RunFlywayDBMigrations.java`: corre las migraciones necesarias y actualiza el archivo con el schema.
-#Manejo de errores:
 
-##Instalación:
+# Manejo de errores:
+
+## Instalación:
 
  * Agregar las dependencias en el pom:
+
     wicket_bean_validation:
      
        <dependency>
@@ -90,6 +92,7 @@ En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
        </dependency> 
 
     hibernate_validator:
+
         <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-validator</artifactId>
@@ -109,6 +112,7 @@ En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
  * Configuración en Wicket:
     
     En WicketAplication se utilizan para:
+
        validación imperativa: - PageRequestHandlerTracker.
                               - ModelErrorRequestCycleListernerHandler
 
