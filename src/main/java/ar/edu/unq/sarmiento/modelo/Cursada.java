@@ -41,5 +41,11 @@ public class Cursada extends Persistible {
 	public void setEstado(EstadoCursada estado) {
 		this.estado = estado;
 	}
+	
+	public boolean estadoRegularizadoOAprobado(){
+		return (this.getEstado().equals(EstadoCursada.REGULARIZADA) || 
+				this.getEstado().equals(EstadoCursada.APROBADA_FINAL) ||
+				this.getEstado().equals(EstadoCursada.APROBADA_PROMOCION));
+	}
 }
 	

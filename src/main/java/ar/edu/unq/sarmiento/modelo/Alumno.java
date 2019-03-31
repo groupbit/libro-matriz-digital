@@ -248,5 +248,14 @@ public class Alumno extends Persistible {
 	public void setOtrosTitulos(List<EstudioCursado> otros_titulos) {
 		this.otrosTitulos = otros_titulos;
 	}
+	
+	public boolean puedeMatricularseA(Materia materia) {
+		return materia.getCorrelativas().stream().allMatch(m -> this.estaRegularizada(m));
+	}
+
+	private boolean estaRegularizada(Materia m) {
+		return this.cursadas.stream().filter(c -> c.getMateria().equals(m))
+				.anyMatch(c -> c.estadoRegularizadoOAprobado());
+	}
 
 }
