@@ -75,6 +75,13 @@ public class Carrera extends Persistible {
 	}
 	
 	public void agregarMateria(Materia materia){
+		validarMateriaEsNueva(materia);
 		this.listadoMaterias.add(materia);
+	}
+
+	private void validarMateriaEsNueva(Materia materia) {
+		if (this.listadoMaterias.stream().anyMatch(m -> m.getNombre().equals(materia.getNombre()))) {
+			throw new ModelException("Ya existe una materia llamada " + materia.getNombre() + ".");
+		};
 	}
 }

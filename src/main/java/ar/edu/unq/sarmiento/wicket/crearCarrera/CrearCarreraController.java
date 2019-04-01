@@ -3,7 +3,11 @@ package ar.edu.unq.sarmiento.wicket.crearCarrera;
 import java.io.Serializable;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -25,9 +29,11 @@ public class CrearCarreraController implements Serializable {
 	@Autowired
 	private CarreraHome carreraHome;
 	private Carrera carrera;
-	
+	@NotNull
 	private String nombre;
+	@NotNull
 	private String resolucion;
+	@Range(min=1, max=6)
 	private float duracion;
 	
 	public void agregarCarrera() {

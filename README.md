@@ -76,3 +76,48 @@ En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
 * `DumpSQLSchema.java`: exporta el esquema generado por Hibernate al archivo `src/main/resources/db/schema.sql`. Resulta útil para ver qué cambió.
 * `CreateMigrationFile.java`: crea un archivo vacío para escribir una migración, usando la convención de nombre por fecha y hora. Es importante recordar agregarle una descripción adecuada.
 * `RunFlywayDBMigrations.java`: corre las migraciones necesarias y actualiza el archivo con el schema.
+
+# Manejo de errores:
+
+## Instalación:
+
+ * Agregar las dependencias en el pom:
+
+    wicket_bean_validation:
+     
+       <dependency>
+       <groupId>org.apache.wicket</groupId>
+       <artifactId>wicket-bean-validation</artifactId>
+       <version>${wicket.version}</version>
+       </dependency> 
+
+    hibernate_validator:
+
+        <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>5.3.5.Final</version>
+        </dependency>
+
+ * Agregar las clases:
+
+    Creamos la clase ModelErrorRequestCycleListernerHandler que se utiliza para poder insertar código en el momento que se hace resquest, en nuestro caso la usamos para chequear si es un 
+    error de ModelException o un defaultException(error fuera de nuestro modelo) y lanzar el error según sea el caso.
+
+    Creamos la clase ModelException que se utiliza para filtrar los errores que se generan en nuestro modelo. 
+
+    Creamos la clase BootstrapFeedbackPanel y su respectivo html en donde en la clase se definirá su construcción y sus diferentes ventanas del panel. En el html su construcción para 
+    visualizar en el navegador. Se agrega al archivo main.css el estilo del feedbackPanel.
+    
+ * Configuración en Wicket:
+    
+    En WicketAplication se utilizan para:
+
+       validación imperativa: - PageRequestHandlerTracker.
+                              - ModelErrorRequestCycleListernerHandler
+
+       annotations: - BeanValidationConfiguration.
+
+ * Configuración de la clase LayoutPage a la cual agregamos el componente BootstrapFeedbackPanel y en su correspondiente html definimos la construcción para visualizar en el navegador.
+ 
+
