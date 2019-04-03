@@ -31,7 +31,6 @@ public class AgregarCorrelativasController implements Serializable {
 	private Materia materia;
 	private Materia materiaElegida;
 	private List<Materia> todasLasMaterias;
-	private List<Materia> correlativasDeMateria;
 
 	public Materia getMateria() {
 		return materia;
@@ -63,17 +62,14 @@ public class AgregarCorrelativasController implements Serializable {
 	}
 
 	public void cargarCorrelativasPosibles() {
-		setTodasLasMaterias(materiaHome.all());
-	}
-	public List<Materia> materiasYaElegidas(List<Materia> mate){
-		todasLasMaterias.removeAll(mate);
-		return todasLasMaterias;
+		List<Materia> materias = materiaHome.all();
+		materias.remove(this.materia);
+		materias.removeAll(materia.getCorrelativas());
+		setTodasLasMaterias(materias);
 	}
 
 	public List<Materia> getTodasLasMaterias() {
-		List<Materia> materias =this.materiasYaElegidas(materia.getCorrelativas());
-		materias.remove(materia);
-		return materias;
+		return todasLasMaterias;
 	}
 
 	public void setTodasLasMaterias(List<Materia> todasLasMaterias) {
