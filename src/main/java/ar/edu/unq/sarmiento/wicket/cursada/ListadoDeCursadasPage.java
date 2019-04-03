@@ -58,7 +58,7 @@ public class ListadoDeCursadasPage extends LayoutPage {
 
 					@Override
 					public void onClick() {
-						setResponsePage(new EditarCursadaPage(alumno1,item.getModelObject()));
+						setResponsePage(new EditarCursadaPage(item.getModelObject()));
 					}
 				});
 			}

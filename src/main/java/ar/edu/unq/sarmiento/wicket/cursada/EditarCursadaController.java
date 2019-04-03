@@ -33,47 +33,28 @@ public class EditarCursadaController implements Serializable {
 	public int anio;
 	public Cursada cursada;
 
-	public Alumno alumno;
 	@Autowired
 	private CursadaHome cursadaHome;
-	@Autowired
-	private AlumnoHome alumnoHome;
-	@Autowired
-	private MateriaHome materiaHome;
 
 	public EditarCursadaController() {
 
 	}
 
-	public EditarCursadaController(Alumno alumno, Cursada cursada1) {
+	public EditarCursadaController(Cursada cursada1) {
 		cursadaHome.attach(cursada1);
-		materiaHome.attach(cursada1.materia);
-		alumnoHome.attach(alumno);
-		this.alumno = alumno;
 		this.cursada = cursada1;
-		// this.materia = cursada.getMateria();
-		// this.estado = cursada.getEstado();
-		// this.anio = cursada.getAnio();
-		this.notaFinal = cursada1.getNotaFinal();
 	}
 
 	public void editarCursada() {
 		cursada.setMateria(cursada.getMateria());
 		cursada.setNotaFinal(cursada.getNotaFinal());
-		// cursada.setEstado(cursada.getEstado());
+		cursada.setEstado(cursada.getEstado());
 		cursada.setAnio(cursada.getAnio());
 		cursadaHome.saveOrUpdate(cursada);
-		// alumnoHome.saveOrUpdate(alumno);
 	}
 
 	public void setCursada(Cursada cursada2) {
-		cursadaHome.attach(cursada2);
 		this.cursada = cursada2;
-		cursada.anio = cursada2.getAnio();
-		cursada.estado = cursada2.getEstado();
-		cursada.materia = cursada2.getMateria();
-		cursada.notaFinal = cursada2.getNotaFinal();
-
 	}
 
 	public EstadoCursada getEstado() {
@@ -107,10 +88,6 @@ public class EditarCursadaController implements Serializable {
 	public List<EstadoCursada> getEstadosCursada() {
 		return Arrays.asList(EstadoCursada.values());
 
-	}
-
-	public void setAlumno(Alumno alumno2) {
-		alumno = alumno2;
 	}
 
 }
