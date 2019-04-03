@@ -57,6 +57,11 @@
 			<artifactId>wicket-extensions</artifactId> 
 			<version>${wicket.version}</version> 
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.wicket</groupId>
+		    <artifactId>wicket-bean-validation</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
 		<!-- Integrate Wicket with Spring -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
@@ -139,6 +144,11 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
+			<version>5.3.5.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
 			<version>5.3.5.Final</version>
 		</dependency>
 		<dependency>
