@@ -40,7 +40,7 @@ public class Materia extends Persistible {
 	}
 	
 	public void addCorrelativa(Materia materia){
-
+        this.validarSipuedeAgregarCorrelativa(materia);
 		this.correlativas.add(materia);
 	}
 	

@@ -1,17 +1,14 @@
-package ar.edu.unq.sarmiento.wicket.utils;
+package ar.edu.unq.sarmiento.modelo;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ar.edu.unq.sarmiento.modelo.Materia;
+public class VerificacionCorrelativaTest {
 
-public class CorrelativasTest {
 	
-	Materia robotica; Materia informatica; Materia organizacion; Materia objetosUno; Materia objetosDos;
+Materia robotica; Materia informatica; Materia organizacion; Materia objetosUno; Materia objetosDos;
 	
 	@Before
 	public void setUp()throws Exception{
@@ -30,10 +27,9 @@ public class CorrelativasTest {
 
 	@Test
 	public void verificarSiPuedeAgregarCorrelativa(){
+		assertEquals(4,objetosUno.getCorrelativas().size());
+		objetosUno.addCorrelativa(objetosDos);
+		assertEquals(5, objetosUno.getCorrelativas().size());	
 		
-		
-		
-		
-		
-	}
+	}	
 }
