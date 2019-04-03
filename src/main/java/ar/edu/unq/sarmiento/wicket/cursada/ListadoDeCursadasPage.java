@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.cursada;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -38,6 +39,14 @@ public class ListadoDeCursadasPage extends LayoutPage {
 				item.add(new Label("materia", new PropertyModel<>(cursada, "materia.nombre")));
 				item.add(new Label("estado", controller.convertirString(item.getModelObject().getEstado())));
 				item.add(new Label("notaF", new PropertyModel<>(cursada, "notaFinal")));
+				item.add(new Link<String>("laCursada") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						setResponsePage(new EditarCursadaPage(alumno1,item.getModelObject()));
+					}
+				});
 			}
 		});
 	}
