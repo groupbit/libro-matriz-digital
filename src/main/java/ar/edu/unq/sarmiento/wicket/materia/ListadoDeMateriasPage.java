@@ -47,8 +47,17 @@ public class ListadoDeMateriasPage extends LayoutPage {
 				item.add(new Label("docente", new PropertyModel<>(materia, "docente")));
 				item.add(new Label("correlativas", controller.getCorrelativas(item.getModelObject())));
 
-			}
+				item.add(new Link<String>("correlativa"){
+					private static final long serialVersionUID = 1L;
 
+					@Override
+					public void onClick() {
+						controller.attach(carrera1);
+						controller.attachMateria(item.getModelObject());
+						this.setResponsePage(new AgregarCorrelativa(item.getModelObject(),carrera1));
+					}
+				});
+			}
 		});
 	}
 

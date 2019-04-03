@@ -3,6 +3,7 @@ package ar.edu.unq.sarmiento.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -15,13 +16,21 @@ public class Materia extends Persistible {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String nombre;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Materia> correlativas = new ArrayList<>();
 	@Column
 	private boolean promocionable;
 	private int anioEnCarrera;
 	private String docente;
 	private boolean esDificil;
+	
+	public Materia() {
+		
+	}
+	
+	public Materia(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public String getNombre() {
 		return nombre;

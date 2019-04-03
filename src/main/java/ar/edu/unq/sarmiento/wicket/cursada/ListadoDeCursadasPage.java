@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Cursada;
+import ar.edu.unq.sarmiento.wicket.crearCursada.CrearCursadaPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
 public class ListadoDeCursadasPage extends LayoutPage {
@@ -25,6 +26,19 @@ public class ListadoDeCursadasPage extends LayoutPage {
 		alumno1 = alumno;
 		controller.setAlumno(alumno1);
 		this.listadoDeCursadas();
+		this.agregarCursada(alumno1);
+	}
+
+	private void agregarCursada(Alumno alumno1) {
+		this.add(new Link<String>("nuevaCursada") {
+
+			private static final long serialVersionUID = 505927122883116822L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new CrearCursadaPage(alumno1));
+			}
+		});
 	}
 
 	private void listadoDeCursadas() {

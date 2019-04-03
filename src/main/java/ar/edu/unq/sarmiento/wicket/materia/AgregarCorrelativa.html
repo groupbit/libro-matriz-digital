@@ -1,0 +1,28 @@
+<wicket:extend>
+	<div class="row">
+		<div class="panel panel-primary">
+			<div class="panel-heading titulo">
+				<h4>
+				Agregar Correlativa a <span wicket:id="nombreMateria"></span>
+				</h4>
+			</div>
+			<div class="panel-body">
+				<form wicket:id="correlativas" class="form-horizontal">
+
+					<div class="form-group">
+						<label for="elegirCarrera" class="col-md-2 control-label">
+							Materia </label>
+						<div class="col-md-9">
+							<select id="materia" class="form-control" wicket:id="materia"></select>
+						</div>
+					</div>
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-success">Guardar</button>
+						<button wicket:id="cancelar" class="btn btn-default">Cancelar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</wicket:extend>
