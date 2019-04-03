@@ -11,25 +11,22 @@ public class VerificacionCorrelativaTest {
 Materia robotica; Materia informatica; Materia organizacion; Materia objetosUno; Materia objetosDos;
 	
 	@Before
-	public void setUp()throws Exception{
+	public void setUp(){
 		objetosUno=new Materia();
-		informatica=new Materia();
-		robotica=new Materia();
-		organizacion=new Materia();
 		objetosDos=new Materia();
 		
-		objetosUno.addCorrelativa(informatica);
-		objetosUno.addCorrelativa(robotica);
-		objetosUno.addCorrelativa(organizacion);
 		objetosUno.addCorrelativa(objetosDos);
 		
 	}
 
-	@Test
-	public void verificarSiPuedeAgregarCorrelativa(){
-		assertEquals(4,objetosUno.getCorrelativas().size());
+	@Test(expected=ModelException.class)
+	public void verificarNoPoderAgregarLaCorrelativaDosVeces(){
 		objetosUno.addCorrelativa(objetosDos);
-		assertEquals(5, objetosUno.getCorrelativas().size());	
 		
-	}	
+	}
+	@Test(expected=ModelException.class)
+	public void vericarNoHayaBucle(){
+		objetosDos.addCorrelativa(objetosUno);
+		
+	}
 }
