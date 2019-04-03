@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-public class VerificacionCorrelativaTest {
+public class MateriaTest {
 
 	
 Materia robotica; Materia informatica; Materia organizacion; Materia objetosUno; Materia objetosDos;
