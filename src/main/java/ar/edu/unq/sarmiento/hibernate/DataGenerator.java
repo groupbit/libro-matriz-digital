@@ -42,40 +42,21 @@ public class DataGenerator {
 	
 	
 	protected void generate() {
+		Carrera tpi = new Carrera();
+		tpi.setNombre("Tecnicatura en Programación Informática");
+		tpi.setDuracion(5);
+		tpi.setResolucion("1280/52");
 		
-		Alumno alumno = new Alumno();
-		alumno.setNombre("Juan Rodriguez");
-		alumno.setEmail("juancito@gmail.com");
-		alumno.setDni("25897542");
-		alumno.setTelefono("2478558965");
-		alumno.setFechaDeNacimiento(LocalDate.of(1983, 10, 23));
-		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
-		alumno.setGenero(Genero.FEMENINO);
+		Carrera profesoradoIngles = new Carrera();
+		profesoradoIngles.setNombre("Profesorado de Inglés");
+		profesoradoIngles.setDuracion(4);
+		profesoradoIngles.setResolucion("1805/17");
 		
-		Alumno alumno2 = new Alumno();
-		alumno2.setNombre("Esteban Cufré");
-		alumno2.setEmail("esteban@gmail.com");
-		alumno2.setTelefono("2478547856");
-		alumno2.setDni("15698544");
-		alumno2.setFechaDeNacimiento(LocalDate.of(1991, 3, 15));
-		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento","Cap Sarm"));
-		alumno2.setGenero(Genero.MASCULINO);
-		
-		Carrera carrera = new Carrera();
-		carrera.setNombre("Programación informática");
-		carrera.setDuracion(5);
-		carrera.setResolucion("1280/52");
-		
-		Carrera carrera2 = new Carrera();
-		carrera2.setNombre("Profesorado de Inglés");
-		carrera2.setDuracion(4);
-		carrera2.setResolucion("1805/17");
-		
-		Carrera carrera3 = new Carrera();
-		carrera3.setNombre("Nivel inicial");
-		carrera3.setDuracion(5);
-		carrera3.setResolucion("5860/16");
-		carrera3.setArchivada(true);
+		Carrera profesoradoInicial = new Carrera();
+		profesoradoInicial.setNombre("Profesorado de Nivel Inicial");
+		profesoradoInicial.setDuracion(5);
+		profesoradoInicial.setResolucion("5860/16");
+		profesoradoInicial.setArchivada(true);
 		
 		Direccion direccion = new Direccion("Marmol", 855, null, "2752", "Capital Sarmiento","Cap Sarm");
 		
@@ -87,14 +68,14 @@ public class DataGenerator {
 		materia.setAnioEnCarrera(2);
 		materia.setDocente("Jorgelina Ceriani");
 		materia.setPromocionable(true);
-		carrera.agregarMateria(materia);
+		tpi.agregarMateria(materia);
 		
 		Materia materia3 = new Materia();
 		materia3.setNombre("Estrategía de persistencia");
 		materia3.setAnioEnCarrera(3);
 		materia3.setDocente("Pablo Murias");
 		materia3.setPromocionable(true);
-		carrera.agregarMateria(materia3);
+		tpi.agregarMateria(materia3);
 		
 		Materia materia2 = new Materia();
 		materia2.setNombre("Ingenieria de Software");
@@ -103,7 +84,7 @@ public class DataGenerator {
 		materia2.setAnioEnCarrera(3);
 		materia2.setDocente("Federico Aloi");
 		materia2.setPromocionable(false);
-		carrera.agregarMateria(materia2);
+		tpi.agregarMateria(materia2);
 		
 		
 		materia3.setAnioEnCarrera(2);
@@ -116,7 +97,7 @@ public class DataGenerator {
 		materia4.setAnioEnCarrera(3);
 		materia4.setDocente("Federico Aloi");
 		materia4.setPromocionable(false);
-		carrera.agregarMateria(materia4);
+		tpi.agregarMateria(materia4);
 		
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia3);
@@ -148,18 +129,25 @@ public class DataGenerator {
 		cursada4.setAnio(2017);
 		cursada4.setNotaFinal(7);
 		
-		Alumno alumno4 = new Alumno();
-		alumno4.setNombre("Nahu");
-		alumno4.setEmail("NahuelMartinez@gmail.com");
-		alumno4.setTelefono("2478458796");
-		alumno4.setDni("24587985");
-		alumno4.setFechaDeNacimiento(LocalDate.of(1995, 12, 2));
-		alumno4.setDireccion(new Direccion("cabofosatt", 256, "", "2752", "Capitán Sarmiento","Cap Sarm"));
-		alumno4.addCursada(cursada1);
-		alumno4.addCursada(cursada2);
-		alumno4.addCursada(cursada3);
-		alumno4.addCursada(cursada4);
-		alumno4.setGenero(Genero.OTROS);
+		Alumno alumno = new Alumno();
+		alumno.setNombre("Juan Rodriguez");
+		alumno.setEmail("juancito@gmail.com");
+		alumno.setDni("25897542");
+		alumno.setTelefono("2478558965");
+		alumno.setFechaDeNacimiento(LocalDate.of(1983, 10, 23));
+		alumno.setDireccion(new Direccion("Calle falsa", 123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
+		alumno.setGenero(Genero.FEMENINO);
+		alumno.setCarrera(profesoradoInicial);
+		
+		Alumno alumno2 = new Alumno();
+		alumno2.setNombre("Esteban Cufré");
+		alumno2.setEmail("esteban@gmail.com");
+		alumno2.setTelefono("2478547856");
+		alumno2.setDni("15698544");
+		alumno2.setFechaDeNacimiento(LocalDate.of(1991, 3, 15));
+		alumno2.setDireccion(new Direccion("Rivadavia", 147, "", "2752", "Capitán Sarmiento","Cap Sarm"));
+		alumno2.setGenero(Genero.MASCULINO);
+		alumno2.setCarrera(profesoradoIngles);
 		
 		Alumno alumno3 = new Alumno();
 		alumno3.setNombre("Karina Rivarola");
@@ -168,19 +156,32 @@ public class DataGenerator {
 		alumno3.setDni("24587985");
 		alumno3.setFechaDeNacimiento(LocalDate.of(1968, 7, 3));
 		alumno3.setDireccion(new Direccion("Alem", 1123, "", "2752", "Capitán Sarmiento","Cap Sarm"));
-		alumno3.addCursada(cursada);
-		alumno3.setCarrera(carrera3);
+		alumno3.setCarrera(profesoradoInicial);
 		EstudioCursado titulo= new EstudioCursado();
 		titulo.setAnioEgreso(2016);
 		alumno3.setTitulo(titulo);
 		alumno3.setGenero(Genero.FEMENINO);
+		
+		Alumno alumno4 = new Alumno();
+		alumno4.setNombre("Nahu");
+		alumno4.setEmail("NahuelMartinez@gmail.com");
+		alumno4.setTelefono("2478458796");
+		alumno4.setDni("24587985");
+		alumno4.setFechaDeNacimiento(LocalDate.of(1995, 12, 2));
+		alumno4.setDireccion(new Direccion("cabofosatt", 256, "", "2752", "Capitán Sarmiento","Cap Sarm"));
+		alumno4.setCarrera(tpi);
+		alumno4.addCursada(cursada1);
+		alumno4.addCursada(cursada2);
+		alumno4.addCursada(cursada3);
+		alumno4.addCursada(cursada4);
+		alumno4.setGenero(Genero.OTROS);
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 		alumnoHome.saveOrUpdate(alumno);
 		alumnoHome.saveOrUpdate(alumno2);
 		alumnoHome.saveOrUpdate(alumno3);
 		alumnoHome.saveOrUpdate(alumno4);
-		carreraHome.saveOrUpdate(carrera);
+		carreraHome.saveOrUpdate(tpi);
 		examenHome.saveOrUpdate(examen);
 		materiaHome.saveOrUpdate(materia3);
 		materiaHome.saveOrUpdate(materia2);
@@ -192,8 +193,8 @@ public class DataGenerator {
 		cursadaHome.saveOrUpdate(cursada3);
 		cursadaHome.saveOrUpdate(cursada4);
 		estudioCursadoHome.saveOrUpdate(titulo);
-		carreraHome.saveOrUpdate(carrera3);
-		carreraHome.saveOrUpdate(carrera2);
+		carreraHome.saveOrUpdate(profesoradoInicial);
+		carreraHome.saveOrUpdate(profesoradoIngles);
 		ts.commit();
 	}
 }
