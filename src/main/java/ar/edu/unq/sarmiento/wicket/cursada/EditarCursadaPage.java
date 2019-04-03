@@ -50,7 +50,7 @@ public class EditarCursadaPage extends LayoutPage {
 		
 		cursada.add(new TextField<>("nota", new PropertyModel<>(this.editarCursadaController, "cursada.notaFinal")));
 		cursada.add(new TextField<>("año", new PropertyModel<>(this.editarCursadaController, "cursada.anio")));
-//		cursada.add(new TextField<>("materia", new PropertyModel<>(this.editarCursadaController, "cursada.materia.nombre")));
+		cursada.add(new TextField<>("materia", new PropertyModel<>(this.editarCursadaController, "cursada.materia.nombre")));
 		cursada.add(new DropDownChoice<>(
 				"estado",
 				new PropertyModel<>(editarCursadaController, "cursada.estado"),
