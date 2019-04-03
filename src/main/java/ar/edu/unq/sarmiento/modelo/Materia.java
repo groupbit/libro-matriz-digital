@@ -76,6 +76,11 @@ public class Materia extends Persistible {
 		this.docente = docente;
 	}
 	
+	public void validarSipuedeAgregarCorrelativa(Materia materia){
+		if(this.correlativas.contains(materia)|| materia.getCorrelativas().contains(this)){
+			throw new ModelException("No puede agregar esta materia:"+ materia.getNombre());
+		}	
+	}
 	
 
 }
