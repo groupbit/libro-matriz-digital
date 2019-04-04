@@ -79,10 +79,10 @@ public class Materia extends Persistible {
 	
 	public void validarSipuedeAgregarCorrelativa(Materia materia){
 		if(this.correlativas.contains(materia)){
-			throw new ModelException("No puede agregar "+ materia.getNombre() + " porque ya es correlativa de " + this.getNombre());
+			throw new ModelException("No puede agregar "+ this.getNombre() + " porque ya es correlativa de " + materia.getNombre());
 		}
-		if(materia.getCorrelativas().contains(this)){
-			throw new ModelException("No puedo agregar "+ this.getNombre() + " porque ya pertenece a las correlativas de " + materia.getNombre());
+		if(materia.correlativas.contains(this)){
+			throw new ModelException("No puede agregar "+ materia.getNombre() + " porque ya pertenece a las correlativas de " + this.getNombre());
 		}
 	}
 	
