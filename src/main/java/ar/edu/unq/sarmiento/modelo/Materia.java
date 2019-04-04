@@ -41,6 +41,7 @@ public class Materia extends Persistible {
 	}
 	
 	public void addCorrelativa(Materia materia){
+        this.validarSipuedeAgregarCorrelativa(materia);
 		this.correlativas.add(materia);
 	}
 	
@@ -75,5 +76,15 @@ public class Materia extends Persistible {
 	public void setDocente(String docente) {
 		this.docente = docente;
 	}
+	
+	public void validarSipuedeAgregarCorrelativa(Materia materia){
+		if(this.correlativas.contains(materia)){
+			throw new ModelException("No puede agregar "+ materia.getNombre() + " porque ya es correlativa de " + this.getNombre());
+		}
+		if(materia.getCorrelativas().contains(this)){
+			throw new ModelException("No puedo agregar "+ this.getNombre() + " porque ya pertenece a las correlativas de " + materia.getNombre());
+		}
+	}
+	
 
 }
