@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Column;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -38,18 +40,24 @@ public class CargarInscripcionController implements Serializable {
 	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired 
 	private CarreraHome carreraHome;
+	@Column(nullable=false)
 	private String nombre;
+	@Column(nullable=false)
 	private Genero genero;
+	@Column(nullable=false)
 	private String dni;
+	@Column(nullable=false)
 	private LocalDate fechaNacimiento;
 	private String lugarNacimiento;
 	private String estadoCivil;
 	private int hijos;
 	private String familiaresACargo;
 	private Direccion direccion;
+	@Column(nullable=false)
 	private String telefono;
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
+	@Column(nullable=false)
 	private String email;
 	private Alumno alumno;
 	private String calle;
@@ -63,7 +71,9 @@ public class CargarInscripcionController implements Serializable {
 	private String institucion;
 	private String distrito;
 	private String nombreTitulo;
+	@Column(nullable=false)
 	private Carrera carreraElegida;
+	@Column(nullable=false)
     private List<Genero>generos=new ArrayList<>();
 
 	public CargarInscripcionController() {this.setGeneros();
