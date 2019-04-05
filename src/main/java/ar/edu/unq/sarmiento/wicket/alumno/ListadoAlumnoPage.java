@@ -45,11 +45,13 @@ public class ListadoAlumnoPage extends LayoutPage {
 				Label fechaNacimientoAlumno = new Label("fechaNacimiento", alumno.getFechaDeNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 				Label dniAlumno = new Label("dni", alumnoModel.bind("dni"));
 				Label mailAlumno = new Label("email", alumnoModel.bind("email"));
+				Label carreraAlumno = new Label("carrera", alumnoModel.bind("carrera.nombre"));
 				item.add(nombreAlumno);
 				item.add(telefonoAlumno);
 				item.add(fechaNacimientoAlumno);
 				item.add(dniAlumno);
 				item.add(mailAlumno);
+				item.add(carreraAlumno);
 				item.add(new Link<String>("cursadas") {
 					private static final long serialVersionUID = 1L;
 
