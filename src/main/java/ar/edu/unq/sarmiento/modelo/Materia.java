@@ -3,6 +3,7 @@ package ar.edu.unq.sarmiento.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -15,13 +16,21 @@ public class Materia extends Persistible {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String nombre;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Materia> correlativas = new ArrayList<>();
 	@Column
 	private boolean promocionable;
 	private int anioEnCarrera;
 	private String docente;
 	private boolean esDificil;
+	
+	public Materia() {
+		
+	}
+	
+	public Materia(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -32,6 +41,7 @@ public class Materia extends Persistible {
 	}
 	
 	public void addCorrelativa(Materia materia){
+        this.validarSipuedeAgregarCorrelativa(materia);
 		this.correlativas.add(materia);
 	}
 	
@@ -66,5 +76,15 @@ public class Materia extends Persistible {
 	public void setDocente(String docente) {
 		this.docente = docente;
 	}
+	
+	public void validarSipuedeAgregarCorrelativa(Materia materia){
+		if(this.correlativas.contains(materia)){
+			throw new ModelException("No puede agregar "+ materia.getNombre() + " porque ya es correlativa de " + this.getNombre());
+		}
+		if(materia.getCorrelativas().contains(this)){
+			throw new ModelException("No puedo agregar "+ this.getNombre() + " porque ya pertenece a las correlativas de " + materia.getNombre());
+		}
+	}
+	
 
 }

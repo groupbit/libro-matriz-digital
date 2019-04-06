@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -9,6 +10,7 @@ public class Cursada extends Persistible {
 	@OneToOne
 	public Materia materia;
 	public EstadoCursada estado;
+	@Column(nullable=true)
 	public int notaFinal;
 	public int anio;
 	public int getNotaFinal() {
