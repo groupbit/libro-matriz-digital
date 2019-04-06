@@ -27,10 +27,6 @@ public class EditarCursadaController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public Materia materia;
-	public EstadoCursada estado;
-	public int notaFinal;
-	public int anio;
 	public Cursada cursada;
 
 	@Autowired
@@ -46,39 +42,11 @@ public class EditarCursadaController implements Serializable {
 	}
 
 	public void editarCursada() {
-		cursada.setMateria(cursada.getMateria());
-		cursada.setNotaFinal(cursada.getNotaFinal());
-		cursada.setEstado(cursada.getEstado());
-		cursada.setAnio(cursada.getAnio());
 		cursadaHome.saveOrUpdate(cursada);
 	}
 
 	public void setCursada(Cursada cursada2) {
 		this.cursada = cursada2;
-	}
-
-	public EstadoCursada getEstado() {
-		return estado;
-	}
-
-	public void setEstado(EstadoCursada estado) {
-		this.estado = estado;
-	}
-
-	public int getNotaFinal() {
-		return notaFinal;
-	}
-
-	public void setNotaFinal(int notaFinal) {
-		this.notaFinal = notaFinal;
-	}
-
-	public int getAnio() {
-		return anio;
-	}
-
-	public void setAnio(int anio) {
-		this.anio = anio;
 	}
 
 	public Cursada getCursada() {
