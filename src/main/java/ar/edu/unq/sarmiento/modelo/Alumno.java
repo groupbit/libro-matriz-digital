@@ -109,7 +109,16 @@ public class Alumno extends Persistible {
 		this.cursadas = cursadas;
 	}
 
-	public void addCursada(Cursada cursada) {
+	public void addCursada(Cursada cursada){
+		this.cursadas.add(cursada);
+	}
+	
+	public void addCursadaComprobandoCorrelativas(Cursada cursada, Materia materia) {
+		if(!this.puedeMatricularseA(materia)){
+			throw new ModelException("No puede matricularse en la materia "
+					+ materia.getNombre() + 
+					" porque debe sus correlativas.");
+		}
 		this.cursadas.add(cursada);
 	}
 
