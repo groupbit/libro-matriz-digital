@@ -28,7 +28,7 @@ public class ListadoDeMateriasController implements Serializable{
 	private Carrera carrera;
 
 	public Carrera getCarrera() {
-		return carrera;
+		return carreraHome.find(carrera.getId());
 	}
 
 	public void setCarrera(Carrera carrera) {
@@ -60,6 +60,12 @@ public class ListadoDeMateriasController implements Serializable{
 
 	public void attachMateria(Materia materia) {
 		materiaHome.attach(materia);
+	}
+
+	public void eliminar(int idMateria) {
+		Materia materia = materiaHome.find(idMateria);
+		this.getCarrera().removerMateria(materia);
+		materiaHome.delete(materia);
 	}
 
 	//saque los return 
