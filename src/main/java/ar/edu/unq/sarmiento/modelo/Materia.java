@@ -2,6 +2,7 @@ package ar.edu.unq.sarmiento.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -84,6 +85,10 @@ public class Materia extends Persistible {
 		if(materia.getCorrelativas().contains(this)){
 			throw new ModelException("No puedo agregar "+ this.getNombre() + " porque ya pertenece a las correlativas de " + materia.getNombre());
 		}
+	}
+
+	public void eliminarCorrelatividades(Carrera carrera) {
+		carrera.getListadoMaterias().stream().forEach(m -> m.getCorrelativas().remove(this));
 	}
 	
 
