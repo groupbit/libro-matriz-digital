@@ -28,6 +28,10 @@ public class ListadoDeMateriasController implements Serializable{
 	private Carrera carrera;
 
 	public Carrera getCarrera() {
+		return this.carrera;
+	}
+	
+	public Carrera getCarreraDetached(){
 		return carreraHome.find(carrera.getId());
 	}
 
@@ -64,7 +68,6 @@ public class ListadoDeMateriasController implements Serializable{
 
 	public void eliminar(int idMateria) {
 		Materia materia = materiaHome.find(idMateria);
-		this.getCarrera().removerMateria(materia);
 		materiaHome.delete(materia);
 	}
 

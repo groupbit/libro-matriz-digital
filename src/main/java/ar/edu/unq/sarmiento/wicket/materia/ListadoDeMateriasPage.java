@@ -66,7 +66,7 @@ public class ListadoDeMateriasPage extends LayoutPage {
 					@Override
 					public void onSubmit() {
 						controller.eliminar(item.getModelObject().getId());
-						this.setResponsePage(new ListadoDeMateriasPage(controller.getCarrera()));
+						this.setResponsePage(new ListadoDeMateriasPage(controller.getCarreraDetached()));
 					}
 				};
 				eliminarAlumnoForm.add(new BotonConfirmar("eliminarMateria", "Eliminar la materia seleccionada"){});
