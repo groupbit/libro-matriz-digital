@@ -89,6 +89,7 @@ public class Materia extends Persistible {
 
 	public void eliminarCorrelatividades(Carrera carrera) {
 		carrera.getListadoMaterias().stream().forEach(m -> m.getCorrelativas().remove(this));
+		carrera.removerMateria(this);
 	}
 	
 

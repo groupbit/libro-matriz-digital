@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.CursadaHome;
 import ar.edu.unq.sarmiento.hibernate.MateriaHome;
-import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.Materia;
@@ -32,6 +30,11 @@ public class ListadoDeMateriasController implements Serializable{
 	@Autowired
 	private CursadaHome cursadaHome;
 	private Carrera carrera;
+	private Materia materia;
+
+	public Materia getMateria() {
+		return materia;
+	}
 
 	public Carrera getCarrera() {
 		return this.carrera;
@@ -73,7 +76,7 @@ public class ListadoDeMateriasController implements Serializable{
 	}
 
 	public void eliminar(int idMateria) {
-		Materia materia = materiaHome.find(idMateria);
+		materia = materiaHome.find(idMateria);
 		this.puedeBorrarse(materia);
 		eliminarCorrelativasDe(materia);
 	}
@@ -90,5 +93,4 @@ public class ListadoDeMateriasController implements Serializable{
 		materiaHome.saveOrUpdate(materia);
 	}
 
-	//saque los return 
 }
