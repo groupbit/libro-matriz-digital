@@ -61,8 +61,8 @@ public class AgregarCorrelativasController implements Serializable {
 		return carrera;
 	}
 
-	public void cargarCorrelativasPosibles() {
-		List<Materia> materias = materiaHome.all();
+	public void cargarCorrelativasPosibles(Carrera carrera) {
+		List<Materia> materias = materiaHome.findByCarrera(carrera);
 		materias.remove(this.materia);
 		materias.removeAll(materia.getCorrelativas());
 		setTodasLasMaterias(materias);
