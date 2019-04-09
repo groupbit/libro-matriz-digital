@@ -65,6 +65,19 @@ public class CargarInscripcionController implements Serializable {
 	private String nombreTitulo;
 	private Carrera carreraElegida;
     private List<Genero>generos=new ArrayList<>();
+    
+    private Alumno alumno2;
+
+	public Alumno getAlumno2() {
+		return alumno2;
+	}
+
+	public void setAlumno2(Alumno alumno2) {
+		this.alumno2 = alumno2;
+	}
+	public void alumnonombre(String nombre){
+		this.alumno2.setNombre(nombre);
+	}
 
 	public CargarInscripcionController() {this.setGeneros();
 	}
