@@ -19,7 +19,6 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.modelo.Materia;
-import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -27,25 +26,26 @@ import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 public class CrearCursadaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Autowired
 	private CursadaHome cursadaHome;
-	
+
 	@Autowired
 	private AlumnoHome alumnoHome;
-	
+
 	@Autowired
 	private MateriaHome materiaHome;
 
 	private int anio;
-	
+
 	private Materia materiaElegida;
-	
+
 	private EstadoCursada estado = EstadoCursada.CURSANDO;
-	
+
 	private int notaFinal;
-	
-	
+
+	private Alumno alumno;
+
 	public CrearCursadaController() {
 		anio = Year.now().getValue();
 	}
@@ -81,9 +81,10 @@ public class CrearCursadaController implements Serializable {
 		return estado;
 	}
 
-	public List<EstadoCursada> getEstadosPosibles(){
+	public List<EstadoCursada> getEstadosPosibles() {
 		return Arrays.asList(EstadoCursada.values());
 	}
+
 	public void setEstado(EstadoCursada estado) {
 		this.estado = estado;
 	}
@@ -95,9 +96,14 @@ public class CrearCursadaController implements Serializable {
 	public void setNotaFinal(int notaFinal) {
 		this.notaFinal = notaFinal;
 	}
-	
-	public List<Materia> getTodasLasMaterias(){
-		return materiaHome.all();
+
+	public List<Materia> getTodasLasMaterias() {
+		return  alumno.getCarrera().getListadoMaterias();
+
+	}
+
+	public void setAlumno(Alumno alumn) {
+		alumno=alumn;
 		
 	}
 }
