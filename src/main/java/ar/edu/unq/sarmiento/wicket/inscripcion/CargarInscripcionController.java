@@ -23,6 +23,7 @@ import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Genero;
+import ar.edu.unq.sarmiento.modelo.ModelException;
 import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
@@ -93,6 +94,8 @@ public class CargarInscripcionController implements Serializable {
 		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
+		this.confimarCarrera(alumno);
+		this.validarCamposObligatorios(alumno);
 		Direccion dir = new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
@@ -110,7 +113,7 @@ public class CargarInscripcionController implements Serializable {
 		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
-		this.confimarCarrera(alumno);
+		
         
 	}
   
@@ -356,5 +359,22 @@ public class CargarInscripcionController implements Serializable {
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
 	}
-
+	
+	public void validarCamposObligatorios(Alumno alumno){
+		if(alumno.getDni() == null){
+			throw new ModelException("Falta que se complete el DNI");
+		}else if(alumno.getNombre() == null){
+			throw new ModelException("Falta que se complete el Nombre");
+		}else if(alumno.getEmail() == null ){
+			throw new ModelException("Falta que se complete el Email");
+		} else if(alumno.getFechaDeNacimiento() == null){
+			throw new ModelException("Falta que se complete la Fecha de Nacimiento");
+		} else if(alumno.getGenero() == null){
+			throw new ModelException("Falta que se elija el Genero");
+		} else if( alumno.getTelefono() == null){
+			throw new ModelException("Falta que se complete el Nro. de Telefono");
+		}else if(alumno.getCarrera() == null){
+			throw new ModelException("Falta que se elija la Carrera");
+		}
+	}
 }
