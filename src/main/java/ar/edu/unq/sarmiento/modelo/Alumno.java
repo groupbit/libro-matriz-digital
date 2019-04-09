@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -110,6 +111,7 @@ public class Alumno extends Persistible {
 	}
 
 	public void addCursada(Cursada cursada) {
+		this.validarMateriaDeLaCarrera(cursada.getMateria());
 		this.cursadas.add(cursada);
 	}
 
@@ -247,6 +249,13 @@ public class Alumno extends Persistible {
 
 	public void setOtrosTitulos(List<EstudioCursado> otros_titulos) {
 		this.otrosTitulos = otros_titulos;
+	}
+
+	public void validarMateriaDeLaCarrera(Materia materia){
+		if(!getCarrera().getListadoMaterias().contains(materia)){
+			throw new ModelException("No se puede inscribir a " + materia.getNombre() + " porque no es una materia de la carrera " + this.getCarrera().getNombre() );
+		}
+		
 	}
 
 }
