@@ -65,7 +65,7 @@ public class ListadoDeCursadasPage extends LayoutPage {
 						this.setResponsePage(new ListadoDeCursadasPage(controller.getAlumnoDetached()));
 					}
 				};
-				eliminarCursadaForm.add(new BotonConfirmar("eliminarCursada", "Eliminar la cursada seleccionada"));
+				eliminarCursadaForm.add(new BotonConfirmar("eliminarCursada", controller.mensajeDeEliminacion(item.getModelObject().getId())));
 								
 				item.add(eliminarCursadaForm);
 			

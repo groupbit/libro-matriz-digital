@@ -55,4 +55,13 @@ public class ListadoDeCursadasController implements Serializable {
 	public Alumno getAlumnoDetached() {
 		return alumnoHome.find(this.getAlumno().getId());
 	}
+
+	public String mensajeDeEliminacion(int idCursada) {
+		Cursada cursada = cursadaHome.find(idCursada);
+		return "¿Confirma que desea eliminar la cursada de " 
+				+ cursada.getMateria().getNombre() + 
+				" del año "
+				+ cursada.getAnio() + 
+				"?";
+	}
 }
