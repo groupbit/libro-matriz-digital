@@ -95,19 +95,19 @@ Un pequeño ejemplo:
 
 ```java
 class Alumno {
-	@NotNull
-	@Size(min = 2, max = 30)
-	private String nombre;
-	// Se validará que no esté vacío y que tenga una longitud entre 2 y 30.
+  @NotNull
+  @Size(min = 2, max = 30)
+  private String nombre;
+  // Se validará que no esté vacío y que tenga una longitud entre 2 y 30.
 }
 
 class AlumnoPage {
-	// Configuración de la page
-	public void configurarPagina() {
-		Form<Alumno> formularioAlumno = // más configuraciones
-		
-		formularioAlumno.add(new TextField<>("nombre", new PropertyModel<>(alumno, "nombre")).add(new PropertyValidator<>()));
-	}
+  // Configuración de la page
+  public void configurarPagina() {
+    Form<Alumno> formularioAlumno = // más configuraciones
+  
+    formularioAlumno.add(new TextField<>("nombre", new PropertyModel<>(alumno, "nombre")).add(new PropertyValidator<>()));
+  }
 }
 ```
 
@@ -121,15 +121,15 @@ Un pequeño ejemplo:
 
 ```java
 class Carrera {
-	public void agregarMateria(Materia materia){
-		validarMateriaEsNueva(materia);
-		this.listadoMaterias.add(materia);
-	}
+  public void agregarMateria(Materia materia){
+    validarMateriaEsNueva(materia);
+    this.listadoMaterias.add(materia);
+  }
 
-	private void validarMateriaEsNueva(Materia materia) {
-		if (this.listadoMaterias.stream().anyMatch(m -> m.getNombre().equals(materia.getNombre()))) {
-			throw new ModelException("Ya existe una materia llamada " + materia.getNombre() + ".");
-		};
-	}
+  private void validarMateriaEsNueva(Materia materia) {
+    if (this.listadoMaterias.stream().anyMatch(m -> m.getNombre().equals(materia.getNombre()))) {
+      throw new ModelException("Ya existe una materia llamada " + materia.getNombre() + ".");
+    }
+  }
 }
 ```
