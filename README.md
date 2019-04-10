@@ -106,7 +106,9 @@ class AlumnoPage {
   public void configurarPagina() {
     Form<Alumno> formularioAlumno = // más configuraciones
   
-    formularioAlumno.add(new TextField<>("nombre", new PropertyModel<>(alumno, "nombre")).add(new PropertyValidator<>()));
+    formularioAlumno
+      .add(new TextField<>("nombre", new PropertyModel<>(alumno, "nombre"))
+      .add(new PropertyValidator<>()));
   }
 }
 ```
