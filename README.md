@@ -76,3 +76,60 @@ En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
 * `DumpSQLSchema.java`: exporta el esquema generado por Hibernate al archivo `src/main/resources/db/schema.sql`. Resulta útil para ver qué cambió.
 * `CreateMigrationFile.java`: crea un archivo vacío para escribir una migración, usando la convención de nombre por fecha y hora. Es importante recordar agregarle una descripción adecuada.
 * `RunFlywayDBMigrations.java`: corre las migraciones necesarias y actualiza el archivo con el schema.
+
+## Manejo de errores
+
+Esta aplicación cuenta con un mecanismo transparente de manejo y visualización de errores, cuyos detalles pueden consultarse en [la wiki](https://github.com/ingsw-sarmiento/libro-matriz-digital/wiki/Mecanismo-de-manejo-de-errores).
+
+Hay dos tipos posibles de validaciones: las que tienen que ver estrictamente con el input del usuario (campos obligatorios, números dentro de un rango, textos con una longitud mínima, etc.) y las que tienen que ver con una validación del dominio (bucle de correlativas, materia repetida, etc.). Cada tipo de validación se programa de forma diferente, según se explica a continuación.
+
+### Validaciones del input
+
+Para este tipo de validaciones sencillas nos valdremos de las annotations que provee Hibernate Validator, cuyo listado podemos consultar [acá](http://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints). Estas validaciones deberían ser la opción por defecto, ya que requieren poco código y funcionan automáticamente.
+
+Los pasos a seguir son:
+1. Agregar las annotations necesarias a los atributos del modelo o del controller, dependiendo de cómo esté armada la `Page`.
+1. Agregar al campo un `PropertyValidator` para que tenga en cuenta las annotations.
+
+Un pequeño ejemplo:
+
+```java
+class Alumno {
+	@NotNull
+	@Size(min = 2, max = 30)
+	private String nombre;
+	// Se validará que no esté vacío y que tenga una longitud entre 2 y 30.
+}
+
+class AlumnoPage {
+	// Configuración de la page
+	public void configurarPagina() {
+		Form<Alumno> formularioAlumno = // más configuraciones
+		
+		formularioAlumno.add(new TextField<>("nombre", new PropertyModel<>(alumno, "nombre")).add(new PropertyValidator<>()));
+	}
+}
+```
+
+### Validaciones del dominio
+
+Cuando no podamos utilizar las anteriores porque la validación sea más compleja, utilizaremos un mecanismo más precario pero poderoso también: arrojar una excepción. Es importante en este caso que el mensaje esté bien armado, porque será eso lo que verá nuestro usuario.
+
+Para armar una de estas validaciones basta con arrojar una excepción de tipo `ModelException` en alguna parte del código que vaya a ejecutarse luego de hacer submit.
+
+Un pequeño ejemplo:
+
+```java
+class Carrera {
+	public void agregarMateria(Materia materia){
+		validarMateriaEsNueva(materia);
+		this.listadoMaterias.add(materia);
+	}
+
+	private void validarMateriaEsNueva(Materia materia) {
+		if (this.listadoMaterias.stream().anyMatch(m -> m.getNombre().equals(materia.getNombre()))) {
+			throw new ModelException("Ya existe una materia llamada " + materia.getNombre() + ".");
+		};
+	}
+}
+```
