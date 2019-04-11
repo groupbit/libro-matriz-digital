@@ -36,7 +36,7 @@ public class AgregarCorrelativa extends LayoutPage {
 		materia1 = materia;
 		carrera = carrera1;
 		agregarCorrelativasController.setMateria(materia1);
-		agregarCorrelativasController.cargarCorrelativasPosibles();
+		agregarCorrelativasController.cargarCorrelativasPosibles(carrera);
 			
 		this.formulario();
 	}
