@@ -75,8 +75,7 @@ public class ListadoDeMateriasController implements Serializable{
 		materiaHome.attach(materia);
 	}
 
-	public void eliminar(int idMateria) {
-		materia = materiaHome.find(idMateria);
+	public void eliminar(Materia materia) {
 		this.puedeBorrarse(materia);
 		eliminarCorrelativasDe(materia);
 	}

@@ -65,7 +65,7 @@ public class ListadoDeMateriasPage extends LayoutPage {
 
 					@Override
 					public void onSubmit() {
-						controller.eliminar(item.getModelObject().getId());
+						controller.eliminar(item.getModelObject());
 						this.setResponsePage(new ListadoDeMateriasPage(controller.getCarreraDetached()));
 					}
 				};
