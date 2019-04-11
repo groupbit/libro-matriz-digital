@@ -69,7 +69,7 @@ public class ListadoDeMateriasPage extends LayoutPage {
 						this.setResponsePage(new ListadoDeMateriasPage(controller.getCarreraDetached()));
 					}
 				};
-				eliminarAlumnoForm.add(new BotonConfirmar("eliminarMateria", controller.mensajeDeEliminarMateria(item.getModelObject().getId())){});
+				eliminarAlumnoForm.add(new BotonConfirmar("eliminarMateria", controller.mensajeDeEliminarMateria(item.getModelObject())){});
 				item.add(eliminarAlumnoForm);
 			}
 		});

@@ -93,9 +93,8 @@ public class ListadoDeMateriasController implements Serializable{
 		materiaHome.saveOrUpdate(materia);
 	}
 
-	public String mensajeDeEliminarMateria(int idMateria) {
-		materia = materiaHome.find(idMateria);
-		return "¿Confirma que desea eliminar la materia " + this.getMateria().getNombre() + "?";
+	public String mensajeDeEliminarMateria(Materia materia) {
+		return "¿Confirma que desea eliminar la materia " + materia.getNombre() + "?";
 	}
 
 }
