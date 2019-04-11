@@ -75,10 +75,6 @@ public class CargarInscripcionController implements Serializable {
 	public void setAlumno2(Alumno alumno2) {
 		this.alumno2 = alumno2;
 	}
-	public void alumnonombre(String nombre){
-		this.alumno2.setNombre(nombre);
-	}
-
 	public CargarInscripcionController() {this.setGeneros();
 	}
 
@@ -358,6 +354,11 @@ public class CargarInscripcionController implements Serializable {
 	}
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
+	}
+
+	public void editar() {
+		alumnoHome.saveOrUpdate(alumno2);
+		
 	}
 
 }

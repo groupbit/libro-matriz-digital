@@ -22,8 +22,8 @@ public class EditarDatosDeAlumno extends LayoutPage {
 	public EditarDatosDeAlumno() {
 		this.formulario();
 	}
-	public EditarDatosDeAlumno(Alumno alumno){
-		cargarInscripcionController.setAlumno2(alumno);
+	public EditarDatosDeAlumno(Alumno alumno1){
+		cargarInscripcionController.setAlumno2(alumno1);
 		this.formulario();
 	}
 
@@ -35,34 +35,29 @@ public class EditarDatosDeAlumno extends LayoutPage {
 			
 			@Override
 			public void onSubmit(){
-				EditarDatosDeAlumno.this.cargarInscripcionController.inscribir();
+				EditarDatosDeAlumno.this.cargarInscripcionController.editar();
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		
 		};
-		formulario.add(new TextField<>("nombre",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.nombre")));
-//		formulario.add(new DropDownChoice<>("genero",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.genero"),
-//				new PropertyModel<>(this.cargarInscripcionController,"generos"),new ChoiceRenderer<>()));	
-//		formulario.add(new TextField<>("dni",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.dni")));
-//		formulario.add(new TextField<>("lugarNacimiento",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.lugarNacimiento")));
-//		formulario.add(new TextField<>("estadoCivil",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.estadoCivil")));
-//		formulario.add(new TextField<>("hijos",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.hijos")));
-//		formulario.add(new TextField<>("familiaresACargo",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.familiaresACargo")));
-//		formulario.add(new TextField<>("telefono",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.telefono")));
-//		formulario.add(new TextField<>("telefonoAlternativo",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.telefonoAlternativo")));
-//		formulario.add(new TextField<>("propietarioTelefonoAlternativo",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.propietarioTelefonoAlternativo")));
-//		formulario.add(new TextField<>("email",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.email")));
-//		formulario.add(new TextField<>("calle",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.calle")));
-//		formulario.add(new TextField<>("altura",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.altura")));
-//		formulario.add(new TextField<>("departamento",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.departamento")));
-//		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.localidad")));
-//		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.partido")));
-//		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.codigoPostal")));
-//		formulario.add(new TextField<>("anio",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.anioEgreso")));
-//		formulario.add(new TextField<>("institucion",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.institucion")));
-//		formulario.add(new TextField<>("distrito",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.distrito")));
-//		formulario.add(new TextField<>("nombreTitulo",new PropertyModel<>(this.cargarInscripcionController, "Alumno2.nombreTitulo")));
-//		
+		formulario.add(new TextField<>("nombre",new PropertyModel<>(this.cargarInscripcionController,"alumno2.nombre")));
+		formulario.add(new DropDownChoice<>("genero",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.genero"),
+				new PropertyModel<>(this.cargarInscripcionController,"generos"),new ChoiceRenderer<>()));	
+		formulario.add(new TextField<>("dni",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.dni")));
+		formulario.add(new TextField<>("lugarNacimiento",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.lugarDeNacimiento")));
+		formulario.add(new TextField<>("estadoCivil",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.estadoCivil")));
+		formulario.add(new TextField<>("hijos",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.hijos")));
+		formulario.add(new TextField<>("familiaresACargo",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.familiaresACargo")));
+		formulario.add(new TextField<>("telefono",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.telefono")));
+		formulario.add(new TextField<>("telefonoAlternativo",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.telefonoAlternativo")));
+		formulario.add(new TextField<>("propietarioTelefonoAlternativo",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.propietarioTelefonoAlternativo")));
+		formulario.add(new TextField<>("email",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.email")));
+		formulario.add(new TextField<>("calle",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.direccion.calle")));
+		formulario.add(new TextField<>("altura",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.direccion.altura")));
+		formulario.add(new TextField<>("departamento",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.direccion.departamento")));
+		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.direccion.localidad")));
+		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.direccion.partido")));
+		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"Alumno2.direccion.codigoPostal")));	
 		this.add(formulario);
 		
 		formulario.add(new Link<String>("cancelar") {
