@@ -69,11 +69,11 @@ public class ListadoDeCursadasPage extends LayoutPage {
 
 					@Override
 					public void onSubmit() {
-						controller.eliminarCursada(item.getModelObject().getId());
+						controller.eliminarCursada(item.getModelObject());
 						this.setResponsePage(new ListadoDeCursadasPage(controller.getAlumnoDetached()));
 					}
 				};
-				eliminarCursadaForm.add(new BotonConfirmar("eliminarCursada", controller.mensajeDeEliminacion(item.getModelObject().getId())));
+				eliminarCursadaForm.add(new BotonConfirmar("eliminarCursada", controller.mensajeDeEliminacion(item.getModelObject())));
 								
 				item.add(eliminarCursadaForm);		
 			}
