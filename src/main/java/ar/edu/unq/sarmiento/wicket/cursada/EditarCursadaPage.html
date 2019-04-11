@@ -1,0 +1,38 @@
+<wicket:extend>
+	<div class="panel panel-primary">
+		<div class="panel-heading titulo">
+			<h4>Edición de la cursada</h4>
+		</div>
+		<div class="panel-body">
+			<form wicket:id="laCursada" class="form-horizontal">
+				<div class="form-group">
+					<label for="año" class="col-md-2 control-label">Año</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="año" wicket:id="año">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="materia" class="col-md-2 control-label">Materia</label>
+					<div class="col-md-9">
+						<p class="form-control-static" wicket:id="materia"></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="nota" class="col-md-2 control-label">Nota</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="nota" wicket:id="nota">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="estado" class="col-md-2 control-label">Estado</label>
+					<div class="col-md-9">
+						<select id="estado" class="form-control" wicket:id="estado"></select>
+					</div>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-success">Guardar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</wicket:extend>

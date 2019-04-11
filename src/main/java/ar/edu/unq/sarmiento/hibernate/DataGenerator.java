@@ -86,7 +86,6 @@ public class DataGenerator {
 		materia2.setPromocionable(false);
 		tpi.agregarMateria(materia2);
 		
-		
 		materia3.setAnioEnCarrera(2);
 		materia3.setPromocionable(true);
 		
@@ -98,6 +97,12 @@ public class DataGenerator {
 		materia4.setDocente("Federico Aloi");
 		materia4.setPromocionable(false);
 		tpi.agregarMateria(materia4);
+		
+		Materia materia5 = new Materia();
+		materia5.setAnioEnCarrera(3);
+		materia5.setNombre("Inglés 1");
+		materia5.setDocente("Patricia Ramirez");
+		profesoradoIngles.agregarMateria(materia5);
 		
 		Cursada cursada = new Cursada();
 		cursada.setMateria(materia3);
