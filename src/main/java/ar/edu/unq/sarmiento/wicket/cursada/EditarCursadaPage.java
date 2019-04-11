@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.cursada;
 
+import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -23,7 +24,8 @@ public class EditarCursadaPage extends LayoutPage {
 	@SpringBean
 	private EditarCursadaController editarCursadaController;
 
-	public EditarCursadaPage(Cursada cursada1) {
+	public EditarCursadaPage(Alumno alumno,Cursada cursada1) {
+		this.alumno=alumno;
 		this.cursada1 = cursada1;
 		this.editarCursadaController.setCursada(cursada1);
 		this.editarCursada();
@@ -46,11 +48,13 @@ public class EditarCursadaPage extends LayoutPage {
 			}
 		};
 
-		cursada.add(new TextField<>("nota", new PropertyModel<>(this.editarCursadaController, "cursada.notaFinal")));
-		cursada.add(new TextField<>("año", new PropertyModel<>(this.editarCursadaController, "cursada.anio")));
+		cursada.add(new TextField<>("nota", new PropertyModel<>(this.editarCursadaController, "cursada.notaFinal")).add(new PropertyValidator<>()));
+		cursada.add(new TextField<>("año", new PropertyModel<>(this.editarCursadaController, "cursada.anio")).add(new PropertyValidator<>()));
 		cursada.add(new Label("materia", new PropertyModel<>(this.editarCursadaController, "cursada.materia.nombre")));
-		cursada.add(new DropDownChoice<>("estado", new PropertyModel<>(editarCursadaController, "cursada.estado"),
-				new PropertyModel<>(editarCursadaController, "estadosCursada"), new ChoiceRenderer<>()));
+		cursada.add(new DropDownChoice<>("estado", 
+				new PropertyModel<>(editarCursadaController, "cursada.estado"),
+				new PropertyModel<>(editarCursadaController, "estadosCursada"),
+				new ChoiceRenderer<>()));
 
 		this.add(cursada);
 	}

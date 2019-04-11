@@ -18,4 +18,11 @@ public class MateriaHome extends Home<Materia>{
 			.getResultList();
 	}
 
+	public List<Materia> findByCarrera(Carrera carrera) {
+		return this.getSession()
+			.createQuery("FROM Materia WHERE carrera_id= :carrera")
+			.setParameter("carrera", carrera)
+			.getResultList();
+	}
+	
 }
