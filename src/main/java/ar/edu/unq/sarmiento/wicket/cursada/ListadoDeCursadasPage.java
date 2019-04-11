@@ -55,7 +55,15 @@ public class ListadoDeCursadasPage extends LayoutPage {
 				item.add(new Label("materia", new PropertyModel<>(cursada, "materia.nombre")));
 				item.add(new Label("estado", controller.convertirString(item.getModelObject().getEstado())));
 				item.add(new Label("notaF", new PropertyModel<>(cursada, "notaFinal")));
-			
+				item.add(new Link<String>("laCursada") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						setResponsePage(new EditarCursadaPage(alumno1,item.getModelObject()));
+					}
+				});
+				
 				Form<ListadoDeCursadasController> eliminarCursadaForm = new Form<ListadoDeCursadasController>("eliminarCursadaForm") {
 					private static final long serialVersionUID = 1L;
 
@@ -67,8 +75,7 @@ public class ListadoDeCursadasPage extends LayoutPage {
 				};
 				eliminarCursadaForm.add(new BotonConfirmar("eliminarCursada", controller.mensajeDeEliminacion(item.getModelObject().getId())));
 								
-				item.add(eliminarCursadaForm);
-			
+				item.add(eliminarCursadaForm);		
 			}
 		});
 	}
