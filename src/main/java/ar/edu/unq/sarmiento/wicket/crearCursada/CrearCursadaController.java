@@ -13,9 +13,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
+import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.CursadaHome;
 import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.modelo.Materia;
@@ -46,7 +48,10 @@ public class CrearCursadaController implements Serializable {
 	
 	private int notaFinal;
 	
-	private Alumno alumn;
+	private Alumno alumno;
+	
+	@Autowired
+	private CarreraHome carreraHome;
 	
 	public CrearCursadaController() {
 		anio = Year.now().getValue();
@@ -56,11 +61,11 @@ public class CrearCursadaController implements Serializable {
 		Cursada cursada = new Cursada();
 		cursada.setAnio(this.getAnio());
 		cursada.setEstado(this.getEstado());
-		alumn=alumno;
-		this.validarQueMateriaElegidaEsDeCarreraDe(this.getMateriaElegida());
+		this.validarQueMateriaElegidaEsDeCarreraDe(this.getMateriaElegida(),alumno);
 		cursada.setMateria(this.getMateriaElegida());
 		cursada.setNotaFinal(this.getNotaFinal());
-		alumn.addCursada(cursada);//aca decia alumno
+		alumno.addCursada(cursada);
+		carreraHome.saveOrUpdate(alumno.getCarrera());
 		cursadaHome.saveOrUpdate(cursada);
 		alumnoHome.saveOrUpdate(alumno);
 	}
@@ -101,26 +106,28 @@ public class CrearCursadaController implements Serializable {
 	}
 	
 	public List<Materia> getTodasLasMaterias(){
-		return materiaHome.findByCarrera(alumn.getCarrera());
-		//query: a la carrera las materias
+//		return materiaHome.all();
+		carreraHome.saveOrUpdate(alumno.getCarrera());
+		List<Materia>materiasDeCarrera=materiaHome.findByCarrera(alumno.getCarrera());
+		return materiasDeCarrera;
 	}
 	
-	public void validarQueMateriaElegidaEsDeCarreraDe(Materia materiaEleg){
-		List<Materia>materiasDeCarrera=materiaHome.findByCarrera(alumn.getCarrera());
-		if(!(materiasDeCarrera.contains(materiaEleg))){
-			throw new ModelException(" Error la materia : "+ materiaEleg.getNombre() + " no pertenece a la carrera: "
-		+ alumn.getCarrera().getNombre() + ".");
-		}
-		
+	public void validarQueMateriaElegidaEsDeCarreraDe(Materia materiaElegida,Alumno alumno){
+//		List<Materia>materiasDeCarrera=materiaHome.findByCarrera(carrera);
+		if(!(this.getTodasLasMaterias().contains(materiaElegida))){
+			throw new ModelException(" Error la materia: "+ materiaElegida.getNombre() + " no pertenece a la carrera: "
+		+ alumno.getCarrera().getNombre() + ".");
+		}	
 	}
 
-	public Alumno getAlumn() {
-		return alumn;
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
-	public void setAlumn(Alumno alumn) {
-		this.alumn = alumn;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
+	
 	
 	
 }
