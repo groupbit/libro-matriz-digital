@@ -49,5 +49,7 @@ public class Cursada extends Persistible {
 	public void setEstado(EstadoCursada estado) {
 		this.estado = estado;
 	}
+	
+	
 
 }

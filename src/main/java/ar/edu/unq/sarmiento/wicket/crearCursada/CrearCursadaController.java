@@ -19,6 +19,7 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.modelo.ModelException;
 import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
@@ -45,6 +46,7 @@ public class CrearCursadaController implements Serializable {
 	
 	private int notaFinal;
 	
+	private Alumno alumn;
 	
 	public CrearCursadaController() {
 		anio = Year.now().getValue();
@@ -54,9 +56,11 @@ public class CrearCursadaController implements Serializable {
 		Cursada cursada = new Cursada();
 		cursada.setAnio(this.getAnio());
 		cursada.setEstado(this.getEstado());
+		alumn=alumno;
+		this.validarQueMateriaElegidaEsDeCarreraDe(this.getMateriaElegida());
 		cursada.setMateria(this.getMateriaElegida());
 		cursada.setNotaFinal(this.getNotaFinal());
-		alumno.addCursada(cursada);
+		alumn.addCursada(cursada);//aca decia alumno
 		cursadaHome.saveOrUpdate(cursada);
 		alumnoHome.saveOrUpdate(alumno);
 	}
@@ -97,7 +101,27 @@ public class CrearCursadaController implements Serializable {
 	}
 	
 	public List<Materia> getTodasLasMaterias(){
-		return materiaHome.all();
+		return materiaHome.findByCarrera(alumn.getCarrera());
+		//query: a la carrera las materias
+	}
+	
+	public void validarQueMateriaElegidaEsDeCarreraDe(Materia materiaEleg){
+		List<Materia>materiasDeCarrera=materiaHome.findByCarrera(alumn.getCarrera());
+		if(!(materiasDeCarrera.contains(materiaEleg))){
+			throw new ModelException(" Error la materia : "+ materiaEleg.getNombre() + " no pertenece a la carrera: "
+		+ alumn.getCarrera().getNombre() + ".");
+		}
 		
 	}
+
+	public Alumno getAlumn() {
+		return alumn;
+	}
+
+	public void setAlumn(Alumno alumn) {
+		this.alumn = alumn;
+	}
+	
+	
 }
+
