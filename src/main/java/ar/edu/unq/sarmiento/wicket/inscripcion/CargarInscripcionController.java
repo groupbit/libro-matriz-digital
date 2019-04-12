@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -41,24 +42,24 @@ public class CargarInscripcionController implements Serializable {
 	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired 
 	private CarreraHome carreraHome;
-	@Column(nullable=false)
+	@NotNull
 	private String nombre;
-	@Column(nullable=false)
+	@NotNull
 	private Genero genero;
-	@Column(nullable=false)
+	@NotNull
 	private String dni;
-	@Column(nullable=false)
+	@NotNull
 	private LocalDate fechaNacimiento;
 	private String lugarNacimiento;
 	private String estadoCivil;
 	private int hijos;
 	private String familiaresACargo;
 	private Direccion direccion;
-	@Column(nullable=false)
+	@NotNull
 	private String telefono;
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
-	@Column(nullable=false)
+	@NotNull
 	private String email;
 	private Alumno alumno;
 	private String calle;
@@ -72,9 +73,9 @@ public class CargarInscripcionController implements Serializable {
 	private String institucion;
 	private String distrito;
 	private String nombreTitulo;
-	@Column(nullable=false)
+	@NotNull
 	private Carrera carreraElegida;
-	@Column(nullable=false)
+	@NotNull
     private List<Genero>generos=new ArrayList<>();
 
 	public CargarInscripcionController() {this.setGeneros();
@@ -95,7 +96,7 @@ public class CargarInscripcionController implements Serializable {
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
 		this.confimarCarrera(alumno);
-		this.validarCamposObligatorios(alumno);
+		//this.validarCamposObligatorios(alumno);
 		Direccion dir = new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
@@ -360,21 +361,21 @@ public class CargarInscripcionController implements Serializable {
 		this.generos =Arrays.asList(Genero.values());
 	}
 	
-	public void validarCamposObligatorios(Alumno alumno){
-		if(alumno.getDni() == null){
-			throw new ModelException("Falta que se complete el DNI");
-		}else if(alumno.getNombre() == null){
-			throw new ModelException("Falta que se complete el Nombre");
-		}else if(alumno.getEmail() == null ){
-			throw new ModelException("Falta que se complete el Email");
-		} else if(alumno.getFechaDeNacimiento() == null){
-			throw new ModelException("Falta que se complete la Fecha de Nacimiento");
-		} else if(alumno.getGenero() == null){
-			throw new ModelException("Falta que se elija el Genero");
-		} else if( alumno.getTelefono() == null){
-			throw new ModelException("Falta que se complete el Nro. de Telefono");
-		}else if(alumno.getCarrera() == null){
-			throw new ModelException("Falta que se elija la Carrera");
-		}
-	}
+//	public void validarCamposObligatorios(Alumno alumno){
+//		if(alumno.getDni() == null){
+//			throw new ModelException("Falta que se complete el DNI");
+//		}else if(alumno.getNombre() == null){
+//			throw new ModelException("Falta que se complete el Nombre");
+//		}else if(alumno.getEmail() == null ){
+//			throw new ModelException("Falta que se complete el Email");
+//		} else if(alumno.getFechaDeNacimiento() == null){
+//			throw new ModelException("Falta que se complete la Fecha de Nacimiento");
+//		} else if(alumno.getGenero() == null){
+//			throw new ModelException("Falta que se elija el Genero");
+//		} else if( alumno.getTelefono() == null){
+//			throw new ModelException("Falta que se complete el Nro. de Telefono");
+//		}else if(alumno.getCarrera() == null){
+//			throw new ModelException("Falta que se elija la Carrera");
+//		}
+//	}
 }
