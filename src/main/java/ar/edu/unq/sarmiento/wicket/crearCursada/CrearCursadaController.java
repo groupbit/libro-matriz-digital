@@ -56,7 +56,7 @@ public class CrearCursadaController implements Serializable {
 		cursada.setEstado(this.getEstado());
 		cursada.setMateria(this.getMateriaElegida());
 		cursada.setNotaFinal(this.getNotaFinal());
-		alumno.addCursadaComprobandoCorrelativas(cursada, this.getMateriaElegida());
+		alumno.addCursada(cursada);
 		cursadaHome.saveOrUpdate(cursada);
 		alumnoHome.saveOrUpdate(alumno);
 	}

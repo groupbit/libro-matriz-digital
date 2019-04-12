@@ -108,18 +108,14 @@ public class Alumno extends Persistible {
 	}
 
 	public void addCursada(Cursada cursada){
-		this.cursadas.add(cursada);
-	}
-	
-	public void addCursadaComprobandoCorrelativas(Cursada cursada, Materia materia) {
-		if(!this.puedeMatricularseA(materia)){
+		if(!this.puedeMatricularseA(cursada.getMateria())){
 			throw new ModelException("No puede matricularse en la materia "
-					+ materia.getNombre() + 
+					+ cursada.getMateria().getNombre() + 
 					" porque debe sus correlativas.");
 		}
 		this.cursadas.add(cursada);
 	}
-
+	
 	public String getDni() {
 		return dni;
 	}
