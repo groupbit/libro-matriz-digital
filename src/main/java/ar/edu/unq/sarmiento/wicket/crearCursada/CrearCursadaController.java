@@ -106,10 +106,7 @@ public class CrearCursadaController implements Serializable {
 	}
 	
 	public List<Materia> getTodasLasMaterias(){
-//		return materiaHome.all();
-		carreraHome.saveOrUpdate(alumno.getCarrera());
-		List<Materia>materiasDeCarrera=materiaHome.findByCarrera(alumno.getCarrera());
-		return materiasDeCarrera;
+        return materiaHome.all();		
 	}
 	
 	public void validarQueMateriaElegidaEsDeCarreraDe(Materia materiaElegida,Alumno alumno){
