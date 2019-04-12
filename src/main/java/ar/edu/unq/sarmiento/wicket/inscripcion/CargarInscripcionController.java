@@ -360,22 +360,4 @@ public class CargarInscripcionController implements Serializable {
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
 	}
-	
-//	public void validarCamposObligatorios(Alumno alumno){
-//		if(alumno.getDni() == null){
-//			throw new ModelException("Falta que se complete el DNI");
-//		}else if(alumno.getNombre() == null){
-//			throw new ModelException("Falta que se complete el Nombre");
-//		}else if(alumno.getEmail() == null ){
-//			throw new ModelException("Falta que se complete el Email");
-//		} else if(alumno.getFechaDeNacimiento() == null){
-//			throw new ModelException("Falta que se complete la Fecha de Nacimiento");
-//		} else if(alumno.getGenero() == null){
-//			throw new ModelException("Falta que se elija el Genero");
-//		} else if( alumno.getTelefono() == null){
-//			throw new ModelException("Falta que se complete el Nro. de Telefono");
-//		}else if(alumno.getCarrera() == null){
-//			throw new ModelException("Falta que se elija la Carrera");
-//		}
-//	}
 }
