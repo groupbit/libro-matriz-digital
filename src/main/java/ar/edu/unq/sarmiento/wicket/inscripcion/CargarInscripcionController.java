@@ -96,7 +96,6 @@ public class CargarInscripcionController implements Serializable {
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
 		this.confimarCarrera(alumno);
-		//this.validarCamposObligatorios(alumno);
 		Direccion dir = new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
