@@ -66,20 +66,21 @@ public class CargarInscripcionController implements Serializable {
 	private Carrera carreraElegida;
     private List<Genero>generos=new ArrayList<>();
     
-    private Alumno alumno2;
-
-	public Alumno getAlumno2() {
-		return alumno2;
-	}
-
-	public void setAlumno2(Alumno alumno2) {
-		this.alumno2 = alumno2;
-	}
-	public CargarInscripcionController() {this.setGeneros();
+    Direccion dir;
+    EstudioCursado estudio ;
+    
+    
+	public CargarInscripcionController() {
+		this.setGeneros();
+		alumno = new Alumno();
+		dir = new Direccion();
+		estudio = new EstudioCursado();
+		alumno.setDireccion(dir);
+		alumno.setTitulo(estudio);
 	}
 
 	public void inscribir() {
-		alumno = new Alumno();
+		
 		alumno.setNombre(this.getNombre());
 		alumno.setGenero(this.getGenero());
 		alumno.setDni(this.getDni());
@@ -92,25 +93,20 @@ public class CargarInscripcionController implements Serializable {
 		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
-		Direccion dir = new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
 		dir.setDepartamento(this.getDepartamento());
 		dir.setLocalidad(this.getLocalidad());
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
-		EstudioCursado estudio = new EstudioCursado();
 		estudio.setAnioEgreso(this.getAnioEgreso());
 		estudio.setInstitucion(this.getInstitucion());
 		estudio.setDistrito(this.getDistrito());
 		estudio.setNombreTitulo(this.getNombreTitulo());
-		alumno.setDireccion(dir);
-		alumno.setTitulo(estudio);
+		this.confimarCarrera(alumno);        
 		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
-		this.confimarCarrera(alumno);
-        
 	}
   
 	public Direccion getDireccion() {
@@ -294,6 +290,19 @@ public class CargarInscripcionController implements Serializable {
 
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
+		dir = alumno.getDireccion();
+		estudio = alumno.getTitulo();
+		nombre = alumno.getNombre();
+		genero = alumno.genero;
+		dni = alumno.getDni();
+		fechaNacimiento = alumno.getFechaDeNacimiento();
+		lugarNacimiento = alumno.getLugarDeNacimiento();
+		estadoCivil = alumno.getEstadoCivil();
+		hijos = alumno.getHijos();
+		familiaresACargo = alumno.getFamiliaresACargo();
+		
+		
+		
 	}
 
 	public EstudioCursado getEstudioCursado() {
@@ -354,11 +363,6 @@ public class CargarInscripcionController implements Serializable {
 	}
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
-	}
-
-	public void editar() {
-		alumnoHome.saveOrUpdate(alumno2);
-		
 	}
 
 }
