@@ -55,6 +55,7 @@ public class CrearCursadaController implements Serializable {
 	
 	public CrearCursadaController() {
 		anio = Year.now().getValue();
+		this.getTodasLasMaterias();
 	}
 
 	public void agregarCursada(Alumno alumno) {
@@ -106,7 +107,8 @@ public class CrearCursadaController implements Serializable {
 	}
 	
 	public List<Materia> getTodasLasMaterias(){
-        return materiaHome.all();		
+		return materiaHome.findByCarrera(this.getAlumno().getCarrera());
+		
 	}
 	
 	public void validarQueMateriaElegidaEsDeCarreraDe(Materia materiaElegida,Alumno alumno){
