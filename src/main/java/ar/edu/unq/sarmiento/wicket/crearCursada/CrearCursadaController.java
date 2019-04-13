@@ -55,7 +55,6 @@ public class CrearCursadaController implements Serializable {
 	
 	public CrearCursadaController() {
 		anio = Year.now().getValue();
-		this.getTodasLasMaterias();
 	}
 
 	public void agregarCursada(Alumno alumno) {
@@ -67,8 +66,8 @@ public class CrearCursadaController implements Serializable {
 		cursada.setNotaFinal(this.getNotaFinal());
 		alumno.addCursada(cursada);
 		carreraHome.saveOrUpdate(alumno.getCarrera());
-		cursadaHome.saveOrUpdate(cursada);
 		alumnoHome.saveOrUpdate(alumno);
+		cursadaHome.saveOrUpdate(cursada);	
 	}
 
 	public int getAnio() {
@@ -107,14 +106,12 @@ public class CrearCursadaController implements Serializable {
 	}
 	
 	public List<Materia> getTodasLasMaterias(){
-		return materiaHome.findByCarrera(this.getAlumno().getCarrera());
-		
+		return materiaHome.findByCarrera(alumno.getCarrera());
 	}
 	
 	public void validarQueMateriaElegidaEsDeCarreraDe(Materia materiaElegida,Alumno alumno){
-//		List<Materia>materiasDeCarrera=materiaHome.findByCarrera(carrera);
 		if(!(this.getTodasLasMaterias().contains(materiaElegida))){
-			throw new ModelException(" Error la materia: "+ materiaElegida.getNombre() + " no pertenece a la carrera: "
+			throw new ModelException(" Error, la materia: "+ materiaElegida.getNombre() + " no pertenece a la carrera: "
 		+ alumno.getCarrera().getNombre() + ".");
 		}	
 	}
