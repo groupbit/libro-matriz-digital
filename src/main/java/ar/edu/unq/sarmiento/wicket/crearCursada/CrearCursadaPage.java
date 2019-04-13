@@ -1,6 +1,5 @@
 package ar.edu.unq.sarmiento.wicket.crearCursada;
 
-import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -8,16 +7,9 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
-import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraController;
 import ar.edu.unq.sarmiento.wicket.cursada.ListadoDeCursadasPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
