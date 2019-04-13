@@ -13,6 +13,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
+import ar.edu.unq.sarmiento.hibernate.CarreraHome;
+import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraController;
@@ -26,11 +29,14 @@ public class CrearCursadaPage extends LayoutPage {
 
 	private Alumno alumno;
 
+	private MateriaHome materiaHome;
+	
 	@SpringBean(name = "crearCursadaController")
 	private CrearCursadaController crearCursadaController;
 
 	public CrearCursadaPage(Alumno alumno) {
 		this.alumno = alumno;
+		crearCursadaController.setAlumno(alumno);
 		this.formularioCursada();
 	}
 
