@@ -310,6 +310,7 @@ public class CargarInscripcionController implements Serializable {
 		estadoCivil = alumno.getEstadoCivil();
 		hijos = alumno.getHijos();
 		familiaresACargo = alumno.getFamiliaresACargo();
+	    telefono = alumno.getTelefono();
 		telefonoAlternativo = alumno.getTelefonoAlternativo();
 		propietarioTelefonoAlternativo = alumno.getPropietarioTelefonoAlternativo();
 		email = alumno.getEmail();
