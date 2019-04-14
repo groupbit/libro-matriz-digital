@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.materia;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Materia;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
+import ar.edu.unq.sarmiento.wicket.utils.BotonConfirmar;
 
 public class ListadoDeMateriasPage extends LayoutPage {
 
@@ -57,6 +59,19 @@ public class ListadoDeMateriasPage extends LayoutPage {
 						this.setResponsePage(new AgregarCorrelativa(item.getModelObject(),carrera1));
 					}
 				});
+				
+				Form<ListadoDeMateriasController> eliminarAlumnoForm = new Form<ListadoDeMateriasController>("eliminarMateriaForm") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onSubmit() {
+						controller.attachMateria(item.getModelObject());
+						controller.eliminar(item.getModelObject());
+						this.setResponsePage(new ListadoDeMateriasPage(controller.getCarreraDetached()));
+					}
+				};
+				eliminarAlumnoForm.add(new BotonConfirmar("eliminarMateria", controller.mensajeDeEliminarMateria(item.getModelObject())){});
+				item.add(eliminarAlumnoForm);
 			}
 		});
 	}
@@ -71,5 +86,6 @@ public class ListadoDeMateriasPage extends LayoutPage {
 				this.setResponsePage(new AgregarMateriaPage(carrera1));
 			}
 		});
+		
 	}
 }

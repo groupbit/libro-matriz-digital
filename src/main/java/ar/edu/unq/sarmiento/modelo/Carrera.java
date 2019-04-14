@@ -84,4 +84,8 @@ public class Carrera extends Persistible {
 			throw new ModelException("Ya existe una materia llamada " + materia.getNombre() + ".");
 		};
 	}
+	
+	public void removerMateria(Materia materia){
+		this.listadoMaterias.remove(materia);
+	}
 }

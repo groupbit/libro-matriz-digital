@@ -77,47 +77,61 @@ En el proyecto hay una serie de clases ejecutables que ayudan en esta tarea:
 * `CreateMigrationFile.java`: crea un archivo vacío para escribir una migración, usando la convención de nombre por fecha y hora. Es importante recordar agregarle una descripción adecuada.
 * `RunFlywayDBMigrations.java`: corre las migraciones necesarias y actualiza el archivo con el schema.
 
-# Manejo de errores:
+## Manejo de errores
 
-## Instalación:
+Esta aplicación cuenta con un mecanismo transparente de manejo y visualización de errores, cuyos detalles pueden consultarse en [la wiki](https://github.com/ingsw-sarmiento/libro-matriz-digital/wiki/Mecanismo-de-manejo-de-errores).
 
- * Agregar las dependencias en el pom:
+Hay dos tipos posibles de validaciones: las que tienen que ver estrictamente con el input del usuario (campos obligatorios, números dentro de un rango, textos con una longitud mínima, etc.) y las que tienen que ver con una validación del dominio (bucle de correlativas, materia repetida, etc.). Cada tipo de validación se programa de forma diferente, según se explica a continuación.
 
-    wicket_bean_validation:
-     
-       <dependency>
-       <groupId>org.apache.wicket</groupId>
-       <artifactId>wicket-bean-validation</artifactId>
-       <version>${wicket.version}</version>
-       </dependency> 
+### Validaciones del input
 
-    hibernate_validator:
+Para este tipo de validaciones sencillas nos valdremos de las annotations que provee Hibernate Validator, cuyo listado podemos consultar [acá](http://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints). Estas validaciones deberían ser la opción por defecto, ya que requieren poco código y funcionan automáticamente.
 
-        <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>5.3.5.Final</version>
-        </dependency>
+Los pasos a seguir son:
+1. Agregar las annotations necesarias a los atributos del modelo o del controller, dependiendo de cómo esté armada la `Page`.
+1. Agregar al campo un `PropertyValidator` para que tenga en cuenta las annotations.
 
- * Agregar las clases:
+Un pequeño ejemplo:
 
-    Creamos la clase ModelErrorRequestCycleListernerHandler que se utiliza para poder insertar código en el momento que se hace resquest, en nuestro caso la usamos para chequear si es un 
-    error de ModelException o un defaultException(error fuera de nuestro modelo) y lanzar el error según sea el caso.
+```java
+class Alumno {
+  @NotNull
+  @Size(min = 2, max = 30)
+  private String nombre;
+  // Se validará que no esté vacío y que tenga una longitud entre 2 y 30.
+}
 
-    Creamos la clase ModelException que se utiliza para filtrar los errores que se generan en nuestro modelo. 
+class AlumnoPage {
+  // Configuración de la page
+  public void configurarPagina() {
+    Form<Alumno> formularioAlumno = // más configuraciones
+  
+    formularioAlumno
+      .add(new TextField<>("nombre", new PropertyModel<>(alumno, "nombre"))
+      .add(new PropertyValidator<>()));
+  }
+}
+```
 
-    Creamos la clase BootstrapFeedbackPanel y su respectivo html en donde en la clase se definirá su construcción y sus diferentes ventanas del panel. En el html su construcción para 
-    visualizar en el navegador. Se agrega al archivo main.css el estilo del feedbackPanel.
-    
- * Configuración en Wicket:
-    
-    En WicketAplication se utilizan para:
+### Validaciones del dominio
 
-       validación imperativa: - PageRequestHandlerTracker.
-                              - ModelErrorRequestCycleListernerHandler
+Cuando no podamos utilizar las anteriores porque la validación sea más compleja, utilizaremos un mecanismo más precario pero poderoso también: arrojar una excepción. Es importante en este caso que el mensaje esté bien armado, porque será eso lo que verá nuestro usuario.
 
-       annotations: - BeanValidationConfiguration.
+Para armar una de estas validaciones basta con arrojar una excepción de tipo `ModelException` en alguna parte del código que vaya a ejecutarse luego de hacer submit.
 
- * Configuración de la clase LayoutPage a la cual agregamos el componente BootstrapFeedbackPanel y en su correspondiente html definimos la construcción para visualizar en el navegador.
- 
+Un pequeño ejemplo:
 
+```java
+class Carrera {
+  public void agregarMateria(Materia materia){
+    validarMateriaEsNueva(materia);
+    this.listadoMaterias.add(materia);
+  }
+
+  private void validarMateriaEsNueva(Materia materia) {
+    if (this.listadoMaterias.stream().anyMatch(m -> m.getNombre().equals(materia.getNombre()))) {
+      throw new ModelException("Ya existe una materia llamada " + materia.getNombre() + ".");
+    }
+  }
+}
+```

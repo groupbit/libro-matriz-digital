@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -97,10 +98,8 @@ public class Alumno extends Persistible {
 	}
 
 	public List<Cursada> getCursadas() {
-		return cursadas.stream()
-				.sorted((c1, c2) -> c1.getMateria().getNombre().compareTo(c2.getMateria().getNombre()))
-				.sorted((c1,c2)-> Integer.compare(c2.getAnio(),c1.getAnio()))
-				.collect(Collectors.toList());
+		return cursadas.stream().sorted((c1, c2) -> c1.getMateria().getNombre().compareTo(c2.getMateria().getNombre()))
+				.sorted((c1, c2) -> Integer.compare(c2.getAnio(), c1.getAnio())).collect(Collectors.toList());
 	}
 
 	

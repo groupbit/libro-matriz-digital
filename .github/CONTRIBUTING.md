@@ -22,10 +22,10 @@ Del código:
   1. no puede haber código comentado;
   1. no puede haber definiciones de CSS en los HTML, todo debe estar en `webapp/css`.
 
-## Esquema de revisión (período 27/03 - 03/04)
+## Esquema de revisión (período 03/04 - 10/04)
 
-* @vgrana tiene de _reviewer_ a @nataliaMarzec.
-* @fede9612 tiene de _reviewer_ a @JuanCS95.
-* @NahuelM426 tiene de _reviewer_ a @vgrana.
-* @nataliaMarzec tiene de _reviewer_ a @fede9612.
-* @JuanCS95 tiene de _reviewer_ a @NahuelM426.
+* @nataliaMarzec revisa a @vgrana.
+* @JuanCS95 revisa a @fede9612.
+* @NahuelM426 revisa a @JuanCS95.
+* @fede9612 revisa a @nataliaMarzec.
+* @vgrana revisa a @NahuelM426.

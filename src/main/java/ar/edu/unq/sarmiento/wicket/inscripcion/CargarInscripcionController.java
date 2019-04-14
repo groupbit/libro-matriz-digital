@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -21,6 +24,7 @@ import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Genero;
+import ar.edu.unq.sarmiento.modelo.ModelException;
 import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
@@ -38,20 +42,26 @@ public class CargarInscripcionController implements Serializable {
 //	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired 
 	private CarreraHome carreraHome;
-	private Alumno alumno;
+	@NotNull
 	private String nombre;
+	@NotNull
 	private Genero genero;
+	@NotNull
 	private String dni;
+	@NotNull
 	private LocalDate fechaNacimiento;
 	private String lugarNacimiento;
 	private String estadoCivil;
 	private int hijos;
 	private String familiaresACargo;
 	private Direccion direccion;
+	@NotNull
 	private String telefono;
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
+	@NotNull
 	private String email;
+	private Alumno alumno;
 	private String calle;
 	private int altura;
 	private String departamento;
@@ -63,7 +73,9 @@ public class CargarInscripcionController implements Serializable {
 	private String institucion;
 	private String distrito;
 	private String nombreTitulo;
+	@NotNull
 	private Carrera carreraElegida;
+	@NotNull
     private List<Genero>generos=new ArrayList<>();
     
     Direccion dir;
@@ -107,6 +119,8 @@ public class CargarInscripcionController implements Serializable {
 //		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
+		this.confimarCarrera(alumno);
+        
 	}
   
 	public Direccion getDireccion() {
@@ -314,7 +328,14 @@ public class CargarInscripcionController implements Serializable {
 		
 	}
 
-	
+	public EstudioCursado getEstudioCursado() {
+		return estudioCursado;
+	}
+
+	public void setEstudioCursado(EstudioCursado estudioCursado) {
+		this.estudioCursado = estudioCursado;
+	}
+
 	public void setAnioEgreso(int anioEgreso) {
 		this.anioEgreso = anioEgreso;
 	}
