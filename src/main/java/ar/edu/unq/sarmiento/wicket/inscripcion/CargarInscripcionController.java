@@ -328,14 +328,6 @@ public class CargarInscripcionController implements Serializable {
 		
 	}
 
-	public EstudioCursado getEstudioCursado() {
-		return estudioCursado;
-	}
-
-	public void setEstudioCursado(EstudioCursado estudioCursado) {
-		this.estudioCursado = estudioCursado;
-	}
-
 	public void setAnioEgreso(int anioEgreso) {
 		this.anioEgreso = anioEgreso;
 	}
