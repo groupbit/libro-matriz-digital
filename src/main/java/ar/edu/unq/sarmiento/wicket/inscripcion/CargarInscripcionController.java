@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +17,11 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
-import ar.edu.unq.sarmiento.hibernate.EstudioCursadoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Genero;
-import ar.edu.unq.sarmiento.modelo.ModelException;
-import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
