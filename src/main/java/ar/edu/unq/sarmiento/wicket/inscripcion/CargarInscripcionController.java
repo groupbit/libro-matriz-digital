@@ -34,10 +34,11 @@ public class CargarInscripcionController implements Serializable {
 	private AlumnoHome alumnoHome;
 	@Autowired
 	private DireccionHome direccionHome;
-	@Autowired
-	private EstudioCursadoHome estudioCursadoHome;
+//	@Autowired
+//	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired 
 	private CarreraHome carreraHome;
+	private Alumno alumno;
 	private String nombre;
 	private Genero genero;
 	private String dni;
@@ -51,14 +52,13 @@ public class CargarInscripcionController implements Serializable {
 	private String telefonoAlternativo;
 	private String propietarioTelefonoAlternativo;
 	private String email;
-	private Alumno alumno;
 	private String calle;
 	private int altura;
 	private String departamento;
 	private String codigoPostal;
 	private String localidad;
 	private String partido;
-	private EstudioCursado estudioCursado;
+//	private EstudioCursado estudioCursado;
 	private int anioEgreso;
 	private String institucion;
 	private String distrito;
@@ -74,7 +74,7 @@ public class CargarInscripcionController implements Serializable {
 		this.setGeneros();
 		alumno = new Alumno();
 		dir = new Direccion();
-		estudio = new EstudioCursado();
+//		estudio = new EstudioCursado();
 		alumno.setDireccion(dir);
 		alumno.setTitulo(estudio);
 	}
@@ -93,18 +93,18 @@ public class CargarInscripcionController implements Serializable {
 		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
+		this.confimarCarrera(alumno);        
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
 		dir.setDepartamento(this.getDepartamento());
 		dir.setLocalidad(this.getLocalidad());
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
-		estudio.setAnioEgreso(this.getAnioEgreso());
-		estudio.setInstitucion(this.getInstitucion());
-		estudio.setDistrito(this.getDistrito());
-		estudio.setNombreTitulo(this.getNombreTitulo());
-		this.confimarCarrera(alumno);        
-		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
+//		estudio.setAnioEgreso(this.getAnioEgreso());
+//		estudio.setInstitucion(this.getInstitucion());
+//		estudio.setDistrito(this.getDistrito());
+//		estudio.setNombreTitulo(this.getNombreTitulo());
+//		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 	}
@@ -300,19 +300,21 @@ public class CargarInscripcionController implements Serializable {
 		estadoCivil = alumno.getEstadoCivil();
 		hijos = alumno.getHijos();
 		familiaresACargo = alumno.getFamiliaresACargo();
-		
+		telefonoAlternativo = alumno.getTelefonoAlternativo();
+		propietarioTelefonoAlternativo = alumno.getPropietarioTelefonoAlternativo();
+		email = alumno.getEmail();
+		calle = alumno.getDireccion().getCalle();
+		altura  = alumno.getDireccion().getAltura();
+		departamento = alumno.getDireccion().getDepartamento();
+		codigoPostal = alumno.getDireccion().getCodigoPostal();
+		localidad = alumno.getDireccion().getLocalidad();
+		partido = alumno.getDireccion().getPartido();	
+		carreraElegida = alumno.getCarrera();
 		
 		
 	}
 
-	public EstudioCursado getEstudioCursado() {
-		return estudioCursado;
-	}
-
-	public void setEstudioCursado(EstudioCursado estudioCursado) {
-		this.estudioCursado = estudioCursado;
-	}
-
+	
 	public void setAnioEgreso(int anioEgreso) {
 		this.anioEgreso = anioEgreso;
 	}

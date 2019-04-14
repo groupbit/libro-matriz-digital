@@ -53,7 +53,7 @@ public class Alumno extends Persistible {
 			LocalDate fechaNacimiento,String lugarDeNacimiento,Genero genero,String estadoCivil,
 			int hijos,String familiaresACargo,String telefono,String telefonoAlternativo,
 			String email,boolean trabaja,String actividad,LocalTime horarioHabitual,
-			String obraSocial,EstudioCursado titulo){
+			String obraSocial){
 		
 		this.nombre=nombre;
 		this.direccion=direccion;
@@ -69,7 +69,6 @@ public class Alumno extends Persistible {
 		this.actividad=actividad;
 		this.horarioHabitual=horarioHabitual;
 		this.obraSocial=obraSocial;
-		this.titulo=titulo;
 		
 	}
 	
