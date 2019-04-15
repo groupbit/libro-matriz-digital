@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class Cursada extends Persistible {
-
+	
 	@OneToOne
 	public Materia materia;
 	public EstadoCursada estado;
@@ -49,5 +49,11 @@ public class Cursada extends Persistible {
 	public void setEstado(EstadoCursada estado) {
 		this.estado = estado;
 	}
-
+	
+	public boolean estadoRegularizadoOAprobado(){
+		return (this.getEstado().equals(EstadoCursada.REGULARIZADA) || 
+				this.getEstado().equals(EstadoCursada.APROBADA_FINAL) ||
+				this.getEstado().equals(EstadoCursada.APROBADA_PROMOCION));
+	}
 }
+	

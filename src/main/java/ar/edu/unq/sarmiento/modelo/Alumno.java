@@ -107,10 +107,15 @@ public class Alumno extends Persistible {
 		this.cursadas = cursadas;
 	}
 
-	public void addCursada(Cursada cursada) {
+	public void addCursada(Cursada cursada){
+		if(!this.puedeMatricularseA(cursada.getMateria())){
+			throw new ModelException("No puede matricularse en la materia "
+					+ cursada.getMateria().getNombre() + 
+					" porque debe sus correlativas.");
+		}
 		this.cursadas.add(cursada);
 	}
-
+	
 	public String getDni() {
 		return dni;
 	}
@@ -245,6 +250,15 @@ public class Alumno extends Persistible {
 
 	public void setOtrosTitulos(List<EstudioCursado> otros_titulos) {
 		this.otrosTitulos = otros_titulos;
+	}
+	
+	public boolean puedeMatricularseA(Materia materia) {
+		return materia.getCorrelativas().stream().allMatch(m -> this.estaRegularizada(m));
+	}
+
+	private boolean estaRegularizada(Materia m) {
+		return this.cursadas.stream().filter(c -> c.getMateria().equals(m))
+				.anyMatch(c -> c.estadoRegularizadoOAprobado());
 	}
 
 }
