@@ -46,7 +46,7 @@ public class QuitarCorrelativaPage extends LayoutPage{
 				new PropertyModel<>(quitarCorrelativaController, "correlativaElegida"),
 				new PropertyModel<>(quitarCorrelativaController, "listaDeCorrelativasdeMateria"),
 				new ChoiceRenderer<>("nombre")));
-		this.add(formulario);
+		
 		formulario.add(new Link<String>("cancelar") {
 
 			private static final long serialVersionUID = 505927122883116822L;
