@@ -59,12 +59,23 @@ public class ListadoDeMateriasPage extends LayoutPage {
 						this.setResponsePage(new AgregarCorrelativa(item.getModelObject(),carrera1));
 					}
 				});
-				
+
+				item.add(new Link<String>("borrarCorrelativa"){
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						controller.attachMateria(item.getModelObject());
+						this.setResponsePage(new QuitarCorrelativaPage(item.getModelObject(), carrera1));
+					}
+				});
+
 				Form<ListadoDeMateriasController> eliminarAlumnoForm = new Form<ListadoDeMateriasController>("eliminarMateriaForm") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onSubmit() {
+						controller.attachMateria(item.getModelObject());
 						controller.eliminar(item.getModelObject());
 						this.setResponsePage(new ListadoDeMateriasPage(controller.getCarreraDetached()));
 					}
