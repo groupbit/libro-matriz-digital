@@ -2,7 +2,11 @@ package ar.edu.unq.sarmiento.wicket.alumno;
 
 import java.time.format.DateTimeFormatter;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -19,22 +23,30 @@ public class ListadoAlumnoPage extends LayoutPage {
 
 	@SpringBean(name = "listadoAlumnoController")
 	private ListadoAlumnoController controller;
-	
-	
+
+	private Alumno elAlumno;
+
 	public ListadoAlumnoPage() {
-		this.listaDeAlumno();
-		this.cargarInscripcionAlumno();
-		
+		inicializarPage();
 	}
-	
-	public void listaDeAlumno(){
-		ListView<Alumno> listAlumno = new ListView<Alumno>("alumnos",
-				new PropertyModel<>(controller, "usuariosEnInstituto")) {
+
+	public ListadoAlumnoPage(String nombre) {
+		controller.setNombreBuscado(nombre);
+		inicializarPage();
+	}
+
+	private void inicializarPage() {
+		this.cargarInscripcionAlumno();
+		this.busquedaPorNombre();
+	}
+
+	public void listaDeAlumno(Form<ListadoAlumnoController> formBusqueda) {
+		ListView<Alumno> listAlumno = new ListView<Alumno>("alumnos", new PropertyModel<>(controller, "alumnos")) {
 
 			/**
 					 * 
 					 */
-					private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void populateItem(ListItem<Alumno> item) {
@@ -42,7 +54,8 @@ public class ListadoAlumnoPage extends LayoutPage {
 				CompoundPropertyModel<Alumno> alumnoModel = new CompoundPropertyModel<>(alumno);
 				Label nombreAlumno = new Label("nombre", alumnoModel.bind("nombre"));
 				Label telefonoAlumno = new Label("telefono", alumnoModel.bind("telefono"));
-				Label fechaNacimientoAlumno = new Label("fechaNacimiento", alumno.getFechaDeNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+				Label fechaNacimientoAlumno = new Label("fechaNacimiento",
+						alumno.getFechaDeNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 				Label dniAlumno = new Label("dni", alumnoModel.bind("dni"));
 				Label mailAlumno = new Label("email", alumnoModel.bind("email"));
 				Label carreraAlumno = new Label("carrera", alumnoModel.bind("carrera.nombre"));
@@ -62,8 +75,33 @@ public class ListadoAlumnoPage extends LayoutPage {
 				});
 			}
 		};
-		this.add(listAlumno);
+		listAlumno.setOutputMarkupId(true);
+		formBusqueda.add(listAlumno);
 	}
+
+	public void busquedaPorNombre() {
+		Form<ListadoAlumnoController> formBusqueda = new Form<ListadoAlumnoController>("formBuscarNombre");
+
+		formBusqueda.add(new TextField<>("nombreBuscado", new PropertyModel<>(this.controller, "nombreBuscado")));
+
+		AjaxButton ajaxButton = new AjaxButton("action") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onSubmit(AjaxRequestTarget target) {
+				if (target != null) {
+					target.add(formBusqueda);
+					this.setResponsePage(new ListadoAlumnoPage(controller.getNombreBuscado()));
+				}
+			}
+
+		};
+
+		formBusqueda.add(ajaxButton);
+		this.listaDeAlumno(formBusqueda);
+		this.add(formBusqueda);
+	};
 
 	public void cargarInscripcionAlumno() {
 		this.add(new Link<String>("inscripcion") {

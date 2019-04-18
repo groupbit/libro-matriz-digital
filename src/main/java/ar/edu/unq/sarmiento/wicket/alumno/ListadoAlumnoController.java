@@ -21,12 +21,25 @@ public class ListadoAlumnoController implements Serializable{
 	@Autowired
 	private AlumnoHome alumnoHome;
 	
-	public List<Alumno> getUsuariosEnInstituto(){
-		return alumnoHome.all();
+	private String nombreBuscado;
+	
+	public List<Alumno> getAlumnos(){
+		return nombreBuscado == null
+				? alumnoHome.all()
+				: alumnoHome.filterByName(nombreBuscado, Alumno.class);
 	}
 	
 	public Alumno attach(Alumno alumno) {
 		alumnoHome.attach(alumno);
 		return alumno;
 	}
+
+	public String getNombreBuscado() {
+		return nombreBuscado;
+	}
+
+	public void setNombreBuscado(String nombreBuscado) {
+		this.nombreBuscado = nombreBuscado;
+	}
+	
 }
