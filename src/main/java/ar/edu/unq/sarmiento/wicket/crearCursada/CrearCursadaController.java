@@ -13,16 +13,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
-import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.CursadaHome;
 import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.modelo.Materia;
-import ar.edu.unq.sarmiento.modelo.ModelException;
-import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -49,9 +45,6 @@ public class CrearCursadaController implements Serializable {
 	private int notaFinal;
 	
 	private Alumno alumno;
-	
-	@Autowired
-	private CarreraHome carreraHome;
 	
 	public CrearCursadaController() {
 		anio = Year.now().getValue();
