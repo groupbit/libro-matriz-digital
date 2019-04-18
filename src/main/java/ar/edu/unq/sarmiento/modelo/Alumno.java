@@ -109,7 +109,7 @@ public class Alumno extends Persistible {
 
 	public void addCursada(Cursada cursada) {
 		this.validarQueMateriaElegidaEsDeCarreraDe(cursada);
-		this.validarSiPuedeMatricularseACursada(cursada);    
+		this.validarSiPuedeMatricularseAMateria(cursada);    
 		this.cursadas.add(cursada);
 	}
 
@@ -265,7 +265,7 @@ public class Alumno extends Persistible {
 		}
 	}
     
-    public void validarSiPuedeMatricularseACursada(Cursada cursada){
+    public void validarSiPuedeMatricularseAMateria(Cursada cursada){
         if(!this.puedeMatricularseA(cursada.getMateria())){
 		    throw new ModelException("No puede matricularse en la materia "
 				+ cursada.getMateria().getNombre() + 
