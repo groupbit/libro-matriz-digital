@@ -5,11 +5,12 @@
 				<h4>Listado de alumnos</h4>
 			</div>
 			<div class="panel-body">
-
 				<form wicket:id="formBuscarNombre">
-					Ingrese nombre: <input type="text" wicket:id="nombreBuscado" />
-					<button wicket:id="action" class="btn btn-primary btn-sm">Buscar</button>
-
+					<div class="titulo">
+						Ingrese nombre: <input type="text" wicket:id="nombreBuscado" />
+						<button wicket:id="action" class="btn btn-sm">Buscar</button>
+					</div>
+					<br></br>
 					<table class="table">
 						<thead>
 							<th>Nombre</th>
@@ -42,5 +43,4 @@
 		<button wicket:id="inscripcion" class="btn btn-primary">
 			Inscribir Alumno</button>
 	</div>
-
 </wicket:extend>

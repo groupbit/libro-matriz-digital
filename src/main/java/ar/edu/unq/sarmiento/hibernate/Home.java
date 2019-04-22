@@ -73,7 +73,8 @@ public abstract class Home<T extends Persistible> {
 	}
 
 	private <T> Query<T> queryByName(String name, Class<T> type) {
-		return this.getSession().createQuery("FROM " + type.getSimpleName() + " WHERE nombre LIKE :name", type)
+		return this.getSession().
+				createQuery("FROM " + type.getSimpleName() + " WHERE nombre LIKE :name", type)
 				.setParameter("name", "%" + name + "%");
 	}
 }

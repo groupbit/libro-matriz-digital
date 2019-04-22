@@ -24,8 +24,6 @@ public class ListadoAlumnoPage extends LayoutPage {
 	@SpringBean(name = "listadoAlumnoController")
 	private ListadoAlumnoController controller;
 
-	private Alumno elAlumno;
-
 	public ListadoAlumnoPage() {
 		inicializarPage();
 	}
