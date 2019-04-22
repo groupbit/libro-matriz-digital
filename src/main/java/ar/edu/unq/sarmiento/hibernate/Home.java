@@ -34,11 +34,6 @@ public abstract class Home<T extends Persistible> {
 		return sessionFactory.getCurrentSession();
 	}
 
-	public T findByName(String name) {
-		return (T) this.getSession().createQuery("FROM " + clazz.getSimpleName() + " WHERE nombre = :name", clazz)
-				.setParameter("name", name).getSingleResult();
-	}
-
 	public T find(Integer id) {
 		return getSession().get(getEntityClass(), id);
 	}
@@ -59,22 +54,22 @@ public abstract class Home<T extends Persistible> {
 		this.getSession().lock(result, LockMode.NONE);
 	}
 
+	public T findByName(String name) {
+		return queryByName(name).getSingleResult();
+	}
+
+	public List<T> filterByName(String name) {
+		return queryByName(name).getResultList();
+	}
+
+	private Query<T> queryByName(String name) {
+		return this.getSession()
+				.createQuery("FROM " + clazz.getSimpleName() + " WHERE nombre LIKE :name", clazz)
+				.setParameter("name", "%" + name + "%");
+	}
+	
 	@SuppressWarnings("unchecked")
 	private Class<T> getEntityClass() {
 		return (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), Home.class);
-	}
-
-	public <T> T findByName(String name, Class<T> type) {
-		return queryByName(name, type).getSingleResult();
-	}
-
-	public <T> List<T> filterByName(String name, Class<T> type) {
-		return queryByName(name, type).getResultList();
-	}
-
-	private <T> Query<T> queryByName(String name, Class<T> type) {
-		return this.getSession().
-				createQuery("FROM " + type.getSimpleName() + " WHERE nombre LIKE :name", type)
-				.setParameter("name", "%" + name + "%");
 	}
 }

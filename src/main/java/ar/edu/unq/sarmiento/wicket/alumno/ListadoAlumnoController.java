@@ -26,7 +26,7 @@ public class ListadoAlumnoController implements Serializable{
 	public List<Alumno> getAlumnos(){
 		return nombreBuscado == null
 				? alumnoHome.all()
-				: alumnoHome.filterByName(nombreBuscado, Alumno.class);
+				: alumnoHome.filterByName(nombreBuscado);
 	}
 	
 	public Alumno attach(Alumno alumno) {
