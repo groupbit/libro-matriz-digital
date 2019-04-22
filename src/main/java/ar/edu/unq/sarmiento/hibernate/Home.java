@@ -23,28 +23,26 @@ public abstract class Home<T extends Persistible> {
 	private Class<T> clazz;
 
 	public Home() {
-		// @faloi dice: esto lo estoy guardando para que no se calcule a cada
-		// rato,
-		// porque sospecho que es lento. Habría que medir a ver si realmente es
-		// así.
+		// @faloi dice: esto lo estoy guardando para que no se calcule a
+		// cada rato, porque sospecho que es lento.
+		// Habría que medir a ver si realmente es así.
 		this.clazz = getEntityClass();
-	}
-
-	public Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
-
-	public T findByName(String name) {
-		return (T) this.getSession().createQuery("FROM " + clazz.getSimpleName() + " WHERE nombre = :name", clazz)
-				.setParameter("name", name).getSingleResult();
 	}
 
 	public T find(Integer id) {
 		return getSession().get(getEntityClass(), id);
 	}
 
+	public T findByName(String name) {
+		return queryByName(name).getSingleResult();
+	}
+
+	public List<T> filterByName(String name) {
+		return queryByName(name).getResultList();
+	}
+	
 	public List<T> all() {
-		return this.getSession().createQuery("FROM " + clazz.getSimpleName(), clazz).getResultList();
+		return createQuery("").getResultList();
 	}
 
 	public void saveOrUpdate(T object) {
@@ -59,22 +57,20 @@ public abstract class Home<T extends Persistible> {
 		this.getSession().lock(result, LockMode.NONE);
 	}
 
+	protected Query<T> createQuery(String whereClause) {
+		return this.getSession().createQuery("FROM " + clazz.getSimpleName() + " " + whereClause, clazz);
+	}
+	
+	private Query<T> queryByName(String name) {
+		return createQuery("WHERE nombre LIKE :name").setParameter("name", "%" + name + "%");
+	}
+
 	@SuppressWarnings("unchecked")
 	private Class<T> getEntityClass() {
 		return (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), Home.class);
 	}
-
-	public <T> T findByName(String name, Class<T> type) {
-		return queryByName(name, type).getSingleResult();
-	}
-
-	public <T> List<T> filterByName(String name, Class<T> type) {
-		return queryByName(name, type).getResultList();
-	}
-
-	private <T> Query<T> queryByName(String name, Class<T> type) {
-		return this.getSession().
-				createQuery("FROM " + type.getSimpleName() + " WHERE nombre LIKE :name", type)
-				.setParameter("name", "%" + name + "%");
+	
+	private Session getSession() {
+		return sessionFactory.getCurrentSession();
 	}
 }
