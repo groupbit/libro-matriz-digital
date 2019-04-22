@@ -12,8 +12,7 @@ public class CarreraHome extends Home<Carrera> {
 	private static final long serialVersionUID = 1L;
 
 	public List<Carrera> listadoDeCarrerasVigentes() {
-		return this.getSession().createQuery("FROM Carrera WHERE archivada = :archiv", Carrera.class)
-				.setParameter("archiv", false).getResultList();
+		return this.createQuery("WHERE archivada = :archiv").setParameter("archiv", false).getResultList();
 	}
 
 }

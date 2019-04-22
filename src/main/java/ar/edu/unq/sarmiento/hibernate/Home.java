@@ -29,10 +29,6 @@ public abstract class Home<T extends Persistible> {
 		this.clazz = getEntityClass();
 	}
 
-	public Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
-
 	public T find(Integer id) {
 		return getSession().get(getEntityClass(), id);
 	}
@@ -61,16 +57,20 @@ public abstract class Home<T extends Persistible> {
 		this.getSession().lock(result, LockMode.NONE);
 	}
 
+	protected Query<T> createQuery(String whereClause) {
+		return this.getSession().createQuery("FROM " + clazz.getSimpleName() + " " + whereClause, clazz);
+	}
+	
 	private Query<T> queryByName(String name) {
 		return createQuery("WHERE nombre LIKE :name").setParameter("name", "%" + name + "%");
-	}
-
-	private Query<T> createQuery(String whereClause) {
-		return this.getSession().createQuery("FROM " + clazz.getSimpleName() + " " + whereClause, clazz);
 	}
 
 	@SuppressWarnings("unchecked")
 	private Class<T> getEntityClass() {
 		return (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), Home.class);
+	}
+	
+	private Session getSession() {
+		return sessionFactory.getCurrentSession();
 	}
 }
