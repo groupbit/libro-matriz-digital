@@ -28,11 +28,6 @@ public class ListadoAlumnoPage extends LayoutPage {
 		inicializarPage();
 	}
 
-	public ListadoAlumnoPage(String nombre) {
-		controller.setNombreBuscado(nombre);
-		inicializarPage();
-	}
-
 	private void inicializarPage() {
 		this.cargarInscripcionAlumno();
 		this.busquedaPorNombre();
@@ -79,21 +74,17 @@ public class ListadoAlumnoPage extends LayoutPage {
 
 	public void busquedaPorNombre() {
 		Form<ListadoAlumnoController> formBusqueda = new Form<ListadoAlumnoController>("formBuscarNombre");
-
 		formBusqueda.add(new TextField<>("nombreBuscado", new PropertyModel<>(this.controller, "nombreBuscado")));
 
 		AjaxButton ajaxButton = new AjaxButton("action") {
-
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target) {
 				if (target != null) {
 					target.add(formBusqueda);
-					this.setResponsePage(new ListadoAlumnoPage(controller.getNombreBuscado()));
 				}
 			}
-
 		};
 
 		formBusqueda.add(ajaxButton);
