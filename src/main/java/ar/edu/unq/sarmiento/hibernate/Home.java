@@ -37,6 +37,14 @@ public abstract class Home<T extends Persistible> {
 		return getSession().get(getEntityClass(), id);
 	}
 
+	public T findByName(String name) {
+		return queryByName(name).getSingleResult();
+	}
+
+	public List<T> filterByName(String name) {
+		return queryByName(name).getResultList();
+	}
+	
 	public List<T> all() {
 		return createQuery("").getResultList();
 	}
@@ -51,14 +59,6 @@ public abstract class Home<T extends Persistible> {
 
 	public void attach(T result) {
 		this.getSession().lock(result, LockMode.NONE);
-	}
-
-	public T findByName(String name) {
-		return queryByName(name).getSingleResult();
-	}
-
-	public List<T> filterByName(String name) {
-		return queryByName(name).getResultList();
 	}
 
 	private Query<T> queryByName(String name) {
