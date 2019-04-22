@@ -23,10 +23,9 @@ public abstract class Home<T extends Persistible> {
 	private Class<T> clazz;
 
 	public Home() {
-		// @faloi dice: esto lo estoy guardando para que no se calcule a cada
-		// rato,
-		// porque sospecho que es lento. Habría que medir a ver si realmente es
-		// así.
+		// @faloi dice: esto lo estoy guardando para que no se calcule a
+		// cada rato, porque sospecho que es lento.
+		// Habría que medir a ver si realmente es así.
 		this.clazz = getEntityClass();
 	}
 
@@ -39,7 +38,7 @@ public abstract class Home<T extends Persistible> {
 	}
 
 	public List<T> all() {
-		return this.getSession().createQuery("FROM " + clazz.getSimpleName(), clazz).getResultList();
+		return createQuery("").getResultList();
 	}
 
 	public void saveOrUpdate(T object) {
@@ -63,11 +62,13 @@ public abstract class Home<T extends Persistible> {
 	}
 
 	private Query<T> queryByName(String name) {
-		return this.getSession()
-				.createQuery("FROM " + clazz.getSimpleName() + " WHERE nombre LIKE :name", clazz)
-				.setParameter("name", "%" + name + "%");
+		return createQuery("WHERE nombre LIKE :name").setParameter("name", "%" + name + "%");
 	}
-	
+
+	private Query<T> createQuery(String whereClause) {
+		return this.getSession().createQuery("FROM " + clazz.getSimpleName() + " " + whereClause, clazz);
+	}
+
 	@SuppressWarnings("unchecked")
 	private Class<T> getEntityClass() {
 		return (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), Home.class);
