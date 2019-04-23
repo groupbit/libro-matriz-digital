@@ -34,8 +34,6 @@ public class CargarInscripcionController implements Serializable {
 	private AlumnoHome alumnoHome;
 	@Autowired
 	private DireccionHome direccionHome;
-//	@Autowired
-//	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired 
 	private CarreraHome carreraHome;
 	@NotNull
@@ -64,7 +62,6 @@ public class CargarInscripcionController implements Serializable {
 	private String codigoPostal;
 	private String localidad;
 	private String partido;
-//	private EstudioCursado estudioCursado;
 	private int anioEgreso;
 	private String institucion;
 	private String distrito;
@@ -82,7 +79,6 @@ public class CargarInscripcionController implements Serializable {
 		this.setGeneros();
 		alumno = new Alumno();
 		dir = new Direccion();
-//		estudio = new EstudioCursado();
 		alumno.setDireccion(dir);
 		alumno.setTitulo(estudio);
 	}
@@ -108,11 +104,6 @@ public class CargarInscripcionController implements Serializable {
 		dir.setLocalidad(this.getLocalidad());
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
-//		estudio.setAnioEgreso(this.getAnioEgreso());
-//		estudio.setInstitucion(this.getInstitucion());
-//		estudio.setDistrito(this.getDistrito());
-//		estudio.setNombreTitulo(this.getNombreTitulo());
-//		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 		this.confimarCarrera(alumno);
