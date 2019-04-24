@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.hibernate.DireccionHome;
+import ar.edu.unq.sarmiento.hibernate.EstudioCursadoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Direccion;
 import ar.edu.unq.sarmiento.modelo.EstudioCursado;
 import ar.edu.unq.sarmiento.modelo.Genero;
+import ar.edu.unq.sarmiento.modelo.ModelException;
+import ar.edu.unq.sarmiento.wicket.utils.EnumUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -34,6 +38,8 @@ public class CargarInscripcionController implements Serializable {
 	private AlumnoHome alumnoHome;
 	@Autowired
 	private DireccionHome direccionHome;
+	@Autowired
+	private EstudioCursadoHome estudioCursadoHome;
 	@Autowired 
 	private CarreraHome carreraHome;
 	@NotNull
@@ -97,7 +103,7 @@ public class CargarInscripcionController implements Serializable {
 		alumno.setTelefonoAlternativo(this.getTelefonoAlternativo());
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
-		this.confimarCarrera(alumno);        
+		this.confimarCarrera(alumno);
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
 		dir.setDepartamento(this.getDepartamento());
@@ -106,7 +112,7 @@ public class CargarInscripcionController implements Serializable {
 		dir.setCodigoPostal(this.getCodigoPostal());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
-		this.confimarCarrera(alumno);
+		
         
 	}
   
@@ -367,5 +373,4 @@ public class CargarInscripcionController implements Serializable {
 	public void setGeneros() {
 		this.generos =Arrays.asList(Genero.values());
 	}
-
 }

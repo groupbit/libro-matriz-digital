@@ -17,4 +17,6 @@ public class MateriaHome extends Home<Materia>{
 			.getResultList();
 	}
 	
+	
+	
 }

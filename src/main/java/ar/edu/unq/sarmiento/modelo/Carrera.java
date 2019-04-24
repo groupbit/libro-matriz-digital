@@ -77,6 +77,7 @@ public class Carrera extends Persistible {
 	public void agregarMateria(Materia materia){
 		validarMateriaEsNueva(materia);
 		this.listadoMaterias.add(materia);
+		materia.setCarrera(this);
 	}
 
 	private void validarMateriaEsNueva(Materia materia) {

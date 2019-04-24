@@ -63,76 +63,73 @@ public class DataGenerator {
 		Examen examen = new Examen();
 		examen.setTipoDeExamen(TipoDeExamen.FINAL);
 		
-		Materia materia = new Materia();
-		materia.setNombre("Hibernate");
-		materia.setAnioEnCarrera(2);
-		materia.setDocente("Jorgelina Ceriani");
-		materia.setPromocionable(true);
-		tpi.agregarMateria(materia);
+		Materia hibernate = new Materia();
+		hibernate.setNombre("Hibernate");
+		hibernate.setAnioEnCarrera(2);
+		hibernate.setDocente("Jorgelina Ceriani");
+		hibernate.setPromocionable(true);
+		tpi.agregarMateria(hibernate);
 		
-		Materia materia3 = new Materia();
-		materia3.setNombre("Estrategía de persistencia");
-		materia3.setAnioEnCarrera(3);
-		materia3.setDocente("Pablo Murias");
-		materia3.setPromocionable(true);
-		tpi.agregarMateria(materia3);
+		Materia persistencia = new Materia();
+		persistencia.setNombre("Estrategía de persistencia");
+		persistencia.setAnioEnCarrera(3);
+		persistencia.setDocente("Pablo Murias");
+		persistencia.setPromocionable(true);
+		tpi.agregarMateria(persistencia);
 		
-		Materia materia2 = new Materia();
-		materia2.setNombre("Ingenieria de Software");
-		materia2.addCorrelativa(materia);
-		materia2.addCorrelativa(materia3);
-		materia2.setAnioEnCarrera(3);
-		materia2.setDocente("Federico Aloi");
-		materia2.setPromocionable(false);
-		tpi.agregarMateria(materia2);
+		Materia ingSoftware = new Materia();
+		ingSoftware.setNombre("Ingenieria de Software");
+		ingSoftware.addCorrelativa(hibernate);
+		ingSoftware.addCorrelativa(persistencia);
+		ingSoftware.setAnioEnCarrera(3);
+		ingSoftware.setDocente("Federico Aloi");
+		ingSoftware.setPromocionable(false);
+		tpi.agregarMateria(ingSoftware);
 		
-		materia3.setAnioEnCarrera(2);
-		materia3.setPromocionable(true);
+		Materia baseDeDatos2 = new Materia();
+		baseDeDatos2.setNombre("Base de datos 2");
+		baseDeDatos2.addCorrelativa(hibernate);
+		baseDeDatos2.addCorrelativa(ingSoftware);
+		baseDeDatos2.setAnioEnCarrera(3);
+		baseDeDatos2.setDocente("Federico Aloi");
+		baseDeDatos2.setPromocionable(false);
+		tpi.agregarMateria(baseDeDatos2);
 		
-		Materia materia4 = new Materia();
-		materia4.setNombre("Base de datos 2");
-		materia4.addCorrelativa(materia);
-		materia4.addCorrelativa(materia2);
-		materia4.setAnioEnCarrera(3);
-		materia4.setDocente("Federico Aloi");
-		materia4.setPromocionable(false);
-		tpi.agregarMateria(materia4);
-		
-		Materia materia5 = new Materia();
-		materia5.setAnioEnCarrera(3);
-		materia5.setNombre("Inglés 1");
-		materia5.setDocente("Patricia Ramirez");
-		profesoradoIngles.agregarMateria(materia5);
+		Materia ingles1 = new Materia();
+		ingles1.setAnioEnCarrera(3);
+		ingles1.setNombre("Inglés 1");
+		ingles1.setDocente("Patricia Ramirez");
+		profesoradoIngles.agregarMateria(ingles1);
 		
 		Cursada cursada = new Cursada();
-		cursada.setMateria(materia3);
+		cursada.setMateria(persistencia);
 		cursada.setEstado(EstadoCursada.CURSANDO);
 		cursada.setAnio(2018);
 		cursada.setNotaFinal(7);
 		
-		Cursada cursada1 = new Cursada();
-		cursada1.setMateria(materia2);
-		cursada1.setEstado(EstadoCursada.CURSANDO);
-		cursada1.setAnio(2018);
-		cursada1.setNotaFinal(7);
+		Cursada cursadaIngSw = new Cursada();
+		cursadaIngSw.setMateria(ingSoftware);
+		cursadaIngSw.setEstado(EstadoCursada.APROBADA_FINAL);
+		cursadaIngSw.setAnio(2018);
+		cursadaIngSw.setNotaFinal(7);
 		
-		Cursada cursada2 = new Cursada();
-		cursada2.setMateria(materia);
-		cursada2.setEstado(EstadoCursada.APROBADA_PROMOCION);
-		cursada2.setAnio(2019);
-		cursada2.setNotaFinal(8);
+		Cursada cursadaHibernate = new Cursada();
+		cursadaHibernate.setMateria(hibernate);
+		cursadaHibernate.setEstado(EstadoCursada.APROBADA_PROMOCION);
+		cursadaHibernate.setAnio(2019);
+		cursadaHibernate.setNotaFinal(8);
 	
-		Cursada cursada3 = new Cursada();
-		cursada3.setMateria(materia3);
-		cursada3.setEstado(EstadoCursada.APROBADA_PROMOCION);
-		cursada3.setAnio(2017);
-		cursada3.setNotaFinal(7);
+		Cursada cursadaPersistencia = new Cursada();
+		cursadaPersistencia.setMateria(persistencia);
+		cursadaPersistencia.setEstado(EstadoCursada.APROBADA_PROMOCION);
+		cursadaPersistencia.setAnio(2017);
+		cursadaPersistencia.setNotaFinal(7);
 		
-		Cursada cursada4 = new Cursada();
-		cursada4.setMateria(materia4);
-		cursada4.setEstado(EstadoCursada.APROBADA_PROMOCION);
-		cursada4.setAnio(2017);
-		cursada4.setNotaFinal(7);
+		Cursada cursadaBaseDeDatos2 = new Cursada();
+		cursadaBaseDeDatos2.setMateria(baseDeDatos2);
+		cursadaBaseDeDatos2.setEstado(EstadoCursada.CURSANDO);
+		cursadaBaseDeDatos2.setAnio(2017);
+		cursadaBaseDeDatos2.setNotaFinal(7);
 		
 		Alumno alumno = new Alumno();
 		alumno.setNombre("Juan Rodriguez");
@@ -175,10 +172,10 @@ public class DataGenerator {
 		alumno4.setFechaDeNacimiento(LocalDate.of(1995, 12, 2));
 		alumno4.setDireccion(new Direccion("cabofosatt", 256, "", "2752", "Capitán Sarmiento","Cap Sarm"));
 		alumno4.setCarrera(tpi);
-		alumno4.addCursada(cursada1);
-		alumno4.addCursada(cursada2);
-		alumno4.addCursada(cursada3);
-		alumno4.addCursada(cursada4);
+		alumno4.addCursada(cursadaHibernate);
+		alumno4.addCursada(cursadaPersistencia);
+		alumno4.addCursada(cursadaIngSw);
+		alumno4.addCursada(cursadaBaseDeDatos2);
 		alumno4.setGenero(Genero.OTROS);
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
@@ -188,15 +185,15 @@ public class DataGenerator {
 		alumnoHome.saveOrUpdate(alumno4);
 		carreraHome.saveOrUpdate(tpi);
 		examenHome.saveOrUpdate(examen);
-		materiaHome.saveOrUpdate(materia3);
-		materiaHome.saveOrUpdate(materia2);
-		materiaHome.saveOrUpdate(materia4);
+		materiaHome.saveOrUpdate(persistencia);
+		materiaHome.saveOrUpdate(ingSoftware);
+		materiaHome.saveOrUpdate(baseDeDatos2);
 		direccionHome.saveOrUpdate(direccion);
 		cursadaHome.saveOrUpdate(cursada);
-		cursadaHome.saveOrUpdate(cursada1);
-		cursadaHome.saveOrUpdate(cursada2);
-		cursadaHome.saveOrUpdate(cursada3);
-		cursadaHome.saveOrUpdate(cursada4);
+		cursadaHome.saveOrUpdate(cursadaIngSw);
+		cursadaHome.saveOrUpdate(cursadaHibernate);
+		cursadaHome.saveOrUpdate(cursadaPersistencia);
+		cursadaHome.saveOrUpdate(cursadaBaseDeDatos2);
 		estudioCursadoHome.saveOrUpdate(titulo);
 		carreraHome.saveOrUpdate(profesoradoInicial);
 		carreraHome.saveOrUpdate(profesoradoIngles);
