@@ -1,4 +1,4 @@
-package ar.edu.unq.sarmiento.wicket.inscripcion;
+package ar.edu.unq.sarmiento.wicket.alumno;
 
 import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.extensions.markup.html.form.datetime.LocalDateTextField;
@@ -10,29 +10,34 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.edu.unq.sarmiento.wicket.alumno.ListadoAlumnoPage;
+import ar.edu.unq.sarmiento.modelo.Alumno;
+import ar.edu.unq.sarmiento.wicket.inscripcion.CargarInscripcionController;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
 
-public class CargarInscripcionPage extends LayoutPage{
-
+public class EditarDatosDeAlumno extends LayoutPage {
+	
 	private static final long serialVersionUID = 1L;
 
 	@SpringBean
 	private CargarInscripcionController cargarInscripcionController;
 	
-	public CargarInscripcionPage(){
+	public EditarDatosDeAlumno() {
+		this.formulario();
+	}
+	public EditarDatosDeAlumno(Alumno alumno1){
+		cargarInscripcionController.setAlumno(alumno1);
 		this.formulario();
 	}
 
 
 	private void formulario() {
-		Form<CargarInscripcionController>formulario=new Form<CargarInscripcionController>("inscripcionAlumno"){
+		Form<CargarInscripcionController>formulario=new Form<CargarInscripcionController>("editarAlumno"){
 
 			private static final long serialVersionUID = 1L;
 			
 			@Override
 			public void onSubmit(){
-				CargarInscripcionPage.this.cargarInscripcionController.inscribir();
+				EditarDatosDeAlumno.this.cargarInscripcionController.inscribir();
 				this.setResponsePage(new ListadoAlumnoPage());
 			}
 		
@@ -56,7 +61,6 @@ public class CargarInscripcionPage extends LayoutPage{
 		formulario.add(new TextField<>("localidad",new PropertyModel<>(this.cargarInscripcionController,"localidad")));
 		formulario.add(new TextField<>("partido",new PropertyModel<>(this.cargarInscripcionController,"partido")));
 		formulario.add(new TextField<>("codigoPostal",new PropertyModel<>(this.cargarInscripcionController,"codigoPostal")));
-	
 		this.add(formulario);
 		
 		formulario.add(new Link<String>("cancelar") {
@@ -72,11 +76,10 @@ public class CargarInscripcionPage extends LayoutPage{
 				"carrera",
 				new PropertyModel<>(cargarInscripcionController, "carreraElegida"),
 				new PropertyModel<>(cargarInscripcionController, "carrerasActivadas"),
-				new ChoiceRenderer<>("nombre")).add(new PropertyValidator<>()));
+				new ChoiceRenderer<>("nombre")));
 		this.add(formulario);
 		
 	}
-
 
 
 }

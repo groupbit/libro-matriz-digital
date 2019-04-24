@@ -23,6 +23,7 @@ import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.wicket.cursada.ListadoDeCursadasPage;
 import ar.edu.unq.sarmiento.wicket.inscripcion.CargarInscripcionPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
+import ar.edu.unq.sarmiento.wicket.materia.AgregarCorrelativa;
 
 public class ListadoAlumnoPage extends LayoutPage {
 
@@ -69,6 +70,15 @@ public class ListadoAlumnoPage extends LayoutPage {
 					@Override
 					public void onClick() {
 						setResponsePage(new ListadoDeCursadasPage(controller.attach(item.getModelObject())));
+					}
+				});
+				item.add(new Link<String>("Alumno"){
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						controller.attach(item.getModelObject());
+						this.setResponsePage(new EditarDatosDeAlumno(item.getModelObject()));
 					}
 				});
 			}

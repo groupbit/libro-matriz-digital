@@ -68,7 +68,6 @@ public class CargarInscripcionController implements Serializable {
 	private String codigoPostal;
 	private String localidad;
 	private String partido;
-	private EstudioCursado estudioCursado;
 	private int anioEgreso;
 	private String institucion;
 	private String distrito;
@@ -77,12 +76,21 @@ public class CargarInscripcionController implements Serializable {
 	private Carrera carreraElegida;
 	@NotNull
     private List<Genero>generos=new ArrayList<>();
-
-	public CargarInscripcionController() {this.setGeneros();
+    
+    Direccion dir;
+    EstudioCursado estudio ;
+    
+    
+	public CargarInscripcionController() {
+		this.setGeneros();
+		alumno = new Alumno();
+		dir = new Direccion();
+		alumno.setDireccion(dir);
+		alumno.setTitulo(estudio);
 	}
 
 	public void inscribir() {
-		alumno = new Alumno();
+		
 		alumno.setNombre(this.getNombre());
 		alumno.setGenero(this.getGenero());
 		alumno.setDni(this.getDni());
@@ -96,22 +104,12 @@ public class CargarInscripcionController implements Serializable {
 		alumno.setPropietarioTelefonoAlternativo(this.getPropietarioTelefonoAlternativo());
 		alumno.setEmail(this.getEmail());
 		this.confimarCarrera(alumno);
-		Direccion dir = new Direccion();
 		dir.setCalle(this.getCalle());
 		dir.setAltura(this.getAltura());
 		dir.setDepartamento(this.getDepartamento());
 		dir.setLocalidad(this.getLocalidad());
 		dir.setPartido(this.getPartido());
 		dir.setCodigoPostal(this.getCodigoPostal());
-		EstudioCursado estudio = new EstudioCursado();
-		estudio.setAnioEgreso(this.getAnioEgreso());
-		estudio.setInstitucion(this.getInstitucion());
-		estudio.setDistrito(this.getDistrito());
-		estudio.setNombreTitulo(this.getNombreTitulo());
-		alumno.setDireccion(dir);
-		alumno.setTitulo(estudio);
-		this.confimarCarrera(alumno);
-		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
 		
@@ -299,14 +297,29 @@ public class CargarInscripcionController implements Serializable {
 
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
-	}
-
-	public EstudioCursado getEstudioCursado() {
-		return estudioCursado;
-	}
-
-	public void setEstudioCursado(EstudioCursado estudioCursado) {
-		this.estudioCursado = estudioCursado;
+		dir = alumno.getDireccion();
+		estudio = alumno.getTitulo();
+		nombre = alumno.getNombre();
+		genero = alumno.genero;
+		dni = alumno.getDni();
+		fechaNacimiento = alumno.getFechaDeNacimiento();
+		lugarNacimiento = alumno.getLugarDeNacimiento();
+		estadoCivil = alumno.getEstadoCivil();
+		hijos = alumno.getHijos();
+		familiaresACargo = alumno.getFamiliaresACargo();
+	    telefono = alumno.getTelefono();
+		telefonoAlternativo = alumno.getTelefonoAlternativo();
+		propietarioTelefonoAlternativo = alumno.getPropietarioTelefonoAlternativo();
+		email = alumno.getEmail();
+		calle = alumno.getDireccion().getCalle();
+		altura  = alumno.getDireccion().getAltura();
+		departamento = alumno.getDireccion().getDepartamento();
+		codigoPostal = alumno.getDireccion().getCodigoPostal();
+		localidad = alumno.getDireccion().getLocalidad();
+		partido = alumno.getDireccion().getPartido();	
+		carreraElegida = alumno.getCarrera();
+		
+		
 	}
 
 	public void setAnioEgreso(int anioEgreso) {
