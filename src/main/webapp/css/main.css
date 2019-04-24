@@ -7,7 +7,7 @@ body {
 	font-size: small;
 }
 
-.navbar {
+.navegacion {
 	margin-bottom: 20px;
 }
 
@@ -24,3 +24,10 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+.alineacionBotones {
+	display: inline-block-center;
+}
+
+
+	
