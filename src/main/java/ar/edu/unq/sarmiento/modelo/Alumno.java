@@ -107,15 +107,12 @@ public class Alumno extends Persistible {
 		this.cursadas = cursadas;
 	}
 
-	public void addCursada(Cursada cursada){
-		if(!this.puedeMatricularseA(cursada.getMateria())){
-			throw new ModelException("No puede matricularse en la materia "
-					+ cursada.getMateria().getNombre() + 
-					" porque debe sus correlativas.");
-		}
+	public void addCursada(Cursada cursada) {
+		this.validarQueMateriaElegidaEsDeCarreraDe(cursada);
+		this.validarSiPuedeMatricularseAMateria(cursada);    
 		this.cursadas.add(cursada);
 	}
-	
+
 	public String getDni() {
 		return dni;
 	}
@@ -261,4 +258,18 @@ public class Alumno extends Persistible {
 				.anyMatch(c -> c.estadoRegularizadoOAprobado());
 	}
 
+    public void validarQueMateriaElegidaEsDeCarreraDe(Cursada cursada) {
+		if (this.carrera.getId() != cursada.getMateria().getCarrera().getId()) {
+			throw new ModelException("No se puede inscribir a " + cursada.getMateria().getNombre() + " porque no pertenece a la carrera "
+					+ this.getCarrera().getNombre());
+		}
+	}
+    
+    public void validarSiPuedeMatricularseAMateria(Cursada cursada){
+        if(!this.puedeMatricularseA(cursada.getMateria())){
+		    throw new ModelException("No puede matricularse en la materia "
+				+ cursada.getMateria().getNombre() + 
+				" porque debe sus correlativas.");
+	   }
+    }
 }

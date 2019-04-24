@@ -10,6 +10,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.edu.unq.sarmiento.hibernate.AlumnoHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
 import ar.edu.unq.sarmiento.modelo.Cursada;
 import ar.edu.unq.sarmiento.wicket.crearCursada.CrearCursadaPage;
@@ -23,12 +24,13 @@ public class ListadoDeCursadasPage extends LayoutPage {
 	private ListadoDeCursadasController controller;
 	@Autowired
 	private Alumno alumno1;
-
+	
 	public ListadoDeCursadasPage(Alumno alumno) {
 		alumno1 = alumno;
 		controller.setAlumno(alumno1);
-		this.listadoDeCursadas();
 		this.agregarCursada(alumno1);
+		this.listadoDeCursadas();
+		
 	}
 
 	private void agregarCursada(Alumno alumno1) {

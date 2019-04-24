@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Materia extends Persistible {
@@ -24,6 +25,8 @@ public class Materia extends Persistible {
 	private int anioEnCarrera;
 	private String docente;
 	private boolean esDificil;
+	@ManyToOne
+	private Carrera carrera;
 	
 	public Materia() {
 		
@@ -91,6 +94,16 @@ public class Materia extends Persistible {
 		carrera.getListadoMaterias().stream().forEach(m -> m.getCorrelativas().remove(this));
 		carrera.removerMateria(this);
 	}
+
+	public Carrera getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(Carrera carrera) {
+		this.carrera = carrera;
+	}
+	
+	
 	
 
 }

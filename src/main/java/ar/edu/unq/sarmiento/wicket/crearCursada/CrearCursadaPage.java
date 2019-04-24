@@ -7,13 +7,9 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import ar.edu.unq.sarmiento.hibernate.MateriaHome;
 import ar.edu.unq.sarmiento.modelo.Alumno;
-import ar.edu.unq.sarmiento.modelo.EstadoCursada;
 import ar.edu.unq.sarmiento.wicket.crearCarrera.CrearCarreraController;
 import ar.edu.unq.sarmiento.wicket.cursada.ListadoDeCursadasPage;
 import ar.edu.unq.sarmiento.wicket.layout.LayoutPage;
@@ -25,11 +21,14 @@ public class CrearCursadaPage extends LayoutPage {
 
 	private Alumno alumno;
 
+	private MateriaHome materiaHome;
+	
 	@SpringBean(name = "crearCursadaController")
 	private CrearCursadaController crearCursadaController;
 
 	public CrearCursadaPage(Alumno alumno) {
 		this.alumno = alumno;
+		crearCursadaController.setAlumno(alumno);
 		this.formularioCursada();
 	}
 

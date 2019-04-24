@@ -1,4 +1,4 @@
-package ar.edu.unq.sarmiento.wicket.utils;
+package ar.edu.unq.sarmiento.modelo;
 
 import static org.junit.Assert.*;
 
@@ -33,19 +33,20 @@ public class CorrelativaTest {
 		obj = new Materia ();
 		obj.setNombre("Objetos 1");
 		
-		pepe = new Alumno();
-		
+		Carrera prog = new Carrera();
+		prog.agregarMateria(mate);
+		prog.agregarMateria(obj);
+		prog.agregarMateria(intro);
+
 		obj.addCorrelativa(mate);
+		
+		pepe = new Alumno();
+		pepe.setCarrera(prog);
 		
 	}
 	
 	@Test
 	public void agregarCorrelativaandaTest(){
-		Carrera prog = new Carrera();
-	
-		prog.agregarMateria(mate);
-		prog.agregarMateria(obj);
-		prog.agregarMateria(intro);
 		obj.addCorrelativa(intro);
 
 		

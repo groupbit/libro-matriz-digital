@@ -110,6 +110,7 @@ public class CargarInscripcionController implements Serializable {
 		estudio.setNombreTitulo(this.getNombreTitulo());
 		alumno.setDireccion(dir);
 		alumno.setTitulo(estudio);
+		this.confimarCarrera(alumno);
 		estudioCursadoHome.saveOrUpdate(alumno.getTitulo());
 		alumnoHome.saveOrUpdate(alumno);
 		direccionHome.saveOrUpdate(alumno.getDireccion());
