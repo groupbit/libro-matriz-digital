@@ -4,48 +4,42 @@
 			<div class="panel-heading titulo">
 				<h4>Listado de alumnos</h4>
 			</div>
-					<div class="panel-body">
-				<table class="table">
-					<thead>
-						<th>Nombre</th>
-						<th>DNI</th>
-						<th>Fecha de nacimiento</th>
-						<th>Teléfono</th>
-						<th>Correo electrónico</th>
-						<th>Carrera</th>
-					</thead>
-					<tbody>
-					  	<tr wicket:id="alumnos" class="fila">
-						    <td>
-					    		<span wicket:id="nombre"></span>
-					    	</td>
-					    	<td>
-					    		<span wicket:id="dni"></span>
-					    	</td>
-						    <td>
-					    		<span wicket:id="fechaNacimiento"></span>
-					    	</td>
-					    	<td>
-					    		<span wicket:id="telefono"></span>
-					    	</td>
-					    	<td>
-					    		<span wicket:id="email"></span>
-					    	</td>
-						    <td>
-					    		<span wicket:id="carrera"></span>
-					    	</td>
-					    	<td>
-								<button wicket:id="cursadas" class="btn btn-info">Ver Cursadas</button>
-							</td>
-					  	</tr>
-					</tbody>
-				</table>
+			<div class="panel-body">
+				<form wicket:id="formBuscarNombre">
+					<div class="titulo">
+						Buscar por nombre: <input type="text" wicket:id="nombreBuscado" />
+					</div>
+					<br></br>
+					<table class="table" wicket:id="listado">
+						<thead>
+							<th>Nombre</th>
+							<th>DNI</th>
+							<th>Fecha de nacimiento</th>
+							<th>Teléfono</th>
+							<th>Correo electrónico</th>
+							<th>Carrera</th>
+						</thead>
+						<tbody>
+							<tr wicket:id="alumnos" class="fila">
+								<td><span wicket:id="nombre"></span></td>
+								<td><span wicket:id="dni"></span></td>
+								<td><span wicket:id="fechaNacimiento"></span></td>
+								<td><span wicket:id="telefono"></span></td>
+								<td><span wicket:id="email"></span></td>
+								<td><span wicket:id="carrera"></span></td>
+								<td>
+									<button wicket:id="cursadas" class="btn btn-info">Ver
+										Cursadas</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>
 	<div class="text-center">
 		<button wicket:id="inscripcion" class="btn btn-primary">
-			Inscribir Alumno</button>	
+			Inscribir Alumno</button>
 	</div>
-	
 </wicket:extend>

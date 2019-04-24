@@ -12,8 +12,7 @@ public class MateriaHome extends Home<Materia>{
 	private static final long serialVersionUID = 1L;
 
 	public List<Materia> findByCarrera(Carrera carrera) {
-		return this.getSession()
-			.createQuery("FROM Materia WHERE carrera_id= :carrera")
+		return createQuery("WHERE carrera_id = :carrera")
 			.setParameter("carrera", carrera)
 			.getResultList();
 	}
