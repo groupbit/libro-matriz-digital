@@ -3,13 +3,18 @@ package ar.edu.unq.sarmiento.wicket.alumno;
 import java.time.format.DateTimeFormatter;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -28,17 +33,12 @@ public class ListadoAlumnoPage extends LayoutPage {
 		inicializarPage();
 	}
 
-	public ListadoAlumnoPage(String nombre) {
-		controller.setNombreBuscado(nombre);
-		inicializarPage();
-	}
-
 	private void inicializarPage() {
 		this.cargarInscripcionAlumno();
 		this.busquedaPorNombre();
 	}
 
-	public void listaDeAlumno(Form<ListadoAlumnoController> formBusqueda) {
+	public WebMarkupContainer listaDeAlumno(Form<ListadoAlumnoController> formBusqueda) {
 		ListView<Alumno> listAlumno = new ListView<Alumno>("alumnos", new PropertyModel<>(controller, "alumnos")) {
 
 			/**
@@ -73,31 +73,33 @@ public class ListadoAlumnoPage extends LayoutPage {
 				});
 			}
 		};
-		listAlumno.setOutputMarkupId(true);
-		formBusqueda.add(listAlumno);
+		
+		WebMarkupContainer contenedorListado = new WebMarkupContainer("listado");
+		contenedorListado.setOutputMarkupId(true);
+		contenedorListado.add(listAlumno);
+		
+		formBusqueda.add(contenedorListado);
+		
+		return contenedorListado;
 	}
 
 	public void busquedaPorNombre() {
 		Form<ListadoAlumnoController> formBusqueda = new Form<ListadoAlumnoController>("formBuscarNombre");
-
-		formBusqueda.add(new TextField<>("nombreBuscado", new PropertyModel<>(this.controller, "nombreBuscado")));
-
-		AjaxButton ajaxButton = new AjaxButton("action") {
-
+		WebMarkupContainer contenedorListado = this.listaDeAlumno(formBusqueda);
+		
+		TextField<Object> busquedaField = new TextField<>("nombreBuscado",
+				new PropertyModel<>(this.controller, "nombreBuscado"));
+		
+		busquedaField.add(new OnChangeAjaxBehavior() {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onSubmit(AjaxRequestTarget target) {
-				if (target != null) {
-					target.add(formBusqueda);
-					this.setResponsePage(new ListadoAlumnoPage(controller.getNombreBuscado()));
-				}
+			protected void onUpdate(AjaxRequestTarget target) {
+				target.add(contenedorListado);
 			}
+		});
 
-		};
-
-		formBusqueda.add(ajaxButton);
-		this.listaDeAlumno(formBusqueda);
+		formBusqueda.add(busquedaField);
 		this.add(formBusqueda);
 	};
 
