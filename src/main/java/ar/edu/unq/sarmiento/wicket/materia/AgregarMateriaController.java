@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unq.sarmiento.hibernate.CarreraHome;
 import ar.edu.unq.sarmiento.modelo.Carrera;
 import ar.edu.unq.sarmiento.modelo.Materia;
+import ar.edu.unq.sarmiento.modelo.ModelException;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -27,6 +30,7 @@ public class AgregarMateriaController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Materia materia;
 	private Carrera carrera;
+	@NotNull
 	private String nombre;
 	private boolean promocionable = false;
 	private int anioEnCarrera;
@@ -102,5 +106,11 @@ public class AgregarMateriaController implements Serializable {
 		Stream<Integer> strean = IntStream.range(1, (int) carrera.getDuracion() + 1).boxed();
 		return strean.collect(Collectors.toList());
 
+	}
+	
+	public void validarNombreDeMateria(Materia materia){
+		if(this.materia.getNombre()==null){
+			throw new ModelException("Por favor ingrese el nombre de la materia *:" + materia.getNombre());
+		}
 	}
 }

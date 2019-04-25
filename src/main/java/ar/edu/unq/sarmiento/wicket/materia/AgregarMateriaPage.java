@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.materia;
 
+import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -41,7 +42,7 @@ public class AgregarMateriaPage extends LayoutPage {
 			}
 		};
 
-		altaMateria.add(new TextField<>("nombre", new PropertyModel<>(agregarMateriasController, "nombre")));
+		altaMateria.add(new TextField<>("nombre", new PropertyModel<>(agregarMateriasController, "nombre")).add(new PropertyValidator<>()));
 		altaMateria.add(new SiNoDropDownChoice("promocion", new PropertyModel<>(agregarMateriasController, "promocionable")));
 		altaMateria.add(new TextField<>("docente", new PropertyModel<>(agregarMateriasController, "docente")));
 
