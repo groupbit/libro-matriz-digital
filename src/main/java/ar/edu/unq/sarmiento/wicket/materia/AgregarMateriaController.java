@@ -108,9 +108,5 @@ public class AgregarMateriaController implements Serializable {
 
 	}
 	
-	public void validarNombreDeMateria(Materia materia){
-		if(this.materia.getNombre()==null){
-			throw new ModelException("Por favor ingrese el nombre de la materia *:" + materia.getNombre());
-		}
-	}
+	
 }
