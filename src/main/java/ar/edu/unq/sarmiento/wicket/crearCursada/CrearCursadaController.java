@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -38,6 +39,7 @@ public class CrearCursadaController implements Serializable {
 
 	private int anio;
 	
+	@NotNull
 	private Materia materiaElegida;
 	
 	private EstadoCursada estado = EstadoCursada.CURSANDO;

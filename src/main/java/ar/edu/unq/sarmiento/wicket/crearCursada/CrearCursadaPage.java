@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.wicket.crearCursada;
 
+import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -61,7 +62,7 @@ public class CrearCursadaPage extends LayoutPage {
 				"materia",
 				new PropertyModel<>(crearCursadaController, "materiaElegida"),
 				new PropertyModel<>(crearCursadaController, "TodasLasMaterias"),
-				new ChoiceRenderer<>("nombre")));
+				new ChoiceRenderer<>("nombre")).add(new PropertyValidator<>()));
 		nuevaCursada.add(new TextField<>("notaFinal",new PropertyModel<>(this.crearCursadaController,"notaFinal")));
 		this.add(nuevaCursada);
 		nuevaCursada.add(new DropDownChoice<>(
