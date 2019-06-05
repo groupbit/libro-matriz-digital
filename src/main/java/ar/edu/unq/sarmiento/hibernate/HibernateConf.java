@@ -1,7 +1,6 @@
 package ar.edu.unq.sarmiento.hibernate;
 
 import java.io.Console;
-import java.util.Optional;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -16,6 +15,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import ar.edu.unq.sarmiento.utils.Env;
 
 
 @Configuration
@@ -56,11 +57,11 @@ public class HibernateConf {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		
-		String host = readFromEnvVariable("DB_HOSTNAME", "localhost");
-		String port = readFromEnvVariable("DB_PORT", "3306");
+		String host = Env.getOrElse("DB_HOST", "localhost");
+		String port = Env.getOrElse("DB_PORT", "3306");
 		dataSource.setUrl("jdbc:mysql://" + host + ":" + port + "/libroMatrizDigital");
-		dataSource.setUsername(readFromEnvVariable("DB_USERNAME", "root"));
-		dataSource.setPassword(readFromEnvVariable("DB_PASSWORD", "root"));
+		dataSource.setUsername(Env.getOrElse("DB_USERNAME", "root"));
+		dataSource.setPassword(Env.getOrElse("DB_PASSWORD", "root"));
 
 		return dataSource;
 	}
@@ -73,12 +74,6 @@ public class HibernateConf {
 		return transactionManager;
 	}
 	
-	private String readFromEnvVariable(String key, String defaultValue) {
-		return Optional
-				.ofNullable(System.getenv(key))
-				.orElse(defaultValue);
-	}
-
 	private final Properties hibernateProperties() {
 		Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");

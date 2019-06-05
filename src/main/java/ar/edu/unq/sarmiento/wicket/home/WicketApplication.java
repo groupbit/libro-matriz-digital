@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.wicket.home;
 
 import org.apache.wicket.Page;
+import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.bean.validation.BeanValidationConfiguration;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.cycle.PageRequestHandlerTracker;
@@ -8,6 +9,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 import ar.edu.unq.sarmiento.hibernate.HibernateConf;
 import ar.edu.unq.sarmiento.hibernate.HibernateConf.HibernateMode;
+import ar.edu.unq.sarmiento.utils.Env;
 
 public class WicketApplication extends WebApplication {
 	@Override
@@ -23,5 +25,12 @@ public class WicketApplication extends WebApplication {
 		getRequestCycleListeners().add(new PageRequestHandlerTracker());
 		getRequestCycleListeners().add(new ModelErrorsRequestCycleListenerHandler());
 		new BeanValidationConfiguration().configure(this);
+	}
+
+	@Override
+	public RuntimeConfigurationType getConfigurationType() {
+		return Env.isPresent("WICKET_PRODUCTION") 
+			? RuntimeConfigurationType.DEPLOYMENT 
+			: RuntimeConfigurationType.DEVELOPMENT;
 	}
 }
