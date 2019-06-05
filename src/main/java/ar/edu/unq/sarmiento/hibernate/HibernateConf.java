@@ -1,5 +1,6 @@
 package ar.edu.unq.sarmiento.hibernate;
 
+import java.io.Console;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -55,11 +56,11 @@ public class HibernateConf {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		
-		String host = readFromEnvVariable("RDS_HOSTNAME", "localhost");
-		String port = readFromEnvVariable("RDS_PORT", "3306");
+		String host = readFromEnvVariable("DB_HOSTNAME", "localhost");
+		String port = readFromEnvVariable("DB_PORT", "3306");
 		dataSource.setUrl("jdbc:mysql://" + host + ":" + port + "/libroMatrizDigital");
-		dataSource.setUsername(readFromEnvVariable("RDS_USERNAME", "root"));
-		dataSource.setPassword(readFromEnvVariable("RDS_PASSWORD", "root"));
+		dataSource.setUsername(readFromEnvVariable("DB_USERNAME", "root"));
+		dataSource.setPassword(readFromEnvVariable("DB_PASSWORD", "root"));
 
 		return dataSource;
 	}
@@ -74,7 +75,7 @@ public class HibernateConf {
 	
 	private String readFromEnvVariable(String key, String defaultValue) {
 		return Optional
-				.ofNullable(System.getProperty(key))
+				.ofNullable(System.getenv(key))
 				.orElse(defaultValue);
 	}
 
