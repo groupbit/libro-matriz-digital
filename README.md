@@ -105,7 +105,7 @@ class AlumnoPage {
   // Configuración de la page
   public void configurarPagina() {
     Form<Alumno> formularioAlumno = // más configuraciones
-  
+
     formularioAlumno
       .add(new TextField<>("nombre", new PropertyModel<>(alumno, "nombre"))
       .add(new PropertyValidator<>()));
@@ -135,3 +135,15 @@ class Carrera {
   }
 }
 ```
+
+## Deploy de la aplicación
+
+Para desplegar la aplicación utilizamos `docker`, según se explica en [este tutorial](https://github.com/ingsw-sarmiento/docker-java-mysql). Para subir una nueva versión hay que hacer _build_ de la imagen Docker y luego publicarla, siguiendo estos pasos:
+
+```
+mvn package
+docker build -t=groupbit/libro-matriz-digital .
+docker push groupbit/libro-matriz-digital
+```
+
+Si el `push` no funciona es porque no tenés la sesión iniciada o no tenés permisos para _pushear_ a dockerhub. Lo primero se soluciona ejecutando `docker login`, lo segundo pidiéndole a alguien que te de permisos.
