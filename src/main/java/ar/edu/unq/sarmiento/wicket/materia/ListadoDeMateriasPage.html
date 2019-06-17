@@ -22,11 +22,17 @@
 						<td wicket:id="docente"></td>
 						<td wicket:id="correlativas"></td>
 						<td>
-							<button wicket:id="correlativa" class="btn btn-warning">Agregar Correlativa</button>
-							<button wicket:id="borrarCorrelativa" class="btn btn-warning">Borrar Correlativa</button>
+							<button wicket:id="correlativa" class="btn btn-warning">
+								<span class="glyphicon glyphicon-plus" title="Agregar correlativa"> correlativa</span>
+							</button>
+							<button wicket:id="borrarCorrelativa" class="btn btn-warning">
+								<span class="glyphicon glyphicon-minus"title="Borrar correlativa"> correlativa</span>
+							</button>
 							<div style="display: inline-block;">
 								<form wicket:id="eliminarMateriaForm">
-									<button wicket:id="eliminarMateria" class="btn btn-danger">Eliminar Materia</button>
+									<button wicket:id="eliminarMateria" class="btn btn-danger">
+										<span class="glyphicon glyphicon-trash" title="Eliminar Materia"></span>
+									</button>
 								</form>
 							</div>
 						</td>
