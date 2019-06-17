@@ -1,0 +1,25 @@
+.login-form{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
+    min-width: 500px;
+    text-align: left;
+}
+
+.login-form h3{
+    color: #333;
+}
+
+.login-container form{
+    padding: 10% 0;
+}
+
+.login-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	text-align: center;
+	margin: 10% 0;
+}
