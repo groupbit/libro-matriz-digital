@@ -137,12 +137,20 @@ class Carrera {
 
 ## Deploy de la aplicación
 
-Para desplegar la aplicación utilizamos `docker`, según se explica en [este tutorial](https://github.com/ingsw-sarmiento/docker-java-mysql). Para subir una nueva versión hay que hacer _build_ de la imagen Docker y luego publicarla, siguiendo estos pasos:
+Para desplegar la aplicación utilizamos `docker`, según se explica en [este tutorial](https://github.com/ingsw-sarmiento/docker-java-mysql). Para subir una nueva versión hay que hacer _build_ de la imagen Docker y luego publicarla, ejecutando lo siguiente desde la raíz del repositorio:
 
 ```
-mvn package
-docker build -t=groupbit/libro-matriz-digital .
-docker push groupbit/libro-matriz-digital
+./scripts/deploy-dockerhub
 ```
 
 Si el `push` no funciona es porque no tenés la sesión iniciada o no tenés permisos para _pushear_ a dockerhub. Lo primero se soluciona ejecutando `docker login`, lo segundo pidiéndole a alguien que te de permisos.
+
+Luego, hay que conectarse a la máquina remota, bajar la imagen nueva y reiniciar el servicio, lo cual se logra ejecutando lo siguiente desde la raíz del repositorio:
+
+```
+./scripts/reiniciar-produccion
+```
+
+Para que funcione, son necesarias dos cosas:
+* debe existir un archivo `docker-compose.prod.yml`, con la configuración para el entorno de producción;
+* tiene que estar configurada en tu computadora una `docker-machine` llamada `produccion`.
