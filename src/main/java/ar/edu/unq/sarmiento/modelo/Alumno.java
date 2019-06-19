@@ -254,7 +254,8 @@ public class Alumno extends Persistible {
 	}
 
 	private boolean estaRegularizada(Materia m) {
-		return this.cursadas.stream().filter(c -> c.getMateria().equals(m))
+		return this.cursadas.stream()
+				.filter(c -> c.getMateria().equals(m) || c.getMateria().getId() == m.getId())
 				.anyMatch(c -> c.estadoRegularizadoOAprobado());
 	}
 
