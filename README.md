@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/ingsw-sarmiento/libro-matriz-digital.svg?branch=master)](https://travis-ci.org/ingsw-sarmiento/libro-matriz-digital)
+[![Build Status](https://travis-ci.org/groupbit/libro-matriz-digital.svg?branch=master)](https://travis-ci.org/groupbit/libro-matriz-digital)
 
 # Libro matriz digital
-> Sistema de gestión para el ISFDyT nro. 138. [:link:](http://libro-matriz-digital.us-east-1.elasticbeanstalk.com)
+> Sistema de gestión para el ISFDyT nro. 138.
 
 ## Configuración necesaria para empezar a programar
 
